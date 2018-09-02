@@ -4,6 +4,9 @@
 #include "wx/dialog.h"
 #include "wx/webview.h"
 
+#include "CppPlotly/Trace/Bar.h"
+#include "CppPlotly/Plot.h"
+
 class CppPlotlyApp : public wxApp {
 public:
     virtual bool OnInit() wxOVERRIDE;
@@ -13,7 +16,7 @@ class VisorGraficos : public wxPanel {
 public:
     VisorGraficos(wxWindow *padre, wxWindowID id, const wxSize &size = wxDefaultSize);
 
-    void MostrarGraficoBarras(const std::vector<std::pair<std::string, double>> &datos);
+    void MostrarGraficoBarras(const std::vector<std::pair<double, double>> &datos);
 
     virtual ~VisorGraficos() = default;
 
@@ -42,8 +45,8 @@ bool CppPlotlyApp::OnInit() {
         return false;
 
     auto frame = new VisorGraficosFrame(NULL, wxID_ANY, "Grafico Barras");
-    std::vector<std::pair<std::string, double> > datos = {{"A", 5},
-                                                          {"B", 7}};
+    std::vector<std::pair<double, double> > datos = {{1, 5},
+                                                          {2, 7}};
     frame->GetVisorGraficos()->MostrarGraficoBarras(datos);
     frame->Show();
 
@@ -70,9 +73,9 @@ VisorGraficos::VisorGraficos(wxWindow *padre, wxWindowID id, const wxSize &size)
     SetSizer(main_sizer);
 }
 
-void VisorGraficos::MostrarGraficoBarras(const std::vector<std::pair<std::string, double>> &datos) {
+void VisorGraficos::MostrarGraficoBarras(const std::vector<std::pair<double, double>> &datos) {
 
-    std::vector<std::string> x;
+    std::vector<double> x;
     std::vector<double> y;
 
     for (const auto &par : datos) {
@@ -81,8 +84,8 @@ void VisorGraficos::MostrarGraficoBarras(const std::vector<std::pair<std::string
     }
 
     auto bar = CppPlotly::BaseTrace::Pointer(&((new CppPlotly::Trace::Bar())->
-            x(x).
-            y(y)));
+            X(x).
+            Y(y)));
 
     auto plot = CppPlotly::Plot().AddTrace(bar);
 

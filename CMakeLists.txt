@@ -5,15 +5,14 @@ project(CppPlotly VERSION 1.0.0 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(cppplotly_sample samples/scatter.cpp)
+include_directories(cppplotly_sample PUBLIC include)
 
-target_include_directories(cppplotly_sample PUBLIC include)
+add_executable(cppplotly_sample samples/scatter.cpp)
 target_link_libraries(cppplotly_sample json11)
-target_compile_options(cppplotly_sample
-  PRIVATE -Wall)
+target_compile_options(cppplotly_sample PRIVATE -Wall)
+
 
 find_package(wxWidgets REQUIRED webview, net, core, base)
-
 if (wxWidgets_FOUND)
     include(${wxWidgets_USE_FILE})
 

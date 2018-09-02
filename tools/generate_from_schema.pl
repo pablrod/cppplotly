@@ -19,20 +19,23 @@ use Scalar::Util;
 # TODO Add defaults?
 # TODO Add support for items
 
+my $generic_type = 'json11::Json::object';
 my $moose_type_for = {
-    any        => 'json11::Json::object',
+    any        => $generic_type,
     number     => 'double',
     string     => 'std::string',
     boolean    => 'bool',
     integer    => 'int',
     info_array => 'std::vector<std::string>',
     data_array => 'std::vector<double>',
-    enumerated => => 'enum'
+    enumerated => 'enum'
 };
 my $template_h = path("template/trace.h.tmpl")->slurp_utf8();
 my $template_cpp = path("template/trace.cpp.tmpl")->slurp_utf8();
 my $attribute_template = path("template/attribute.tmpl")->slurp_utf8();
 my $plotly_js_dist_path = path("../plotly.js/dist");
+my $header_file_suffix = ".h";
+my $main_trace_namespace = "CppPlotly::Trace";
 my $current_dir = cwd;
 my $types_without_moose_equivalent = {};
 
@@ -79,7 +82,7 @@ sub FieldsAST {
                         $AST->{subtypes}{$item_name} = SubtypeAST($field_contents->{items}{$item_name}, $item_name, $parent_class);
                         my $field = {
                             is  => 'rw',
-                            isa => "ArrayRef|ArrayRef[" . GenerateClassName($parent_class, $item_name) . "]"
+                            isa => "std::vector<" . AdjustNamespaceClassName(GenerateClassName($parent_class, $item_name)) . ">"
                         };
                         $AST->{fields}{$field_name} = $field;
                     } else {
@@ -89,7 +92,7 @@ sub FieldsAST {
                     $AST->{subtypes}{$field_name} = SubtypeAST($field_contents, $field_name, $parent_class);
                     my $field = {
                         is  => 'rw',
-                        isa => "Maybe[HashRef]|" . GenerateClassName($parent_class, $field_name)
+                        isa => AdjustNamespaceClassName(GenerateClassName($parent_class, $field_name))
                     };
                     if (defined $field_contents->{arrayOk} && $field_contents->{arrayOk}) {
                         warn("Until now this combination is not present (array of elements with role object). Ignored");
@@ -124,11 +127,13 @@ sub FieldsAST {
                                         $field->{isa} = $enum_type;
                                     }
                                 }
+                                $field->{isa} = $generic_type;
                             }
                         }
                         else {
                             if (defined $field_contents->{arrayOk} && $field_contents->{arrayOk}) {
-                                $field->{isa} = $moose_type . "|ArrayRef[" . $moose_type . "]";
+                                #$field->{isa} = $moose_type . "|ArrayRef[" . $moose_type . "]";
+                                $field->{isa} = $generic_type;
                             } else {
                                 $field->{isa} = $moose_type;
                             }
@@ -139,7 +144,8 @@ sub FieldsAST {
                     }
                 }
                 if (defined $field_contents->{arrayOk} && $field_contents->{arrayOk} && !defined $field->{isa}) {
-                    $field->{isa} = "Maybe[ArrayRef]";
+                    #$field->{isa} = "Maybe[ArrayRef]";
+                    $field->{isa} = $generic_type;
                 }
 
                 $AST->{fields}{$field_name} = $field;
@@ -185,7 +191,7 @@ sub GenerateTraceAST {
     my $trace_schema = shift();
     my $trace_name = shift();
 
-    my $class_name = GenerateClassName('CppPlotly::Trace', $trace_name);
+    my $class_name = GenerateClassName($main_trace_namespace, $trace_name);
     my $AST = InitialAST($class_name);
 
     if (defined $trace_schema->{'meta'}{'description'}) {
@@ -221,7 +227,7 @@ sub RenderField {
 
     #$file_contents .= "template <typename Data>
     $file_contents .= ucfirst($trace_name) . " & " . ucfirst($field_name) . "(const $type &$field_name ) {\n";
-    $file_contents .= "    _$trace_name.insert(\"" . $field_name . '", ' . $field_name . "});\n";
+    $file_contents .= "    _$trace_name.insert({\"" . $field_name . '", ' . $field_name . "});\n";
     $file_contents .= "    return *this;\n";
     $file_contents .= "}\n";
 
@@ -241,11 +247,25 @@ sub RenderTypeAST {
         $file_contents .= RenderField($field, $value, $trace_name);
     }
 
+    my $subclass = $ast->{class_name};
+    $subclass =~ s/$main_trace_namespace\:\://;
+    my $extra_namespaces = '';
+    my $close_extra_namespaces = '';
+    if ($subclass =~ /::/) {
+        my @namespaces = split /::/, $subclass;
+        pop @namespaces;
+        $extra_namespaces = join '', map {"namespace ".lc($_)." {\n"} @namespaces;
+        $close_extra_namespaces = join '', map {"}\n"} @namespaces;
+    }
+
     my $used_modules = "";
     for my $subtype (sort keys %{$ast->{subtypes}}) {
         RenderTypeAST($subtype, $ast->{subtypes}{$subtype}, $attribute_template, $root_trace_name);
         my $type_constraint = $ast->{subtypes}{$subtype}{class_name};
-        $used_modules .= "use $type_constraint;\n";
+        my $path_for_type_constraint = $type_constraint;
+        $path_for_type_constraint =~ s/::/\//g;
+        #my $namespaced_type_constraint = AdjustNamespaceClassName($type_constraint);
+        $used_modules .= "#include \"$path_for_type_constraint$header_file_suffix\"\n";
     }
 
     my $description = $ast->{documentation};
@@ -254,6 +274,8 @@ sub RenderTypeAST {
             package_name => $ast->{class_name},
             class_name   => (split(/::/, $ast->{class_name}))[-1],
             trace_name   => $root_trace_name,
+            extra_namespaces => $extra_namespaces,
+            close_extra_namespaces => $close_extra_namespaces,
             used_modules => $used_modules,
             description  => $description,
             body         => $file_contents,
@@ -261,7 +283,19 @@ sub RenderTypeAST {
 
     $file_contents = $header;
     chdir $current_dir;
-    my $file = path('include/' . join("/", split(/::/, $ast->{class_name})) . ".h");
+    my $file = path('include/' . join("/", split(/::/, $ast->{class_name})) . $header_file_suffix);
     $file->parent->mkpath();
     $file->spew_utf8($file_contents);
+}
+
+sub AdjustNamespaceClassName {
+    my $class_name = shift;
+    my $sub_namespaced_type_constraint = $class_name;
+    $sub_namespaced_type_constraint =~ s/$main_trace_namespace\:\://;
+    if ($sub_namespaced_type_constraint =~ /::/) {
+        my @namespaces = split /::/, $sub_namespaced_type_constraint;
+        my $main_class = pop @namespaces;
+        $class_name = $main_trace_namespace . "::" . (join '::', map {lc($_)} @namespaces ) . "::" . $main_class;
+    }
+    return $class_name;
 }
