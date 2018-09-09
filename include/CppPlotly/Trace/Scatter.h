@@ -71,6 +71,22 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 
 /**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Scatter & Customdata(const std::vector<std::string> &customdata ) {
+    _scatter.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Scatter & Customdata(const json11::Json::object &customdata ) {
+    _scatter.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  customdata .
 */Scatter & Customdatasrc(const std::string &customdatasrc ) {
     _scatter.insert({"customdatasrc", customdatasrc});
@@ -177,6 +193,22 @@ Assigns id labels to each datum. These ids for object constancy of data points d
 
 
 /**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Scatter & Ids(const std::vector<std::string> &ids ) {
+    _scatter.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Scatter & Ids(const json11::Json::object &ids ) {
+    _scatter.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  ids .
 */Scatter & Idssrc(const std::string &idssrc ) {
     _scatter.insert({"idssrc", idssrc});
@@ -237,6 +269,22 @@ For legacy polar chart only.Please switch to *scatterpolar* trace type.Sets the 
 
 
 /**
+For legacy polar chart only.Please switch to *scatterpolar* trace type.Sets the radial coordinates.
+*/Scatter & R(const std::vector<std::string> &r ) {
+    _scatter.insert({"r", r});
+    return *this;
+}
+
+
+/**
+For legacy polar chart only.Please switch to *scatterpolar* trace type.Sets the radial coordinates.
+*/Scatter & R(const json11::Json::object &r ) {
+    _scatter.insert({"r", r});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  r .
 */Scatter & Rsrc(const std::string &rsrc ) {
     _scatter.insert({"rsrc", rsrc});
@@ -275,6 +323,22 @@ Scatter & Stream(const CppPlotly::Trace::scatter::Stream &stream ) {
 /**
 For legacy polar chart only.Please switch to *scatterpolar* trace type.Sets the angular coordinates.
 */Scatter & T(const std::vector<double> &t ) {
+    _scatter.insert({"t", t});
+    return *this;
+}
+
+
+/**
+For legacy polar chart only.Please switch to *scatterpolar* trace type.Sets the angular coordinates.
+*/Scatter & T(const std::vector<std::string> &t ) {
+    _scatter.insert({"t", t});
+    return *this;
+}
+
+
+/**
+For legacy polar chart only.Please switch to *scatterpolar* trace type.Sets the angular coordinates.
+*/Scatter & T(const json11::Json::object &t ) {
     _scatter.insert({"t", t});
     return *this;
 }
@@ -361,6 +425,22 @@ Sets the x coordinates.
 
 
 /**
+Sets the x coordinates.
+*/Scatter & X(const std::vector<std::string> &x ) {
+    _scatter.insert({"x", x});
+    return *this;
+}
+
+
+/**
+Sets the x coordinates.
+*/Scatter & X(const json11::Json::object &x ) {
+    _scatter.insert({"x", x});
+    return *this;
+}
+
+
+/**
 Alternate to `x`. Builds a linear space of x coordinates. Use with `dx` where `x0` is the starting coordinate and `dx` the step.
 */Scatter & X0(const json11::Json::object &x0 ) {
     _scatter.insert({"x0", x0});
@@ -401,6 +481,22 @@ Sets the y coordinates.
 
 
 /**
+Sets the y coordinates.
+*/Scatter & Y(const std::vector<std::string> &y ) {
+    _scatter.insert({"y", y});
+    return *this;
+}
+
+
+/**
+Sets the y coordinates.
+*/Scatter & Y(const json11::Json::object &y ) {
+    _scatter.insert({"y", y});
+    return *this;
+}
+
+
+/**
 Alternate to `y`. Builds a linear space of y coordinates. Use with `dy` where `y0` is the starting coordinate and `dy` the step.
 */Scatter & Y0(const json11::Json::object &y0 ) {
     _scatter.insert({"y0", y0});
@@ -434,7 +530,7 @@ Sets the source reference on plot.ly for  y .
 
  
 
-            json11::Json to_json() const {
+            virtual json11::Json to_json() const {
                 return _scatter;
             }
 

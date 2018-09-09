@@ -73,6 +73,22 @@ Sets the order in which categories on this axis appear. Only has an effect if `c
 
 
 /**
+Sets the order in which categories on this axis appear. Only has an effect if `categoryorder` is set to *array*. Used with `categoryorder`.
+*/Baxis & Categoryarray(const std::vector<std::string> &categoryarray ) {
+    _baxis.insert({"categoryarray", categoryarray});
+    return *this;
+}
+
+
+/**
+Sets the order in which categories on this axis appear. Only has an effect if `categoryorder` is set to *array*. Used with `categoryorder`.
+*/Baxis & Categoryarray(const json11::Json::object &categoryarray ) {
+    _baxis.insert({"categoryarray", categoryarray});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  categoryarray .
 */Baxis & Categoryarraysrc(const std::string &categoryarraysrc ) {
     _baxis.insert({"categoryarraysrc", categoryarraysrc});
@@ -407,6 +423,22 @@ Sets the text displayed at the ticks position via `tickvals`. Only has an effect
 
 
 /**
+Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*. Used with `tickvals`.
+*/Baxis & Ticktext(const std::vector<std::string> &ticktext ) {
+    _baxis.insert({"ticktext", ticktext});
+    return *this;
+}
+
+
+/**
+Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*. Used with `tickvals`.
+*/Baxis & Ticktext(const json11::Json::object &ticktext ) {
+    _baxis.insert({"ticktext", ticktext});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  ticktext .
 */Baxis & Ticktextsrc(const std::string &ticktextsrc ) {
     _baxis.insert({"ticktextsrc", ticktextsrc});
@@ -417,6 +449,22 @@ Sets the source reference on plot.ly for  ticktext .
 /**
 Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with `ticktext`.
 */Baxis & Tickvals(const std::vector<double> &tickvals ) {
+    _baxis.insert({"tickvals", tickvals});
+    return *this;
+}
+
+
+/**
+Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with `ticktext`.
+*/Baxis & Tickvals(const std::vector<std::string> &tickvals ) {
+    _baxis.insert({"tickvals", tickvals});
+    return *this;
+}
+
+
+/**
+Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with `ticktext`.
+*/Baxis & Tickvals(const json11::Json::object &tickvals ) {
     _baxis.insert({"tickvals", tickvals});
     return *this;
 }

@@ -68,6 +68,22 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 
 /**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Violin & Customdata(const std::vector<std::string> &customdata ) {
+    _violin.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Violin & Customdata(const json11::Json::object &customdata ) {
+    _violin.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  customdata .
 */Violin & Customdatasrc(const std::string &customdatasrc ) {
     _violin.insert({"customdatasrc", customdatasrc});
@@ -116,6 +132,22 @@ Do the hover effects highlight individual violins or sample points or the kernel
 /**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
 */Violin & Ids(const std::vector<double> &ids ) {
+    _violin.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Violin & Ids(const std::vector<std::string> &ids ) {
+    _violin.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Violin & Ids(const json11::Json::object &ids ) {
     _violin.insert({"ids", ids});
     return *this;
 }
@@ -322,6 +354,22 @@ Sets the x sample data or coordinates. See overview for more info.
 
 
 /**
+Sets the x sample data or coordinates. See overview for more info.
+*/Violin & X(const std::vector<std::string> &x ) {
+    _violin.insert({"x", x});
+    return *this;
+}
+
+
+/**
+Sets the x sample data or coordinates. See overview for more info.
+*/Violin & X(const json11::Json::object &x ) {
+    _violin.insert({"x", x});
+    return *this;
+}
+
+
+/**
 Sets the x coordinate of the box. See overview for more info.
 */Violin & X0(const json11::Json::object &x0 ) {
     _violin.insert({"x0", x0});
@@ -354,6 +402,22 @@ Sets the y sample data or coordinates. See overview for more info.
 
 
 /**
+Sets the y sample data or coordinates. See overview for more info.
+*/Violin & Y(const std::vector<std::string> &y ) {
+    _violin.insert({"y", y});
+    return *this;
+}
+
+
+/**
+Sets the y sample data or coordinates. See overview for more info.
+*/Violin & Y(const json11::Json::object &y ) {
+    _violin.insert({"y", y});
+    return *this;
+}
+
+
+/**
 Sets the y coordinate of the box. See overview for more info.
 */Violin & Y0(const json11::Json::object &y0 ) {
     _violin.insert({"y0", y0});
@@ -379,7 +443,7 @@ Sets the source reference on plot.ly for  y .
 
  
 
-            json11::Json to_json() const {
+            virtual json11::Json to_json() const {
                 return _violin;
             }
 

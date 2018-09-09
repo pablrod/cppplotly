@@ -120,6 +120,22 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 
 /**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Mesh3d & Customdata(const std::vector<std::string> &customdata ) {
+    _mesh3d.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Mesh3d & Customdata(const json11::Json::object &customdata ) {
+    _mesh3d.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  customdata .
 */Mesh3d & Customdatasrc(const std::string &customdatasrc ) {
     _mesh3d.insert({"customdatasrc", customdatasrc});
@@ -138,6 +154,22 @@ Sets the Delaunay axis, which is the axis that is perpendicular to the surface o
 /**
 Sets the color of each face Overrides *color* and *vertexcolor*.
 */Mesh3d & Facecolor(const std::vector<double> &facecolor ) {
+    _mesh3d.insert({"facecolor", facecolor});
+    return *this;
+}
+
+
+/**
+Sets the color of each face Overrides *color* and *vertexcolor*.
+*/Mesh3d & Facecolor(const std::vector<std::string> &facecolor ) {
+    _mesh3d.insert({"facecolor", facecolor});
+    return *this;
+}
+
+
+/**
+Sets the color of each face Overrides *color* and *vertexcolor*.
+*/Mesh3d & Facecolor(const json11::Json::object &facecolor ) {
     _mesh3d.insert({"facecolor", facecolor});
     return *this;
 }
@@ -190,8 +222,40 @@ A vector of vertex indices, i.e. integer values between 0 and the length of the 
 
 
 /**
+A vector of vertex indices, i.e. integer values between 0 and the length of the vertex vectors, representing the *first* vertex of a triangle. For example, `{i[m], j[m], k[m]}` together represent face m (triangle m) in the mesh, where `i[m] = n` points to the triplet `{x[n], y[n], z[n]}` in the vertex arrays. Therefore, each element in `i` represents a point in space, which is the first vertex of a triangle.
+*/Mesh3d & I(const std::vector<std::string> &i ) {
+    _mesh3d.insert({"i", i});
+    return *this;
+}
+
+
+/**
+A vector of vertex indices, i.e. integer values between 0 and the length of the vertex vectors, representing the *first* vertex of a triangle. For example, `{i[m], j[m], k[m]}` together represent face m (triangle m) in the mesh, where `i[m] = n` points to the triplet `{x[n], y[n], z[n]}` in the vertex arrays. Therefore, each element in `i` represents a point in space, which is the first vertex of a triangle.
+*/Mesh3d & I(const json11::Json::object &i ) {
+    _mesh3d.insert({"i", i});
+    return *this;
+}
+
+
+/**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
 */Mesh3d & Ids(const std::vector<double> &ids ) {
+    _mesh3d.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Mesh3d & Ids(const std::vector<std::string> &ids ) {
+    _mesh3d.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Mesh3d & Ids(const json11::Json::object &ids ) {
     _mesh3d.insert({"ids", ids});
     return *this;
 }
@@ -208,6 +272,22 @@ Sets the source reference on plot.ly for  ids .
 /**
 Sets the vertex intensity values, used for plotting fields on meshes
 */Mesh3d & Intensity(const std::vector<double> &intensity ) {
+    _mesh3d.insert({"intensity", intensity});
+    return *this;
+}
+
+
+/**
+Sets the vertex intensity values, used for plotting fields on meshes
+*/Mesh3d & Intensity(const std::vector<std::string> &intensity ) {
+    _mesh3d.insert({"intensity", intensity});
+    return *this;
+}
+
+
+/**
+Sets the vertex intensity values, used for plotting fields on meshes
+*/Mesh3d & Intensity(const json11::Json::object &intensity ) {
     _mesh3d.insert({"intensity", intensity});
     return *this;
 }
@@ -238,6 +318,22 @@ A vector of vertex indices, i.e. integer values between 0 and the length of the 
 
 
 /**
+A vector of vertex indices, i.e. integer values between 0 and the length of the vertex vectors, representing the *second* vertex of a triangle. For example, `{i[m], j[m], k[m]}`  together represent face m (triangle m) in the mesh, where `j[m] = n` points to the triplet `{x[n], y[n], z[n]}` in the vertex arrays. Therefore, each element in `j` represents a point in space, which is the second vertex of a triangle.
+*/Mesh3d & J(const std::vector<std::string> &j ) {
+    _mesh3d.insert({"j", j});
+    return *this;
+}
+
+
+/**
+A vector of vertex indices, i.e. integer values between 0 and the length of the vertex vectors, representing the *second* vertex of a triangle. For example, `{i[m], j[m], k[m]}`  together represent face m (triangle m) in the mesh, where `j[m] = n` points to the triplet `{x[n], y[n], z[n]}` in the vertex arrays. Therefore, each element in `j` represents a point in space, which is the second vertex of a triangle.
+*/Mesh3d & J(const json11::Json::object &j ) {
+    _mesh3d.insert({"j", j});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  j .
 */Mesh3d & Jsrc(const std::string &jsrc ) {
     _mesh3d.insert({"jsrc", jsrc});
@@ -248,6 +344,22 @@ Sets the source reference on plot.ly for  j .
 /**
 A vector of vertex indices, i.e. integer values between 0 and the length of the vertex vectors, representing the *third* vertex of a triangle. For example, `{i[m], j[m], k[m]}` together represent face m (triangle m) in the mesh, where `k[m] = n` points to the triplet  `{x[n], y[n], z[n]}` in the vertex arrays. Therefore, each element in `k` represents a point in space, which is the third vertex of a triangle.
 */Mesh3d & K(const std::vector<double> &k ) {
+    _mesh3d.insert({"k", k});
+    return *this;
+}
+
+
+/**
+A vector of vertex indices, i.e. integer values between 0 and the length of the vertex vectors, representing the *third* vertex of a triangle. For example, `{i[m], j[m], k[m]}` together represent face m (triangle m) in the mesh, where `k[m] = n` points to the triplet  `{x[n], y[n], z[n]}` in the vertex arrays. Therefore, each element in `k` represents a point in space, which is the third vertex of a triangle.
+*/Mesh3d & K(const std::vector<std::string> &k ) {
+    _mesh3d.insert({"k", k});
+    return *this;
+}
+
+
+/**
+A vector of vertex indices, i.e. integer values between 0 and the length of the vertex vectors, representing the *third* vertex of a triangle. For example, `{i[m], j[m], k[m]}` together represent face m (triangle m) in the mesh, where `k[m] = n` points to the triplet  `{x[n], y[n], z[n]}` in the vertex arrays. Therefore, each element in `k` represents a point in space, which is the third vertex of a triangle.
+*/Mesh3d & K(const json11::Json::object &k ) {
     _mesh3d.insert({"k", k});
     return *this;
 }
@@ -380,6 +492,22 @@ Sets the color of each vertex Overrides *color*.
 
 
 /**
+Sets the color of each vertex Overrides *color*.
+*/Mesh3d & Vertexcolor(const std::vector<std::string> &vertexcolor ) {
+    _mesh3d.insert({"vertexcolor", vertexcolor});
+    return *this;
+}
+
+
+/**
+Sets the color of each vertex Overrides *color*.
+*/Mesh3d & Vertexcolor(const json11::Json::object &vertexcolor ) {
+    _mesh3d.insert({"vertexcolor", vertexcolor});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  vertexcolor .
 */Mesh3d & Vertexcolorsrc(const std::string &vertexcolorsrc ) {
     _mesh3d.insert({"vertexcolorsrc", vertexcolorsrc});
@@ -398,6 +526,22 @@ Determines whether or not this trace is visible. If *legendonly*, the trace is n
 /**
 Sets the X coordinates of the vertices. The nth element of vectors `x`, `y` and `z` jointly represent the X, Y and Z coordinates of the nth vertex.
 */Mesh3d & X(const std::vector<double> &x ) {
+    _mesh3d.insert({"x", x});
+    return *this;
+}
+
+
+/**
+Sets the X coordinates of the vertices. The nth element of vectors `x`, `y` and `z` jointly represent the X, Y and Z coordinates of the nth vertex.
+*/Mesh3d & X(const std::vector<std::string> &x ) {
+    _mesh3d.insert({"x", x});
+    return *this;
+}
+
+
+/**
+Sets the X coordinates of the vertices. The nth element of vectors `x`, `y` and `z` jointly represent the X, Y and Z coordinates of the nth vertex.
+*/Mesh3d & X(const json11::Json::object &x ) {
     _mesh3d.insert({"x", x});
     return *this;
 }
@@ -428,6 +572,22 @@ Sets the Y coordinates of the vertices. The nth element of vectors `x`, `y` and 
 
 
 /**
+Sets the Y coordinates of the vertices. The nth element of vectors `x`, `y` and `z` jointly represent the X, Y and Z coordinates of the nth vertex.
+*/Mesh3d & Y(const std::vector<std::string> &y ) {
+    _mesh3d.insert({"y", y});
+    return *this;
+}
+
+
+/**
+Sets the Y coordinates of the vertices. The nth element of vectors `x`, `y` and `z` jointly represent the X, Y and Z coordinates of the nth vertex.
+*/Mesh3d & Y(const json11::Json::object &y ) {
+    _mesh3d.insert({"y", y});
+    return *this;
+}
+
+
+/**
 Sets the calendar system to use with `y` date data.
 */Mesh3d & Ycalendar(const json11::Json::object &ycalendar ) {
     _mesh3d.insert({"ycalendar", ycalendar});
@@ -452,6 +612,22 @@ Sets the Z coordinates of the vertices. The nth element of vectors `x`, `y` and 
 
 
 /**
+Sets the Z coordinates of the vertices. The nth element of vectors `x`, `y` and `z` jointly represent the X, Y and Z coordinates of the nth vertex.
+*/Mesh3d & Z(const std::vector<std::string> &z ) {
+    _mesh3d.insert({"z", z});
+    return *this;
+}
+
+
+/**
+Sets the Z coordinates of the vertices. The nth element of vectors `x`, `y` and `z` jointly represent the X, Y and Z coordinates of the nth vertex.
+*/Mesh3d & Z(const json11::Json::object &z ) {
+    _mesh3d.insert({"z", z});
+    return *this;
+}
+
+
+/**
 Sets the calendar system to use with `z` date data.
 */Mesh3d & Zcalendar(const json11::Json::object &zcalendar ) {
     _mesh3d.insert({"zcalendar", zcalendar});
@@ -469,7 +645,7 @@ Sets the source reference on plot.ly for  z .
 
  
 
-            json11::Json to_json() const {
+            virtual json11::Json to_json() const {
                 return _mesh3d;
             }
 

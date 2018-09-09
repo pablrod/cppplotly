@@ -47,6 +47,22 @@ Sets the color of each sector of this pie chart. If not specified, the default t
 
 
 /**
+Sets the color of each sector of this pie chart. If not specified, the default trace color set is used to pick the sector colors.
+*/Marker & Colors(const std::vector<std::string> &colors ) {
+    _marker.insert({"colors", colors});
+    return *this;
+}
+
+
+/**
+Sets the color of each sector of this pie chart. If not specified, the default trace color set is used to pick the sector colors.
+*/Marker & Colors(const json11::Json::object &colors ) {
+    _marker.insert({"colors", colors});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  colors .
 */Marker & Colorssrc(const std::string &colorssrc ) {
     _marker.insert({"colorssrc", colorssrc});

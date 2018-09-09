@@ -54,6 +54,22 @@ Sets the dimension values to be plotted.
 
 
 /**
+Sets the dimension values to be plotted.
+*/Dimension & Values(const std::vector<std::string> &values ) {
+    _dimension.insert({"values", values});
+    return *this;
+}
+
+
+/**
+Sets the dimension values to be plotted.
+*/Dimension & Values(const json11::Json::object &values ) {
+    _dimension.insert({"values", values});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  values .
 */Dimension & Valuessrc(const std::string &valuessrc ) {
     _dimension.insert({"valuessrc", valuessrc});

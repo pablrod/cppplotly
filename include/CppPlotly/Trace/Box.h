@@ -68,6 +68,22 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 
 /**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Box & Customdata(const std::vector<std::string> &customdata ) {
+    _box.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Box & Customdata(const json11::Json::object &customdata ) {
+    _box.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  customdata .
 */Box & Customdatasrc(const std::string &customdatasrc ) {
     _box.insert({"customdatasrc", customdatasrc});
@@ -116,6 +132,22 @@ Do the hover effects highlight individual boxes  or sample points or both?
 /**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
 */Box & Ids(const std::vector<double> &ids ) {
+    _box.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Box & Ids(const std::vector<std::string> &ids ) {
+    _box.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Box & Ids(const json11::Json::object &ids ) {
     _box.insert({"ids", ids});
     return *this;
 }
@@ -292,6 +324,22 @@ Sets the x sample data or coordinates. See overview for more info.
 
 
 /**
+Sets the x sample data or coordinates. See overview for more info.
+*/Box & X(const std::vector<std::string> &x ) {
+    _box.insert({"x", x});
+    return *this;
+}
+
+
+/**
+Sets the x sample data or coordinates. See overview for more info.
+*/Box & X(const json11::Json::object &x ) {
+    _box.insert({"x", x});
+    return *this;
+}
+
+
+/**
 Sets the x coordinate of the box. See overview for more info.
 */Box & X0(const json11::Json::object &x0 ) {
     _box.insert({"x0", x0});
@@ -332,6 +380,22 @@ Sets the y sample data or coordinates. See overview for more info.
 
 
 /**
+Sets the y sample data or coordinates. See overview for more info.
+*/Box & Y(const std::vector<std::string> &y ) {
+    _box.insert({"y", y});
+    return *this;
+}
+
+
+/**
+Sets the y sample data or coordinates. See overview for more info.
+*/Box & Y(const json11::Json::object &y ) {
+    _box.insert({"y", y});
+    return *this;
+}
+
+
+/**
 Sets the y coordinate of the box. See overview for more info.
 */Box & Y0(const json11::Json::object &y0 ) {
     _box.insert({"y0", y0});
@@ -365,7 +429,7 @@ Sets the source reference on plot.ly for  y .
 
  
 
-            json11::Json to_json() const {
+            virtual json11::Json to_json() const {
                 return _box;
             }
 

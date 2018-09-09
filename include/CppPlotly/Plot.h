@@ -7,6 +7,7 @@
 
 #include <vector>
 #include <sstream>
+#include <numeric>
 
 #include <json11.hpp>
 
@@ -46,6 +47,9 @@ namespace CppPlotly {
         }
 
         std::string render_html() const {
+            if (traces.empty()) {
+                return "Please add at least one trace";
+            }
             std::ostringstream html;
             html << "<!DOCTYPE html> \n"
                     "<head> \n"
@@ -66,10 +70,10 @@ namespace CppPlotly {
                     "});"
                     "};"
                     "Plotly.plot(document.getElementById('d2ad872f-61d6-11e8-836b-96e4cd0da1b2'), \n[";
-            for (const auto &trace : traces) {
-                html << trace->to_json().dump();
-                // TODO missing comma
-            }
+
+            html << std::accumulate(traces.cbegin() + 1, traces.cend(), (*(traces.cbegin()))->to_json().dump(), [](const std::string &html, const CppPlotly::BaseTrace::Pointer &trace) {
+                return html + ", " + trace->to_json().dump();
+            });
             html << "], ";
             html << layout.to_json().dump();
             html << "); \nmaximizar();";

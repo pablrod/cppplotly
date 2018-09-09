@@ -57,6 +57,22 @@ Specifies the rendered order of the data columns; for example, a value `2` at po
 
 
 /**
+Specifies the rendered order of the data columns; for example, a value `2` at position `0` means that column index `0` in the data will be rendered as the third column, as columns have an index base of zero.
+*/Table & Columnorder(const std::vector<std::string> &columnorder ) {
+    _table.insert({"columnorder", columnorder});
+    return *this;
+}
+
+
+/**
+Specifies the rendered order of the data columns; for example, a value `2` at position `0` means that column index `0` in the data will be rendered as the third column, as columns have an index base of zero.
+*/Table & Columnorder(const json11::Json::object &columnorder ) {
+    _table.insert({"columnorder", columnorder});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  columnorder .
 */Table & Columnordersrc(const std::string &columnordersrc ) {
     _table.insert({"columnordersrc", columnordersrc});
@@ -83,6 +99,22 @@ Sets the source reference on plot.ly for  columnwidth .
 /**
 Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
 */Table & Customdata(const std::vector<double> &customdata ) {
+    _table.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Table & Customdata(const std::vector<std::string> &customdata ) {
+    _table.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Table & Customdata(const json11::Json::object &customdata ) {
     _table.insert({"customdata", customdata});
     return *this;
 }
@@ -133,6 +165,22 @@ Table & Hoverlabel(const CppPlotly::Trace::table::Hoverlabel &hoverlabel ) {
 /**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
 */Table & Ids(const std::vector<double> &ids ) {
+    _table.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Table & Ids(const std::vector<std::string> &ids ) {
+    _table.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Table & Ids(const json11::Json::object &ids ) {
     _table.insert({"ids", ids});
     return *this;
 }
@@ -214,7 +262,7 @@ Determines whether or not this trace is visible. If *legendonly*, the trace is n
 
  
 
-            json11::Json to_json() const {
+            virtual json11::Json to_json() const {
                 return _table;
             }
 

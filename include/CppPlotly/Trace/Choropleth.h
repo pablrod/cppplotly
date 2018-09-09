@@ -74,6 +74,22 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 
 /**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Choropleth & Customdata(const std::vector<std::string> &customdata ) {
+    _choropleth.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Choropleth & Customdata(const json11::Json::object &customdata ) {
+    _choropleth.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  customdata .
 */Choropleth & Customdatasrc(const std::string &customdatasrc ) {
     _choropleth.insert({"customdatasrc", customdatasrc});
@@ -120,6 +136,22 @@ Assigns id labels to each datum. These ids for object constancy of data points d
 
 
 /**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Choropleth & Ids(const std::vector<std::string> &ids ) {
+    _choropleth.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Choropleth & Ids(const json11::Json::object &ids ) {
+    _choropleth.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  ids .
 */Choropleth & Idssrc(const std::string &idssrc ) {
     _choropleth.insert({"idssrc", idssrc});
@@ -146,6 +178,22 @@ Determines the set of locations used to match entries in `locations` to regions 
 /**
 Sets the coordinates via location IDs or names. See `locationmode` for more info.
 */Choropleth & Locations(const std::vector<double> &locations ) {
+    _choropleth.insert({"locations", locations});
+    return *this;
+}
+
+
+/**
+Sets the coordinates via location IDs or names. See `locationmode` for more info.
+*/Choropleth & Locations(const std::vector<std::string> &locations ) {
+    _choropleth.insert({"locations", locations});
+    return *this;
+}
+
+
+/**
+Sets the coordinates via location IDs or names. See `locationmode` for more info.
+*/Choropleth & Locations(const json11::Json::object &locations ) {
     _choropleth.insert({"locations", locations});
     return *this;
 }
@@ -276,6 +324,22 @@ Sets the color values.
 
 
 /**
+Sets the color values.
+*/Choropleth & Z(const std::vector<std::string> &z ) {
+    _choropleth.insert({"z", z});
+    return *this;
+}
+
+
+/**
+Sets the color values.
+*/Choropleth & Z(const json11::Json::object &z ) {
+    _choropleth.insert({"z", z});
+    return *this;
+}
+
+
+/**
 Determines the whether or not the color domain is computed with respect to the input data.
 */Choropleth & Zauto(const bool &zauto ) {
     _choropleth.insert({"zauto", zauto});
@@ -309,7 +373,7 @@ Sets the source reference on plot.ly for  z .
 
  
 
-            json11::Json to_json() const {
+            virtual json11::Json to_json() const {
                 return _choropleth;
             }
 

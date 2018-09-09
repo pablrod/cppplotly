@@ -53,6 +53,22 @@ Sets the quantity of component `a` in each data point. If `a`, `b`, and `c` are 
 
 
 /**
+Sets the quantity of component `a` in each data point. If `a`, `b`, and `c` are all provided, they need not be normalized, only the relative values matter. If only two arrays are provided they must be normalized to match `ternary<i>.sum`.
+*/Scattercarpet & A(const std::vector<std::string> &a ) {
+    _scattercarpet.insert({"a", a});
+    return *this;
+}
+
+
+/**
+Sets the quantity of component `a` in each data point. If `a`, `b`, and `c` are all provided, they need not be normalized, only the relative values matter. If only two arrays are provided they must be normalized to match `ternary<i>.sum`.
+*/Scattercarpet & A(const json11::Json::object &a ) {
+    _scattercarpet.insert({"a", a});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  a .
 */Scattercarpet & Asrc(const std::string &asrc ) {
     _scattercarpet.insert({"asrc", asrc});
@@ -63,6 +79,22 @@ Sets the source reference on plot.ly for  a .
 /**
 Sets the quantity of component `a` in each data point. If `a`, `b`, and `c` are all provided, they need not be normalized, only the relative values matter. If only two arrays are provided they must be normalized to match `ternary<i>.sum`.
 */Scattercarpet & B(const std::vector<double> &b ) {
+    _scattercarpet.insert({"b", b});
+    return *this;
+}
+
+
+/**
+Sets the quantity of component `a` in each data point. If `a`, `b`, and `c` are all provided, they need not be normalized, only the relative values matter. If only two arrays are provided they must be normalized to match `ternary<i>.sum`.
+*/Scattercarpet & B(const std::vector<std::string> &b ) {
+    _scattercarpet.insert({"b", b});
+    return *this;
+}
+
+
+/**
+Sets the quantity of component `a` in each data point. If `a`, `b`, and `c` are all provided, they need not be normalized, only the relative values matter. If only two arrays are provided they must be normalized to match `ternary<i>.sum`.
+*/Scattercarpet & B(const json11::Json::object &b ) {
     _scattercarpet.insert({"b", b});
     return *this;
 }
@@ -95,6 +127,22 @@ Determines whether or not gaps (i.e. {nan} or missing values) in the provided da
 /**
 Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
 */Scattercarpet & Customdata(const std::vector<double> &customdata ) {
+    _scattercarpet.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Scattercarpet & Customdata(const std::vector<std::string> &customdata ) {
+    _scattercarpet.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Scattercarpet & Customdata(const json11::Json::object &customdata ) {
     _scattercarpet.insert({"customdata", customdata});
     return *this;
 }
@@ -157,6 +205,22 @@ Do the hover effects highlight individual points (markers or line points) or do 
 /**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
 */Scattercarpet & Ids(const std::vector<double> &ids ) {
+    _scattercarpet.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Scattercarpet & Ids(const std::vector<std::string> &ids ) {
+    _scattercarpet.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Scattercarpet & Ids(const json11::Json::object &ids ) {
     _scattercarpet.insert({"ids", ids});
     return *this;
 }
@@ -324,7 +388,7 @@ Sets a reference between this trace's y coordinates and a 2D cartesian y axis. I
 
  
 
-            json11::Json to_json() const {
+            virtual json11::Json to_json() const {
                 return _scattercarpet;
             }
 

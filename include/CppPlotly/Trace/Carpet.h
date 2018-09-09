@@ -51,6 +51,22 @@ An array containing values of the first parameter value
 
 
 /**
+An array containing values of the first parameter value
+*/Carpet & A(const std::vector<std::string> &a ) {
+    _carpet.insert({"a", a});
+    return *this;
+}
+
+
+/**
+An array containing values of the first parameter value
+*/Carpet & A(const json11::Json::object &a ) {
+    _carpet.insert({"a", a});
+    return *this;
+}
+
+
+/**
 Alternate to `a`. Builds a linear space of a coordinates. Use with `da` where `a0` is the starting coordinate and `da` the step.
 */Carpet & A0(const double &a0 ) {
     _carpet.insert({"a0", a0});
@@ -75,6 +91,22 @@ Sets the source reference on plot.ly for  a .
 /**
 A two dimensional array of y coordinates at each carpet point.
 */Carpet & B(const std::vector<double> &b ) {
+    _carpet.insert({"b", b});
+    return *this;
+}
+
+
+/**
+A two dimensional array of y coordinates at each carpet point.
+*/Carpet & B(const std::vector<std::string> &b ) {
+    _carpet.insert({"b", b});
+    return *this;
+}
+
+
+/**
+A two dimensional array of y coordinates at each carpet point.
+*/Carpet & B(const json11::Json::object &b ) {
     _carpet.insert({"b", b});
     return *this;
 }
@@ -135,6 +167,22 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 
 /**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Carpet & Customdata(const std::vector<std::string> &customdata ) {
+    _carpet.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Carpet & Customdata(const json11::Json::object &customdata ) {
+    _carpet.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  customdata .
 */Carpet & Customdatasrc(const std::string &customdatasrc ) {
     _carpet.insert({"customdatasrc", customdatasrc});
@@ -189,6 +237,22 @@ Carpet & Hoverlabel(const CppPlotly::Trace::carpet::Hoverlabel &hoverlabel ) {
 /**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
 */Carpet & Ids(const std::vector<double> &ids ) {
+    _carpet.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Carpet & Ids(const std::vector<std::string> &ids ) {
+    _carpet.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Carpet & Ids(const json11::Json::object &ids ) {
     _carpet.insert({"ids", ids});
     return *this;
 }
@@ -277,6 +341,22 @@ A two dimensional array of x coordinates at each carpet point. If ommitted, the 
 
 
 /**
+A two dimensional array of x coordinates at each carpet point. If ommitted, the plot is a cheater plot and the xaxis is hidden by default.
+*/Carpet & X(const std::vector<std::string> &x ) {
+    _carpet.insert({"x", x});
+    return *this;
+}
+
+
+/**
+A two dimensional array of x coordinates at each carpet point. If ommitted, the plot is a cheater plot and the xaxis is hidden by default.
+*/Carpet & X(const json11::Json::object &x ) {
+    _carpet.insert({"x", x});
+    return *this;
+}
+
+
+/**
 Sets a reference between this trace's x coordinates and a 2D cartesian x axis. If *x* (the default value), the x coordinates refer to `layout.xaxis`. If *x2*, the x coordinates refer to `layout.xaxis2`, and so on.
 */Carpet & Xaxis(const json11::Json::object &xaxis ) {
     _carpet.insert({"xaxis", xaxis});
@@ -301,6 +381,22 @@ A two dimensional array of y coordinates at each carpet point.
 
 
 /**
+A two dimensional array of y coordinates at each carpet point.
+*/Carpet & Y(const std::vector<std::string> &y ) {
+    _carpet.insert({"y", y});
+    return *this;
+}
+
+
+/**
+A two dimensional array of y coordinates at each carpet point.
+*/Carpet & Y(const json11::Json::object &y ) {
+    _carpet.insert({"y", y});
+    return *this;
+}
+
+
+/**
 Sets a reference between this trace's y coordinates and a 2D cartesian y axis. If *y* (the default value), the y coordinates refer to `layout.yaxis`. If *y2*, the y coordinates refer to `layout.yaxis2`, and so on.
 */Carpet & Yaxis(const json11::Json::object &yaxis ) {
     _carpet.insert({"yaxis", yaxis});
@@ -318,7 +414,7 @@ Sets the source reference on plot.ly for  y .
 
  
 
-            json11::Json to_json() const {
+            virtual json11::Json to_json() const {
                 return _carpet;
             }
 

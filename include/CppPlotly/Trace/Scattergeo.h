@@ -61,6 +61,22 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 
 /**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Scattergeo & Customdata(const std::vector<std::string> &customdata ) {
+    _scattergeo.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Scattergeo & Customdata(const json11::Json::object &customdata ) {
+    _scattergeo.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  customdata .
 */Scattergeo & Customdatasrc(const std::string &customdatasrc ) {
     _scattergeo.insert({"customdatasrc", customdatasrc});
@@ -139,6 +155,22 @@ Assigns id labels to each datum. These ids for object constancy of data points d
 
 
 /**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Scattergeo & Ids(const std::vector<std::string> &ids ) {
+    _scattergeo.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Scattergeo & Ids(const json11::Json::object &ids ) {
+    _scattergeo.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  ids .
 */Scattergeo & Idssrc(const std::string &idssrc ) {
     _scattergeo.insert({"idssrc", idssrc});
@@ -149,6 +181,22 @@ Sets the source reference on plot.ly for  ids .
 /**
 Sets the latitude coordinates (in degrees North).
 */Scattergeo & Lat(const std::vector<double> &lat ) {
+    _scattergeo.insert({"lat", lat});
+    return *this;
+}
+
+
+/**
+Sets the latitude coordinates (in degrees North).
+*/Scattergeo & Lat(const std::vector<std::string> &lat ) {
+    _scattergeo.insert({"lat", lat});
+    return *this;
+}
+
+
+/**
+Sets the latitude coordinates (in degrees North).
+*/Scattergeo & Lat(const json11::Json::object &lat ) {
     _scattergeo.insert({"lat", lat});
     return *this;
 }
@@ -193,6 +241,22 @@ Sets the coordinates via location IDs or names. Coordinates correspond to the ce
 
 
 /**
+Sets the coordinates via location IDs or names. Coordinates correspond to the centroid of each location given. See `locationmode` for more info.
+*/Scattergeo & Locations(const std::vector<std::string> &locations ) {
+    _scattergeo.insert({"locations", locations});
+    return *this;
+}
+
+
+/**
+Sets the coordinates via location IDs or names. Coordinates correspond to the centroid of each location given. See `locationmode` for more info.
+*/Scattergeo & Locations(const json11::Json::object &locations ) {
+    _scattergeo.insert({"locations", locations});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  locations .
 */Scattergeo & Locationssrc(const std::string &locationssrc ) {
     _scattergeo.insert({"locationssrc", locationssrc});
@@ -203,6 +267,22 @@ Sets the source reference on plot.ly for  locations .
 /**
 Sets the longitude coordinates (in degrees East).
 */Scattergeo & Lon(const std::vector<double> &lon ) {
+    _scattergeo.insert({"lon", lon});
+    return *this;
+}
+
+
+/**
+Sets the longitude coordinates (in degrees East).
+*/Scattergeo & Lon(const std::vector<std::string> &lon ) {
+    _scattergeo.insert({"lon", lon});
+    return *this;
+}
+
+
+/**
+Sets the longitude coordinates (in degrees East).
+*/Scattergeo & Lon(const json11::Json::object &lon ) {
     _scattergeo.insert({"lon", lon});
     return *this;
 }
@@ -340,7 +420,7 @@ Determines whether or not this trace is visible. If *legendonly*, the trace is n
 
  
 
-            json11::Json to_json() const {
+            virtual json11::Json to_json() const {
                 return _scattergeo;
             }
 

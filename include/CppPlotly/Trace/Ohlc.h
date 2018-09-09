@@ -51,6 +51,22 @@ Sets the close values.
 
 
 /**
+Sets the close values.
+*/Ohlc & Close(const std::vector<std::string> &close ) {
+    _ohlc.insert({"close", close});
+    return *this;
+}
+
+
+/**
+Sets the close values.
+*/Ohlc & Close(const json11::Json::object &close ) {
+    _ohlc.insert({"close", close});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  close .
 */Ohlc & Closesrc(const std::string &closesrc ) {
     _ohlc.insert({"closesrc", closesrc});
@@ -61,6 +77,22 @@ Sets the source reference on plot.ly for  close .
 /**
 Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
 */Ohlc & Customdata(const std::vector<double> &customdata ) {
+    _ohlc.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Ohlc & Customdata(const std::vector<std::string> &customdata ) {
+    _ohlc.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Ohlc & Customdata(const json11::Json::object &customdata ) {
     _ohlc.insert({"customdata", customdata});
     return *this;
 }
@@ -83,6 +115,22 @@ Ohlc & Decreasing(const CppPlotly::Trace::ohlc::Decreasing &decreasing ) {
 /**
 Sets the high values.
 */Ohlc & High(const std::vector<double> &high ) {
+    _ohlc.insert({"high", high});
+    return *this;
+}
+
+
+/**
+Sets the high values.
+*/Ohlc & High(const std::vector<std::string> &high ) {
+    _ohlc.insert({"high", high});
+    return *this;
+}
+
+
+/**
+Sets the high values.
+*/Ohlc & High(const json11::Json::object &high ) {
     _ohlc.insert({"high", high});
     return *this;
 }
@@ -127,6 +175,22 @@ Assigns id labels to each datum. These ids for object constancy of data points d
 
 
 /**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Ohlc & Ids(const std::vector<std::string> &ids ) {
+    _ohlc.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Ohlc & Ids(const json11::Json::object &ids ) {
+    _ohlc.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  ids .
 */Ohlc & Idssrc(const std::string &idssrc ) {
     _ohlc.insert({"idssrc", idssrc});
@@ -163,6 +227,22 @@ Sets the low values.
 
 
 /**
+Sets the low values.
+*/Ohlc & Low(const std::vector<std::string> &low ) {
+    _ohlc.insert({"low", low});
+    return *this;
+}
+
+
+/**
+Sets the low values.
+*/Ohlc & Low(const json11::Json::object &low ) {
+    _ohlc.insert({"low", low});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  low .
 */Ohlc & Lowsrc(const std::string &lowsrc ) {
     _ohlc.insert({"lowsrc", lowsrc});
@@ -189,6 +269,22 @@ Sets the opacity of the trace.
 /**
 Sets the open values.
 */Ohlc & Open(const std::vector<double> &open ) {
+    _ohlc.insert({"open", open});
+    return *this;
+}
+
+
+/**
+Sets the open values.
+*/Ohlc & Open(const std::vector<std::string> &open ) {
+    _ohlc.insert({"open", open});
+    return *this;
+}
+
+
+/**
+Sets the open values.
+*/Ohlc & Open(const json11::Json::object &open ) {
     _ohlc.insert({"open", open});
     return *this;
 }
@@ -277,6 +373,22 @@ Sets the x coordinates. If absent, linear coordinate will be generated.
 
 
 /**
+Sets the x coordinates. If absent, linear coordinate will be generated.
+*/Ohlc & X(const std::vector<std::string> &x ) {
+    _ohlc.insert({"x", x});
+    return *this;
+}
+
+
+/**
+Sets the x coordinates. If absent, linear coordinate will be generated.
+*/Ohlc & X(const json11::Json::object &x ) {
+    _ohlc.insert({"x", x});
+    return *this;
+}
+
+
+/**
 Sets a reference between this trace's x coordinates and a 2D cartesian x axis. If *x* (the default value), the x coordinates refer to `layout.xaxis`. If *x2*, the x coordinates refer to `layout.xaxis2`, and so on.
 */Ohlc & Xaxis(const json11::Json::object &xaxis ) {
     _ohlc.insert({"xaxis", xaxis});
@@ -310,7 +422,7 @@ Sets a reference between this trace's y coordinates and a 2D cartesian y axis. I
 
  
 
-            json11::Json to_json() const {
+            virtual json11::Json to_json() const {
                 return _ohlc;
             }
 

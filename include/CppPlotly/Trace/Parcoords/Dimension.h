@@ -92,6 +92,22 @@ Sets the text displayed at the ticks position via `tickvals`. Only has an effect
 
 
 /**
+Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*. Used with `tickvals`.
+*/Dimension & Ticktext(const std::vector<std::string> &ticktext ) {
+    _dimension.insert({"ticktext", ticktext});
+    return *this;
+}
+
+
+/**
+Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*. Used with `tickvals`.
+*/Dimension & Ticktext(const json11::Json::object &ticktext ) {
+    _dimension.insert({"ticktext", ticktext});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  ticktext .
 */Dimension & Ticktextsrc(const std::string &ticktextsrc ) {
     _dimension.insert({"ticktextsrc", ticktextsrc});
@@ -108,6 +124,22 @@ Sets the values at which ticks on this axis appear. Only has an effect if `tickm
 
 
 /**
+Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with `ticktext`.
+*/Dimension & Tickvals(const std::vector<std::string> &tickvals ) {
+    _dimension.insert({"tickvals", tickvals});
+    return *this;
+}
+
+
+/**
+Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with `ticktext`.
+*/Dimension & Tickvals(const json11::Json::object &tickvals ) {
+    _dimension.insert({"tickvals", tickvals});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  tickvals .
 */Dimension & Tickvalssrc(const std::string &tickvalssrc ) {
     _dimension.insert({"tickvalssrc", tickvalssrc});
@@ -118,6 +150,22 @@ Sets the source reference on plot.ly for  tickvals .
 /**
 Dimension values. `values[n]` represents the value of the `n`th point in the dataset, therefore the `values` vector for all dimensions must be the same (longer vectors will be truncated). Each value must be a finite number.
 */Dimension & Values(const std::vector<double> &values ) {
+    _dimension.insert({"values", values});
+    return *this;
+}
+
+
+/**
+Dimension values. `values[n]` represents the value of the `n`th point in the dataset, therefore the `values` vector for all dimensions must be the same (longer vectors will be truncated). Each value must be a finite number.
+*/Dimension & Values(const std::vector<std::string> &values ) {
+    _dimension.insert({"values", values});
+    return *this;
+}
+
+
+/**
+Dimension values. `values[n]` represents the value of the `n`th point in the dataset, therefore the `values` vector for all dimensions must be the same (longer vectors will be truncated). Each value must be a finite number.
+*/Dimension & Values(const json11::Json::object &values ) {
     _dimension.insert({"values", values});
     return *this;
 }

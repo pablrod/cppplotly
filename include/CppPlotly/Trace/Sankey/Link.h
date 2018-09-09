@@ -69,6 +69,22 @@ The shown name of the link.
 
 
 /**
+The shown name of the link.
+*/Link & Label(const std::vector<std::string> &label ) {
+    _link.insert({"label", label});
+    return *this;
+}
+
+
+/**
+The shown name of the link.
+*/Link & Label(const json11::Json::object &label ) {
+    _link.insert({"label", label});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  label .
 */Link & Labelsrc(const std::string &labelsrc ) {
     _link.insert({"labelsrc", labelsrc});
@@ -91,6 +107,22 @@ An integer number `[0..nodes.length - 1]` that represents the source node.
 
 
 /**
+An integer number `[0..nodes.length - 1]` that represents the source node.
+*/Link & Source(const std::vector<std::string> &source ) {
+    _link.insert({"source", source});
+    return *this;
+}
+
+
+/**
+An integer number `[0..nodes.length - 1]` that represents the source node.
+*/Link & Source(const json11::Json::object &source ) {
+    _link.insert({"source", source});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  source .
 */Link & Sourcesrc(const std::string &sourcesrc ) {
     _link.insert({"sourcesrc", sourcesrc});
@@ -107,6 +139,22 @@ An integer number `[0..nodes.length - 1]` that represents the target node.
 
 
 /**
+An integer number `[0..nodes.length - 1]` that represents the target node.
+*/Link & Target(const std::vector<std::string> &target ) {
+    _link.insert({"target", target});
+    return *this;
+}
+
+
+/**
+An integer number `[0..nodes.length - 1]` that represents the target node.
+*/Link & Target(const json11::Json::object &target ) {
+    _link.insert({"target", target});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  target .
 */Link & Targetsrc(const std::string &targetsrc ) {
     _link.insert({"targetsrc", targetsrc});
@@ -117,6 +165,22 @@ Sets the source reference on plot.ly for  target .
 /**
 A numeric value representing the flow volume value.
 */Link & Value(const std::vector<double> &value ) {
+    _link.insert({"value", value});
+    return *this;
+}
+
+
+/**
+A numeric value representing the flow volume value.
+*/Link & Value(const std::vector<std::string> &value ) {
+    _link.insert({"value", value});
+    return *this;
+}
+
+
+/**
+A numeric value representing the flow volume value.
+*/Link & Value(const json11::Json::object &value ) {
     _link.insert({"value", value});
     return *this;
 }

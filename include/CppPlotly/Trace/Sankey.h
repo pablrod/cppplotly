@@ -60,6 +60,22 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 
 /**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Sankey & Customdata(const std::vector<std::string> &customdata ) {
+    _sankey.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Sankey & Customdata(const json11::Json::object &customdata ) {
+    _sankey.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  customdata .
 */Sankey & Customdatasrc(const std::string &customdatasrc ) {
     _sankey.insert({"customdatasrc", customdatasrc});
@@ -98,6 +114,22 @@ Sankey & Hoverlabel(const CppPlotly::Trace::sankey::Hoverlabel &hoverlabel ) {
 /**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
 */Sankey & Ids(const std::vector<double> &ids ) {
+    _sankey.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Sankey & Ids(const std::vector<std::string> &ids ) {
+    _sankey.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Sankey & Ids(const json11::Json::object &ids ) {
     _sankey.insert({"ids", ids});
     return *this;
 }
@@ -221,7 +253,7 @@ Determines whether or not this trace is visible. If *legendonly*, the trace is n
 
  
 
-            json11::Json to_json() const {
+            virtual json11::Json to_json() const {
                 return _sankey;
             }
 

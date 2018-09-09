@@ -51,6 +51,22 @@ Sets the x coordinates.
 
 
 /**
+Sets the x coordinates.
+*/Contourcarpet & A(const std::vector<std::string> &a ) {
+    _contourcarpet.insert({"a", a});
+    return *this;
+}
+
+
+/**
+Sets the x coordinates.
+*/Contourcarpet & A(const json11::Json::object &a ) {
+    _contourcarpet.insert({"a", a});
+    return *this;
+}
+
+
+/**
 Alternate to `x`. Builds a linear space of x coordinates. Use with `dx` where `x0` is the starting coordinate and `dx` the step.
 */Contourcarpet & A0(const json11::Json::object &a0 ) {
     _contourcarpet.insert({"a0", a0});
@@ -93,6 +109,22 @@ Determines whether or not the contour level attributes are picked by an algorith
 /**
 Sets the y coordinates.
 */Contourcarpet & B(const std::vector<double> &b ) {
+    _contourcarpet.insert({"b", b});
+    return *this;
+}
+
+
+/**
+Sets the y coordinates.
+*/Contourcarpet & B(const std::vector<std::string> &b ) {
+    _contourcarpet.insert({"b", b});
+    return *this;
+}
+
+
+/**
+Sets the y coordinates.
+*/Contourcarpet & B(const json11::Json::object &b ) {
     _contourcarpet.insert({"b", b});
     return *this;
 }
@@ -159,6 +191,22 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 
 /**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Contourcarpet & Customdata(const std::vector<std::string> &customdata ) {
+    _contourcarpet.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Contourcarpet & Customdata(const json11::Json::object &customdata ) {
+    _contourcarpet.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  customdata .
 */Contourcarpet & Customdatasrc(const std::string &customdatasrc ) {
     _contourcarpet.insert({"customdatasrc", customdatasrc});
@@ -215,6 +263,22 @@ Contourcarpet & Hoverlabel(const CppPlotly::Trace::contourcarpet::Hoverlabel &ho
 /**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
 */Contourcarpet & Ids(const std::vector<double> &ids ) {
+    _contourcarpet.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Contourcarpet & Ids(const std::vector<std::string> &ids ) {
+    _contourcarpet.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Contourcarpet & Ids(const json11::Json::object &ids ) {
     _contourcarpet.insert({"ids", ids});
     return *this;
 }
@@ -313,6 +377,22 @@ Sets the text elements associated with each z value.
 
 
 /**
+Sets the text elements associated with each z value.
+*/Contourcarpet & Text(const std::vector<std::string> &text ) {
+    _contourcarpet.insert({"text", text});
+    return *this;
+}
+
+
+/**
+Sets the text elements associated with each z value.
+*/Contourcarpet & Text(const json11::Json::object &text ) {
+    _contourcarpet.insert({"text", text});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  text .
 */Contourcarpet & Textsrc(const std::string &textsrc ) {
     _contourcarpet.insert({"textsrc", textsrc});
@@ -373,6 +453,22 @@ Sets the z data.
 
 
 /**
+Sets the z data.
+*/Contourcarpet & Z(const std::vector<std::string> &z ) {
+    _contourcarpet.insert({"z", z});
+    return *this;
+}
+
+
+/**
+Sets the z data.
+*/Contourcarpet & Z(const json11::Json::object &z ) {
+    _contourcarpet.insert({"z", z});
+    return *this;
+}
+
+
+/**
 Determines the whether or not the color domain is computed with respect to the input data.
 */Contourcarpet & Zauto(const bool &zauto ) {
     _contourcarpet.insert({"zauto", zauto});
@@ -406,7 +502,7 @@ Sets the source reference on plot.ly for  z .
 
  
 
-            json11::Json to_json() const {
+            virtual json11::Json to_json() const {
                 return _contourcarpet;
             }
 

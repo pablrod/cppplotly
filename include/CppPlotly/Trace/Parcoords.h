@@ -54,6 +54,22 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 
 /**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Parcoords & Customdata(const std::vector<std::string> &customdata ) {
+    _parcoords.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Parcoords & Customdata(const json11::Json::object &customdata ) {
+    _parcoords.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  customdata .
 */Parcoords & Customdatasrc(const std::string &customdatasrc ) {
     _parcoords.insert({"customdatasrc", customdatasrc});
@@ -98,6 +114,22 @@ Parcoords & Hoverlabel(const CppPlotly::Trace::parcoords::Hoverlabel &hoverlabel
 /**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
 */Parcoords & Ids(const std::vector<double> &ids ) {
+    _parcoords.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Parcoords & Ids(const std::vector<std::string> &ids ) {
+    _parcoords.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Parcoords & Ids(const json11::Json::object &ids ) {
     _parcoords.insert({"ids", ids});
     return *this;
 }
@@ -203,7 +235,7 @@ Determines whether or not this trace is visible. If *legendonly*, the trace is n
 
  
 
-            json11::Json to_json() const {
+            virtual json11::Json to_json() const {
                 return _parcoords;
             }
 

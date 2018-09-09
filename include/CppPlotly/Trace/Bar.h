@@ -88,6 +88,22 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 
 /**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Bar & Customdata(const std::vector<std::string> &customdata ) {
+    _bar.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Bar & Customdata(const json11::Json::object &customdata ) {
+    _bar.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  customdata .
 */Bar & Customdatasrc(const std::string &customdatasrc ) {
     _bar.insert({"customdatasrc", customdatasrc});
@@ -164,6 +180,22 @@ Sets the source reference on plot.ly for  hovertext .
 /**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
 */Bar & Ids(const std::vector<double> &ids ) {
+    _bar.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Bar & Ids(const std::vector<std::string> &ids ) {
+    _bar.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Bar & Ids(const json11::Json::object &ids ) {
     _bar.insert({"ids", ids});
     return *this;
 }
@@ -252,6 +284,22 @@ For legacy polar chart only.Please switch to *scatterpolar* trace type.Sets the 
 
 
 /**
+For legacy polar chart only.Please switch to *scatterpolar* trace type.Sets the radial coordinates.
+*/Bar & R(const std::vector<std::string> &r ) {
+    _bar.insert({"r", r});
+    return *this;
+}
+
+
+/**
+For legacy polar chart only.Please switch to *scatterpolar* trace type.Sets the radial coordinates.
+*/Bar & R(const json11::Json::object &r ) {
+    _bar.insert({"r", r});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  r .
 */Bar & Rsrc(const std::string &rsrc ) {
     _bar.insert({"rsrc", rsrc});
@@ -290,6 +338,22 @@ Bar & Stream(const CppPlotly::Trace::bar::Stream &stream ) {
 /**
 For legacy polar chart only.Please switch to *scatterpolar* trace type.Sets the angular coordinates.
 */Bar & T(const std::vector<double> &t ) {
+    _bar.insert({"t", t});
+    return *this;
+}
+
+
+/**
+For legacy polar chart only.Please switch to *scatterpolar* trace type.Sets the angular coordinates.
+*/Bar & T(const std::vector<std::string> &t ) {
+    _bar.insert({"t", t});
+    return *this;
+}
+
+
+/**
+For legacy polar chart only.Please switch to *scatterpolar* trace type.Sets the angular coordinates.
+*/Bar & T(const json11::Json::object &t ) {
     _bar.insert({"t", t});
     return *this;
 }
@@ -392,6 +456,22 @@ Sets the x coordinates.
 
 
 /**
+Sets the x coordinates.
+*/Bar & X(const std::vector<std::string> &x ) {
+    _bar.insert({"x", x});
+    return *this;
+}
+
+
+/**
+Sets the x coordinates.
+*/Bar & X(const json11::Json::object &x ) {
+    _bar.insert({"x", x});
+    return *this;
+}
+
+
+/**
 Alternate to `x`. Builds a linear space of x coordinates. Use with `dx` where `x0` is the starting coordinate and `dx` the step.
 */Bar & X0(const json11::Json::object &x0 ) {
     _bar.insert({"x0", x0});
@@ -432,6 +512,22 @@ Sets the y coordinates.
 
 
 /**
+Sets the y coordinates.
+*/Bar & Y(const std::vector<std::string> &y ) {
+    _bar.insert({"y", y});
+    return *this;
+}
+
+
+/**
+Sets the y coordinates.
+*/Bar & Y(const json11::Json::object &y ) {
+    _bar.insert({"y", y});
+    return *this;
+}
+
+
+/**
 Alternate to `y`. Builds a linear space of y coordinates. Use with `dy` where `y0` is the starting coordinate and `dy` the step.
 */Bar & Y0(const json11::Json::object &y0 ) {
     _bar.insert({"y0", y0});
@@ -465,7 +561,7 @@ Sets the source reference on plot.ly for  y .
 
  
 
-            json11::Json to_json() const {
+            virtual json11::Json to_json() const {
                 return _bar;
             }
 

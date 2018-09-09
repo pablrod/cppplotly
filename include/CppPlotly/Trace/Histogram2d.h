@@ -90,6 +90,22 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 
 /**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Histogram2d & Customdata(const std::vector<std::string> &customdata ) {
+    _histogram2d.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Histogram2d & Customdata(const json11::Json::object &customdata ) {
+    _histogram2d.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  customdata .
 */Histogram2d & Customdatasrc(const std::string &customdatasrc ) {
     _histogram2d.insert({"customdatasrc", customdatasrc});
@@ -138,6 +154,22 @@ Histogram2d & Hoverlabel(const CppPlotly::Trace::histogram2d::Hoverlabel &hoverl
 /**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
 */Histogram2d & Ids(const std::vector<double> &ids ) {
+    _histogram2d.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Histogram2d & Ids(const std::vector<std::string> &ids ) {
+    _histogram2d.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Histogram2d & Ids(const json11::Json::object &ids ) {
     _histogram2d.insert({"ids", ids});
     return *this;
 }
@@ -264,6 +296,22 @@ Sets the sample data to be binned on the x axis.
 
 
 /**
+Sets the sample data to be binned on the x axis.
+*/Histogram2d & X(const std::vector<std::string> &x ) {
+    _histogram2d.insert({"x", x});
+    return *this;
+}
+
+
+/**
+Sets the sample data to be binned on the x axis.
+*/Histogram2d & X(const json11::Json::object &x ) {
+    _histogram2d.insert({"x", x});
+    return *this;
+}
+
+
+/**
 Sets a reference between this trace's x coordinates and a 2D cartesian x axis. If *x* (the default value), the x coordinates refer to `layout.xaxis`. If *x2*, the x coordinates refer to `layout.xaxis2`, and so on.
 */Histogram2d & Xaxis(const json11::Json::object &xaxis ) {
     _histogram2d.insert({"xaxis", xaxis});
@@ -310,6 +358,22 @@ Sets the sample data to be binned on the y axis.
 
 
 /**
+Sets the sample data to be binned on the y axis.
+*/Histogram2d & Y(const std::vector<std::string> &y ) {
+    _histogram2d.insert({"y", y});
+    return *this;
+}
+
+
+/**
+Sets the sample data to be binned on the y axis.
+*/Histogram2d & Y(const json11::Json::object &y ) {
+    _histogram2d.insert({"y", y});
+    return *this;
+}
+
+
+/**
 Sets a reference between this trace's y coordinates and a 2D cartesian y axis. If *y* (the default value), the y coordinates refer to `layout.yaxis`. If *y2*, the y coordinates refer to `layout.yaxis2`, and so on.
 */Histogram2d & Yaxis(const json11::Json::object &yaxis ) {
     _histogram2d.insert({"yaxis", yaxis});
@@ -350,6 +414,22 @@ Sets the source reference on plot.ly for  y .
 /**
 Sets the aggregation data.
 */Histogram2d & Z(const std::vector<double> &z ) {
+    _histogram2d.insert({"z", z});
+    return *this;
+}
+
+
+/**
+Sets the aggregation data.
+*/Histogram2d & Z(const std::vector<std::string> &z ) {
+    _histogram2d.insert({"z", z});
+    return *this;
+}
+
+
+/**
+Sets the aggregation data.
+*/Histogram2d & Z(const json11::Json::object &z ) {
     _histogram2d.insert({"z", z});
     return *this;
 }
@@ -405,7 +485,7 @@ Sets the source reference on plot.ly for  z .
 
  
 
-            json11::Json to_json() const {
+            virtual json11::Json to_json() const {
                 return _histogram2d;
             }
 

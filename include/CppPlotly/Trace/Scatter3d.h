@@ -63,6 +63,22 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 
 /**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Scatter3d & Customdata(const std::vector<std::string> &customdata ) {
+    _scatter3d.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Scatter3d & Customdata(const json11::Json::object &customdata ) {
+    _scatter3d.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  customdata .
 */Scatter3d & Customdatasrc(const std::string &customdatasrc ) {
     _scatter3d.insert({"customdatasrc", customdatasrc});
@@ -129,6 +145,22 @@ Sets the source reference on plot.ly for  hovertext .
 /**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
 */Scatter3d & Ids(const std::vector<double> &ids ) {
+    _scatter3d.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Scatter3d & Ids(const std::vector<std::string> &ids ) {
+    _scatter3d.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Scatter3d & Ids(const json11::Json::object &ids ) {
     _scatter3d.insert({"ids", ids});
     return *this;
 }
@@ -305,6 +337,22 @@ Sets the x coordinates.
 
 
 /**
+Sets the x coordinates.
+*/Scatter3d & X(const std::vector<std::string> &x ) {
+    _scatter3d.insert({"x", x});
+    return *this;
+}
+
+
+/**
+Sets the x coordinates.
+*/Scatter3d & X(const json11::Json::object &x ) {
+    _scatter3d.insert({"x", x});
+    return *this;
+}
+
+
+/**
 Sets the calendar system to use with `x` date data.
 */Scatter3d & Xcalendar(const json11::Json::object &xcalendar ) {
     _scatter3d.insert({"xcalendar", xcalendar});
@@ -323,6 +371,22 @@ Sets the source reference on plot.ly for  x .
 /**
 Sets the y coordinates.
 */Scatter3d & Y(const std::vector<double> &y ) {
+    _scatter3d.insert({"y", y});
+    return *this;
+}
+
+
+/**
+Sets the y coordinates.
+*/Scatter3d & Y(const std::vector<std::string> &y ) {
+    _scatter3d.insert({"y", y});
+    return *this;
+}
+
+
+/**
+Sets the y coordinates.
+*/Scatter3d & Y(const json11::Json::object &y ) {
     _scatter3d.insert({"y", y});
     return *this;
 }
@@ -353,6 +417,22 @@ Sets the z coordinates.
 
 
 /**
+Sets the z coordinates.
+*/Scatter3d & Z(const std::vector<std::string> &z ) {
+    _scatter3d.insert({"z", z});
+    return *this;
+}
+
+
+/**
+Sets the z coordinates.
+*/Scatter3d & Z(const json11::Json::object &z ) {
+    _scatter3d.insert({"z", z});
+    return *this;
+}
+
+
+/**
 Sets the calendar system to use with `z` date data.
 */Scatter3d & Zcalendar(const json11::Json::object &zcalendar ) {
     _scatter3d.insert({"zcalendar", zcalendar});
@@ -370,7 +450,7 @@ Sets the source reference on plot.ly for  z .
 
  
 
-            json11::Json to_json() const {
+            virtual json11::Json to_json() const {
                 return _scatter3d;
             }
 

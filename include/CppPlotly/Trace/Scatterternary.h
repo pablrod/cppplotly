@@ -53,6 +53,22 @@ Sets the quantity of component `a` in each data point. If `a`, `b`, and `c` are 
 
 
 /**
+Sets the quantity of component `a` in each data point. If `a`, `b`, and `c` are all provided, they need not be normalized, only the relative values matter. If only two arrays are provided they must be normalized to match `ternary<i>.sum`.
+*/Scatterternary & A(const std::vector<std::string> &a ) {
+    _scatterternary.insert({"a", a});
+    return *this;
+}
+
+
+/**
+Sets the quantity of component `a` in each data point. If `a`, `b`, and `c` are all provided, they need not be normalized, only the relative values matter. If only two arrays are provided they must be normalized to match `ternary<i>.sum`.
+*/Scatterternary & A(const json11::Json::object &a ) {
+    _scatterternary.insert({"a", a});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  a .
 */Scatterternary & Asrc(const std::string &asrc ) {
     _scatterternary.insert({"asrc", asrc});
@@ -69,6 +85,22 @@ Sets the quantity of component `a` in each data point. If `a`, `b`, and `c` are 
 
 
 /**
+Sets the quantity of component `a` in each data point. If `a`, `b`, and `c` are all provided, they need not be normalized, only the relative values matter. If only two arrays are provided they must be normalized to match `ternary<i>.sum`.
+*/Scatterternary & B(const std::vector<std::string> &b ) {
+    _scatterternary.insert({"b", b});
+    return *this;
+}
+
+
+/**
+Sets the quantity of component `a` in each data point. If `a`, `b`, and `c` are all provided, they need not be normalized, only the relative values matter. If only two arrays are provided they must be normalized to match `ternary<i>.sum`.
+*/Scatterternary & B(const json11::Json::object &b ) {
+    _scatterternary.insert({"b", b});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  b .
 */Scatterternary & Bsrc(const std::string &bsrc ) {
     _scatterternary.insert({"bsrc", bsrc});
@@ -79,6 +111,22 @@ Sets the source reference on plot.ly for  b .
 /**
 Sets the quantity of component `a` in each data point. If `a`, `b`, and `c` are all provided, they need not be normalized, only the relative values matter. If only two arrays are provided they must be normalized to match `ternary<i>.sum`.
 */Scatterternary & C(const std::vector<double> &c ) {
+    _scatterternary.insert({"c", c});
+    return *this;
+}
+
+
+/**
+Sets the quantity of component `a` in each data point. If `a`, `b`, and `c` are all provided, they need not be normalized, only the relative values matter. If only two arrays are provided they must be normalized to match `ternary<i>.sum`.
+*/Scatterternary & C(const std::vector<std::string> &c ) {
+    _scatterternary.insert({"c", c});
+    return *this;
+}
+
+
+/**
+Sets the quantity of component `a` in each data point. If `a`, `b`, and `c` are all provided, they need not be normalized, only the relative values matter. If only two arrays are provided they must be normalized to match `ternary<i>.sum`.
+*/Scatterternary & C(const json11::Json::object &c ) {
     _scatterternary.insert({"c", c});
     return *this;
 }
@@ -111,6 +159,22 @@ Sets the source reference on plot.ly for  c .
 /**
 Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
 */Scatterternary & Customdata(const std::vector<double> &customdata ) {
+    _scatterternary.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Scatterternary & Customdata(const std::vector<std::string> &customdata ) {
+    _scatterternary.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Scatterternary & Customdata(const json11::Json::object &customdata ) {
     _scatterternary.insert({"customdata", customdata});
     return *this;
 }
@@ -189,6 +253,22 @@ Sets the source reference on plot.ly for  hovertext .
 /**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
 */Scatterternary & Ids(const std::vector<double> &ids ) {
+    _scatterternary.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Scatterternary & Ids(const std::vector<std::string> &ids ) {
+    _scatterternary.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Scatterternary & Ids(const json11::Json::object &ids ) {
     _scatterternary.insert({"ids", ids});
     return *this;
 }
@@ -356,7 +436,7 @@ Determines whether or not this trace is visible. If *legendonly*, the trace is n
 
  
 
-            json11::Json to_json() const {
+            virtual json11::Json to_json() const {
                 return _scatterternary;
             }
 

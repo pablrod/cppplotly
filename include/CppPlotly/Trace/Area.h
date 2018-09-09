@@ -49,6 +49,22 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 
 /**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Area & Customdata(const std::vector<std::string> &customdata ) {
+    _area.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Area & Customdata(const json11::Json::object &customdata ) {
+    _area.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  customdata .
 */Area & Customdatasrc(const std::string &customdatasrc ) {
     _area.insert({"customdatasrc", customdatasrc});
@@ -81,6 +97,22 @@ Area & Hoverlabel(const CppPlotly::Trace::area::Hoverlabel &hoverlabel ) {
 /**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
 */Area & Ids(const std::vector<double> &ids ) {
+    _area.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Area & Ids(const std::vector<std::string> &ids ) {
+    _area.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Area & Ids(const json11::Json::object &ids ) {
     _area.insert({"ids", ids});
     return *this;
 }
@@ -133,6 +165,22 @@ For legacy polar chart only.Please switch to *scatterpolar* trace type.Sets the 
 
 
 /**
+For legacy polar chart only.Please switch to *scatterpolar* trace type.Sets the radial coordinates.
+*/Area & R(const std::vector<std::string> &r ) {
+    _area.insert({"r", r});
+    return *this;
+}
+
+
+/**
+For legacy polar chart only.Please switch to *scatterpolar* trace type.Sets the radial coordinates.
+*/Area & R(const json11::Json::object &r ) {
+    _area.insert({"r", r});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  r .
 */Area & Rsrc(const std::string &rsrc ) {
     _area.insert({"rsrc", rsrc});
@@ -170,6 +218,22 @@ For legacy polar chart only.Please switch to *scatterpolar* trace type.Sets the 
 }
 
 
+/**
+For legacy polar chart only.Please switch to *scatterpolar* trace type.Sets the angular coordinates.
+*/Area & T(const std::vector<std::string> &t ) {
+    _area.insert({"t", t});
+    return *this;
+}
+
+
+/**
+For legacy polar chart only.Please switch to *scatterpolar* trace type.Sets the angular coordinates.
+*/Area & T(const json11::Json::object &t ) {
+    _area.insert({"t", t});
+    return *this;
+}
+
+
 Area & Transforms(const std::vector<CppPlotly::Trace::area::Transform> &transforms ) {
     _area.insert({"transforms", transforms});
     return *this;
@@ -200,7 +264,7 @@ Determines whether or not this trace is visible. If *legendonly*, the trace is n
 
  
 
-            json11::Json to_json() const {
+            virtual json11::Json to_json() const {
                 return _area;
             }
 

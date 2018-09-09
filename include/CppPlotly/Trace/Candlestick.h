@@ -51,6 +51,22 @@ Sets the close values.
 
 
 /**
+Sets the close values.
+*/Candlestick & Close(const std::vector<std::string> &close ) {
+    _candlestick.insert({"close", close});
+    return *this;
+}
+
+
+/**
+Sets the close values.
+*/Candlestick & Close(const json11::Json::object &close ) {
+    _candlestick.insert({"close", close});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  close .
 */Candlestick & Closesrc(const std::string &closesrc ) {
     _candlestick.insert({"closesrc", closesrc});
@@ -61,6 +77,22 @@ Sets the source reference on plot.ly for  close .
 /**
 Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
 */Candlestick & Customdata(const std::vector<double> &customdata ) {
+    _candlestick.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Candlestick & Customdata(const std::vector<std::string> &customdata ) {
+    _candlestick.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Candlestick & Customdata(const json11::Json::object &customdata ) {
     _candlestick.insert({"customdata", customdata});
     return *this;
 }
@@ -83,6 +115,22 @@ Candlestick & Decreasing(const CppPlotly::Trace::candlestick::Decreasing &decrea
 /**
 Sets the high values.
 */Candlestick & High(const std::vector<double> &high ) {
+    _candlestick.insert({"high", high});
+    return *this;
+}
+
+
+/**
+Sets the high values.
+*/Candlestick & High(const std::vector<std::string> &high ) {
+    _candlestick.insert({"high", high});
+    return *this;
+}
+
+
+/**
+Sets the high values.
+*/Candlestick & High(const json11::Json::object &high ) {
     _candlestick.insert({"high", high});
     return *this;
 }
@@ -127,6 +175,22 @@ Assigns id labels to each datum. These ids for object constancy of data points d
 
 
 /**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Candlestick & Ids(const std::vector<std::string> &ids ) {
+    _candlestick.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Candlestick & Ids(const json11::Json::object &ids ) {
+    _candlestick.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  ids .
 */Candlestick & Idssrc(const std::string &idssrc ) {
     _candlestick.insert({"idssrc", idssrc});
@@ -163,6 +227,22 @@ Sets the low values.
 
 
 /**
+Sets the low values.
+*/Candlestick & Low(const std::vector<std::string> &low ) {
+    _candlestick.insert({"low", low});
+    return *this;
+}
+
+
+/**
+Sets the low values.
+*/Candlestick & Low(const json11::Json::object &low ) {
+    _candlestick.insert({"low", low});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  low .
 */Candlestick & Lowsrc(const std::string &lowsrc ) {
     _candlestick.insert({"lowsrc", lowsrc});
@@ -189,6 +269,22 @@ Sets the opacity of the trace.
 /**
 Sets the open values.
 */Candlestick & Open(const std::vector<double> &open ) {
+    _candlestick.insert({"open", open});
+    return *this;
+}
+
+
+/**
+Sets the open values.
+*/Candlestick & Open(const std::vector<std::string> &open ) {
+    _candlestick.insert({"open", open});
+    return *this;
+}
+
+
+/**
+Sets the open values.
+*/Candlestick & Open(const json11::Json::object &open ) {
     _candlestick.insert({"open", open});
     return *this;
 }
@@ -277,6 +373,22 @@ Sets the x coordinates. If absent, linear coordinate will be generated.
 
 
 /**
+Sets the x coordinates. If absent, linear coordinate will be generated.
+*/Candlestick & X(const std::vector<std::string> &x ) {
+    _candlestick.insert({"x", x});
+    return *this;
+}
+
+
+/**
+Sets the x coordinates. If absent, linear coordinate will be generated.
+*/Candlestick & X(const json11::Json::object &x ) {
+    _candlestick.insert({"x", x});
+    return *this;
+}
+
+
+/**
 Sets a reference between this trace's x coordinates and a 2D cartesian x axis. If *x* (the default value), the x coordinates refer to `layout.xaxis`. If *x2*, the x coordinates refer to `layout.xaxis2`, and so on.
 */Candlestick & Xaxis(const json11::Json::object &xaxis ) {
     _candlestick.insert({"xaxis", xaxis});
@@ -310,7 +422,7 @@ Sets a reference between this trace's y coordinates and a 2D cartesian y axis. I
 
  
 
-            json11::Json to_json() const {
+            virtual json11::Json to_json() const {
                 return _candlestick;
             }
 

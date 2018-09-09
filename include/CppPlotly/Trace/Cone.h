@@ -105,6 +105,22 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 
 /**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Cone & Customdata(const std::vector<std::string> &customdata ) {
+    _cone.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Cone & Customdata(const json11::Json::object &customdata ) {
+    _cone.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  customdata .
 */Cone & Customdatasrc(const std::string &customdatasrc ) {
     _cone.insert({"customdatasrc", customdatasrc});
@@ -137,6 +153,22 @@ Cone & Hoverlabel(const CppPlotly::Trace::cone::Hoverlabel &hoverlabel ) {
 /**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
 */Cone & Ids(const std::vector<double> &ids ) {
+    _cone.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Cone & Ids(const std::vector<std::string> &ids ) {
+    _cone.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Cone & Ids(const json11::Json::object &ids ) {
     _cone.insert({"ids", ids});
     return *this;
 }
@@ -278,6 +310,22 @@ Sets the x components of the vector field.
 }
 
 
+/**
+Sets the x components of the vector field.
+*/Cone & U(const std::vector<std::string> &u ) {
+    _cone.insert({"u", u});
+    return *this;
+}
+
+
+/**
+Sets the x components of the vector field.
+*/Cone & U(const json11::Json::object &u ) {
+    _cone.insert({"u", u});
+    return *this;
+}
+
+
 Cone & Uid(const std::string &uid ) {
     _cone.insert({"uid", uid});
     return *this;
@@ -295,6 +343,22 @@ Sets the source reference on plot.ly for  u .
 /**
 Sets the y components of the vector field.
 */Cone & V(const std::vector<double> &v ) {
+    _cone.insert({"v", v});
+    return *this;
+}
+
+
+/**
+Sets the y components of the vector field.
+*/Cone & V(const std::vector<std::string> &v ) {
+    _cone.insert({"v", v});
+    return *this;
+}
+
+
+/**
+Sets the y components of the vector field.
+*/Cone & V(const json11::Json::object &v ) {
     _cone.insert({"v", v});
     return *this;
 }
@@ -325,6 +389,22 @@ Sets the z components of the vector field.
 
 
 /**
+Sets the z components of the vector field.
+*/Cone & W(const std::vector<std::string> &w ) {
+    _cone.insert({"w", w});
+    return *this;
+}
+
+
+/**
+Sets the z components of the vector field.
+*/Cone & W(const json11::Json::object &w ) {
+    _cone.insert({"w", w});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  w .
 */Cone & Wsrc(const std::string &wsrc ) {
     _cone.insert({"wsrc", wsrc});
@@ -335,6 +415,22 @@ Sets the source reference on plot.ly for  w .
 /**
 Sets the x coordinates of the vector field and of the displayed cones.
 */Cone & X(const std::vector<double> &x ) {
+    _cone.insert({"x", x});
+    return *this;
+}
+
+
+/**
+Sets the x coordinates of the vector field and of the displayed cones.
+*/Cone & X(const std::vector<std::string> &x ) {
+    _cone.insert({"x", x});
+    return *this;
+}
+
+
+/**
+Sets the x coordinates of the vector field and of the displayed cones.
+*/Cone & X(const json11::Json::object &x ) {
     _cone.insert({"x", x});
     return *this;
 }
@@ -357,6 +453,22 @@ Sets the y coordinates of the vector field and of the displayed cones.
 
 
 /**
+Sets the y coordinates of the vector field and of the displayed cones.
+*/Cone & Y(const std::vector<std::string> &y ) {
+    _cone.insert({"y", y});
+    return *this;
+}
+
+
+/**
+Sets the y coordinates of the vector field and of the displayed cones.
+*/Cone & Y(const json11::Json::object &y ) {
+    _cone.insert({"y", y});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  y .
 */Cone & Ysrc(const std::string &ysrc ) {
     _cone.insert({"ysrc", ysrc});
@@ -373,6 +485,22 @@ Sets the z coordinates of the vector field and of the displayed cones.
 
 
 /**
+Sets the z coordinates of the vector field and of the displayed cones.
+*/Cone & Z(const std::vector<std::string> &z ) {
+    _cone.insert({"z", z});
+    return *this;
+}
+
+
+/**
+Sets the z coordinates of the vector field and of the displayed cones.
+*/Cone & Z(const json11::Json::object &z ) {
+    _cone.insert({"z", z});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  z .
 */Cone & Zsrc(const std::string &zsrc ) {
     _cone.insert({"zsrc", zsrc});
@@ -382,7 +510,7 @@ Sets the source reference on plot.ly for  z .
 
  
 
-            json11::Json to_json() const {
+            virtual json11::Json to_json() const {
                 return _cone;
             }
 

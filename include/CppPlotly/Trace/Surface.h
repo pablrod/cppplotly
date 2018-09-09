@@ -104,6 +104,22 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 
 /**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Surface & Customdata(const std::vector<std::string> &customdata ) {
+    _surface.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Surface & Customdata(const json11::Json::object &customdata ) {
+    _surface.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  customdata .
 */Surface & Customdatasrc(const std::string &customdatasrc ) {
     _surface.insert({"customdatasrc", customdatasrc});
@@ -144,6 +160,22 @@ Surface & Hoverlabel(const CppPlotly::Trace::surface::Hoverlabel &hoverlabel ) {
 /**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
 */Surface & Ids(const std::vector<double> &ids ) {
+    _surface.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Surface & Ids(const std::vector<std::string> &ids ) {
+    _surface.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Surface & Ids(const json11::Json::object &ids ) {
     _surface.insert({"ids", ids});
     return *this;
 }
@@ -248,6 +280,22 @@ Sets the surface color values, used for setting a color scale independent of `z`
 
 
 /**
+Sets the surface color values, used for setting a color scale independent of `z`.
+*/Surface & Surfacecolor(const std::vector<std::string> &surfacecolor ) {
+    _surface.insert({"surfacecolor", surfacecolor});
+    return *this;
+}
+
+
+/**
+Sets the surface color values, used for setting a color scale independent of `z`.
+*/Surface & Surfacecolor(const json11::Json::object &surfacecolor ) {
+    _surface.insert({"surfacecolor", surfacecolor});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  surfacecolor .
 */Surface & Surfacecolorsrc(const std::string &surfacecolorsrc ) {
     _surface.insert({"surfacecolorsrc", surfacecolorsrc});
@@ -300,6 +348,22 @@ Sets the x coordinates.
 
 
 /**
+Sets the x coordinates.
+*/Surface & X(const std::vector<std::string> &x ) {
+    _surface.insert({"x", x});
+    return *this;
+}
+
+
+/**
+Sets the x coordinates.
+*/Surface & X(const json11::Json::object &x ) {
+    _surface.insert({"x", x});
+    return *this;
+}
+
+
+/**
 Sets the calendar system to use with `x` date data.
 */Surface & Xcalendar(const json11::Json::object &xcalendar ) {
     _surface.insert({"xcalendar", xcalendar});
@@ -318,6 +382,22 @@ Sets the source reference on plot.ly for  x .
 /**
 Sets the y coordinates.
 */Surface & Y(const std::vector<double> &y ) {
+    _surface.insert({"y", y});
+    return *this;
+}
+
+
+/**
+Sets the y coordinates.
+*/Surface & Y(const std::vector<std::string> &y ) {
+    _surface.insert({"y", y});
+    return *this;
+}
+
+
+/**
+Sets the y coordinates.
+*/Surface & Y(const json11::Json::object &y ) {
     _surface.insert({"y", y});
     return *this;
 }
@@ -348,6 +428,22 @@ Sets the z coordinates.
 
 
 /**
+Sets the z coordinates.
+*/Surface & Z(const std::vector<std::string> &z ) {
+    _surface.insert({"z", z});
+    return *this;
+}
+
+
+/**
+Sets the z coordinates.
+*/Surface & Z(const json11::Json::object &z ) {
+    _surface.insert({"z", z});
+    return *this;
+}
+
+
+/**
 Sets the calendar system to use with `z` date data.
 */Surface & Zcalendar(const json11::Json::object &zcalendar ) {
     _surface.insert({"zcalendar", zcalendar});
@@ -365,7 +461,7 @@ Sets the source reference on plot.ly for  z .
 
  
 
-            json11::Json to_json() const {
+            virtual json11::Json to_json() const {
                 return _surface;
             }
 

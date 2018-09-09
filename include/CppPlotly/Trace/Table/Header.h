@@ -77,6 +77,22 @@ Sets the cell value formatting rule using d3 formatting mini-language which is s
 
 
 /**
+Sets the cell value formatting rule using d3 formatting mini-language which is similar to those of Python. See https://github.com/d3/d3-format/blob/master/README.md#locale_format
+*/Header & Format(const std::vector<std::string> &format ) {
+    _header.insert({"format", format});
+    return *this;
+}
+
+
+/**
+Sets the cell value formatting rule using d3 formatting mini-language which is similar to those of Python. See https://github.com/d3/d3-format/blob/master/README.md#locale_format
+*/Header & Format(const json11::Json::object &format ) {
+    _header.insert({"format", format});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  format .
 */Header & Formatsrc(const std::string &formatsrc ) {
     _header.insert({"formatsrc", formatsrc});
@@ -133,6 +149,22 @@ Sets the source reference on plot.ly for  suffix .
 /**
 Header cell values. `values[m][n]` represents the value of the `n`th point in column `m`, therefore the `values[m]` vector length for all columns must be the same (longer vectors will be truncated). Each value must be a finite number or a string.
 */Header & Values(const std::vector<double> &values ) {
+    _header.insert({"values", values});
+    return *this;
+}
+
+
+/**
+Header cell values. `values[m][n]` represents the value of the `n`th point in column `m`, therefore the `values[m]` vector length for all columns must be the same (longer vectors will be truncated). Each value must be a finite number or a string.
+*/Header & Values(const std::vector<std::string> &values ) {
+    _header.insert({"values", values});
+    return *this;
+}
+
+
+/**
+Header cell values. `values[m][n]` represents the value of the `n`th point in column `m`, therefore the `values[m]` vector length for all columns must be the same (longer vectors will be truncated). Each value must be a finite number or a string.
+*/Header & Values(const json11::Json::object &values ) {
     _header.insert({"values", values});
     return *this;
 }

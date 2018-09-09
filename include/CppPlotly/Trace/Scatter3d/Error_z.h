@@ -46,8 +46,40 @@ Sets the data corresponding the length of each error bar. Values are plotted rel
 
 
 /**
+Sets the data corresponding the length of each error bar. Values are plotted relative to the underlying data.
+*/Error_z & Array(const std::vector<std::string> &array ) {
+    _error_z.insert({"array", array});
+    return *this;
+}
+
+
+/**
+Sets the data corresponding the length of each error bar. Values are plotted relative to the underlying data.
+*/Error_z & Array(const json11::Json::object &array ) {
+    _error_z.insert({"array", array});
+    return *this;
+}
+
+
+/**
 Sets the data corresponding the length of each error bar in the bottom (left) direction for vertical (horizontal) bars Values are plotted relative to the underlying data.
 */Error_z & Arrayminus(const std::vector<double> &arrayminus ) {
+    _error_z.insert({"arrayminus", arrayminus});
+    return *this;
+}
+
+
+/**
+Sets the data corresponding the length of each error bar in the bottom (left) direction for vertical (horizontal) bars Values are plotted relative to the underlying data.
+*/Error_z & Arrayminus(const std::vector<std::string> &arrayminus ) {
+    _error_z.insert({"arrayminus", arrayminus});
+    return *this;
+}
+
+
+/**
+Sets the data corresponding the length of each error bar in the bottom (left) direction for vertical (horizontal) bars Values are plotted relative to the underlying data.
+*/Error_z & Arrayminus(const json11::Json::object &arrayminus ) {
     _error_z.insert({"arrayminus", arrayminus});
     return *this;
 }

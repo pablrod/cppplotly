@@ -79,6 +79,22 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 
 /**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Heatmap & Customdata(const std::vector<std::string> &customdata ) {
+    _heatmap.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Heatmap & Customdata(const json11::Json::object &customdata ) {
+    _heatmap.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  customdata .
 */Heatmap & Customdatasrc(const std::string &customdatasrc ) {
     _heatmap.insert({"customdatasrc", customdatasrc});
@@ -127,6 +143,22 @@ Heatmap & Hoverlabel(const CppPlotly::Trace::heatmap::Hoverlabel &hoverlabel ) {
 /**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
 */Heatmap & Ids(const std::vector<double> &ids ) {
+    _heatmap.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Heatmap & Ids(const std::vector<std::string> &ids ) {
+    _heatmap.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Heatmap & Ids(const json11::Json::object &ids ) {
     _heatmap.insert({"ids", ids});
     return *this;
 }
@@ -211,6 +243,22 @@ Sets the text elements associated with each z value.
 
 
 /**
+Sets the text elements associated with each z value.
+*/Heatmap & Text(const std::vector<std::string> &text ) {
+    _heatmap.insert({"text", text});
+    return *this;
+}
+
+
+/**
+Sets the text elements associated with each z value.
+*/Heatmap & Text(const json11::Json::object &text ) {
+    _heatmap.insert({"text", text});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  text .
 */Heatmap & Textsrc(const std::string &textsrc ) {
     _heatmap.insert({"textsrc", textsrc});
@@ -249,6 +297,22 @@ Determines whether or not this trace is visible. If *legendonly*, the trace is n
 /**
 Sets the x coordinates.
 */Heatmap & X(const std::vector<double> &x ) {
+    _heatmap.insert({"x", x});
+    return *this;
+}
+
+
+/**
+Sets the x coordinates.
+*/Heatmap & X(const std::vector<std::string> &x ) {
+    _heatmap.insert({"x", x});
+    return *this;
+}
+
+
+/**
+Sets the x coordinates.
+*/Heatmap & X(const json11::Json::object &x ) {
     _heatmap.insert({"x", x});
     return *this;
 }
@@ -311,6 +375,22 @@ Sets the y coordinates.
 
 
 /**
+Sets the y coordinates.
+*/Heatmap & Y(const std::vector<std::string> &y ) {
+    _heatmap.insert({"y", y});
+    return *this;
+}
+
+
+/**
+Sets the y coordinates.
+*/Heatmap & Y(const json11::Json::object &y ) {
+    _heatmap.insert({"y", y});
+    return *this;
+}
+
+
+/**
 Alternate to `y`. Builds a linear space of y coordinates. Use with `dy` where `y0` is the starting coordinate and `dy` the step.
 */Heatmap & Y0(const json11::Json::object &y0 ) {
     _heatmap.insert({"y0", y0});
@@ -367,6 +447,22 @@ Sets the z data.
 
 
 /**
+Sets the z data.
+*/Heatmap & Z(const std::vector<std::string> &z ) {
+    _heatmap.insert({"z", z});
+    return *this;
+}
+
+
+/**
+Sets the z data.
+*/Heatmap & Z(const json11::Json::object &z ) {
+    _heatmap.insert({"z", z});
+    return *this;
+}
+
+
+/**
 Determines the whether or not the color domain is computed with respect to the input data.
 */Heatmap & Zauto(const bool &zauto ) {
     _heatmap.insert({"zauto", zauto});
@@ -416,7 +512,7 @@ Sets the source reference on plot.ly for  z .
 
  
 
-            json11::Json to_json() const {
+            virtual json11::Json to_json() const {
                 return _heatmap;
             }
 

@@ -69,6 +69,22 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 
 /**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Scatterpolar & Customdata(const std::vector<std::string> &customdata ) {
+    _scatterpolar.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Scatterpolar & Customdata(const json11::Json::object &customdata ) {
+    _scatterpolar.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  customdata .
 */Scatterpolar & Customdatasrc(const std::string &customdatasrc ) {
     _scatterpolar.insert({"customdatasrc", customdatasrc});
@@ -147,6 +163,22 @@ Assigns id labels to each datum. These ids for object constancy of data points d
 
 
 /**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Scatterpolar & Ids(const std::vector<std::string> &ids ) {
+    _scatterpolar.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Scatterpolar & Ids(const json11::Json::object &ids ) {
+    _scatterpolar.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  ids .
 */Scatterpolar & Idssrc(const std::string &idssrc ) {
     _scatterpolar.insert({"idssrc", idssrc});
@@ -201,6 +233,22 @@ Sets the opacity of the trace.
 /**
 Sets the radial coordinates
 */Scatterpolar & R(const std::vector<double> &r ) {
+    _scatterpolar.insert({"r", r});
+    return *this;
+}
+
+
+/**
+Sets the radial coordinates
+*/Scatterpolar & R(const std::vector<std::string> &r ) {
+    _scatterpolar.insert({"r", r});
+    return *this;
+}
+
+
+/**
+Sets the radial coordinates
+*/Scatterpolar & R(const json11::Json::object &r ) {
     _scatterpolar.insert({"r", r});
     return *this;
 }
@@ -297,6 +345,22 @@ Sets the angular coordinates
 
 
 /**
+Sets the angular coordinates
+*/Scatterpolar & Theta(const std::vector<std::string> &theta ) {
+    _scatterpolar.insert({"theta", theta});
+    return *this;
+}
+
+
+/**
+Sets the angular coordinates
+*/Scatterpolar & Theta(const json11::Json::object &theta ) {
+    _scatterpolar.insert({"theta", theta});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  theta .
 */Scatterpolar & Thetasrc(const std::string &thetasrc ) {
     _scatterpolar.insert({"thetasrc", thetasrc});
@@ -340,7 +404,7 @@ Determines whether or not this trace is visible. If *legendonly*, the trace is n
 
  
 
-            json11::Json to_json() const {
+            virtual json11::Json to_json() const {
                 return _scatterpolar;
             }
 

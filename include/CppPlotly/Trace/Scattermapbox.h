@@ -61,6 +61,22 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 
 /**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Scattermapbox & Customdata(const std::vector<std::string> &customdata ) {
+    _scattermapbox.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Scattermapbox & Customdata(const json11::Json::object &customdata ) {
+    _scattermapbox.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  customdata .
 */Scattermapbox & Customdatasrc(const std::string &customdatasrc ) {
     _scattermapbox.insert({"customdatasrc", customdatasrc});
@@ -131,6 +147,22 @@ Assigns id labels to each datum. These ids for object constancy of data points d
 
 
 /**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Scattermapbox & Ids(const std::vector<std::string> &ids ) {
+    _scattermapbox.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Scattermapbox & Ids(const json11::Json::object &ids ) {
+    _scattermapbox.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  ids .
 */Scattermapbox & Idssrc(const std::string &idssrc ) {
     _scattermapbox.insert({"idssrc", idssrc});
@@ -141,6 +173,22 @@ Sets the source reference on plot.ly for  ids .
 /**
 Sets the latitude coordinates (in degrees North).
 */Scattermapbox & Lat(const std::vector<double> &lat ) {
+    _scattermapbox.insert({"lat", lat});
+    return *this;
+}
+
+
+/**
+Sets the latitude coordinates (in degrees North).
+*/Scattermapbox & Lat(const std::vector<std::string> &lat ) {
+    _scattermapbox.insert({"lat", lat});
+    return *this;
+}
+
+
+/**
+Sets the latitude coordinates (in degrees North).
+*/Scattermapbox & Lat(const json11::Json::object &lat ) {
     _scattermapbox.insert({"lat", lat});
     return *this;
 }
@@ -171,6 +219,22 @@ Scattermapbox & Line(const CppPlotly::Trace::scattermapbox::Line &line ) {
 /**
 Sets the longitude coordinates (in degrees East).
 */Scattermapbox & Lon(const std::vector<double> &lon ) {
+    _scattermapbox.insert({"lon", lon});
+    return *this;
+}
+
+
+/**
+Sets the longitude coordinates (in degrees East).
+*/Scattermapbox & Lon(const std::vector<std::string> &lon ) {
+    _scattermapbox.insert({"lon", lon});
+    return *this;
+}
+
+
+/**
+Sets the longitude coordinates (in degrees East).
+*/Scattermapbox & Lon(const json11::Json::object &lon ) {
     _scattermapbox.insert({"lon", lon});
     return *this;
 }
@@ -308,7 +372,7 @@ Determines whether or not this trace is visible. If *legendonly*, the trace is n
 
  
 
-            json11::Json to_json() const {
+            virtual json11::Json to_json() const {
                 return _scattermapbox;
             }
 

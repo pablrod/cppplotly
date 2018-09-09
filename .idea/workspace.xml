@@ -13,14 +13,90 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b33c6f99-afa3-483d-b179-405ed5daf580" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/perl5local.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/perl5shared.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/CppPlotly/BaseTrace.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/include/CppPlotly/Plot.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/perl5local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/perl5local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Plot.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Plot.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Area.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Area.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Bar.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Bar.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Bar/Error_x.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Bar/Error_x.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Bar/Error_y.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Bar/Error_y.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Bar/Marker/Colorbar.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Bar/Marker/Colorbar.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Box.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Box.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Candlestick.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Candlestick.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Carpet.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Carpet.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Carpet/Aaxis.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Carpet/Aaxis.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Carpet/Baxis.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Carpet/Baxis.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Choropleth.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Choropleth.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Choropleth/Colorbar.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Choropleth/Colorbar.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Cone.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Cone.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Cone/Colorbar.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Cone/Colorbar.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Contour.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Contour.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Contour/Colorbar.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Contour/Colorbar.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Contourcarpet.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Contourcarpet.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Contourcarpet/Colorbar.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Contourcarpet/Colorbar.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Heatmap.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Heatmap.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Heatmap/Colorbar.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Heatmap/Colorbar.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Heatmapgl.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Heatmapgl.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Heatmapgl/Colorbar.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Heatmapgl/Colorbar.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Histogram.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Histogram.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Histogram/Error_x.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Histogram/Error_x.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Histogram/Error_y.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Histogram/Error_y.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Histogram/Marker/Colorbar.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Histogram/Marker/Colorbar.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Histogram2d.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Histogram2d.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Histogram2d/Colorbar.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Histogram2d/Colorbar.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Histogram2d/Marker.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Histogram2d/Marker.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Histogram2dcontour.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Histogram2dcontour.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Histogram2dcontour/Colorbar.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Histogram2dcontour/Colorbar.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Histogram2dcontour/Marker.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Histogram2dcontour/Marker.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Mesh3d.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Mesh3d.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Mesh3d/Colorbar.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Mesh3d/Colorbar.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Ohlc.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Ohlc.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Parcoords.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Parcoords.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Parcoords/Dimension.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Parcoords/Dimension.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Parcoords/Line/Colorbar.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Parcoords/Line/Colorbar.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Pie.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Pie.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Pie/Marker.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Pie/Marker.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Pointcloud.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Pointcloud.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Sankey.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Sankey.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Sankey/Link.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Sankey/Link.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Sankey/Node.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Sankey/Node.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Scatter.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Scatter.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Scatter/Error_x.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Scatter/Error_x.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Scatter/Error_y.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Scatter/Error_y.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Scatter/Marker/Colorbar.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Scatter/Marker/Colorbar.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Scatter3d.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Scatter3d.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Scatter3d/Error_x.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Scatter3d/Error_x.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Scatter3d/Error_y.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Scatter3d/Error_y.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Scatter3d/Error_z.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Scatter3d/Error_z.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Scatter3d/Marker/Colorbar.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Scatter3d/Marker/Colorbar.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Scattercarpet.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Scattercarpet.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Scattercarpet/Marker/Colorbar.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Scattercarpet/Marker/Colorbar.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Scattergeo.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Scattergeo.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Scattergeo/Marker/Colorbar.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Scattergeo/Marker/Colorbar.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Scattergl.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Scattergl.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Scattergl/Error_x.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Scattergl/Error_x.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Scattergl/Error_y.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Scattergl/Error_y.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Scattergl/Marker/Colorbar.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Scattergl/Marker/Colorbar.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Scattermapbox.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Scattermapbox.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Scattermapbox/Marker/Colorbar.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Scattermapbox/Marker/Colorbar.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Scatterpolar.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Scatterpolar.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Scatterpolar/Marker/Colorbar.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Scatterpolar/Marker/Colorbar.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Scatterpolargl.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Scatterpolargl.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Scatterpolargl/Marker/Colorbar.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Scatterpolargl/Marker/Colorbar.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Scatterternary.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Scatterternary.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Scatterternary/Marker/Colorbar.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Scatterternary/Marker/Colorbar.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Splom.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Splom.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Splom/Dimension.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Splom/Dimension.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Splom/Marker/Colorbar.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Splom/Marker/Colorbar.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Surface.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Surface.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Surface/Colorbar.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Surface/Colorbar.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Table.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Table.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Table/Cells.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Table/Cells.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Table/Header.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Table/Header.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/CppPlotly/Trace/Violin.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/CppPlotly/Trace/Violin.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/samples/scatter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/samples/scatter.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/samples/wxwidgets/cppplotly_wxwidgets.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/samples/wxwidgets/cppplotly_wxwidgets.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/attribute.tmpl" beforeDir="false" afterPath="$PROJECT_DIR$/template/attribute.tmpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/trace.cpp.tmpl" beforeDir="false" afterPath="$PROJECT_DIR$/template/trace.cpp.tmpl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/template/trace.h.tmpl" beforeDir="false" afterPath="$PROJECT_DIR$/template/trace.h.tmpl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tools/generate_from_schema.pl" beforeDir="false" afterPath="$PROJECT_DIR$/tools/generate_from_schema.pl" afterDir="false" />
     </list>
@@ -50,44 +126,49 @@
     <session id="1134570096">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
+          <entry key="project.closed" value="4" />
           <entry key="project.open.time.12" value="1" />
+          <entry key="project.open.time.19" value="1" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.8" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="4" />
+          <entry key="project.opened" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="cpp" value="2" />
-          <entry key="h" value="13" />
-          <entry key="pl" value="1" />
+          <entry key="cpp" value="3" />
+          <entry key="gitignore" value="1" />
+          <entry key="h" value="15" />
+          <entry key="pl" value="2" />
+          <entry key="tmpl" value="1" />
           <entry key="txt" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CMakeLists.txt" value="1" />
-          <entry key="ObjectiveC" value="15" />
-          <entry key="PLAIN_TEXT" value="1" />
+          <entry key="ObjectiveC" value="18" />
+          <entry key="PLAIN_TEXT" value="3" />
+          <entry key="Perl5 script" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cpp" value="622" />
-          <entry key="h" value="261" />
-          <entry key="pl" value="3519" />
-          <entry key="tmpl" value="493" />
+          <entry key="cpp" value="1549" />
+          <entry key="gitignore" value="25" />
+          <entry key="h" value="1084" />
+          <entry key="pl" value="4733" />
+          <entry key="tmpl" value="503" />
           <entry key="txt" value="459" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CMakeLists.txt" value="436" />
-          <entry key="ObjectiveC" value="903" />
-          <entry key="PLAIN_TEXT" value="496" />
-          <entry key="Perl5 script" value="3519" />
+          <entry key="ObjectiveC" value="2653" />
+          <entry key="PLAIN_TEXT" value="531" />
+          <entry key="Perl5 script" value="4733" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.cidr.testingFrameworks.usages" />
@@ -98,8 +179,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/samples/wxwidgets/cppplotly_wxwidgets.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="96" selection-start-line="96" selection-end-line="96" />
+            <state relative-caret-position="300">
+              <caret line="20" column="38" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -108,13 +189,42 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/samples/scatter.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="25" selection-start-line="25" selection-end-line="25" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tools/generate_from_schema.pl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="495">
+              <caret line="215" column="28" selection-start-line="215" selection-start-column="28" selection-end-line="215" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/template/trace.h.tmpl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="333">
+              <caret line="40" column="19" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/include/CppPlotly/Plot.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="74" column="37" selection-start-line="74" selection-start-column="37" selection-end-line="74" selection-end-column="37" />
+            <state relative-caret-position="370">
+              <caret line="76" selection-start-line="76" selection-end-line="76" />
               <folding>
                 <element signature="e#88#105#0" expanded="true" />
-                <element signature="e#155#177#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -123,8 +233,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/include/CppPlotly/BaseTrace.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+            <state relative-caret-position="240">
+              <caret line="16" column="31" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
+              <folding>
+                <element signature="e#98#115#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -132,10 +245,34 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/include/CppPlotly/Trace/Bar.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6600">
-              <caret line="469" column="12" selection-start-line="469" selection-start-column="12" selection-end-line="469" selection-end-column="12" />
+            <state relative-caret-position="438">
+              <caret line="523" column="8" selection-start-line="523" selection-start-column="8" selection-end-line="523" selection-end-column="8" />
               <folding>
                 <element signature="e#471#488#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/include/CppPlotly/Trace/Scatter.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="295">
+              <caret line="532" column="36" lean-forward="true" selection-start-line="532" selection-start-column="36" selection-end-line="532" selection-end-column="36" />
+              <folding>
+                <element signature="e#479#496#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/include/CppPlotly/Trace/Bar/Error_x.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="36" column="10" selection-start-line="36" selection-start-column="10" selection-end-line="36" selection-end-column="10" />
+              <folding>
+                <element signature="e#552#569#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -150,45 +287,6 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/include/CppPlotly/Trace/Bar/Selected.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="25" selection-start-line="25" selection-end-line="25" />
-              <folding>
-                <element signature="e#553#570#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/include/CppPlotly/Trace/Bar/Hoverlabel/Font.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="37" column="10" selection-start-line="37" selection-start-column="10" selection-end-line="37" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tools/generate_from_schema.pl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1176">
-              <caret line="266" column="8" selection-start-line="266" selection-start-column="8" selection-end-line="266" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/template/trace.h.tmpl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="41" selection-start-line="41" selection-end-line="41" />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="Git.Settings">
@@ -197,15 +295,16 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/samples/scatter.cpp" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/template/trace.cpp.tmpl" />
         <option value="$PROJECT_DIR$/template/attribute.tmpl" />
-        <option value="$PROJECT_DIR$/tools/generate_from_schema.pl" />
         <option value="$PROJECT_DIR$/include/CppPlotly/BaseTrace.h" />
-        <option value="$PROJECT_DIR$/template/trace.h.tmpl" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/tools/generate_from_schema.pl" />
         <option value="$PROJECT_DIR$/samples/wxwidgets/cppplotly_wxwidgets.cpp" />
+        <option value="$PROJECT_DIR$/template/trace.h.tmpl" />
         <option value="$PROJECT_DIR$/include/CppPlotly/Plot.h" />
+        <option value="$PROJECT_DIR$/samples/scatter.cpp" />
       </list>
     </option>
   </component>
@@ -227,6 +326,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -277,7 +377,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -298,7 +397,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.cppplotly_sample_wxwidgets">
+  <component name="RunManager" selected="Application.cppplotly_sample">
     <configuration name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" EXPLICIT_BUILD_TARGET_NAME="all">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -333,7 +432,8 @@
       <workItem from="1535296065287" duration="2694000" />
       <workItem from="1535907320813" duration="26000" />
       <workItem from="1535907396029" duration="409000" />
-      <workItem from="1535907855148" duration="6215000" />
+      <workItem from="1535907855148" duration="6424000" />
+      <workItem from="1536514599684" duration="2660000" />
     </task>
     <task id="LOCAL-00001" summary="Improve samples">
       <created>1535298077037</created>
@@ -346,17 +446,16 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9344000" />
+    <option name="totallyTimeSpent" value="12213000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1366" y="0" width="1920" height="1080" extended-state="6" />
-    <editor active="true" />
+    <frame x="1364" y="-1" width="1924" height="1088" extended-state="6" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.45749614" visible="true" weight="0.12886049" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.45749614" visible="true" weight="0.12992546" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32953367" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32953367" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -412,19 +511,6 @@
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/samples/scatter.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-            <element signature="e#1965#1980#0" expanded="true" />
-            <element signature="e#2357#2372#0" expanded="true" />
-            <element signature="e#2988#3010#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -442,16 +528,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/CppPlotly/Trace/Bar/Error_x.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1920">
-          <caret line="146" selection-start-line="146" selection-end-line="146" />
-          <folding>
-            <element signature="e#552#569#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/include/CppPlotly/Trace/Bar/Marker/Colorbar/Titlefont.h">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -465,16 +541,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/CppPlotly/Trace/Bar/Selected.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
-          <folding>
-            <element signature="e#553#570#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/include/CppPlotly/Trace/Area/Hoverlabel.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-180" />
@@ -482,8 +548,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/include/CppPlotly/Trace/Bar/Hoverlabel/Font.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="37" column="10" selection-start-line="37" selection-start-column="10" selection-end-line="37" selection-end-column="10" />
+        <state relative-caret-position="-422">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/CppPlotly/Trace/Bar/Selected.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
         </state>
       </provider>
     </entry>
@@ -494,31 +567,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/CppPlotly/BaseTrace.h">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+        <state relative-caret-position="60">
+          <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/template/trace.h.tmpl">
+    <entry file="file://$PROJECT_DIR$/include/CppPlotly/Trace/Bar/Error_x.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="41" selection-start-line="41" selection-end-line="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tools/generate_from_schema.pl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1176">
-          <caret line="266" column="8" selection-start-line="266" selection-start-column="8" selection-end-line="266" selection-end-column="8" />
+        <state relative-caret-position="360">
+          <caret line="36" column="10" selection-start-line="36" selection-start-column="10" selection-end-line="36" selection-end-column="10" />
+          <folding>
+            <element signature="e#552#569#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/include/CppPlotly/Trace/Bar.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6600">
-          <caret line="469" column="12" selection-start-line="469" selection-start-column="12" selection-end-line="469" selection-end-column="12" />
+        <state relative-caret-position="438">
+          <caret line="523" column="8" selection-start-line="523" selection-start-column="8" selection-end-line="523" selection-end-column="8" />
           <folding>
             <element signature="e#471#488#0" expanded="true" />
           </folding>
@@ -527,21 +596,64 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/samples/wxwidgets/cppplotly_wxwidgets.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="96" selection-start-line="96" selection-end-line="96" />
+        <state relative-caret-position="300">
+          <caret line="20" column="38" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/template/trace.h.tmpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="40" column="19" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/generate_from_schema.pl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="215" column="28" selection-start-line="215" selection-start-column="28" selection-end-line="215" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/CppPlotly/Trace/Scatter.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="532" column="36" lean-forward="true" selection-start-line="532" selection-start-column="36" selection-end-line="532" selection-end-column="36" />
+          <folding>
+            <element signature="e#479#496#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/CppPlotly/BaseTrace.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="31" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
+          <folding>
+            <element signature="e#98#115#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/include/CppPlotly/Plot.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="74" column="37" selection-start-line="74" selection-start-column="37" selection-end-line="74" selection-end-column="37" />
+        <state relative-caret-position="370">
+          <caret line="76" selection-start-line="76" selection-end-line="76" />
           <folding>
             <element signature="e#88#105#0" expanded="true" />
-            <element signature="e#155#177#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/samples/scatter.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>

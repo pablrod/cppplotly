@@ -77,6 +77,22 @@ Sets the cell value formatting rule using d3 formatting mini-language which is s
 
 
 /**
+Sets the cell value formatting rule using d3 formatting mini-language which is similar to those of Python. See https://github.com/d3/d3-format/blob/master/README.md#locale_format
+*/Cells & Format(const std::vector<std::string> &format ) {
+    _cells.insert({"format", format});
+    return *this;
+}
+
+
+/**
+Sets the cell value formatting rule using d3 formatting mini-language which is similar to those of Python. See https://github.com/d3/d3-format/blob/master/README.md#locale_format
+*/Cells & Format(const json11::Json::object &format ) {
+    _cells.insert({"format", format});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  format .
 */Cells & Formatsrc(const std::string &formatsrc ) {
     _cells.insert({"formatsrc", formatsrc});
@@ -133,6 +149,22 @@ Sets the source reference on plot.ly for  suffix .
 /**
 Cell values. `values[m][n]` represents the value of the `n`th point in column `m`, therefore the `values[m]` vector length for all columns must be the same (longer vectors will be truncated). Each value must be a finite number or a string.
 */Cells & Values(const std::vector<double> &values ) {
+    _cells.insert({"values", values});
+    return *this;
+}
+
+
+/**
+Cell values. `values[m][n]` represents the value of the `n`th point in column `m`, therefore the `values[m]` vector length for all columns must be the same (longer vectors will be truncated). Each value must be a finite number or a string.
+*/Cells & Values(const std::vector<std::string> &values ) {
+    _cells.insert({"values", values});
+    return *this;
+}
+
+
+/**
+Cell values. `values[m][n]` represents the value of the `n`th point in column `m`, therefore the `values[m]` vector length for all columns must be the same (longer vectors will be truncated). Each value must be a finite number or a string.
+*/Cells & Values(const json11::Json::object &values ) {
     _cells.insert({"values", values});
     return *this;
 }

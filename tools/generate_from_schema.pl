@@ -135,7 +135,15 @@ sub FieldsAST {
                                 #$field->{isa} = $moose_type . "|ArrayRef[" . $moose_type . "]";
                                 $field->{isa} = $generic_type;
                             } else {
-                                $field->{isa} = $moose_type;
+                                if ($field_contents->{'valType'} eq 'data_array') {
+                                    $field->{isa} = [
+                                        $moose_type,
+                                        "std::vector<std::string>",
+                                        $generic_type
+                                    ];
+                                } else {
+                                    $field->{isa} = $moose_type;
+                                }
                             }
                         }
                     }
@@ -209,23 +217,31 @@ sub RenderField {
     my $ast = shift();
     my $trace_name = shift();
 
-    my $file_contents = ""; 
-    my $documentation;
-    if (defined $ast->{'documentation'}) {
-        $documentation = $ast->{'documentation'};
+    my $file_contents = "";
+    my $type = $ast->{isa} || "json11::Json::object";
+    if (ref $type eq 'ARRAY') {
+        for my $subtype (@$type) {
+            $file_contents .= _RenderField($field_name, $trace_name, $subtype, $ast->{'documentation'});
+        }
+    } else {
+        $file_contents .= _RenderField($field_name, $trace_name, $type, $ast->{'documentation'});
+    }
+    return $file_contents;
+}
+
+sub _RenderField {
+    my $field_name = shift();
+    my $trace_name = shift();
+    my $type = shift();
+    my $documentation = shift();
+
+    my $file_contents = "";
+    if ($documentation) {
         $documentation =~ s/\/\*//g;
         $documentation =~ s/\*\///g;
         $file_contents .= "/**\n" . $documentation . "\n*/";
     }
-    my $type = $ast->{isa} || "json11::Json::object";
-    if (defined $ast->{default}) {
-        #$file_contents .= "\n    default => " . Data::Dump::quote($ast->{default}) . ",";
-    }
-    if (defined $documentation) {
-        #$file_contents .= "\n    documentation => " . Data::Dump::quote($documentation) . ",";
-    }
 
-    #$file_contents .= "template <typename Data>
     $file_contents .= ucfirst($trace_name) . " & " . ucfirst($field_name) . "(const $type &$field_name ) {\n";
     $file_contents .= "    _$trace_name.insert({\"" . $field_name . '", ' . $field_name . "});\n";
     $file_contents .= "    return *this;\n";

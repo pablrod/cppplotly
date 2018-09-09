@@ -95,6 +95,22 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 
 /**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Contour & Customdata(const std::vector<std::string> &customdata ) {
+    _contour.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Contour & Customdata(const json11::Json::object &customdata ) {
+    _contour.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  customdata .
 */Contour & Customdatasrc(const std::string &customdatasrc ) {
     _contour.insert({"customdatasrc", customdatasrc});
@@ -151,6 +167,22 @@ Contour & Hoverlabel(const CppPlotly::Trace::contour::Hoverlabel &hoverlabel ) {
 /**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
 */Contour & Ids(const std::vector<double> &ids ) {
+    _contour.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Contour & Ids(const std::vector<std::string> &ids ) {
+    _contour.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Contour & Ids(const json11::Json::object &ids ) {
     _contour.insert({"ids", ids});
     return *this;
 }
@@ -249,6 +281,22 @@ Sets the text elements associated with each z value.
 
 
 /**
+Sets the text elements associated with each z value.
+*/Contour & Text(const std::vector<std::string> &text ) {
+    _contour.insert({"text", text});
+    return *this;
+}
+
+
+/**
+Sets the text elements associated with each z value.
+*/Contour & Text(const json11::Json::object &text ) {
+    _contour.insert({"text", text});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  text .
 */Contour & Textsrc(const std::string &textsrc ) {
     _contour.insert({"textsrc", textsrc});
@@ -287,6 +335,22 @@ Determines whether or not this trace is visible. If *legendonly*, the trace is n
 /**
 Sets the x coordinates.
 */Contour & X(const std::vector<double> &x ) {
+    _contour.insert({"x", x});
+    return *this;
+}
+
+
+/**
+Sets the x coordinates.
+*/Contour & X(const std::vector<std::string> &x ) {
+    _contour.insert({"x", x});
+    return *this;
+}
+
+
+/**
+Sets the x coordinates.
+*/Contour & X(const json11::Json::object &x ) {
     _contour.insert({"x", x});
     return *this;
 }
@@ -341,6 +405,22 @@ Sets the y coordinates.
 
 
 /**
+Sets the y coordinates.
+*/Contour & Y(const std::vector<std::string> &y ) {
+    _contour.insert({"y", y});
+    return *this;
+}
+
+
+/**
+Sets the y coordinates.
+*/Contour & Y(const json11::Json::object &y ) {
+    _contour.insert({"y", y});
+    return *this;
+}
+
+
+/**
 Alternate to `y`. Builds a linear space of y coordinates. Use with `dy` where `y0` is the starting coordinate and `dy` the step.
 */Contour & Y0(const json11::Json::object &y0 ) {
     _contour.insert({"y0", y0});
@@ -389,6 +469,22 @@ Sets the z data.
 
 
 /**
+Sets the z data.
+*/Contour & Z(const std::vector<std::string> &z ) {
+    _contour.insert({"z", z});
+    return *this;
+}
+
+
+/**
+Sets the z data.
+*/Contour & Z(const json11::Json::object &z ) {
+    _contour.insert({"z", z});
+    return *this;
+}
+
+
+/**
 Determines the whether or not the color domain is computed with respect to the input data.
 */Contour & Zauto(const bool &zauto ) {
     _contour.insert({"zauto", zauto});
@@ -430,7 +526,7 @@ Sets the source reference on plot.ly for  z .
 
  
 
-            json11::Json to_json() const {
+            virtual json11::Json to_json() const {
                 return _contour;
             }
 

@@ -38,7 +38,7 @@ namespace CppPlotly \{
 
            {$body} 
 
-            json11::Json to_json() const \{
+            virtual json11::Json to_json() const \{
                 return _{$trace_name};
             \}
 

@@ -53,6 +53,22 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 
 /**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Pie & Customdata(const std::vector<std::string> &customdata ) {
+    _pie.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Pie & Customdata(const json11::Json::object &customdata ) {
+    _pie.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  customdata .
 */Pie & Customdatasrc(const std::string &customdatasrc ) {
     _pie.insert({"customdatasrc", customdatasrc});
@@ -137,6 +153,22 @@ Assigns id labels to each datum. These ids for object constancy of data points d
 
 
 /**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Pie & Ids(const std::vector<std::string> &ids ) {
+    _pie.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Pie & Ids(const json11::Json::object &ids ) {
+    _pie.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  ids .
 */Pie & Idssrc(const std::string &idssrc ) {
     _pie.insert({"idssrc", idssrc});
@@ -161,6 +193,22 @@ Alternate to `labels`. Builds a numeric set of labels. Use with `dlabel` where `
 /**
 Sets the sector labels. If `labels` entries are duplicated, we sum associated `values` or simply count occurrences if `values` is not provided. For other array attributes (including color) we use the first non-empty entry among all occurrences of the label.
 */Pie & Labels(const std::vector<double> &labels ) {
+    _pie.insert({"labels", labels});
+    return *this;
+}
+
+
+/**
+Sets the sector labels. If `labels` entries are duplicated, we sum associated `values` or simply count occurrences if `values` is not provided. For other array attributes (including color) we use the first non-empty entry among all occurrences of the label.
+*/Pie & Labels(const std::vector<std::string> &labels ) {
+    _pie.insert({"labels", labels});
+    return *this;
+}
+
+
+/**
+Sets the sector labels. If `labels` entries are duplicated, we sum associated `values` or simply count occurrences if `values` is not provided. For other array attributes (including color) we use the first non-empty entry among all occurrences of the label.
+*/Pie & Labels(const json11::Json::object &labels ) {
     _pie.insert({"labels", labels});
     return *this;
 }
@@ -280,6 +328,22 @@ Sets text elements associated with each sector. If trace `textinfo` contains a *
 }
 
 
+/**
+Sets text elements associated with each sector. If trace `textinfo` contains a *text* flag, these elements will seen on the chart. If trace `hoverinfo` contains a *text* flag and *hovertext* is not set, these elements will be seen in the hover labels.
+*/Pie & Text(const std::vector<std::string> &text ) {
+    _pie.insert({"text", text});
+    return *this;
+}
+
+
+/**
+Sets text elements associated with each sector. If trace `textinfo` contains a *text* flag, these elements will seen on the chart. If trace `hoverinfo` contains a *text* flag and *hovertext* is not set, these elements will be seen in the hover labels.
+*/Pie & Text(const json11::Json::object &text ) {
+    _pie.insert({"text", text});
+    return *this;
+}
+
+
 Pie & Textfont(const CppPlotly::Trace::pie::Textfont &textfont ) {
     _pie.insert({"textfont", textfont});
     return *this;
@@ -339,6 +403,22 @@ Sets the values of the sectors of this pie chart. If omitted, we count occurrenc
 
 
 /**
+Sets the values of the sectors of this pie chart. If omitted, we count occurrences of each label.
+*/Pie & Values(const std::vector<std::string> &values ) {
+    _pie.insert({"values", values});
+    return *this;
+}
+
+
+/**
+Sets the values of the sectors of this pie chart. If omitted, we count occurrences of each label.
+*/Pie & Values(const json11::Json::object &values ) {
+    _pie.insert({"values", values});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  values .
 */Pie & Valuessrc(const std::string &valuessrc ) {
     _pie.insert({"valuessrc", valuessrc});
@@ -356,7 +436,7 @@ Determines whether or not this trace is visible. If *legendonly*, the trace is n
 
  
 
-            json11::Json to_json() const {
+            virtual json11::Json to_json() const {
                 return _pie;
             }
 

@@ -49,6 +49,22 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 
 /**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Pointcloud & Customdata(const std::vector<std::string> &customdata ) {
+    _pointcloud.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Pointcloud & Customdata(const json11::Json::object &customdata ) {
+    _pointcloud.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  customdata .
 */Pointcloud & Customdatasrc(const std::string &customdatasrc ) {
     _pointcloud.insert({"customdatasrc", customdatasrc});
@@ -87,6 +103,22 @@ Assigns id labels to each datum. These ids for object constancy of data points d
 
 
 /**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Pointcloud & Ids(const std::vector<std::string> &ids ) {
+    _pointcloud.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Pointcloud & Ids(const json11::Json::object &ids ) {
+    _pointcloud.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  ids .
 */Pointcloud & Idssrc(const std::string &idssrc ) {
     _pointcloud.insert({"idssrc", idssrc});
@@ -97,6 +129,22 @@ Sets the source reference on plot.ly for  ids .
 /**
 A sequential value, 0..n, supply it to avoid creating this array inside plotting. If specified, it must be a typed `Int32Array` array. Its length must be equal to or greater than the number of points. For the best performance and memory use, create one large `indices` typed array that is guaranteed to be at least as long as the largest number of points during use, and reuse it on each `Plotly.restyle()` call.
 */Pointcloud & Indices(const std::vector<double> &indices ) {
+    _pointcloud.insert({"indices", indices});
+    return *this;
+}
+
+
+/**
+A sequential value, 0..n, supply it to avoid creating this array inside plotting. If specified, it must be a typed `Int32Array` array. Its length must be equal to or greater than the number of points. For the best performance and memory use, create one large `indices` typed array that is guaranteed to be at least as long as the largest number of points during use, and reuse it on each `Plotly.restyle()` call.
+*/Pointcloud & Indices(const std::vector<std::string> &indices ) {
+    _pointcloud.insert({"indices", indices});
+    return *this;
+}
+
+
+/**
+A sequential value, 0..n, supply it to avoid creating this array inside plotting. If specified, it must be a typed `Int32Array` array. Its length must be equal to or greater than the number of points. For the best performance and memory use, create one large `indices` typed array that is guaranteed to be at least as long as the largest number of points during use, and reuse it on each `Plotly.restyle()` call.
+*/Pointcloud & Indices(const json11::Json::object &indices ) {
     _pointcloud.insert({"indices", indices});
     return *this;
 }
@@ -207,6 +255,22 @@ Sets the x coordinates.
 
 
 /**
+Sets the x coordinates.
+*/Pointcloud & X(const std::vector<std::string> &x ) {
+    _pointcloud.insert({"x", x});
+    return *this;
+}
+
+
+/**
+Sets the x coordinates.
+*/Pointcloud & X(const json11::Json::object &x ) {
+    _pointcloud.insert({"x", x});
+    return *this;
+}
+
+
+/**
 Sets a reference between this trace's x coordinates and a 2D cartesian x axis. If *x* (the default value), the x coordinates refer to `layout.xaxis`. If *x2*, the x coordinates refer to `layout.xaxis2`, and so on.
 */Pointcloud & Xaxis(const json11::Json::object &xaxis ) {
     _pointcloud.insert({"xaxis", xaxis});
@@ -217,6 +281,22 @@ Sets a reference between this trace's x coordinates and a 2D cartesian x axis. I
 /**
 Specify `xbounds` in the shape of `[xMin, xMax] to avoid looping through the `xy` typed array. Use it in conjunction with `xy` and `ybounds` for the performance benefits.
 */Pointcloud & Xbounds(const std::vector<double> &xbounds ) {
+    _pointcloud.insert({"xbounds", xbounds});
+    return *this;
+}
+
+
+/**
+Specify `xbounds` in the shape of `[xMin, xMax] to avoid looping through the `xy` typed array. Use it in conjunction with `xy` and `ybounds` for the performance benefits.
+*/Pointcloud & Xbounds(const std::vector<std::string> &xbounds ) {
+    _pointcloud.insert({"xbounds", xbounds});
+    return *this;
+}
+
+
+/**
+Specify `xbounds` in the shape of `[xMin, xMax] to avoid looping through the `xy` typed array. Use it in conjunction with `xy` and `ybounds` for the performance benefits.
+*/Pointcloud & Xbounds(const json11::Json::object &xbounds ) {
     _pointcloud.insert({"xbounds", xbounds});
     return *this;
 }
@@ -247,6 +327,22 @@ Faster alternative to specifying `x` and `y` separately. If supplied, it must be
 
 
 /**
+Faster alternative to specifying `x` and `y` separately. If supplied, it must be a typed `Float32Array` array that represents points such that `xy[i * 2] = x[i]` and `xy[i * 2 + 1] = y[i]`
+*/Pointcloud & Xy(const std::vector<std::string> &xy ) {
+    _pointcloud.insert({"xy", xy});
+    return *this;
+}
+
+
+/**
+Faster alternative to specifying `x` and `y` separately. If supplied, it must be a typed `Float32Array` array that represents points such that `xy[i * 2] = x[i]` and `xy[i * 2 + 1] = y[i]`
+*/Pointcloud & Xy(const json11::Json::object &xy ) {
+    _pointcloud.insert({"xy", xy});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  xy .
 */Pointcloud & Xysrc(const std::string &xysrc ) {
     _pointcloud.insert({"xysrc", xysrc});
@@ -263,6 +359,22 @@ Sets the y coordinates.
 
 
 /**
+Sets the y coordinates.
+*/Pointcloud & Y(const std::vector<std::string> &y ) {
+    _pointcloud.insert({"y", y});
+    return *this;
+}
+
+
+/**
+Sets the y coordinates.
+*/Pointcloud & Y(const json11::Json::object &y ) {
+    _pointcloud.insert({"y", y});
+    return *this;
+}
+
+
+/**
 Sets a reference between this trace's y coordinates and a 2D cartesian y axis. If *y* (the default value), the y coordinates refer to `layout.yaxis`. If *y2*, the y coordinates refer to `layout.yaxis2`, and so on.
 */Pointcloud & Yaxis(const json11::Json::object &yaxis ) {
     _pointcloud.insert({"yaxis", yaxis});
@@ -273,6 +385,22 @@ Sets a reference between this trace's y coordinates and a 2D cartesian y axis. I
 /**
 Specify `ybounds` in the shape of `[yMin, yMax] to avoid looping through the `xy` typed array. Use it in conjunction with `xy` and `xbounds` for the performance benefits.
 */Pointcloud & Ybounds(const std::vector<double> &ybounds ) {
+    _pointcloud.insert({"ybounds", ybounds});
+    return *this;
+}
+
+
+/**
+Specify `ybounds` in the shape of `[yMin, yMax] to avoid looping through the `xy` typed array. Use it in conjunction with `xy` and `xbounds` for the performance benefits.
+*/Pointcloud & Ybounds(const std::vector<std::string> &ybounds ) {
+    _pointcloud.insert({"ybounds", ybounds});
+    return *this;
+}
+
+
+/**
+Specify `ybounds` in the shape of `[yMin, yMax] to avoid looping through the `xy` typed array. Use it in conjunction with `xy` and `xbounds` for the performance benefits.
+*/Pointcloud & Ybounds(const json11::Json::object &ybounds ) {
     _pointcloud.insert({"ybounds", ybounds});
     return *this;
 }
@@ -296,7 +424,7 @@ Sets the source reference on plot.ly for  y .
 
  
 
-            json11::Json to_json() const {
+            virtual json11::Json to_json() const {
                 return _pointcloud;
             }
 

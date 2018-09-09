@@ -46,6 +46,22 @@ Sets the aggregation data.
 
 
 /**
+Sets the aggregation data.
+*/Marker & Color(const std::vector<std::string> &color ) {
+    _marker.insert({"color", color});
+    return *this;
+}
+
+
+/**
+Sets the aggregation data.
+*/Marker & Color(const json11::Json::object &color ) {
+    _marker.insert({"color", color});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  color .
 */Marker & Colorsrc(const std::string &colorsrc ) {
     _marker.insert({"colorsrc", colorsrc});

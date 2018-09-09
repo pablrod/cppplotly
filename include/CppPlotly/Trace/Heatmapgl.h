@@ -71,6 +71,22 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 
 /**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Heatmapgl & Customdata(const std::vector<std::string> &customdata ) {
+    _heatmapgl.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
+Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
+*/Heatmapgl & Customdata(const json11::Json::object &customdata ) {
+    _heatmapgl.insert({"customdata", customdata});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  customdata .
 */Heatmapgl & Customdatasrc(const std::string &customdatasrc ) {
     _heatmapgl.insert({"customdatasrc", customdatasrc});
@@ -119,6 +135,22 @@ Heatmapgl & Hoverlabel(const CppPlotly::Trace::heatmapgl::Hoverlabel &hoverlabel
 /**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
 */Heatmapgl & Ids(const std::vector<double> &ids ) {
+    _heatmapgl.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Heatmapgl & Ids(const std::vector<std::string> &ids ) {
+    _heatmapgl.insert({"ids", ids});
+    return *this;
+}
+
+
+/**
+Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
+*/Heatmapgl & Ids(const json11::Json::object &ids ) {
     _heatmapgl.insert({"ids", ids});
     return *this;
 }
@@ -203,6 +235,22 @@ Sets the text elements associated with each z value.
 
 
 /**
+Sets the text elements associated with each z value.
+*/Heatmapgl & Text(const std::vector<std::string> &text ) {
+    _heatmapgl.insert({"text", text});
+    return *this;
+}
+
+
+/**
+Sets the text elements associated with each z value.
+*/Heatmapgl & Text(const json11::Json::object &text ) {
+    _heatmapgl.insert({"text", text});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  text .
 */Heatmapgl & Textsrc(const std::string &textsrc ) {
     _heatmapgl.insert({"textsrc", textsrc});
@@ -241,6 +289,22 @@ Determines whether or not this trace is visible. If *legendonly*, the trace is n
 /**
 Sets the x coordinates.
 */Heatmapgl & X(const std::vector<double> &x ) {
+    _heatmapgl.insert({"x", x});
+    return *this;
+}
+
+
+/**
+Sets the x coordinates.
+*/Heatmapgl & X(const std::vector<std::string> &x ) {
+    _heatmapgl.insert({"x", x});
+    return *this;
+}
+
+
+/**
+Sets the x coordinates.
+*/Heatmapgl & X(const json11::Json::object &x ) {
     _heatmapgl.insert({"x", x});
     return *this;
 }
@@ -287,6 +351,22 @@ Sets the y coordinates.
 
 
 /**
+Sets the y coordinates.
+*/Heatmapgl & Y(const std::vector<std::string> &y ) {
+    _heatmapgl.insert({"y", y});
+    return *this;
+}
+
+
+/**
+Sets the y coordinates.
+*/Heatmapgl & Y(const json11::Json::object &y ) {
+    _heatmapgl.insert({"y", y});
+    return *this;
+}
+
+
+/**
 Alternate to `y`. Builds a linear space of y coordinates. Use with `dy` where `y0` is the starting coordinate and `dy` the step.
 */Heatmapgl & Y0(const json11::Json::object &y0 ) {
     _heatmapgl.insert({"y0", y0});
@@ -327,6 +407,22 @@ Sets the z data.
 
 
 /**
+Sets the z data.
+*/Heatmapgl & Z(const std::vector<std::string> &z ) {
+    _heatmapgl.insert({"z", z});
+    return *this;
+}
+
+
+/**
+Sets the z data.
+*/Heatmapgl & Z(const json11::Json::object &z ) {
+    _heatmapgl.insert({"z", z});
+    return *this;
+}
+
+
+/**
 Determines the whether or not the color domain is computed with respect to the input data.
 */Heatmapgl & Zauto(const bool &zauto ) {
     _heatmapgl.insert({"zauto", zauto});
@@ -360,7 +456,7 @@ Sets the source reference on plot.ly for  z .
 
  
 
-            json11::Json to_json() const {
+            virtual json11::Json to_json() const {
                 return _heatmapgl;
             }
 

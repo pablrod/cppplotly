@@ -270,6 +270,22 @@ Sets the text displayed at the ticks position via `tickvals`. Only has an effect
 
 
 /**
+Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*. Used with `tickvals`.
+*/Colorbar & Ticktext(const std::vector<std::string> &ticktext ) {
+    _colorbar.insert({"ticktext", ticktext});
+    return *this;
+}
+
+
+/**
+Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*. Used with `tickvals`.
+*/Colorbar & Ticktext(const json11::Json::object &ticktext ) {
+    _colorbar.insert({"ticktext", ticktext});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  ticktext .
 */Colorbar & Ticktextsrc(const std::string &ticktextsrc ) {
     _colorbar.insert({"ticktextsrc", ticktextsrc});
@@ -280,6 +296,22 @@ Sets the source reference on plot.ly for  ticktext .
 /**
 Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with `ticktext`.
 */Colorbar & Tickvals(const std::vector<double> &tickvals ) {
+    _colorbar.insert({"tickvals", tickvals});
+    return *this;
+}
+
+
+/**
+Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with `ticktext`.
+*/Colorbar & Tickvals(const std::vector<std::string> &tickvals ) {
+    _colorbar.insert({"tickvals", tickvals});
+    return *this;
+}
+
+
+/**
+Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with `ticktext`.
+*/Colorbar & Tickvals(const json11::Json::object &tickvals ) {
     _colorbar.insert({"tickvals", tickvals});
     return *this;
 }

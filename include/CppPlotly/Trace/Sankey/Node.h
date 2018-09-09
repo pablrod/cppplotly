@@ -69,6 +69,22 @@ The shown name of the node.
 
 
 /**
+The shown name of the node.
+*/Node & Label(const std::vector<std::string> &label ) {
+    _node.insert({"label", label});
+    return *this;
+}
+
+
+/**
+The shown name of the node.
+*/Node & Label(const json11::Json::object &label ) {
+    _node.insert({"label", label});
+    return *this;
+}
+
+
+/**
 Sets the source reference on plot.ly for  label .
 */Node & Labelsrc(const std::string &labelsrc ) {
     _node.insert({"labelsrc", labelsrc});
