@@ -1,6 +1,3 @@
-//
-// Created by Nabu on 9/2/18.
-//
 
 #ifndef CPPPLOTLY_PLOT_H
 #define CPPPLOTLY_PLOT_H
@@ -46,6 +43,11 @@ namespace CppPlotly {
             return *this;
         }
 
+        Plot &Layout(const CppPlotly::Layout &layout) {
+            this->layout = layout;
+            return *this;
+        }
+
         std::string render_html() const {
             if (traces.empty()) {
                 return "Please add at least one trace";
@@ -83,7 +85,7 @@ namespace CppPlotly {
 
     private:
         std::vector<CppPlotly::BaseTrace::Pointer> traces;
-        Layout layout;
+        CppPlotly::Layout layout;
     };
 }
 
