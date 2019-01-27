@@ -14,7 +14,7 @@ target_link_libraries(cppplotly_sample json11)
 target_compile_options(cppplotly_sample PRIVATE -Wall)
 
 
-find_package(wxWidgets REQUIRED webview, net, core, base)
+find_package(wxWidgets COMPONENTS webview, net, core, base)
 if (wxWidgets_FOUND)
     include(${wxWidgets_USE_FILE})
 
