@@ -16,17 +16,14 @@ int main(void) {
 
     auto scatter3d = CppPlotly::Trace::Scatter3d().X({1, 2, 3}).Y({1, 2, 3}).Z({1, 2, 3});
 
-    auto otro_scatter = CppPlotly::BaseTrace::Pointer(&((new CppPlotly::Trace::Bar())->
+    auto another_scatter = CppPlotly::BaseTrace::Pointer(&((new CppPlotly::Trace::Bar())->
             Y({1, 2, 3, 4, 5}).
             //y({1, 3, 5, 7, 8});
             X({"1", "2", "3", "4", "5"})));
 
-    //std::cout << scatter.to_json().dump() << std::endl;
-    //std::cout << otro_scatter->to_json().dump() << std::endl;
-
     auto plot = CppPlotly::Plot()
             .AddTrace(scatter)
-            .AddTrace(otro_scatter);
+            .AddTrace(another_scatter);
 
     std::cout << plot.render_html() << std::endl;
 
