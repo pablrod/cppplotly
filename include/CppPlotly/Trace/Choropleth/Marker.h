@@ -46,7 +46,7 @@ namespace CppPlotly {
 
 /**
 Sets the opacity of the locations.
-*/Marker & Opacity(const json11::Json::object &opacity ) {
+*/Marker & Opacity(const json11::Json &opacity ) {
     _marker.insert({"opacity", opacity});
     return *this;
 }

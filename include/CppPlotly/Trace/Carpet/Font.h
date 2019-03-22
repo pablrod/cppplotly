@@ -37,13 +37,13 @@ namespace CppPlotly {
     class Font {
     public:
 
-    Font & Color(const json11::Json::object &color ) {
+    Font & Color(const json11::Json &color ) {
     _font.insert({"color", color});
     return *this;
 }
 
 
-Font & Description(const json11::Json::object &description ) {
+Font & Description(const json11::Json &description ) {
     _font.insert({"description", description});
     return *this;
 }

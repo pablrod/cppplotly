@@ -24,7 +24,7 @@ But I think plotly.js is a great library and I want to use it with C++.
 
 #include "CppPlotly/Trace/Carpet/Aaxis/Tickfont.h"
 #include "CppPlotly/Trace/Carpet/Aaxis/Tickformatstop.h"
-#include "CppPlotly/Trace/Carpet/Aaxis/Titlefont.h"
+#include "CppPlotly/Trace/Carpet/Aaxis/Title.h"
 
 
 
@@ -58,7 +58,7 @@ The starting index of grid lines along the axis
 
 /**
 Determines whether or not the range of this axis is computed in relation to the input data. See `rangemode` for more info. If `range` is provided, then `autorange` is set to *false*.
-*/Aaxis & Autorange(const json11::Json::object &autorange ) {
+*/Aaxis & Autorange(const json11::Json &autorange ) {
     _aaxis.insert({"autorange", autorange});
     return *this;
 }
@@ -82,7 +82,7 @@ Sets the order in which categories on this axis appear. Only has an effect if `c
 
 /**
 Sets the order in which categories on this axis appear. Only has an effect if `categoryorder` is set to *array*. Used with `categoryorder`.
-*/Aaxis & Categoryarray(const json11::Json::object &categoryarray ) {
+*/Aaxis & Categoryarray(const json11::Json &categoryarray ) {
     _aaxis.insert({"categoryarray", categoryarray});
     return *this;
 }
@@ -98,13 +98,13 @@ Sets the source reference on plot.ly for  categoryarray .
 
 /**
 Specifies the ordering logic for the case of categorical variables. By default, plotly uses *trace*, which specifies the order that is present in the data supplied. Set `categoryorder` to *category ascending* or *category descending* if order should be determined by the alphanumerical order of the category names. Set `categoryorder` to *array* to derive the ordering from the attribute `categoryarray`. If a category is not found in the `categoryarray` array, the sorting behavior for that attribute will be identical to the *trace* mode. The unspecified categories will follow the categories in `categoryarray`.
-*/Aaxis & Categoryorder(const json11::Json::object &categoryorder ) {
+*/Aaxis & Categoryorder(const json11::Json &categoryorder ) {
     _aaxis.insert({"categoryorder", categoryorder});
     return *this;
 }
 
 
-Aaxis & Cheatertype(const json11::Json::object &cheatertype ) {
+Aaxis & Cheatertype(const json11::Json &cheatertype ) {
     _aaxis.insert({"cheatertype", cheatertype});
     return *this;
 }
@@ -112,7 +112,7 @@ Aaxis & Cheatertype(const json11::Json::object &cheatertype ) {
 
 /**
 Sets default for all colors associated with this axis all at once: line, font, tick, and grid colors. Grid color is lightened by blending this with the plot background Individual pieces can override this.
-*/Aaxis & Color(const json11::Json::object &color ) {
+*/Aaxis & Color(const json11::Json &color ) {
     _aaxis.insert({"color", color});
     return *this;
 }
@@ -136,7 +136,7 @@ Determines whether or not a line is drawn at along the final value of this axis.
 
 /**
 Sets the line color of the end line.
-*/Aaxis & Endlinecolor(const json11::Json::object &endlinecolor ) {
+*/Aaxis & Endlinecolor(const json11::Json &endlinecolor ) {
     _aaxis.insert({"endlinecolor", endlinecolor});
     return *this;
 }
@@ -152,7 +152,7 @@ Sets the width (in px) of the end line.
 
 /**
 Determines a formatting rule for the tick exponents. For example, consider the number 1,000,000,000. If *none*, it appears as 1,000,000,000. If *e*, 1e+9. If *E*, 1E+9. If *power*, 1x10^9 (with 9 in a super script). If *SI*, 1G. If *B*, 1B.
-*/Aaxis & Exponentformat(const json11::Json::object &exponentformat ) {
+*/Aaxis & Exponentformat(const json11::Json &exponentformat ) {
     _aaxis.insert({"exponentformat", exponentformat});
     return *this;
 }
@@ -168,7 +168,7 @@ Determines whether or not this axis is zoom-able. If true, then zoom is disabled
 
 /**
 Sets the axis line color.
-*/Aaxis & Gridcolor(const json11::Json::object &gridcolor ) {
+*/Aaxis & Gridcolor(const json11::Json &gridcolor ) {
     _aaxis.insert({"gridcolor", gridcolor});
     return *this;
 }
@@ -208,7 +208,7 @@ Sets a axis label suffix.
 
 /**
 Sets the axis line color.
-*/Aaxis & Linecolor(const json11::Json::object &linecolor ) {
+*/Aaxis & Linecolor(const json11::Json &linecolor ) {
     _aaxis.insert({"linecolor", linecolor});
     return *this;
 }
@@ -224,7 +224,7 @@ Sets the width (in px) of the axis line.
 
 /**
 Sets the color of the grid lines.
-*/Aaxis & Minorgridcolor(const json11::Json::object &minorgridcolor ) {
+*/Aaxis & Minorgridcolor(const json11::Json &minorgridcolor ) {
     _aaxis.insert({"minorgridcolor", minorgridcolor});
     return *this;
 }
@@ -264,7 +264,7 @@ Sets the range of this axis. If the axis `type` is *log*, then you must take the
 
 /**
 If *normal*, the range is computed in relation to the extrema of the input data. If *tozero*`, the range extends to 0, regardless of the input data If *nonnegative*, the range is non-negative, regardless of the input data.
-*/Aaxis & Rangemode(const json11::Json::object &rangemode ) {
+*/Aaxis & Rangemode(const json11::Json &rangemode ) {
     _aaxis.insert({"rangemode", rangemode});
     return *this;
 }
@@ -280,7 +280,7 @@ If "true", even 4-digit integers are separated
 
 /**
 If *all*, all exponents are shown besides their significands. If *first*, only the exponent of the first tick is shown. If *last*, only the exponent of the last tick is shown. If *none*, no exponents appear.
-*/Aaxis & Showexponent(const json11::Json::object &showexponent ) {
+*/Aaxis & Showexponent(const json11::Json &showexponent ) {
     _aaxis.insert({"showexponent", showexponent});
     return *this;
 }
@@ -304,7 +304,7 @@ Determines whether or not a line bounding this axis is drawn.
 
 /**
 Determines whether axis labels are drawn on the low side, the high side, both, or neither side of the axis.
-*/Aaxis & Showticklabels(const json11::Json::object &showticklabels ) {
+*/Aaxis & Showticklabels(const json11::Json &showticklabels ) {
     _aaxis.insert({"showticklabels", showticklabels});
     return *this;
 }
@@ -312,7 +312,7 @@ Determines whether axis labels are drawn on the low side, the high side, both, o
 
 /**
 If *all*, all tick labels are displayed with a prefix. If *first*, only the first tick is displayed with a prefix. If *last*, only the last tick is displayed with a suffix. If *none*, tick prefixes are hidden.
-*/Aaxis & Showtickprefix(const json11::Json::object &showtickprefix ) {
+*/Aaxis & Showtickprefix(const json11::Json &showtickprefix ) {
     _aaxis.insert({"showtickprefix", showtickprefix});
     return *this;
 }
@@ -320,7 +320,7 @@ If *all*, all tick labels are displayed with a prefix. If *first*, only the firs
 
 /**
 Same as `showtickprefix` but for tick suffixes.
-*/Aaxis & Showticksuffix(const json11::Json::object &showticksuffix ) {
+*/Aaxis & Showticksuffix(const json11::Json &showticksuffix ) {
     _aaxis.insert({"showticksuffix", showticksuffix});
     return *this;
 }
@@ -342,7 +342,7 @@ Determines whether or not a line is drawn at along the starting value of this ax
 
 /**
 Sets the line color of the start line.
-*/Aaxis & Startlinecolor(const json11::Json::object &startlinecolor ) {
+*/Aaxis & Startlinecolor(const json11::Json &startlinecolor ) {
     _aaxis.insert({"startlinecolor", startlinecolor});
     return *this;
 }
@@ -366,7 +366,7 @@ The starting index of grid lines along the axis
 
 /**
 Sets the angle of the tick labels with respect to the horizontal. For example, a `tickangle` of -90 draws the tick labels vertically.
-*/Aaxis & Tickangle(const json11::Json::object &tickangle ) {
+*/Aaxis & Tickangle(const json11::Json &tickangle ) {
     _aaxis.insert({"tickangle", tickangle});
     return *this;
 }
@@ -392,7 +392,7 @@ Aaxis & Tickformatstops(const std::vector<CppPlotly::Trace::carpet::aaxis::Tickf
 }
 
 
-Aaxis & Tickmode(const json11::Json::object &tickmode ) {
+Aaxis & Tickmode(const json11::Json &tickmode ) {
     _aaxis.insert({"tickmode", tickmode});
     return *this;
 }
@@ -432,7 +432,7 @@ Sets the text displayed at the ticks position via `tickvals`. Only has an effect
 
 /**
 Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*. Used with `tickvals`.
-*/Aaxis & Ticktext(const json11::Json::object &ticktext ) {
+*/Aaxis & Ticktext(const json11::Json &ticktext ) {
     _aaxis.insert({"ticktext", ticktext});
     return *this;
 }
@@ -464,7 +464,7 @@ Sets the values at which ticks on this axis appear. Only has an effect if `tickm
 
 /**
 Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with `ticktext`.
-*/Aaxis & Tickvals(const json11::Json::object &tickvals ) {
+*/Aaxis & Tickvals(const json11::Json &tickvals ) {
     _aaxis.insert({"tickvals", tickvals});
     return *this;
 }
@@ -478,24 +478,8 @@ Sets the source reference on plot.ly for  tickvals .
 }
 
 
-/**
-Sets the title of this axis.
-*/Aaxis & Title(const std::string &title ) {
+Aaxis & Title(const CppPlotly::Trace::carpet::aaxis::Title &title ) {
     _aaxis.insert({"title", title});
-    return *this;
-}
-
-
-Aaxis & Titlefont(const CppPlotly::Trace::carpet::aaxis::Titlefont &titlefont ) {
-    _aaxis.insert({"titlefont", titlefont});
-    return *this;
-}
-
-
-/**
-An additional amount by which to offset the title from the tick labels, given in pixels
-*/Aaxis & Titleoffset(const double &titleoffset ) {
-    _aaxis.insert({"titleoffset", titleoffset});
     return *this;
 }
 

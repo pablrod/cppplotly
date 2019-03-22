@@ -39,7 +39,7 @@ namespace CppPlotly {
 
     /**
 Sets the mean line color.
-*/Meanline & Color(const json11::Json::object &color ) {
+*/Meanline & Color(const json11::Json &color ) {
     _meanline.insert({"color", color});
     return *this;
 }

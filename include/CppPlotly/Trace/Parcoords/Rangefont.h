@@ -37,13 +37,13 @@ namespace CppPlotly {
     class Rangefont {
     public:
 
-    Rangefont & Color(const json11::Json::object &color ) {
+    Rangefont & Color(const json11::Json &color ) {
     _rangefont.insert({"color", color});
     return *this;
 }
 
 
-Rangefont & Description(const json11::Json::object &description ) {
+Rangefont & Description(const json11::Json &description ) {
     _rangefont.insert({"description", description});
     return *this;
 }

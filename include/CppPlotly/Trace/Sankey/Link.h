@@ -22,6 +22,8 @@ But I think plotly.js is a great library and I want to use it with C++.
 
 #include <json11.hpp>
 
+#include "CppPlotly/Trace/Sankey/Link/Concentrationscales.h"
+#include "CppPlotly/Trace/Sankey/Link/Hoverlabel.h"
 #include "CppPlotly/Trace/Sankey/Link/Line.h"
 
 
@@ -40,8 +42,14 @@ namespace CppPlotly {
 
     /**
 Sets the `link` color. It can be a single value, or an array for specifying color for each `link`. If `link.color` is omitted, then by default, a translucent grey link will be used.
-*/Link & Color(const json11::Json::object &color ) {
+*/Link & Color(const json11::Json &color ) {
     _link.insert({"color", color});
+    return *this;
+}
+
+
+Link & Colorscales(const std::vector<CppPlotly::Trace::sankey::link::Concentrationscales> &colorscales ) {
+    _link.insert({"colorscales", colorscales});
     return *this;
 }
 
@@ -54,8 +62,38 @@ Sets the source reference on plot.ly for  color .
 }
 
 
-Link & Description(const json11::Json::object &description ) {
+Link & Description(const json11::Json &description ) {
     _link.insert({"description", description});
+    return *this;
+}
+
+
+/**
+Determines which trace information appear when hovering links. If `none` or `skip` are set, no information is displayed upon hovering. But, if `none` is set, click and hover events are still fired.
+*/Link & Hoverinfo(const json11::Json &hoverinfo ) {
+    _link.insert({"hoverinfo", hoverinfo});
+    return *this;
+}
+
+
+Link & Hoverlabel(const CppPlotly::Trace::sankey::link::Hoverlabel &hoverlabel ) {
+    _link.insert({"hoverlabel", hoverlabel});
+    return *this;
+}
+
+
+/**
+Template string used for rendering the information that appear on hover box. Note that this will override `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}". Numbers are formatted using d3-format's syntax %{variable:d3-format}, for example "Price: %{y:$.2f}". See https://github.com/d3/d3-format/blob/master/README.md#locale_format for details on the formatting syntax. The variables available in `hovertemplate` are the ones emitted as event data described at this link https://plot.ly/javascript/plotlyjs-events/#event-data. Additionally, every attributes that can be specified per-point (the ones that are `arrayOk: true`) are available. variables `value` and `label`. Anything contained in tag `<extra>` is displayed in the secondary box, for example "<extra>{fullData.name}</extra>". To hide the secondary box completely, use an empty tag `<extra></extra>`.
+*/Link & Hovertemplate(const json11::Json &hovertemplate ) {
+    _link.insert({"hovertemplate", hovertemplate});
+    return *this;
+}
+
+
+/**
+Sets the source reference on plot.ly for  hovertemplate .
+*/Link & Hovertemplatesrc(const std::string &hovertemplatesrc ) {
+    _link.insert({"hovertemplatesrc", hovertemplatesrc});
     return *this;
 }
 
@@ -78,7 +116,7 @@ The shown name of the link.
 
 /**
 The shown name of the link.
-*/Link & Label(const json11::Json::object &label ) {
+*/Link & Label(const json11::Json &label ) {
     _link.insert({"label", label});
     return *this;
 }
@@ -116,7 +154,7 @@ An integer number `[0..nodes.length - 1]` that represents the source node.
 
 /**
 An integer number `[0..nodes.length - 1]` that represents the source node.
-*/Link & Source(const json11::Json::object &source ) {
+*/Link & Source(const json11::Json &source ) {
     _link.insert({"source", source});
     return *this;
 }
@@ -148,7 +186,7 @@ An integer number `[0..nodes.length - 1]` that represents the target node.
 
 /**
 An integer number `[0..nodes.length - 1]` that represents the target node.
-*/Link & Target(const json11::Json::object &target ) {
+*/Link & Target(const json11::Json &target ) {
     _link.insert({"target", target});
     return *this;
 }
@@ -180,7 +218,7 @@ A numeric value representing the flow volume value.
 
 /**
 A numeric value representing the flow volume value.
-*/Link & Value(const json11::Json::object &value ) {
+*/Link & Value(const json11::Json &value ) {
     _link.insert({"value", value});
     return *this;
 }

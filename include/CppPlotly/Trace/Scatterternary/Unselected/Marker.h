@@ -40,7 +40,7 @@ namespace unselected {
 
     /**
 Sets the marker color of unselected points, applied only when a selection exists.
-*/Marker & Color(const json11::Json::object &color ) {
+*/Marker & Color(const json11::Json &color ) {
     _marker.insert({"color", color});
     return *this;
 }

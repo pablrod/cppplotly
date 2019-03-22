@@ -24,7 +24,6 @@ But I think plotly.js is a great library and I want to use it with C++.
 #include "CppPlotly/Trace/Contourcarpet/Hoverlabel.h"
 #include "CppPlotly/Trace/Contourcarpet/Line.h"
 #include "CppPlotly/Trace/Contourcarpet/Stream.h"
-#include "CppPlotly/Trace/Contourcarpet/Transform.h"
 
 
 namespace CppPlotly {
@@ -60,7 +59,7 @@ Sets the x coordinates.
 
 /**
 Sets the x coordinates.
-*/Contourcarpet & A(const json11::Json::object &a ) {
+*/Contourcarpet & A(const json11::Json &a ) {
     _contourcarpet.insert({"a", a});
     return *this;
 }
@@ -68,7 +67,7 @@ Sets the x coordinates.
 
 /**
 Alternate to `x`. Builds a linear space of x coordinates. Use with `dx` where `x0` is the starting coordinate and `dx` the step.
-*/Contourcarpet & A0(const json11::Json::object &a0 ) {
+*/Contourcarpet & A0(const json11::Json &a0 ) {
     _contourcarpet.insert({"a0", a0});
     return *this;
 }
@@ -84,14 +83,14 @@ Sets the source reference on plot.ly for  a .
 
 /**
 If *array*, the heatmap's x coordinates are given by *x* (the default behavior when `x` is provided). If *scaled*, the heatmap's x coordinates are given by *x0* and *dx* (the default behavior when `x` is not provided).
-*/Contourcarpet & Atype(const json11::Json::object &atype ) {
+*/Contourcarpet & Atype(const json11::Json &atype ) {
     _contourcarpet.insert({"atype", atype});
     return *this;
 }
 
 
 /**
-Determines whether or not the colorscale is picked using the sign of the input z values.
+Determines whether the colorscale is a default palette (`autocolorscale: true`) or the palette determined by `colorscale`. In case `colorscale` is unspecified or `autocolorscale` is true, the default  palette will be chosen according to whether numbers in the `color` array are all positive, all negative or mixed.
 */Contourcarpet & Autocolorscale(const bool &autocolorscale ) {
     _contourcarpet.insert({"autocolorscale", autocolorscale});
     return *this;
@@ -124,7 +123,7 @@ Sets the y coordinates.
 
 /**
 Sets the y coordinates.
-*/Contourcarpet & B(const json11::Json::object &b ) {
+*/Contourcarpet & B(const json11::Json &b ) {
     _contourcarpet.insert({"b", b});
     return *this;
 }
@@ -132,7 +131,7 @@ Sets the y coordinates.
 
 /**
 Alternate to `y`. Builds a linear space of y coordinates. Use with `dy` where `y0` is the starting coordinate and `dy` the step.
-*/Contourcarpet & B0(const json11::Json::object &b0 ) {
+*/Contourcarpet & B0(const json11::Json &b0 ) {
     _contourcarpet.insert({"b0", b0});
     return *this;
 }
@@ -148,7 +147,7 @@ Sets the source reference on plot.ly for  b .
 
 /**
 If *array*, the heatmap's y coordinates are given by *y* (the default behavior when `y` is provided) If *scaled*, the heatmap's y coordinates are given by *y0* and *dy* (the default behavior when `y` is not provided)
-*/Contourcarpet & Btype(const json11::Json::object &btype ) {
+*/Contourcarpet & Btype(const json11::Json &btype ) {
     _contourcarpet.insert({"btype", btype});
     return *this;
 }
@@ -169,8 +168,8 @@ Contourcarpet & Colorbar(const CppPlotly::Trace::contourcarpet::Colorbar &colorb
 
 
 /**
-Sets the colorscale. The colorscale must be an array containing arrays mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string. At minimum, a mapping for the lowest (0) and highest (1) values are required. For example, `[[0, 'rgb(0,0,255)', [1, 'rgb(255,0,0)']]`. To control the bounds of the colorscale in z space, use zmin and zmax
-*/Contourcarpet & Colorscale(const json11::Json::object &colorscale ) {
+Sets the colorscale. The colorscale must be an array containing arrays mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string. At minimum, a mapping for the lowest (0) and highest (1) values are required. For example, `[[0, 'rgb(0,0,255)', [1, 'rgb(255,0,0)']]`. To control the bounds of the colorscale in color space, use`zmin` and `zmax`. Alternatively, `colorscale` may be a palette name string of the following list: Greys,YlGnBu,Greens,YlOrRd,Bluered,RdBu,Reds,Blues,Picnic,Rainbow,Portland,Jet,Hot,Blackbody,Earth,Electric,Viridis,Cividis.
+*/Contourcarpet & Colorscale(const json11::Json &colorscale ) {
     _contourcarpet.insert({"colorscale", colorscale});
     return *this;
 }
@@ -200,7 +199,7 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 /**
 Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
-*/Contourcarpet & Customdata(const json11::Json::object &customdata ) {
+*/Contourcarpet & Customdata(const json11::Json &customdata ) {
     _contourcarpet.insert({"customdata", customdata});
     return *this;
 }
@@ -232,7 +231,7 @@ Sets the y coordinate step. See `y0` for more info.
 
 /**
 Sets the fill color if `contours.type` is *constraint*. Defaults to a half-transparent variant of the line color, marker color, or marker line color, whichever is available.
-*/Contourcarpet & Fillcolor(const json11::Json::object &fillcolor ) {
+*/Contourcarpet & Fillcolor(const json11::Json &fillcolor ) {
     _contourcarpet.insert({"fillcolor", fillcolor});
     return *this;
 }
@@ -240,7 +239,7 @@ Sets the fill color if `contours.type` is *constraint*. Defaults to a half-trans
 
 /**
 Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon hovering. But, if `none` is set, click and hover events are still fired.
-*/Contourcarpet & Hoverinfo(const json11::Json::object &hoverinfo ) {
+*/Contourcarpet & Hoverinfo(const json11::Json &hoverinfo ) {
     _contourcarpet.insert({"hoverinfo", hoverinfo});
     return *this;
 }
@@ -256,6 +255,38 @@ Sets the source reference on plot.ly for  hoverinfo .
 
 Contourcarpet & Hoverlabel(const CppPlotly::Trace::contourcarpet::Hoverlabel &hoverlabel ) {
     _contourcarpet.insert({"hoverlabel", hoverlabel});
+    return *this;
+}
+
+
+/**
+Same as `text`.
+*/Contourcarpet & Hovertext(const std::vector<double> &hovertext ) {
+    _contourcarpet.insert({"hovertext", hovertext});
+    return *this;
+}
+
+
+/**
+Same as `text`.
+*/Contourcarpet & Hovertext(const std::vector<std::string> &hovertext ) {
+    _contourcarpet.insert({"hovertext", hovertext});
+    return *this;
+}
+
+
+/**
+Same as `text`.
+*/Contourcarpet & Hovertext(const json11::Json &hovertext ) {
+    _contourcarpet.insert({"hovertext", hovertext});
+    return *this;
+}
+
+
+/**
+Sets the source reference on plot.ly for  hovertext .
+*/Contourcarpet & Hovertextsrc(const std::string &hovertextsrc ) {
+    _contourcarpet.insert({"hovertextsrc", hovertextsrc});
     return *this;
 }
 
@@ -278,7 +309,7 @@ Assigns id labels to each datum. These ids for object constancy of data points d
 
 /**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
-*/Contourcarpet & Ids(const json11::Json::object &ids ) {
+*/Contourcarpet & Ids(const json11::Json &ids ) {
     _contourcarpet.insert({"ids", ids});
     return *this;
 }
@@ -331,7 +362,7 @@ Sets the opacity of the trace.
 
 
 /**
-Reverses the colorscale.
+Reverses the color mapping if true. If true, `zmin` will correspond to the last color in the array and `zmax` will correspond to the first color.
 */Contourcarpet & Reversescale(const bool &reversescale ) {
     _contourcarpet.insert({"reversescale", reversescale});
     return *this;
@@ -340,7 +371,7 @@ Reverses the colorscale.
 
 /**
 Array containing integer indices of selected points. Has an effect only for traces that support selections. Note that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any other non-array values means no selection all where the `selected` and `unselected` styles have no effect.
-*/Contourcarpet & Selectedpoints(const json11::Json::object &selectedpoints ) {
+*/Contourcarpet & Selectedpoints(const json11::Json &selectedpoints ) {
     _contourcarpet.insert({"selectedpoints", selectedpoints});
     return *this;
 }
@@ -386,7 +417,7 @@ Sets the text elements associated with each z value.
 
 /**
 Sets the text elements associated with each z value.
-*/Contourcarpet & Text(const json11::Json::object &text ) {
+*/Contourcarpet & Text(const json11::Json &text ) {
     _contourcarpet.insert({"text", text});
     return *this;
 }
@@ -400,12 +431,6 @@ Sets the source reference on plot.ly for  text .
 }
 
 
-Contourcarpet & Transforms(const std::vector<CppPlotly::Trace::contourcarpet::Transform> &transforms ) {
-    _contourcarpet.insert({"transforms", transforms});
-    return *this;
-}
-
-
 /**
 Transposes the z data.
 */Contourcarpet & Transpose(const bool &transpose ) {
@@ -414,15 +439,25 @@ Transposes the z data.
 }
 
 
-Contourcarpet & Uid(const std::string &uid ) {
+/**
+Assign an id to this trace, Use this to provide object constancy between traces during animations and transitions.
+*/Contourcarpet & Uid(const std::string &uid ) {
     _contourcarpet.insert({"uid", uid});
     return *this;
 }
 
 
 /**
+Controls persistence of some user-driven changes to the trace: `constraintrange` in `parcoords` traces, as well as some `editable: true` modifications such as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note that other user-driven trace attribute changes are controlled by `layout` attributes: `trace.visible` is controlled by `layout.legend.uirevision`, `selectedpoints` is controlled by `layout.selectionrevision`, and `colorbar.(x|y)` (accessible with `config: {editable: true}`) is controlled by `layout.editrevision`. Trace changes are tracked by `uid`, which only falls back on trace index if no `uid` is provided. So if your app can add/remove traces before the end of the `data` array, such that the same trace has a different index, you can still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
+*/Contourcarpet & Uirevision(const json11::Json &uirevision ) {
+    _contourcarpet.insert({"uirevision", uirevision});
+    return *this;
+}
+
+
+/**
 Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a legend item (provided that the legend itself is visible).
-*/Contourcarpet & Visible(const json11::Json::object &visible ) {
+*/Contourcarpet & Visible(const json11::Json &visible ) {
     _contourcarpet.insert({"visible", visible});
     return *this;
 }
@@ -430,7 +465,7 @@ Determines whether or not this trace is visible. If *legendonly*, the trace is n
 
 /**
 Sets a reference between this trace's x coordinates and a 2D cartesian x axis. If *x* (the default value), the x coordinates refer to `layout.xaxis`. If *x2*, the x coordinates refer to `layout.xaxis2`, and so on.
-*/Contourcarpet & Xaxis(const json11::Json::object &xaxis ) {
+*/Contourcarpet & Xaxis(const json11::Json &xaxis ) {
     _contourcarpet.insert({"xaxis", xaxis});
     return *this;
 }
@@ -438,7 +473,7 @@ Sets a reference between this trace's x coordinates and a 2D cartesian x axis. I
 
 /**
 Sets a reference between this trace's y coordinates and a 2D cartesian y axis. If *y* (the default value), the y coordinates refer to `layout.yaxis`. If *y2*, the y coordinates refer to `layout.yaxis2`, and so on.
-*/Contourcarpet & Yaxis(const json11::Json::object &yaxis ) {
+*/Contourcarpet & Yaxis(const json11::Json &yaxis ) {
     _contourcarpet.insert({"yaxis", yaxis});
     return *this;
 }
@@ -462,14 +497,14 @@ Sets the z data.
 
 /**
 Sets the z data.
-*/Contourcarpet & Z(const json11::Json::object &z ) {
+*/Contourcarpet & Z(const json11::Json &z ) {
     _contourcarpet.insert({"z", z});
     return *this;
 }
 
 
 /**
-Determines the whether or not the color domain is computed with respect to the input data.
+Determines whether or not the color domain is computed with respect to the input data (here in `z`) or the bounds set in `zmin` and `zmax`  Defaults to `false` when `zmin` and `zmax` are set by the user.
 */Contourcarpet & Zauto(const bool &zauto ) {
     _contourcarpet.insert({"zauto", zauto});
     return *this;
@@ -477,7 +512,7 @@ Determines the whether or not the color domain is computed with respect to the i
 
 
 /**
-Sets the upper bound of color domain.
+Sets the upper bound of the color domain. Value should have the same units as in `z` and if set, `zmin` must be set as well.
 */Contourcarpet & Zmax(const double &zmax ) {
     _contourcarpet.insert({"zmax", zmax});
     return *this;
@@ -485,7 +520,15 @@ Sets the upper bound of color domain.
 
 
 /**
-Sets the lower bound of color domain.
+Sets the mid-point of the color domain by scaling `zmin` and/or `zmax` to be equidistant to this point. Value should have the same units as in `z`. Has no effect when `zauto` is `false`.
+*/Contourcarpet & Zmid(const double &zmid ) {
+    _contourcarpet.insert({"zmid", zmid});
+    return *this;
+}
+
+
+/**
+Sets the lower bound of the color domain. Value should have the same units as in `z` and if set, `zmax` must be set as well.
 */Contourcarpet & Zmin(const double &zmin ) {
     _contourcarpet.insert({"zmin", zmin});
     return *this;

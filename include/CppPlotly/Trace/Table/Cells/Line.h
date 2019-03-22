@@ -38,7 +38,7 @@ namespace cells {
     class Line {
     public:
 
-    Line & Color(const json11::Json::object &color ) {
+    Line & Color(const json11::Json &color ) {
     _line.insert({"color", color});
     return *this;
 }
@@ -52,7 +52,7 @@ Sets the source reference on plot.ly for  color .
 }
 
 
-Line & Width(const json11::Json::object &width ) {
+Line & Width(const json11::Json &width ) {
     _line.insert({"width", width});
     return *this;
 }

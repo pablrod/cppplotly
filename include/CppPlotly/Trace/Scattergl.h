@@ -26,6 +26,7 @@ But I think plotly.js is a great library and I want to use it with C++.
 #include "CppPlotly/Trace/Scattergl/Marker.h"
 #include "CppPlotly/Trace/Scattergl/Selected.h"
 #include "CppPlotly/Trace/Scattergl/Stream.h"
+#include "CppPlotly/Trace/Scattergl/Textfont.h"
 #include "CppPlotly/Trace/Scattergl/Transform.h"
 #include "CppPlotly/Trace/Scattergl/Unselected.h"
 
@@ -71,7 +72,7 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 /**
 Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
-*/Scattergl & Customdata(const json11::Json::object &customdata ) {
+*/Scattergl & Customdata(const json11::Json &customdata ) {
     _scattergl.insert({"customdata", customdata});
     return *this;
 }
@@ -114,8 +115,8 @@ Scattergl & Error_y(const CppPlotly::Trace::scattergl::Error_y &error_y ) {
 
 
 /**
-Sets the area to fill with a solid color. Use with `fillcolor` if not *none*. *tozerox* and *tozeroy* fill to x=0 and y=0 respectively. *tonextx* and *tonexty* fill between the endpoints of this trace and the endpoints of the trace before it, connecting those endpoints with straight lines (to make a stacked area graph); if there is no trace before it, they behave like *tozerox* and *tozeroy*. *toself* connects the endpoints of the trace (or each segment of the trace if it has gaps) into a closed shape. *tonext* fills the space between two traces if one completely encloses the other (eg consecutive contour lines), and behaves like *toself* if there is no trace before it. *tonext* should not be used if one trace does not enclose the other.
-*/Scattergl & Fill(const json11::Json::object &fill ) {
+Sets the area to fill with a solid color. Defaults to *none* unless this trace is stacked, then it gets *tonexty* (*tonextx*) if `orientation` is *v* (*h*) Use with `fillcolor` if not *none*. *tozerox* and *tozeroy* fill to x=0 and y=0 respectively. *tonextx* and *tonexty* fill between the endpoints of this trace and the endpoints of the trace before it, connecting those endpoints with straight lines (to make a stacked area graph); if there is no trace before it, they behave like *tozerox* and *tozeroy*. *toself* connects the endpoints of the trace (or each segment of the trace if it has gaps) into a closed shape. *tonext* fills the space between two traces if one completely encloses the other (eg consecutive contour lines), and behaves like *toself* if there is no trace before it. *tonext* should not be used if one trace does not enclose the other. Traces in a `stackgroup` will only fill to (or be filled to) other traces in the same group. With multiple `stackgroup`s or some traces stacked and some not, if fill-linked traces are not already consecutive, the later ones will be pushed down in the drawing order.
+*/Scattergl & Fill(const json11::Json &fill ) {
     _scattergl.insert({"fill", fill});
     return *this;
 }
@@ -123,7 +124,7 @@ Sets the area to fill with a solid color. Use with `fillcolor` if not *none*. *t
 
 /**
 Sets the fill color. Defaults to a half-transparent variant of the line color, marker color, or marker line color, whichever is available.
-*/Scattergl & Fillcolor(const json11::Json::object &fillcolor ) {
+*/Scattergl & Fillcolor(const json11::Json &fillcolor ) {
     _scattergl.insert({"fillcolor", fillcolor});
     return *this;
 }
@@ -131,7 +132,7 @@ Sets the fill color. Defaults to a half-transparent variant of the line color, m
 
 /**
 Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon hovering. But, if `none` is set, click and hover events are still fired.
-*/Scattergl & Hoverinfo(const json11::Json::object &hoverinfo ) {
+*/Scattergl & Hoverinfo(const json11::Json &hoverinfo ) {
     _scattergl.insert({"hoverinfo", hoverinfo});
     return *this;
 }
@@ -152,9 +153,33 @@ Scattergl & Hoverlabel(const CppPlotly::Trace::scattergl::Hoverlabel &hoverlabel
 
 
 /**
-Do the hover effects highlight individual points (markers or line points) or do they highlight filled regions? If the fill is *toself* or *tonext* and there are no markers or text, then the default is *fills*, otherwise it is *points*.
-*/Scattergl & Hoveron(const json11::Json::object &hoveron ) {
-    _scattergl.insert({"hoveron", hoveron});
+Template string used for rendering the information that appear on hover box. Note that this will override `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}". Numbers are formatted using d3-format's syntax %{variable:d3-format}, for example "Price: %{y:$.2f}". See https://github.com/d3/d3-format/blob/master/README.md#locale_format for details on the formatting syntax. The variables available in `hovertemplate` are the ones emitted as event data described at this link https://plot.ly/javascript/plotlyjs-events/#event-data. Additionally, every attributes that can be specified per-point (the ones that are `arrayOk: true`) are available.  Anything contained in tag `<extra>` is displayed in the secondary box, for example "<extra>{fullData.name}</extra>". To hide the secondary box completely, use an empty tag `<extra></extra>`.
+*/Scattergl & Hovertemplate(const json11::Json &hovertemplate ) {
+    _scattergl.insert({"hovertemplate", hovertemplate});
+    return *this;
+}
+
+
+/**
+Sets the source reference on plot.ly for  hovertemplate .
+*/Scattergl & Hovertemplatesrc(const std::string &hovertemplatesrc ) {
+    _scattergl.insert({"hovertemplatesrc", hovertemplatesrc});
+    return *this;
+}
+
+
+/**
+Sets hover text elements associated with each (x,y) pair. If a single string, the same string appears over all the data points. If an array of string, the items are mapped in order to the this trace's (x,y) coordinates. To be seen, trace `hoverinfo` must contain a *text* flag.
+*/Scattergl & Hovertext(const json11::Json &hovertext ) {
+    _scattergl.insert({"hovertext", hovertext});
+    return *this;
+}
+
+
+/**
+Sets the source reference on plot.ly for  hovertext .
+*/Scattergl & Hovertextsrc(const std::string &hovertextsrc ) {
+    _scattergl.insert({"hovertextsrc", hovertextsrc});
     return *this;
 }
 
@@ -177,7 +202,7 @@ Assigns id labels to each datum. These ids for object constancy of data points d
 
 /**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
-*/Scattergl & Ids(const json11::Json::object &ids ) {
+*/Scattergl & Ids(const json11::Json &ids ) {
     _scattergl.insert({"ids", ids});
     return *this;
 }
@@ -213,7 +238,7 @@ Scattergl & Marker(const CppPlotly::Trace::scattergl::Marker &marker ) {
 
 /**
 Determines the drawing mode for this scatter trace.
-*/Scattergl & Mode(const json11::Json::object &mode ) {
+*/Scattergl & Mode(const json11::Json &mode ) {
     _scattergl.insert({"mode", mode});
     return *this;
 }
@@ -243,7 +268,7 @@ Scattergl & Selected(const CppPlotly::Trace::scattergl::Selected &selected ) {
 
 /**
 Array containing integer indices of selected points. Has an effect only for traces that support selections. Note that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any other non-array values means no selection all where the `selected` and `unselected` styles have no effect.
-*/Scattergl & Selectedpoints(const json11::Json::object &selectedpoints ) {
+*/Scattergl & Selectedpoints(const json11::Json &selectedpoints ) {
     _scattergl.insert({"selectedpoints", selectedpoints});
     return *this;
 }
@@ -264,9 +289,31 @@ Scattergl & Stream(const CppPlotly::Trace::scattergl::Stream &stream ) {
 
 
 /**
-Sets text elements associated with each (x,y) pair to appear on hover. If a single string, the same string appears over all the data points. If an array of string, the items are mapped in order to the this trace's (x,y) coordinates.
-*/Scattergl & Text(const json11::Json::object &text ) {
+Sets text elements associated with each (x,y) pair. If a single string, the same string appears over all the data points. If an array of string, the items are mapped in order to the this trace's (x,y) coordinates. If trace `hoverinfo` contains a *text* flag and *hovertext* is not set, these elements will be seen in the hover labels.
+*/Scattergl & Text(const json11::Json &text ) {
     _scattergl.insert({"text", text});
+    return *this;
+}
+
+
+Scattergl & Textfont(const CppPlotly::Trace::scattergl::Textfont &textfont ) {
+    _scattergl.insert({"textfont", textfont});
+    return *this;
+}
+
+
+/**
+Sets the positions of the `text` elements with respects to the (x,y) coordinates.
+*/Scattergl & Textposition(const json11::Json &textposition ) {
+    _scattergl.insert({"textposition", textposition});
+    return *this;
+}
+
+
+/**
+Sets the source reference on plot.ly for  textposition .
+*/Scattergl & Textpositionsrc(const std::string &textpositionsrc ) {
+    _scattergl.insert({"textpositionsrc", textpositionsrc});
     return *this;
 }
 
@@ -285,8 +332,18 @@ Scattergl & Transforms(const std::vector<CppPlotly::Trace::scattergl::Transform>
 }
 
 
-Scattergl & Uid(const std::string &uid ) {
+/**
+Assign an id to this trace, Use this to provide object constancy between traces during animations and transitions.
+*/Scattergl & Uid(const std::string &uid ) {
     _scattergl.insert({"uid", uid});
+    return *this;
+}
+
+
+/**
+Controls persistence of some user-driven changes to the trace: `constraintrange` in `parcoords` traces, as well as some `editable: true` modifications such as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note that other user-driven trace attribute changes are controlled by `layout` attributes: `trace.visible` is controlled by `layout.legend.uirevision`, `selectedpoints` is controlled by `layout.selectionrevision`, and `colorbar.(x|y)` (accessible with `config: {editable: true}`) is controlled by `layout.editrevision`. Trace changes are tracked by `uid`, which only falls back on trace index if no `uid` is provided. So if your app can add/remove traces before the end of the `data` array, such that the same trace has a different index, you can still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
+*/Scattergl & Uirevision(const json11::Json &uirevision ) {
+    _scattergl.insert({"uirevision", uirevision});
     return *this;
 }
 
@@ -299,7 +356,7 @@ Scattergl & Unselected(const CppPlotly::Trace::scattergl::Unselected &unselected
 
 /**
 Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a legend item (provided that the legend itself is visible).
-*/Scattergl & Visible(const json11::Json::object &visible ) {
+*/Scattergl & Visible(const json11::Json &visible ) {
     _scattergl.insert({"visible", visible});
     return *this;
 }
@@ -323,7 +380,7 @@ Sets the x coordinates.
 
 /**
 Sets the x coordinates.
-*/Scattergl & X(const json11::Json::object &x ) {
+*/Scattergl & X(const json11::Json &x ) {
     _scattergl.insert({"x", x});
     return *this;
 }
@@ -331,7 +388,7 @@ Sets the x coordinates.
 
 /**
 Alternate to `x`. Builds a linear space of x coordinates. Use with `dx` where `x0` is the starting coordinate and `dx` the step.
-*/Scattergl & X0(const json11::Json::object &x0 ) {
+*/Scattergl & X0(const json11::Json &x0 ) {
     _scattergl.insert({"x0", x0});
     return *this;
 }
@@ -339,7 +396,7 @@ Alternate to `x`. Builds a linear space of x coordinates. Use with `dx` where `x
 
 /**
 Sets a reference between this trace's x coordinates and a 2D cartesian x axis. If *x* (the default value), the x coordinates refer to `layout.xaxis`. If *x2*, the x coordinates refer to `layout.xaxis2`, and so on.
-*/Scattergl & Xaxis(const json11::Json::object &xaxis ) {
+*/Scattergl & Xaxis(const json11::Json &xaxis ) {
     _scattergl.insert({"xaxis", xaxis});
     return *this;
 }
@@ -347,7 +404,7 @@ Sets a reference between this trace's x coordinates and a 2D cartesian x axis. I
 
 /**
 Sets the calendar system to use with `x` date data.
-*/Scattergl & Xcalendar(const json11::Json::object &xcalendar ) {
+*/Scattergl & Xcalendar(const json11::Json &xcalendar ) {
     _scattergl.insert({"xcalendar", xcalendar});
     return *this;
 }
@@ -379,7 +436,7 @@ Sets the y coordinates.
 
 /**
 Sets the y coordinates.
-*/Scattergl & Y(const json11::Json::object &y ) {
+*/Scattergl & Y(const json11::Json &y ) {
     _scattergl.insert({"y", y});
     return *this;
 }
@@ -387,7 +444,7 @@ Sets the y coordinates.
 
 /**
 Alternate to `y`. Builds a linear space of y coordinates. Use with `dy` where `y0` is the starting coordinate and `dy` the step.
-*/Scattergl & Y0(const json11::Json::object &y0 ) {
+*/Scattergl & Y0(const json11::Json &y0 ) {
     _scattergl.insert({"y0", y0});
     return *this;
 }
@@ -395,7 +452,7 @@ Alternate to `y`. Builds a linear space of y coordinates. Use with `dy` where `y
 
 /**
 Sets a reference between this trace's y coordinates and a 2D cartesian y axis. If *y* (the default value), the y coordinates refer to `layout.yaxis`. If *y2*, the y coordinates refer to `layout.yaxis2`, and so on.
-*/Scattergl & Yaxis(const json11::Json::object &yaxis ) {
+*/Scattergl & Yaxis(const json11::Json &yaxis ) {
     _scattergl.insert({"yaxis", yaxis});
     return *this;
 }
@@ -403,7 +460,7 @@ Sets a reference between this trace's y coordinates and a 2D cartesian y axis. I
 
 /**
 Sets the calendar system to use with `y` date data.
-*/Scattergl & Ycalendar(const json11::Json::object &ycalendar ) {
+*/Scattergl & Ycalendar(const json11::Json &ycalendar ) {
     _scattergl.insert({"ycalendar", ycalendar});
     return *this;
 }

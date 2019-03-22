@@ -22,6 +22,7 @@ But I think plotly.js is a great library and I want to use it with C++.
 
 #include <json11.hpp>
 
+#include "CppPlotly/Trace/Sankey/Node/Hoverlabel.h"
 #include "CppPlotly/Trace/Sankey/Node/Line.h"
 
 
@@ -40,7 +41,7 @@ namespace CppPlotly {
 
     /**
 Sets the `node` color. It can be a single value, or an array for specifying color for each `node`. If `node.color` is omitted, then the default `Plotly` color palette will be cycled through to have a variety of colors. These defaults are not fully opaque, to allow some visibility of what is beneath the node.
-*/Node & Color(const json11::Json::object &color ) {
+*/Node & Color(const json11::Json &color ) {
     _node.insert({"color", color});
     return *this;
 }
@@ -54,8 +55,46 @@ Sets the source reference on plot.ly for  color .
 }
 
 
-Node & Description(const json11::Json::object &description ) {
+Node & Description(const json11::Json &description ) {
     _node.insert({"description", description});
+    return *this;
+}
+
+
+/**
+Groups of nodes. Each group is defined by an array with the indices of the nodes it contains. Multiple groups can be specified.
+*/Node & Groups(const std::vector<std::string> &groups ) {
+    _node.insert({"groups", groups});
+    return *this;
+}
+
+
+/**
+Determines which trace information appear when hovering nodes. If `none` or `skip` are set, no information is displayed upon hovering. But, if `none` is set, click and hover events are still fired.
+*/Node & Hoverinfo(const json11::Json &hoverinfo ) {
+    _node.insert({"hoverinfo", hoverinfo});
+    return *this;
+}
+
+
+Node & Hoverlabel(const CppPlotly::Trace::sankey::node::Hoverlabel &hoverlabel ) {
+    _node.insert({"hoverlabel", hoverlabel});
+    return *this;
+}
+
+
+/**
+Template string used for rendering the information that appear on hover box. Note that this will override `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}". Numbers are formatted using d3-format's syntax %{variable:d3-format}, for example "Price: %{y:$.2f}". See https://github.com/d3/d3-format/blob/master/README.md#locale_format for details on the formatting syntax. The variables available in `hovertemplate` are the ones emitted as event data described at this link https://plot.ly/javascript/plotlyjs-events/#event-data. Additionally, every attributes that can be specified per-point (the ones that are `arrayOk: true`) are available. variables `value` and `label`. Anything contained in tag `<extra>` is displayed in the secondary box, for example "<extra>{fullData.name}</extra>". To hide the secondary box completely, use an empty tag `<extra></extra>`.
+*/Node & Hovertemplate(const json11::Json &hovertemplate ) {
+    _node.insert({"hovertemplate", hovertemplate});
+    return *this;
+}
+
+
+/**
+Sets the source reference on plot.ly for  hovertemplate .
+*/Node & Hovertemplatesrc(const std::string &hovertemplatesrc ) {
+    _node.insert({"hovertemplatesrc", hovertemplatesrc});
     return *this;
 }
 
@@ -78,7 +117,7 @@ The shown name of the node.
 
 /**
 The shown name of the node.
-*/Node & Label(const json11::Json::object &label ) {
+*/Node & Label(const json11::Json &label ) {
     _node.insert({"label", label});
     return *this;
 }

@@ -60,7 +60,7 @@ Sets the close values.
 
 /**
 Sets the close values.
-*/Ohlc & Close(const json11::Json::object &close ) {
+*/Ohlc & Close(const json11::Json &close ) {
     _ohlc.insert({"close", close});
     return *this;
 }
@@ -92,7 +92,7 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 /**
 Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
-*/Ohlc & Customdata(const json11::Json::object &customdata ) {
+*/Ohlc & Customdata(const json11::Json &customdata ) {
     _ohlc.insert({"customdata", customdata});
     return *this;
 }
@@ -130,7 +130,7 @@ Sets the high values.
 
 /**
 Sets the high values.
-*/Ohlc & High(const json11::Json::object &high ) {
+*/Ohlc & High(const json11::Json &high ) {
     _ohlc.insert({"high", high});
     return *this;
 }
@@ -146,7 +146,7 @@ Sets the source reference on plot.ly for  high .
 
 /**
 Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon hovering. But, if `none` is set, click and hover events are still fired.
-*/Ohlc & Hoverinfo(const json11::Json::object &hoverinfo ) {
+*/Ohlc & Hoverinfo(const json11::Json &hoverinfo ) {
     _ohlc.insert({"hoverinfo", hoverinfo});
     return *this;
 }
@@ -162,6 +162,22 @@ Sets the source reference on plot.ly for  hoverinfo .
 
 Ohlc & Hoverlabel(const CppPlotly::Trace::ohlc::Hoverlabel &hoverlabel ) {
     _ohlc.insert({"hoverlabel", hoverlabel});
+    return *this;
+}
+
+
+/**
+Same as `text`.
+*/Ohlc & Hovertext(const json11::Json &hovertext ) {
+    _ohlc.insert({"hovertext", hovertext});
+    return *this;
+}
+
+
+/**
+Sets the source reference on plot.ly for  hovertext .
+*/Ohlc & Hovertextsrc(const std::string &hovertextsrc ) {
+    _ohlc.insert({"hovertextsrc", hovertextsrc});
     return *this;
 }
 
@@ -184,7 +200,7 @@ Assigns id labels to each datum. These ids for object constancy of data points d
 
 /**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
-*/Ohlc & Ids(const json11::Json::object &ids ) {
+*/Ohlc & Ids(const json11::Json &ids ) {
     _ohlc.insert({"ids", ids});
     return *this;
 }
@@ -236,7 +252,7 @@ Sets the low values.
 
 /**
 Sets the low values.
-*/Ohlc & Low(const json11::Json::object &low ) {
+*/Ohlc & Low(const json11::Json &low ) {
     _ohlc.insert({"low", low});
     return *this;
 }
@@ -284,7 +300,7 @@ Sets the open values.
 
 /**
 Sets the open values.
-*/Ohlc & Open(const json11::Json::object &open ) {
+*/Ohlc & Open(const json11::Json &open ) {
     _ohlc.insert({"open", open});
     return *this;
 }
@@ -300,7 +316,7 @@ Sets the source reference on plot.ly for  open .
 
 /**
 Array containing integer indices of selected points. Has an effect only for traces that support selections. Note that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any other non-array values means no selection all where the `selected` and `unselected` styles have no effect.
-*/Ohlc & Selectedpoints(const json11::Json::object &selectedpoints ) {
+*/Ohlc & Selectedpoints(const json11::Json &selectedpoints ) {
     _ohlc.insert({"selectedpoints", selectedpoints});
     return *this;
 }
@@ -322,7 +338,7 @@ Ohlc & Stream(const CppPlotly::Trace::ohlc::Stream &stream ) {
 
 /**
 Sets hover text elements associated with each sample point. If a single string, the same string appears over all the data points. If an array of string, the items are mapped in order to this trace's sample points.
-*/Ohlc & Text(const json11::Json::object &text ) {
+*/Ohlc & Text(const json11::Json &text ) {
     _ohlc.insert({"text", text});
     return *this;
 }
@@ -350,15 +366,25 @@ Ohlc & Transforms(const std::vector<CppPlotly::Trace::ohlc::Transform> &transfor
 }
 
 
-Ohlc & Uid(const std::string &uid ) {
+/**
+Assign an id to this trace, Use this to provide object constancy between traces during animations and transitions.
+*/Ohlc & Uid(const std::string &uid ) {
     _ohlc.insert({"uid", uid});
     return *this;
 }
 
 
 /**
+Controls persistence of some user-driven changes to the trace: `constraintrange` in `parcoords` traces, as well as some `editable: true` modifications such as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note that other user-driven trace attribute changes are controlled by `layout` attributes: `trace.visible` is controlled by `layout.legend.uirevision`, `selectedpoints` is controlled by `layout.selectionrevision`, and `colorbar.(x|y)` (accessible with `config: {editable: true}`) is controlled by `layout.editrevision`. Trace changes are tracked by `uid`, which only falls back on trace index if no `uid` is provided. So if your app can add/remove traces before the end of the `data` array, such that the same trace has a different index, you can still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
+*/Ohlc & Uirevision(const json11::Json &uirevision ) {
+    _ohlc.insert({"uirevision", uirevision});
+    return *this;
+}
+
+
+/**
 Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a legend item (provided that the legend itself is visible).
-*/Ohlc & Visible(const json11::Json::object &visible ) {
+*/Ohlc & Visible(const json11::Json &visible ) {
     _ohlc.insert({"visible", visible});
     return *this;
 }
@@ -382,7 +408,7 @@ Sets the x coordinates. If absent, linear coordinate will be generated.
 
 /**
 Sets the x coordinates. If absent, linear coordinate will be generated.
-*/Ohlc & X(const json11::Json::object &x ) {
+*/Ohlc & X(const json11::Json &x ) {
     _ohlc.insert({"x", x});
     return *this;
 }
@@ -390,7 +416,7 @@ Sets the x coordinates. If absent, linear coordinate will be generated.
 
 /**
 Sets a reference between this trace's x coordinates and a 2D cartesian x axis. If *x* (the default value), the x coordinates refer to `layout.xaxis`. If *x2*, the x coordinates refer to `layout.xaxis2`, and so on.
-*/Ohlc & Xaxis(const json11::Json::object &xaxis ) {
+*/Ohlc & Xaxis(const json11::Json &xaxis ) {
     _ohlc.insert({"xaxis", xaxis});
     return *this;
 }
@@ -398,7 +424,7 @@ Sets a reference between this trace's x coordinates and a 2D cartesian x axis. I
 
 /**
 Sets the calendar system to use with `x` date data.
-*/Ohlc & Xcalendar(const json11::Json::object &xcalendar ) {
+*/Ohlc & Xcalendar(const json11::Json &xcalendar ) {
     _ohlc.insert({"xcalendar", xcalendar});
     return *this;
 }
@@ -414,7 +440,7 @@ Sets the source reference on plot.ly for  x .
 
 /**
 Sets a reference between this trace's y coordinates and a 2D cartesian y axis. If *y* (the default value), the y coordinates refer to `layout.yaxis`. If *y2*, the y coordinates refer to `layout.yaxis2`, and so on.
-*/Ohlc & Yaxis(const json11::Json::object &yaxis ) {
+*/Ohlc & Yaxis(const json11::Json &yaxis ) {
     _ohlc.insert({"yaxis", yaxis});
     return *this;
 }

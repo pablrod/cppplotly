@@ -39,8 +39,8 @@ namespace marker {
     public:
 
     /**
-Sets the marker.line color. It accepts either a specific color or an array of numbers that are mapped to the colorscale relative to the max and min values of the array or relative to `cmin` and `cmax` if set.
-*/Line & Color(const json11::Json::object &color ) {
+Sets themarker.linecolor. It accepts either a specific color or an array of numbers that are mapped to the colorscale relative to the max and min values of the array or relative to `marker.line.cmin` and `marker.line.cmax` if set.
+*/Line & Color(const json11::Json &color ) {
     _line.insert({"color", color});
     return *this;
 }
@@ -48,7 +48,7 @@ Sets the marker.line color. It accepts either a specific color or an array of nu
 
 /**
 Sets the border line color of the outlier sample points. Defaults to marker.color
-*/Line & Outliercolor(const json11::Json::object &outliercolor ) {
+*/Line & Outliercolor(const json11::Json &outliercolor ) {
     _line.insert({"outliercolor", outliercolor});
     return *this;
 }

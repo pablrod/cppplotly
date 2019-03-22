@@ -61,17 +61,17 @@ namespace CppPlotly {
                     "</head> \n"
                     "<body> \n"
                     "<div id=\"d2ad872f-61d6-11e8-836b-96e4cd0da1b2\"></div> \n"
-                    "<script src=\"https://cdn.plot.ly/plotly-1.38.0.min.js\"></script> \n"
+                    "<script src=\"https://cdn.plot.ly/plotly-1.45.3.min.js\"></script> \n"
                     "<script> \n"
                     "function maximizar(){"
-                    "Plotly.relayout(document.getElementById('d2ad872f-61d6-11e8-836b-96e4cd0da1b2'), {height: window.innerHeight * 0.92 });"
+                    "Plotly.relayout(document.getElementById('d2ad872f-61d6-11e8-836b-96e4cd0da1b2'), {height: window.innerHeight * 0.92, width: window.innerWidth * 0.92});"
                     "};"
                     "window.onresize = function() {"
                     "$('.js-plotly-plot').each(function(index, gd) {"
                     "Plotly.Plots.resize(gd).then(function(){maximizar()});"
                     "});"
                     "};"
-                    "Plotly.plot(document.getElementById('d2ad872f-61d6-11e8-836b-96e4cd0da1b2'), \n[";
+                    "Plotly.react(document.getElementById('d2ad872f-61d6-11e8-836b-96e4cd0da1b2'), \n[";
 
             html << std::accumulate(traces.cbegin() + 1, traces.cend(), (*(traces.cbegin()))->to_json().dump(), [](const std::string &html, const CppPlotly::BaseTrace::Pointer &trace) {
                 return html + ", " + trace->to_json().dump();

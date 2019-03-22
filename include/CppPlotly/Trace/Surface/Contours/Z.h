@@ -41,7 +41,7 @@ namespace contours {
 
     /**
 Sets the color of the contour lines.
-*/Z & Color(const json11::Json::object &color ) {
+*/Z & Color(const json11::Json &color ) {
     _z.insert({"color", color});
     return *this;
 }
@@ -57,7 +57,7 @@ Determines whether or not contour lines about the z dimension are highlighted on
 
 /**
 Sets the color of the highlighted contour lines.
-*/Z & Highlightcolor(const json11::Json::object &highlightcolor ) {
+*/Z & Highlightcolor(const json11::Json &highlightcolor ) {
     _z.insert({"highlightcolor", highlightcolor});
     return *this;
 }

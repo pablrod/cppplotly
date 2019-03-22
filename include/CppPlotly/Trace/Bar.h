@@ -48,8 +48,16 @@ namespace CppPlotly {
                         {}
 
            /**
+Set several traces linked to the same position axis or matching axes to the same alignmentgroup. This controls whether bars compute their positional range dependently or independently.
+*/Bar & Alignmentgroup(const std::string &alignmentgroup ) {
+    _bar.insert({"alignmentgroup", alignmentgroup});
+    return *this;
+}
+
+
+/**
 Sets where the bar base is drawn (in position axis units). In *stack* or *relative* barmode, traces that set *base* will be excluded and drawn in *overlay* mode instead.
-*/Bar & Base(const json11::Json::object &base ) {
+*/Bar & Base(const json11::Json &base ) {
     _bar.insert({"base", base});
     return *this;
 }
@@ -73,7 +81,7 @@ Determines whether the text nodes are clipped about the subplot axes. To show th
 
 /**
 Constrain the size of text inside or outside a bar to be no larger than the bar itself.
-*/Bar & Constraintext(const json11::Json::object &constraintext ) {
+*/Bar & Constraintext(const json11::Json &constraintext ) {
     _bar.insert({"constraintext", constraintext});
     return *this;
 }
@@ -97,7 +105,7 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 /**
 Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
-*/Bar & Customdata(const json11::Json::object &customdata ) {
+*/Bar & Customdata(const json11::Json &customdata ) {
     _bar.insert({"customdata", customdata});
     return *this;
 }
@@ -141,7 +149,7 @@ Bar & Error_y(const CppPlotly::Trace::bar::Error_y &error_y ) {
 
 /**
 Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon hovering. But, if `none` is set, click and hover events are still fired.
-*/Bar & Hoverinfo(const json11::Json::object &hoverinfo ) {
+*/Bar & Hoverinfo(const json11::Json &hoverinfo ) {
     _bar.insert({"hoverinfo", hoverinfo});
     return *this;
 }
@@ -162,8 +170,24 @@ Bar & Hoverlabel(const CppPlotly::Trace::bar::Hoverlabel &hoverlabel ) {
 
 
 /**
+Template string used for rendering the information that appear on hover box. Note that this will override `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}". Numbers are formatted using d3-format's syntax %{variable:d3-format}, for example "Price: %{y:$.2f}". See https://github.com/d3/d3-format/blob/master/README.md#locale_format for details on the formatting syntax. The variables available in `hovertemplate` are the ones emitted as event data described at this link https://plot.ly/javascript/plotlyjs-events/#event-data. Additionally, every attributes that can be specified per-point (the ones that are `arrayOk: true`) are available.  Anything contained in tag `<extra>` is displayed in the secondary box, for example "<extra>{fullData.name}</extra>". To hide the secondary box completely, use an empty tag `<extra></extra>`.
+*/Bar & Hovertemplate(const json11::Json &hovertemplate ) {
+    _bar.insert({"hovertemplate", hovertemplate});
+    return *this;
+}
+
+
+/**
+Sets the source reference on plot.ly for  hovertemplate .
+*/Bar & Hovertemplatesrc(const std::string &hovertemplatesrc ) {
+    _bar.insert({"hovertemplatesrc", hovertemplatesrc});
+    return *this;
+}
+
+
+/**
 Sets hover text elements associated with each (x,y) pair. If a single string, the same string appears over all the data points. If an array of string, the items are mapped in order to the this trace's (x,y) coordinates. To be seen, trace `hoverinfo` must contain a *text* flag.
-*/Bar & Hovertext(const json11::Json::object &hovertext ) {
+*/Bar & Hovertext(const json11::Json &hovertext ) {
     _bar.insert({"hovertext", hovertext});
     return *this;
 }
@@ -195,7 +219,7 @@ Assigns id labels to each datum. These ids for object constancy of data points d
 
 /**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
-*/Bar & Ids(const json11::Json::object &ids ) {
+*/Bar & Ids(const json11::Json &ids ) {
     _bar.insert({"ids", ids});
     return *this;
 }
@@ -239,8 +263,16 @@ Sets the trace name. The trace name appear as the legend item and on hover.
 
 /**
 Shifts the position where the bar is drawn (in position axis units). In *group* barmode, traces that set *offset* will be excluded and drawn in *overlay* mode instead.
-*/Bar & Offset(const json11::Json::object &offset ) {
+*/Bar & Offset(const json11::Json &offset ) {
     _bar.insert({"offset", offset});
+    return *this;
+}
+
+
+/**
+Set several traces linked to the same position axis or matching axes to the same offsetgroup where bars of the same position coordinate will line up.
+*/Bar & Offsetgroup(const std::string &offsetgroup ) {
+    _bar.insert({"offsetgroup", offsetgroup});
     return *this;
 }
 
@@ -263,7 +295,7 @@ Sets the opacity of the trace.
 
 /**
 Sets the orientation of the bars. With *v* (*h*), the value of the each bar spans along the vertical (horizontal).
-*/Bar & Orientation(const json11::Json::object &orientation ) {
+*/Bar & Orientation(const json11::Json &orientation ) {
     _bar.insert({"orientation", orientation});
     return *this;
 }
@@ -276,7 +308,7 @@ Bar & Outsidetextfont(const CppPlotly::Trace::bar::Outsidetextfont &outsidetextf
 
 
 /**
-For legacy polar chart only.Please switch to *scatterpolar* trace type.Sets the radial coordinates.
+r coordinates in scatter traces are deprecated!Please switch to the *scatterpolar* trace type.Sets the radial coordinatesfor legacy polar chart only.
 */Bar & R(const std::vector<double> &r ) {
     _bar.insert({"r", r});
     return *this;
@@ -284,7 +316,7 @@ For legacy polar chart only.Please switch to *scatterpolar* trace type.Sets the 
 
 
 /**
-For legacy polar chart only.Please switch to *scatterpolar* trace type.Sets the radial coordinates.
+r coordinates in scatter traces are deprecated!Please switch to the *scatterpolar* trace type.Sets the radial coordinatesfor legacy polar chart only.
 */Bar & R(const std::vector<std::string> &r ) {
     _bar.insert({"r", r});
     return *this;
@@ -292,8 +324,8 @@ For legacy polar chart only.Please switch to *scatterpolar* trace type.Sets the 
 
 
 /**
-For legacy polar chart only.Please switch to *scatterpolar* trace type.Sets the radial coordinates.
-*/Bar & R(const json11::Json::object &r ) {
+r coordinates in scatter traces are deprecated!Please switch to the *scatterpolar* trace type.Sets the radial coordinatesfor legacy polar chart only.
+*/Bar & R(const json11::Json &r ) {
     _bar.insert({"r", r});
     return *this;
 }
@@ -315,7 +347,7 @@ Bar & Selected(const CppPlotly::Trace::bar::Selected &selected ) {
 
 /**
 Array containing integer indices of selected points. Has an effect only for traces that support selections. Note that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any other non-array values means no selection all where the `selected` and `unselected` styles have no effect.
-*/Bar & Selectedpoints(const json11::Json::object &selectedpoints ) {
+*/Bar & Selectedpoints(const json11::Json &selectedpoints ) {
     _bar.insert({"selectedpoints", selectedpoints});
     return *this;
 }
@@ -336,7 +368,7 @@ Bar & Stream(const CppPlotly::Trace::bar::Stream &stream ) {
 
 
 /**
-For legacy polar chart only.Please switch to *scatterpolar* trace type.Sets the angular coordinates.
+t coordinates in scatter traces are deprecated!Please switch to the *scatterpolar* trace type.Sets the angular coordinatesfor legacy polar chart only.
 */Bar & T(const std::vector<double> &t ) {
     _bar.insert({"t", t});
     return *this;
@@ -344,7 +376,7 @@ For legacy polar chart only.Please switch to *scatterpolar* trace type.Sets the 
 
 
 /**
-For legacy polar chart only.Please switch to *scatterpolar* trace type.Sets the angular coordinates.
+t coordinates in scatter traces are deprecated!Please switch to the *scatterpolar* trace type.Sets the angular coordinatesfor legacy polar chart only.
 */Bar & T(const std::vector<std::string> &t ) {
     _bar.insert({"t", t});
     return *this;
@@ -352,8 +384,8 @@ For legacy polar chart only.Please switch to *scatterpolar* trace type.Sets the 
 
 
 /**
-For legacy polar chart only.Please switch to *scatterpolar* trace type.Sets the angular coordinates.
-*/Bar & T(const json11::Json::object &t ) {
+t coordinates in scatter traces are deprecated!Please switch to the *scatterpolar* trace type.Sets the angular coordinatesfor legacy polar chart only.
+*/Bar & T(const json11::Json &t ) {
     _bar.insert({"t", t});
     return *this;
 }
@@ -361,7 +393,7 @@ For legacy polar chart only.Please switch to *scatterpolar* trace type.Sets the 
 
 /**
 Sets text elements associated with each (x,y) pair. If a single string, the same string appears over all the data points. If an array of string, the items are mapped in order to the this trace's (x,y) coordinates. If trace `hoverinfo` contains a *text* flag and *hovertext* is not set, these elements will be seen in the hover labels.
-*/Bar & Text(const json11::Json::object &text ) {
+*/Bar & Text(const json11::Json &text ) {
     _bar.insert({"text", text});
     return *this;
 }
@@ -374,8 +406,8 @@ Bar & Textfont(const CppPlotly::Trace::bar::Textfont &textfont ) {
 
 
 /**
-Specifies the location of the `text`. *inside* positions `text` inside, next to the bar end (rotated and scaled if needed). *outside* positions `text` outside, next to the bar end (scaled if needed). *auto* positions `text` inside or outside so that `text` size is maximized.
-*/Bar & Textposition(const json11::Json::object &textposition ) {
+Specifies the location of the `text`. *inside* positions `text` inside, next to the bar end (rotated and scaled if needed). *outside* positions `text` outside, next to the bar end (scaled if needed), unless there is another bar stacked on this one, then the text gets pushed inside. *auto* tries to position `text` inside the bar, but if the bar is too small and no bar is stacked on this one the text is moved outside.
+*/Bar & Textposition(const json11::Json &textposition ) {
     _bar.insert({"textposition", textposition});
     return *this;
 }
@@ -411,8 +443,18 @@ Sets the source reference on plot.ly for  t .
 }
 
 
-Bar & Uid(const std::string &uid ) {
+/**
+Assign an id to this trace, Use this to provide object constancy between traces during animations and transitions.
+*/Bar & Uid(const std::string &uid ) {
     _bar.insert({"uid", uid});
+    return *this;
+}
+
+
+/**
+Controls persistence of some user-driven changes to the trace: `constraintrange` in `parcoords` traces, as well as some `editable: true` modifications such as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note that other user-driven trace attribute changes are controlled by `layout` attributes: `trace.visible` is controlled by `layout.legend.uirevision`, `selectedpoints` is controlled by `layout.selectionrevision`, and `colorbar.(x|y)` (accessible with `config: {editable: true}`) is controlled by `layout.editrevision`. Trace changes are tracked by `uid`, which only falls back on trace index if no `uid` is provided. So if your app can add/remove traces before the end of the `data` array, such that the same trace has a different index, you can still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
+*/Bar & Uirevision(const json11::Json &uirevision ) {
+    _bar.insert({"uirevision", uirevision});
     return *this;
 }
 
@@ -425,7 +467,7 @@ Bar & Unselected(const CppPlotly::Trace::bar::Unselected &unselected ) {
 
 /**
 Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a legend item (provided that the legend itself is visible).
-*/Bar & Visible(const json11::Json::object &visible ) {
+*/Bar & Visible(const json11::Json &visible ) {
     _bar.insert({"visible", visible});
     return *this;
 }
@@ -433,7 +475,7 @@ Determines whether or not this trace is visible. If *legendonly*, the trace is n
 
 /**
 Sets the bar width (in position axis units).
-*/Bar & Width(const json11::Json::object &width ) {
+*/Bar & Width(const json11::Json &width ) {
     _bar.insert({"width", width});
     return *this;
 }
@@ -465,7 +507,7 @@ Sets the x coordinates.
 
 /**
 Sets the x coordinates.
-*/Bar & X(const json11::Json::object &x ) {
+*/Bar & X(const json11::Json &x ) {
     _bar.insert({"x", x});
     return *this;
 }
@@ -473,7 +515,7 @@ Sets the x coordinates.
 
 /**
 Alternate to `x`. Builds a linear space of x coordinates. Use with `dx` where `x0` is the starting coordinate and `dx` the step.
-*/Bar & X0(const json11::Json::object &x0 ) {
+*/Bar & X0(const json11::Json &x0 ) {
     _bar.insert({"x0", x0});
     return *this;
 }
@@ -481,7 +523,7 @@ Alternate to `x`. Builds a linear space of x coordinates. Use with `dx` where `x
 
 /**
 Sets a reference between this trace's x coordinates and a 2D cartesian x axis. If *x* (the default value), the x coordinates refer to `layout.xaxis`. If *x2*, the x coordinates refer to `layout.xaxis2`, and so on.
-*/Bar & Xaxis(const json11::Json::object &xaxis ) {
+*/Bar & Xaxis(const json11::Json &xaxis ) {
     _bar.insert({"xaxis", xaxis});
     return *this;
 }
@@ -489,7 +531,7 @@ Sets a reference between this trace's x coordinates and a 2D cartesian x axis. I
 
 /**
 Sets the calendar system to use with `x` date data.
-*/Bar & Xcalendar(const json11::Json::object &xcalendar ) {
+*/Bar & Xcalendar(const json11::Json &xcalendar ) {
     _bar.insert({"xcalendar", xcalendar});
     return *this;
 }
@@ -521,7 +563,7 @@ Sets the y coordinates.
 
 /**
 Sets the y coordinates.
-*/Bar & Y(const json11::Json::object &y ) {
+*/Bar & Y(const json11::Json &y ) {
     _bar.insert({"y", y});
     return *this;
 }
@@ -529,7 +571,7 @@ Sets the y coordinates.
 
 /**
 Alternate to `y`. Builds a linear space of y coordinates. Use with `dy` where `y0` is the starting coordinate and `dy` the step.
-*/Bar & Y0(const json11::Json::object &y0 ) {
+*/Bar & Y0(const json11::Json &y0 ) {
     _bar.insert({"y0", y0});
     return *this;
 }
@@ -537,7 +579,7 @@ Alternate to `y`. Builds a linear space of y coordinates. Use with `dy` where `y
 
 /**
 Sets a reference between this trace's y coordinates and a 2D cartesian y axis. If *y* (the default value), the y coordinates refer to `layout.yaxis`. If *y2*, the y coordinates refer to `layout.yaxis2`, and so on.
-*/Bar & Yaxis(const json11::Json::object &yaxis ) {
+*/Bar & Yaxis(const json11::Json &yaxis ) {
     _bar.insert({"yaxis", yaxis});
     return *this;
 }
@@ -545,7 +587,7 @@ Sets a reference between this trace's y coordinates and a 2D cartesian y axis. I
 
 /**
 Sets the calendar system to use with `y` date data.
-*/Bar & Ycalendar(const json11::Json::object &ycalendar ) {
+*/Bar & Ycalendar(const json11::Json &ycalendar ) {
     _bar.insert({"ycalendar", ycalendar});
     return *this;
 }

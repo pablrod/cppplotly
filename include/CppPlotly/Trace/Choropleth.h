@@ -44,7 +44,7 @@ namespace CppPlotly {
                         {}
 
            /**
-Determines whether or not the colorscale is picked using the sign of the input z values.
+Determines whether the colorscale is a default palette (`autocolorscale: true`) or the palette determined by `colorscale`. In case `colorscale` is unspecified or `autocolorscale` is true, the default  palette will be chosen according to whether numbers in the `color` array are all positive, all negative or mixed.
 */Choropleth & Autocolorscale(const bool &autocolorscale ) {
     _choropleth.insert({"autocolorscale", autocolorscale});
     return *this;
@@ -58,8 +58,8 @@ Choropleth & Colorbar(const CppPlotly::Trace::choropleth::Colorbar &colorbar ) {
 
 
 /**
-Sets the colorscale. The colorscale must be an array containing arrays mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string. At minimum, a mapping for the lowest (0) and highest (1) values are required. For example, `[[0, 'rgb(0,0,255)', [1, 'rgb(255,0,0)']]`. To control the bounds of the colorscale in z space, use zmin and zmax
-*/Choropleth & Colorscale(const json11::Json::object &colorscale ) {
+Sets the colorscale. The colorscale must be an array containing arrays mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string. At minimum, a mapping for the lowest (0) and highest (1) values are required. For example, `[[0, 'rgb(0,0,255)', [1, 'rgb(255,0,0)']]`. To control the bounds of the colorscale in color space, use`zmin` and `zmax`. Alternatively, `colorscale` may be a palette name string of the following list: Greys,YlGnBu,Greens,YlOrRd,Bluered,RdBu,Reds,Blues,Picnic,Rainbow,Portland,Jet,Hot,Blackbody,Earth,Electric,Viridis,Cividis.
+*/Choropleth & Colorscale(const json11::Json &colorscale ) {
     _choropleth.insert({"colorscale", colorscale});
     return *this;
 }
@@ -83,7 +83,7 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 /**
 Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
-*/Choropleth & Customdata(const json11::Json::object &customdata ) {
+*/Choropleth & Customdata(const json11::Json &customdata ) {
     _choropleth.insert({"customdata", customdata});
     return *this;
 }
@@ -99,7 +99,7 @@ Sets the source reference on plot.ly for  customdata .
 
 /**
 Sets a reference between this trace's geospatial coordinates and a geographic map. If *geo* (the default value), the geospatial coordinates refer to `layout.geo`. If *geo2*, the geospatial coordinates refer to `layout.geo2`, and so on.
-*/Choropleth & Geo(const json11::Json::object &geo ) {
+*/Choropleth & Geo(const json11::Json &geo ) {
     _choropleth.insert({"geo", geo});
     return *this;
 }
@@ -107,7 +107,7 @@ Sets a reference between this trace's geospatial coordinates and a geographic ma
 
 /**
 Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon hovering. But, if `none` is set, click and hover events are still fired.
-*/Choropleth & Hoverinfo(const json11::Json::object &hoverinfo ) {
+*/Choropleth & Hoverinfo(const json11::Json &hoverinfo ) {
     _choropleth.insert({"hoverinfo", hoverinfo});
     return *this;
 }
@@ -123,6 +123,38 @@ Sets the source reference on plot.ly for  hoverinfo .
 
 Choropleth & Hoverlabel(const CppPlotly::Trace::choropleth::Hoverlabel &hoverlabel ) {
     _choropleth.insert({"hoverlabel", hoverlabel});
+    return *this;
+}
+
+
+/**
+Template string used for rendering the information that appear on hover box. Note that this will override `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}". Numbers are formatted using d3-format's syntax %{variable:d3-format}, for example "Price: %{y:$.2f}". See https://github.com/d3/d3-format/blob/master/README.md#locale_format for details on the formatting syntax. The variables available in `hovertemplate` are the ones emitted as event data described at this link https://plot.ly/javascript/plotlyjs-events/#event-data. Additionally, every attributes that can be specified per-point (the ones that are `arrayOk: true`) are available.  Anything contained in tag `<extra>` is displayed in the secondary box, for example "<extra>{fullData.name}</extra>". To hide the secondary box completely, use an empty tag `<extra></extra>`.
+*/Choropleth & Hovertemplate(const json11::Json &hovertemplate ) {
+    _choropleth.insert({"hovertemplate", hovertemplate});
+    return *this;
+}
+
+
+/**
+Sets the source reference on plot.ly for  hovertemplate .
+*/Choropleth & Hovertemplatesrc(const std::string &hovertemplatesrc ) {
+    _choropleth.insert({"hovertemplatesrc", hovertemplatesrc});
+    return *this;
+}
+
+
+/**
+Same as `text`.
+*/Choropleth & Hovertext(const json11::Json &hovertext ) {
+    _choropleth.insert({"hovertext", hovertext});
+    return *this;
+}
+
+
+/**
+Sets the source reference on plot.ly for  hovertext .
+*/Choropleth & Hovertextsrc(const std::string &hovertextsrc ) {
+    _choropleth.insert({"hovertextsrc", hovertextsrc});
     return *this;
 }
 
@@ -145,7 +177,7 @@ Assigns id labels to each datum. These ids for object constancy of data points d
 
 /**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
-*/Choropleth & Ids(const json11::Json::object &ids ) {
+*/Choropleth & Ids(const json11::Json &ids ) {
     _choropleth.insert({"ids", ids});
     return *this;
 }
@@ -169,7 +201,7 @@ Sets the legend group for this trace. Traces part of the same legend group hide/
 
 /**
 Determines the set of locations used to match entries in `locations` to regions on the map.
-*/Choropleth & Locationmode(const json11::Json::object &locationmode ) {
+*/Choropleth & Locationmode(const json11::Json &locationmode ) {
     _choropleth.insert({"locationmode", locationmode});
     return *this;
 }
@@ -193,7 +225,7 @@ Sets the coordinates via location IDs or names. See `locationmode` for more info
 
 /**
 Sets the coordinates via location IDs or names. See `locationmode` for more info.
-*/Choropleth & Locations(const json11::Json::object &locations ) {
+*/Choropleth & Locations(const json11::Json &locations ) {
     _choropleth.insert({"locations", locations});
     return *this;
 }
@@ -230,7 +262,7 @@ Sets the opacity of the trace.
 
 
 /**
-Reverses the colorscale.
+Reverses the color mapping if true. If true, `zmin` will correspond to the last color in the array and `zmax` will correspond to the first color.
 */Choropleth & Reversescale(const bool &reversescale ) {
     _choropleth.insert({"reversescale", reversescale});
     return *this;
@@ -245,7 +277,7 @@ Choropleth & Selected(const CppPlotly::Trace::choropleth::Selected &selected ) {
 
 /**
 Array containing integer indices of selected points. Has an effect only for traces that support selections. Note that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any other non-array values means no selection all where the `selected` and `unselected` styles have no effect.
-*/Choropleth & Selectedpoints(const json11::Json::object &selectedpoints ) {
+*/Choropleth & Selectedpoints(const json11::Json &selectedpoints ) {
     _choropleth.insert({"selectedpoints", selectedpoints});
     return *this;
 }
@@ -275,7 +307,7 @@ Choropleth & Stream(const CppPlotly::Trace::choropleth::Stream &stream ) {
 
 /**
 Sets the text elements associated with each location.
-*/Choropleth & Text(const json11::Json::object &text ) {
+*/Choropleth & Text(const json11::Json &text ) {
     _choropleth.insert({"text", text});
     return *this;
 }
@@ -295,8 +327,18 @@ Choropleth & Transforms(const std::vector<CppPlotly::Trace::choropleth::Transfor
 }
 
 
-Choropleth & Uid(const std::string &uid ) {
+/**
+Assign an id to this trace, Use this to provide object constancy between traces during animations and transitions.
+*/Choropleth & Uid(const std::string &uid ) {
     _choropleth.insert({"uid", uid});
+    return *this;
+}
+
+
+/**
+Controls persistence of some user-driven changes to the trace: `constraintrange` in `parcoords` traces, as well as some `editable: true` modifications such as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note that other user-driven trace attribute changes are controlled by `layout` attributes: `trace.visible` is controlled by `layout.legend.uirevision`, `selectedpoints` is controlled by `layout.selectionrevision`, and `colorbar.(x|y)` (accessible with `config: {editable: true}`) is controlled by `layout.editrevision`. Trace changes are tracked by `uid`, which only falls back on trace index if no `uid` is provided. So if your app can add/remove traces before the end of the `data` array, such that the same trace has a different index, you can still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
+*/Choropleth & Uirevision(const json11::Json &uirevision ) {
+    _choropleth.insert({"uirevision", uirevision});
     return *this;
 }
 
@@ -309,7 +351,7 @@ Choropleth & Unselected(const CppPlotly::Trace::choropleth::Unselected &unselect
 
 /**
 Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a legend item (provided that the legend itself is visible).
-*/Choropleth & Visible(const json11::Json::object &visible ) {
+*/Choropleth & Visible(const json11::Json &visible ) {
     _choropleth.insert({"visible", visible});
     return *this;
 }
@@ -333,14 +375,14 @@ Sets the color values.
 
 /**
 Sets the color values.
-*/Choropleth & Z(const json11::Json::object &z ) {
+*/Choropleth & Z(const json11::Json &z ) {
     _choropleth.insert({"z", z});
     return *this;
 }
 
 
 /**
-Determines the whether or not the color domain is computed with respect to the input data.
+Determines whether or not the color domain is computed with respect to the input data (here in `z`) or the bounds set in `zmin` and `zmax`  Defaults to `false` when `zmin` and `zmax` are set by the user.
 */Choropleth & Zauto(const bool &zauto ) {
     _choropleth.insert({"zauto", zauto});
     return *this;
@@ -348,7 +390,7 @@ Determines the whether or not the color domain is computed with respect to the i
 
 
 /**
-Sets the upper bound of color domain.
+Sets the upper bound of the color domain. Value should have the same units as in `z` and if set, `zmin` must be set as well.
 */Choropleth & Zmax(const double &zmax ) {
     _choropleth.insert({"zmax", zmax});
     return *this;
@@ -356,7 +398,15 @@ Sets the upper bound of color domain.
 
 
 /**
-Sets the lower bound of color domain.
+Sets the mid-point of the color domain by scaling `zmin` and/or `zmax` to be equidistant to this point. Value should have the same units as in `z`. Has no effect when `zauto` is `false`.
+*/Choropleth & Zmid(const double &zmid ) {
+    _choropleth.insert({"zmid", zmid});
+    return *this;
+}
+
+
+/**
+Sets the lower bound of the color domain. Value should have the same units as in `z` and if set, `zmax` must be set as well.
 */Choropleth & Zmin(const double &zmin ) {
     _choropleth.insert({"zmin", zmin});
     return *this;

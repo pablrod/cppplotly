@@ -40,7 +40,7 @@ namespace marker {
 
     /**
 Sets the color of the line enclosing each sector.
-*/Line & Color(const json11::Json::object &color ) {
+*/Line & Color(const json11::Json &color ) {
     _line.insert({"color", color});
     return *this;
 }
@@ -56,7 +56,7 @@ Sets the source reference on plot.ly for  color .
 
 /**
 Sets the width (in px) of the line enclosing each sector.
-*/Line & Width(const json11::Json::object &width ) {
+*/Line & Width(const json11::Json &width ) {
     _line.insert({"width", width});
     return *this;
 }

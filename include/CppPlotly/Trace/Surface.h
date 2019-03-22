@@ -25,7 +25,6 @@ But I think plotly.js is a great library and I want to use it with C++.
 #include "CppPlotly/Trace/Surface/Lighting.h"
 #include "CppPlotly/Trace/Surface/Lightposition.h"
 #include "CppPlotly/Trace/Surface/Stream.h"
-#include "CppPlotly/Trace/Surface/Transform.h"
 
 
 namespace CppPlotly {
@@ -44,7 +43,7 @@ namespace CppPlotly {
                         {}
 
            /**
-Determines whether or not the colorscale is picked using the sign of the input z values.
+Determines whether the colorscale is a default palette (`autocolorscale: true`) or the palette determined by `colorscale`. In case `colorscale` is unspecified or `autocolorscale` is true, the default  palette will be chosen according to whether numbers in the `color` array are all positive, all negative or mixed.
 */Surface & Autocolorscale(const bool &autocolorscale ) {
     _surface.insert({"autocolorscale", autocolorscale});
     return *this;
@@ -52,7 +51,7 @@ Determines whether or not the colorscale is picked using the sign of the input z
 
 
 /**
-Determines the whether or not the color domain is computed with respect to the input data.
+Determines whether or not the color domain is computed with respect to the input data (here z or surfacecolor) or the bounds set in `cmin` and `cmax`  Defaults to `false` when `cmin` and `cmax` are set by the user.
 */Surface & Cauto(const bool &cauto ) {
     _surface.insert({"cauto", cauto});
     return *this;
@@ -60,7 +59,7 @@ Determines the whether or not the color domain is computed with respect to the i
 
 
 /**
-Sets the upper bound of color domain.
+Sets the upper bound of the color domain. Value should have the same units as z or surfacecolor and if set, `cmin` must be set as well.
 */Surface & Cmax(const double &cmax ) {
     _surface.insert({"cmax", cmax});
     return *this;
@@ -68,7 +67,15 @@ Sets the upper bound of color domain.
 
 
 /**
-Sets the lower bound of color domain.
+Sets the mid-point of the color domain by scaling `cmin` and/or `cmax` to be equidistant to this point. Value should have the same units as z or surfacecolor. Has no effect when `cauto` is `false`.
+*/Surface & Cmid(const double &cmid ) {
+    _surface.insert({"cmid", cmid});
+    return *this;
+}
+
+
+/**
+Sets the lower bound of the color domain. Value should have the same units as z or surfacecolor and if set, `cmax` must be set as well.
 */Surface & Cmin(const double &cmin ) {
     _surface.insert({"cmin", cmin});
     return *this;
@@ -82,8 +89,8 @@ Surface & Colorbar(const CppPlotly::Trace::surface::Colorbar &colorbar ) {
 
 
 /**
-Sets the colorscale. The colorscale must be an array containing arrays mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string. At minimum, a mapping for the lowest (0) and highest (1) values are required. For example, `[[0, 'rgb(0,0,255)', [1, 'rgb(255,0,0)']]`. To control the bounds of the colorscale in z space, use zmin and zmax
-*/Surface & Colorscale(const json11::Json::object &colorscale ) {
+Sets the colorscale. The colorscale must be an array containing arrays mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string. At minimum, a mapping for the lowest (0) and highest (1) values are required. For example, `[[0, 'rgb(0,0,255)', [1, 'rgb(255,0,0)']]`. To control the bounds of the colorscale in color space, use`cmin` and `cmax`. Alternatively, `colorscale` may be a palette name string of the following list: Greys,YlGnBu,Greens,YlOrRd,Bluered,RdBu,Reds,Blues,Picnic,Rainbow,Portland,Jet,Hot,Blackbody,Earth,Electric,Viridis,Cividis.
+*/Surface & Colorscale(const json11::Json &colorscale ) {
     _surface.insert({"colorscale", colorscale});
     return *this;
 }
@@ -113,7 +120,7 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 /**
 Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
-*/Surface & Customdata(const json11::Json::object &customdata ) {
+*/Surface & Customdata(const json11::Json &customdata ) {
     _surface.insert({"customdata", customdata});
     return *this;
 }
@@ -137,7 +144,7 @@ Determines whether or not a surface is drawn. For example, set `hidesurface` to 
 
 /**
 Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon hovering. But, if `none` is set, click and hover events are still fired.
-*/Surface & Hoverinfo(const json11::Json::object &hoverinfo ) {
+*/Surface & Hoverinfo(const json11::Json &hoverinfo ) {
     _surface.insert({"hoverinfo", hoverinfo});
     return *this;
 }
@@ -153,6 +160,38 @@ Sets the source reference on plot.ly for  hoverinfo .
 
 Surface & Hoverlabel(const CppPlotly::Trace::surface::Hoverlabel &hoverlabel ) {
     _surface.insert({"hoverlabel", hoverlabel});
+    return *this;
+}
+
+
+/**
+Template string used for rendering the information that appear on hover box. Note that this will override `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}". Numbers are formatted using d3-format's syntax %{variable:d3-format}, for example "Price: %{y:$.2f}". See https://github.com/d3/d3-format/blob/master/README.md#locale_format for details on the formatting syntax. The variables available in `hovertemplate` are the ones emitted as event data described at this link https://plot.ly/javascript/plotlyjs-events/#event-data. Additionally, every attributes that can be specified per-point (the ones that are `arrayOk: true`) are available.  Anything contained in tag `<extra>` is displayed in the secondary box, for example "<extra>{fullData.name}</extra>". To hide the secondary box completely, use an empty tag `<extra></extra>`.
+*/Surface & Hovertemplate(const json11::Json &hovertemplate ) {
+    _surface.insert({"hovertemplate", hovertemplate});
+    return *this;
+}
+
+
+/**
+Sets the source reference on plot.ly for  hovertemplate .
+*/Surface & Hovertemplatesrc(const std::string &hovertemplatesrc ) {
+    _surface.insert({"hovertemplatesrc", hovertemplatesrc});
+    return *this;
+}
+
+
+/**
+Same as `text`.
+*/Surface & Hovertext(const json11::Json &hovertext ) {
+    _surface.insert({"hovertext", hovertext});
+    return *this;
+}
+
+
+/**
+Sets the source reference on plot.ly for  hovertext .
+*/Surface & Hovertextsrc(const std::string &hovertextsrc ) {
+    _surface.insert({"hovertextsrc", hovertextsrc});
     return *this;
 }
 
@@ -175,7 +214,7 @@ Assigns id labels to each datum. These ids for object constancy of data points d
 
 /**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
-*/Surface & Ids(const json11::Json::object &ids ) {
+*/Surface & Ids(const json11::Json &ids ) {
     _surface.insert({"ids", ids});
     return *this;
 }
@@ -218,7 +257,7 @@ Sets the trace name. The trace name appear as the legend item and on hover.
 
 
 /**
-Sets the opacity of the surface.
+Sets the opacity of the surface. Please note that in the case of using high `opacity` values for example a value greater than or equal to 0.5 on two surfaces (and 0.25 with four surfaces), an overlay of multiple transparent surfaces may not perfectly be sorted in depth by the webgl API. This behavior may be improved in the near future and is subject to change.
 */Surface & Opacity(const double &opacity ) {
     _surface.insert({"opacity", opacity});
     return *this;
@@ -226,7 +265,7 @@ Sets the opacity of the surface.
 
 
 /**
-Reverses the colorscale.
+Reverses the color mapping if true. If true, `cmin` will correspond to the last color in the array and `cmax` will correspond to the first color.
 */Surface & Reversescale(const bool &reversescale ) {
     _surface.insert({"reversescale", reversescale});
     return *this;
@@ -235,7 +274,7 @@ Reverses the colorscale.
 
 /**
 Sets a reference between this trace's 3D coordinate system and a 3D scene. If *scene* (the default value), the (x,y,z) coordinates refer to `layout.scene`. If *scene2*, the (x,y,z) coordinates refer to `layout.scene2`, and so on.
-*/Surface & Scene(const json11::Json::object &scene ) {
+*/Surface & Scene(const json11::Json &scene ) {
     _surface.insert({"scene", scene});
     return *this;
 }
@@ -243,7 +282,7 @@ Sets a reference between this trace's 3D coordinate system and a 3D scene. If *s
 
 /**
 Array containing integer indices of selected points. Has an effect only for traces that support selections. Note that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any other non-array values means no selection all where the `selected` and `unselected` styles have no effect.
-*/Surface & Selectedpoints(const json11::Json::object &selectedpoints ) {
+*/Surface & Selectedpoints(const json11::Json &selectedpoints ) {
     _surface.insert({"selectedpoints", selectedpoints});
     return *this;
 }
@@ -289,7 +328,7 @@ Sets the surface color values, used for setting a color scale independent of `z`
 
 /**
 Sets the surface color values, used for setting a color scale independent of `z`.
-*/Surface & Surfacecolor(const json11::Json::object &surfacecolor ) {
+*/Surface & Surfacecolor(const json11::Json &surfacecolor ) {
     _surface.insert({"surfacecolor", surfacecolor});
     return *this;
 }
@@ -305,7 +344,7 @@ Sets the source reference on plot.ly for  surfacecolor .
 
 /**
 Sets the text elements associated with each z value. If trace `hoverinfo` contains a *text* flag and *hovertext* is not set, these elements will be seen in the hover labels.
-*/Surface & Text(const json11::Json::object &text ) {
+*/Surface & Text(const json11::Json &text ) {
     _surface.insert({"text", text});
     return *this;
 }
@@ -319,21 +358,25 @@ Sets the source reference on plot.ly for  text .
 }
 
 
-Surface & Transforms(const std::vector<CppPlotly::Trace::surface::Transform> &transforms ) {
-    _surface.insert({"transforms", transforms});
-    return *this;
-}
-
-
-Surface & Uid(const std::string &uid ) {
+/**
+Assign an id to this trace, Use this to provide object constancy between traces during animations and transitions.
+*/Surface & Uid(const std::string &uid ) {
     _surface.insert({"uid", uid});
     return *this;
 }
 
 
 /**
+Controls persistence of some user-driven changes to the trace: `constraintrange` in `parcoords` traces, as well as some `editable: true` modifications such as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note that other user-driven trace attribute changes are controlled by `layout` attributes: `trace.visible` is controlled by `layout.legend.uirevision`, `selectedpoints` is controlled by `layout.selectionrevision`, and `colorbar.(x|y)` (accessible with `config: {editable: true}`) is controlled by `layout.editrevision`. Trace changes are tracked by `uid`, which only falls back on trace index if no `uid` is provided. So if your app can add/remove traces before the end of the `data` array, such that the same trace has a different index, you can still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
+*/Surface & Uirevision(const json11::Json &uirevision ) {
+    _surface.insert({"uirevision", uirevision});
+    return *this;
+}
+
+
+/**
 Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a legend item (provided that the legend itself is visible).
-*/Surface & Visible(const json11::Json::object &visible ) {
+*/Surface & Visible(const json11::Json &visible ) {
     _surface.insert({"visible", visible});
     return *this;
 }
@@ -357,7 +400,7 @@ Sets the x coordinates.
 
 /**
 Sets the x coordinates.
-*/Surface & X(const json11::Json::object &x ) {
+*/Surface & X(const json11::Json &x ) {
     _surface.insert({"x", x});
     return *this;
 }
@@ -365,7 +408,7 @@ Sets the x coordinates.
 
 /**
 Sets the calendar system to use with `x` date data.
-*/Surface & Xcalendar(const json11::Json::object &xcalendar ) {
+*/Surface & Xcalendar(const json11::Json &xcalendar ) {
     _surface.insert({"xcalendar", xcalendar});
     return *this;
 }
@@ -397,7 +440,7 @@ Sets the y coordinates.
 
 /**
 Sets the y coordinates.
-*/Surface & Y(const json11::Json::object &y ) {
+*/Surface & Y(const json11::Json &y ) {
     _surface.insert({"y", y});
     return *this;
 }
@@ -405,7 +448,7 @@ Sets the y coordinates.
 
 /**
 Sets the calendar system to use with `y` date data.
-*/Surface & Ycalendar(const json11::Json::object &ycalendar ) {
+*/Surface & Ycalendar(const json11::Json &ycalendar ) {
     _surface.insert({"ycalendar", ycalendar});
     return *this;
 }
@@ -437,7 +480,7 @@ Sets the z coordinates.
 
 /**
 Sets the z coordinates.
-*/Surface & Z(const json11::Json::object &z ) {
+*/Surface & Z(const json11::Json &z ) {
     _surface.insert({"z", z});
     return *this;
 }
@@ -445,7 +488,7 @@ Sets the z coordinates.
 
 /**
 Sets the calendar system to use with `z` date data.
-*/Surface & Zcalendar(const json11::Json::object &zcalendar ) {
+*/Surface & Zcalendar(const json11::Json &zcalendar ) {
     _surface.insert({"zcalendar", zcalendar});
     return *this;
 }

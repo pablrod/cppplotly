@@ -46,6 +46,14 @@ namespace CppPlotly {
                         {}
 
            /**
+Set several traces linked to the same position axis or matching axes to the same alignmentgroup. This controls whether bars compute their positional range dependently or independently.
+*/Violin & Alignmentgroup(const std::string &alignmentgroup ) {
+    _violin.insert({"alignmentgroup", alignmentgroup});
+    return *this;
+}
+
+
+/**
 Sets the bandwidth used to compute the kernel density estimate. By default, the bandwidth is determined by Silverman's rule of thumb.
 */Violin & Bandwidth(const double &bandwidth ) {
     _violin.insert({"bandwidth", bandwidth});
@@ -77,7 +85,7 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 /**
 Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
-*/Violin & Customdata(const json11::Json::object &customdata ) {
+*/Violin & Customdata(const json11::Json &customdata ) {
     _violin.insert({"customdata", customdata});
     return *this;
 }
@@ -93,7 +101,7 @@ Sets the source reference on plot.ly for  customdata .
 
 /**
 Sets the fill color. Defaults to a half-transparent variant of the line color, marker color, or marker line color, whichever is available.
-*/Violin & Fillcolor(const json11::Json::object &fillcolor ) {
+*/Violin & Fillcolor(const json11::Json &fillcolor ) {
     _violin.insert({"fillcolor", fillcolor});
     return *this;
 }
@@ -101,7 +109,7 @@ Sets the fill color. Defaults to a half-transparent variant of the line color, m
 
 /**
 Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon hovering. But, if `none` is set, click and hover events are still fired.
-*/Violin & Hoverinfo(const json11::Json::object &hoverinfo ) {
+*/Violin & Hoverinfo(const json11::Json &hoverinfo ) {
     _violin.insert({"hoverinfo", hoverinfo});
     return *this;
 }
@@ -123,8 +131,24 @@ Violin & Hoverlabel(const CppPlotly::Trace::violin::Hoverlabel &hoverlabel ) {
 
 /**
 Do the hover effects highlight individual violins or sample points or the kernel density estimate or any combination of them?
-*/Violin & Hoveron(const json11::Json::object &hoveron ) {
+*/Violin & Hoveron(const json11::Json &hoveron ) {
     _violin.insert({"hoveron", hoveron});
+    return *this;
+}
+
+
+/**
+Same as `text`.
+*/Violin & Hovertext(const json11::Json &hovertext ) {
+    _violin.insert({"hovertext", hovertext});
+    return *this;
+}
+
+
+/**
+Sets the source reference on plot.ly for  hovertext .
+*/Violin & Hovertextsrc(const std::string &hovertextsrc ) {
+    _violin.insert({"hovertextsrc", hovertextsrc});
     return *this;
 }
 
@@ -147,7 +171,7 @@ Assigns id labels to each datum. These ids for object constancy of data points d
 
 /**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
-*/Violin & Ids(const json11::Json::object &ids ) {
+*/Violin & Ids(const json11::Json &ids ) {
     _violin.insert({"ids", ids});
     return *this;
 }
@@ -204,6 +228,14 @@ Sets the trace name. The trace name appear as the legend item and on hover. For 
 
 
 /**
+Set several traces linked to the same position axis or matching axes to the same offsetgroup where bars of the same position coordinate will line up.
+*/Violin & Offsetgroup(const std::string &offsetgroup ) {
+    _violin.insert({"offsetgroup", offsetgroup});
+    return *this;
+}
+
+
+/**
 Sets the opacity of the trace.
 */Violin & Opacity(const double &opacity ) {
     _violin.insert({"opacity", opacity});
@@ -213,7 +245,7 @@ Sets the opacity of the trace.
 
 /**
 Sets the orientation of the violin(s). If *v* (*h*), the distribution is visualized along the vertical (horizontal).
-*/Violin & Orientation(const json11::Json::object &orientation ) {
+*/Violin & Orientation(const json11::Json &orientation ) {
     _violin.insert({"orientation", orientation});
     return *this;
 }
@@ -229,7 +261,7 @@ Sets the position of the sample points in relation to the violins. If *0*, the s
 
 /**
 If *outliers*, only the sample points lying outside the whiskers are shown If *suspectedoutliers*, the outlier points are shown and points either less than 4*Q1-3*Q3 or greater than 4*Q3-3*Q1 are highlighted (see `outliercolor`) If *all*, all sample points are shown If *false*, only the violins are shown with no sample points
-*/Violin & Points(const json11::Json::object &points ) {
+*/Violin & Points(const json11::Json &points ) {
     _violin.insert({"points", points});
     return *this;
 }
@@ -245,7 +277,7 @@ If there are multiple violins that should be sized according to to some metric (
 
 /**
 Sets the metric by which the width of each violin is determined.*width* means each violin has the same (max) width*count* means the violins are scaled by the number of sample points makingup each violin.
-*/Violin & Scalemode(const json11::Json::object &scalemode ) {
+*/Violin & Scalemode(const json11::Json &scalemode ) {
     _violin.insert({"scalemode", scalemode});
     return *this;
 }
@@ -259,7 +291,7 @@ Violin & Selected(const CppPlotly::Trace::violin::Selected &selected ) {
 
 /**
 Array containing integer indices of selected points. Has an effect only for traces that support selections. Note that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any other non-array values means no selection all where the `selected` and `unselected` styles have no effect.
-*/Violin & Selectedpoints(const json11::Json::object &selectedpoints ) {
+*/Violin & Selectedpoints(const json11::Json &selectedpoints ) {
     _violin.insert({"selectedpoints", selectedpoints});
     return *this;
 }
@@ -275,7 +307,7 @@ Determines whether or not an item corresponding to this trace is shown in the le
 
 /**
 Determines on which side of the position value the density function making up one half of a violin is plotted. Useful when comparing two violin traces under *overlay* mode, where one trace has `side` set to *positive* and the other to *negative*.
-*/Violin & Side(const json11::Json::object &side ) {
+*/Violin & Side(const json11::Json &side ) {
     _violin.insert({"side", side});
     return *this;
 }
@@ -291,7 +323,7 @@ Sets the span in data space for which the density function will be computed. Has
 
 /**
 Sets the method by which the span in data space where the density function will be computed. *soft* means the span goes from the sample's minimum value minus two bandwidths to the sample's maximum value plus two bandwidths. *hard* means the span goes from the sample's minimum to its maximum value. For custom span settings, use mode *manual* and fill in the `span` attribute.
-*/Violin & Spanmode(const json11::Json::object &spanmode ) {
+*/Violin & Spanmode(const json11::Json &spanmode ) {
     _violin.insert({"spanmode", spanmode});
     return *this;
 }
@@ -305,7 +337,7 @@ Violin & Stream(const CppPlotly::Trace::violin::Stream &stream ) {
 
 /**
 Sets the text elements associated with each sample value. If a single string, the same string appears over all the data points. If an array of string, the items are mapped in order to the this trace's (x,y) coordinates. To be seen, trace `hoverinfo` must contain a *text* flag.
-*/Violin & Text(const json11::Json::object &text ) {
+*/Violin & Text(const json11::Json &text ) {
     _violin.insert({"text", text});
     return *this;
 }
@@ -325,8 +357,18 @@ Violin & Transforms(const std::vector<CppPlotly::Trace::violin::Transform> &tran
 }
 
 
-Violin & Uid(const std::string &uid ) {
+/**
+Assign an id to this trace, Use this to provide object constancy between traces during animations and transitions.
+*/Violin & Uid(const std::string &uid ) {
     _violin.insert({"uid", uid});
+    return *this;
+}
+
+
+/**
+Controls persistence of some user-driven changes to the trace: `constraintrange` in `parcoords` traces, as well as some `editable: true` modifications such as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note that other user-driven trace attribute changes are controlled by `layout` attributes: `trace.visible` is controlled by `layout.legend.uirevision`, `selectedpoints` is controlled by `layout.selectionrevision`, and `colorbar.(x|y)` (accessible with `config: {editable: true}`) is controlled by `layout.editrevision`. Trace changes are tracked by `uid`, which only falls back on trace index if no `uid` is provided. So if your app can add/remove traces before the end of the `data` array, such that the same trace has a different index, you can still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
+*/Violin & Uirevision(const json11::Json &uirevision ) {
+    _violin.insert({"uirevision", uirevision});
     return *this;
 }
 
@@ -339,8 +381,16 @@ Violin & Unselected(const CppPlotly::Trace::violin::Unselected &unselected ) {
 
 /**
 Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a legend item (provided that the legend itself is visible).
-*/Violin & Visible(const json11::Json::object &visible ) {
+*/Violin & Visible(const json11::Json &visible ) {
     _violin.insert({"visible", visible});
+    return *this;
+}
+
+
+/**
+Sets the width of the violin in data coordinates. If *0* (default value) the width is automatically selected based on the positions of other violin traces in the same subplot.
+*/Violin & Width(const double &width ) {
+    _violin.insert({"width", width});
     return *this;
 }
 
@@ -363,7 +413,7 @@ Sets the x sample data or coordinates. See overview for more info.
 
 /**
 Sets the x sample data or coordinates. See overview for more info.
-*/Violin & X(const json11::Json::object &x ) {
+*/Violin & X(const json11::Json &x ) {
     _violin.insert({"x", x});
     return *this;
 }
@@ -371,7 +421,7 @@ Sets the x sample data or coordinates. See overview for more info.
 
 /**
 Sets the x coordinate of the box. See overview for more info.
-*/Violin & X0(const json11::Json::object &x0 ) {
+*/Violin & X0(const json11::Json &x0 ) {
     _violin.insert({"x0", x0});
     return *this;
 }
@@ -379,7 +429,7 @@ Sets the x coordinate of the box. See overview for more info.
 
 /**
 Sets a reference between this trace's x coordinates and a 2D cartesian x axis. If *x* (the default value), the x coordinates refer to `layout.xaxis`. If *x2*, the x coordinates refer to `layout.xaxis2`, and so on.
-*/Violin & Xaxis(const json11::Json::object &xaxis ) {
+*/Violin & Xaxis(const json11::Json &xaxis ) {
     _violin.insert({"xaxis", xaxis});
     return *this;
 }
@@ -411,7 +461,7 @@ Sets the y sample data or coordinates. See overview for more info.
 
 /**
 Sets the y sample data or coordinates. See overview for more info.
-*/Violin & Y(const json11::Json::object &y ) {
+*/Violin & Y(const json11::Json &y ) {
     _violin.insert({"y", y});
     return *this;
 }
@@ -419,7 +469,7 @@ Sets the y sample data or coordinates. See overview for more info.
 
 /**
 Sets the y coordinate of the box. See overview for more info.
-*/Violin & Y0(const json11::Json::object &y0 ) {
+*/Violin & Y0(const json11::Json &y0 ) {
     _violin.insert({"y0", y0});
     return *this;
 }
@@ -427,7 +477,7 @@ Sets the y coordinate of the box. See overview for more info.
 
 /**
 Sets a reference between this trace's y coordinates and a 2D cartesian y axis. If *y* (the default value), the y coordinates refer to `layout.yaxis`. If *y2*, the y coordinates refer to `layout.yaxis2`, and so on.
-*/Violin & Yaxis(const json11::Json::object &yaxis ) {
+*/Violin & Yaxis(const json11::Json &yaxis ) {
     _violin.insert({"yaxis", yaxis});
     return *this;
 }

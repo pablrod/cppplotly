@@ -44,8 +44,16 @@ namespace CppPlotly {
                         {}
 
            /**
+Set several traces linked to the same position axis or matching axes to the same alignmentgroup. This controls whether bars compute their positional range dependently or independently.
+*/Box & Alignmentgroup(const std::string &alignmentgroup ) {
+    _box.insert({"alignmentgroup", alignmentgroup});
+    return *this;
+}
+
+
+/**
 If *true*, the mean of the box(es)' underlying distribution is drawn as a dashed line inside the box(es). If *sd* the standard deviation is also drawn.
-*/Box & Boxmean(const json11::Json::object &boxmean ) {
+*/Box & Boxmean(const json11::Json &boxmean ) {
     _box.insert({"boxmean", boxmean});
     return *this;
 }
@@ -53,7 +61,7 @@ If *true*, the mean of the box(es)' underlying distribution is drawn as a dashed
 
 /**
 If *outliers*, only the sample points lying outside the whiskers are shown If *suspectedoutliers*, the outlier points are shown and points either less than 4*Q1-3*Q3 or greater than 4*Q3-3*Q1 are highlighted (see `outliercolor`) If *all*, all sample points are shown If *false*, only the box(es) are shown with no sample points
-*/Box & Boxpoints(const json11::Json::object &boxpoints ) {
+*/Box & Boxpoints(const json11::Json &boxpoints ) {
     _box.insert({"boxpoints", boxpoints});
     return *this;
 }
@@ -77,7 +85,7 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 /**
 Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
-*/Box & Customdata(const json11::Json::object &customdata ) {
+*/Box & Customdata(const json11::Json &customdata ) {
     _box.insert({"customdata", customdata});
     return *this;
 }
@@ -93,7 +101,7 @@ Sets the source reference on plot.ly for  customdata .
 
 /**
 Sets the fill color. Defaults to a half-transparent variant of the line color, marker color, or marker line color, whichever is available.
-*/Box & Fillcolor(const json11::Json::object &fillcolor ) {
+*/Box & Fillcolor(const json11::Json &fillcolor ) {
     _box.insert({"fillcolor", fillcolor});
     return *this;
 }
@@ -101,7 +109,7 @@ Sets the fill color. Defaults to a half-transparent variant of the line color, m
 
 /**
 Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon hovering. But, if `none` is set, click and hover events are still fired.
-*/Box & Hoverinfo(const json11::Json::object &hoverinfo ) {
+*/Box & Hoverinfo(const json11::Json &hoverinfo ) {
     _box.insert({"hoverinfo", hoverinfo});
     return *this;
 }
@@ -123,8 +131,24 @@ Box & Hoverlabel(const CppPlotly::Trace::box::Hoverlabel &hoverlabel ) {
 
 /**
 Do the hover effects highlight individual boxes  or sample points or both?
-*/Box & Hoveron(const json11::Json::object &hoveron ) {
+*/Box & Hoveron(const json11::Json &hoveron ) {
     _box.insert({"hoveron", hoveron});
+    return *this;
+}
+
+
+/**
+Same as `text`.
+*/Box & Hovertext(const json11::Json &hovertext ) {
+    _box.insert({"hovertext", hovertext});
+    return *this;
+}
+
+
+/**
+Sets the source reference on plot.ly for  hovertext .
+*/Box & Hovertextsrc(const std::string &hovertextsrc ) {
+    _box.insert({"hovertextsrc", hovertextsrc});
     return *this;
 }
 
@@ -147,7 +171,7 @@ Assigns id labels to each datum. These ids for object constancy of data points d
 
 /**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
-*/Box & Ids(const json11::Json::object &ids ) {
+*/Box & Ids(const json11::Json &ids ) {
     _box.insert({"ids", ids});
     return *this;
 }
@@ -214,6 +238,14 @@ Sets the width of the notches relative to the box' width. For example, with 0, t
 
 
 /**
+Set several traces linked to the same position axis or matching axes to the same offsetgroup where bars of the same position coordinate will line up.
+*/Box & Offsetgroup(const std::string &offsetgroup ) {
+    _box.insert({"offsetgroup", offsetgroup});
+    return *this;
+}
+
+
+/**
 Sets the opacity of the trace.
 */Box & Opacity(const double &opacity ) {
     _box.insert({"opacity", opacity});
@@ -223,7 +255,7 @@ Sets the opacity of the trace.
 
 /**
 Sets the orientation of the box(es). If *v* (*h*), the distribution is visualized along the vertical (horizontal).
-*/Box & Orientation(const json11::Json::object &orientation ) {
+*/Box & Orientation(const json11::Json &orientation ) {
     _box.insert({"orientation", orientation});
     return *this;
 }
@@ -245,7 +277,7 @@ Box & Selected(const CppPlotly::Trace::box::Selected &selected ) {
 
 /**
 Array containing integer indices of selected points. Has an effect only for traces that support selections. Note that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any other non-array values means no selection all where the `selected` and `unselected` styles have no effect.
-*/Box & Selectedpoints(const json11::Json::object &selectedpoints ) {
+*/Box & Selectedpoints(const json11::Json &selectedpoints ) {
     _box.insert({"selectedpoints", selectedpoints});
     return *this;
 }
@@ -267,7 +299,7 @@ Box & Stream(const CppPlotly::Trace::box::Stream &stream ) {
 
 /**
 Sets the text elements associated with each sample value. If a single string, the same string appears over all the data points. If an array of string, the items are mapped in order to the this trace's (x,y) coordinates. To be seen, trace `hoverinfo` must contain a *text* flag.
-*/Box & Text(const json11::Json::object &text ) {
+*/Box & Text(const json11::Json &text ) {
     _box.insert({"text", text});
     return *this;
 }
@@ -287,8 +319,18 @@ Box & Transforms(const std::vector<CppPlotly::Trace::box::Transform> &transforms
 }
 
 
-Box & Uid(const std::string &uid ) {
+/**
+Assign an id to this trace, Use this to provide object constancy between traces during animations and transitions.
+*/Box & Uid(const std::string &uid ) {
     _box.insert({"uid", uid});
+    return *this;
+}
+
+
+/**
+Controls persistence of some user-driven changes to the trace: `constraintrange` in `parcoords` traces, as well as some `editable: true` modifications such as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note that other user-driven trace attribute changes are controlled by `layout` attributes: `trace.visible` is controlled by `layout.legend.uirevision`, `selectedpoints` is controlled by `layout.selectionrevision`, and `colorbar.(x|y)` (accessible with `config: {editable: true}`) is controlled by `layout.editrevision`. Trace changes are tracked by `uid`, which only falls back on trace index if no `uid` is provided. So if your app can add/remove traces before the end of the `data` array, such that the same trace has a different index, you can still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
+*/Box & Uirevision(const json11::Json &uirevision ) {
+    _box.insert({"uirevision", uirevision});
     return *this;
 }
 
@@ -301,7 +343,7 @@ Box & Unselected(const CppPlotly::Trace::box::Unselected &unselected ) {
 
 /**
 Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a legend item (provided that the legend itself is visible).
-*/Box & Visible(const json11::Json::object &visible ) {
+*/Box & Visible(const json11::Json &visible ) {
     _box.insert({"visible", visible});
     return *this;
 }
@@ -311,6 +353,14 @@ Determines whether or not this trace is visible. If *legendonly*, the trace is n
 Sets the width of the whiskers relative to the box' width. For example, with 1, the whiskers are as wide as the box(es).
 */Box & Whiskerwidth(const double &whiskerwidth ) {
     _box.insert({"whiskerwidth", whiskerwidth});
+    return *this;
+}
+
+
+/**
+Sets the width of the box in data coordinate If *0* (default value) the width is automatically selected based on the positions of other box traces in the same subplot.
+*/Box & Width(const double &width ) {
+    _box.insert({"width", width});
     return *this;
 }
 
@@ -333,7 +383,7 @@ Sets the x sample data or coordinates. See overview for more info.
 
 /**
 Sets the x sample data or coordinates. See overview for more info.
-*/Box & X(const json11::Json::object &x ) {
+*/Box & X(const json11::Json &x ) {
     _box.insert({"x", x});
     return *this;
 }
@@ -341,7 +391,7 @@ Sets the x sample data or coordinates. See overview for more info.
 
 /**
 Sets the x coordinate of the box. See overview for more info.
-*/Box & X0(const json11::Json::object &x0 ) {
+*/Box & X0(const json11::Json &x0 ) {
     _box.insert({"x0", x0});
     return *this;
 }
@@ -349,7 +399,7 @@ Sets the x coordinate of the box. See overview for more info.
 
 /**
 Sets a reference between this trace's x coordinates and a 2D cartesian x axis. If *x* (the default value), the x coordinates refer to `layout.xaxis`. If *x2*, the x coordinates refer to `layout.xaxis2`, and so on.
-*/Box & Xaxis(const json11::Json::object &xaxis ) {
+*/Box & Xaxis(const json11::Json &xaxis ) {
     _box.insert({"xaxis", xaxis});
     return *this;
 }
@@ -357,7 +407,7 @@ Sets a reference between this trace's x coordinates and a 2D cartesian x axis. I
 
 /**
 Sets the calendar system to use with `x` date data.
-*/Box & Xcalendar(const json11::Json::object &xcalendar ) {
+*/Box & Xcalendar(const json11::Json &xcalendar ) {
     _box.insert({"xcalendar", xcalendar});
     return *this;
 }
@@ -389,7 +439,7 @@ Sets the y sample data or coordinates. See overview for more info.
 
 /**
 Sets the y sample data or coordinates. See overview for more info.
-*/Box & Y(const json11::Json::object &y ) {
+*/Box & Y(const json11::Json &y ) {
     _box.insert({"y", y});
     return *this;
 }
@@ -397,7 +447,7 @@ Sets the y sample data or coordinates. See overview for more info.
 
 /**
 Sets the y coordinate of the box. See overview for more info.
-*/Box & Y0(const json11::Json::object &y0 ) {
+*/Box & Y0(const json11::Json &y0 ) {
     _box.insert({"y0", y0});
     return *this;
 }
@@ -405,7 +455,7 @@ Sets the y coordinate of the box. See overview for more info.
 
 /**
 Sets a reference between this trace's y coordinates and a 2D cartesian y axis. If *y* (the default value), the y coordinates refer to `layout.yaxis`. If *y2*, the y coordinates refer to `layout.yaxis2`, and so on.
-*/Box & Yaxis(const json11::Json::object &yaxis ) {
+*/Box & Yaxis(const json11::Json &yaxis ) {
     _box.insert({"yaxis", yaxis});
     return *this;
 }
@@ -413,7 +463,7 @@ Sets a reference between this trace's y coordinates and a 2D cartesian y axis. I
 
 /**
 Sets the calendar system to use with `y` date data.
-*/Box & Ycalendar(const json11::Json::object &ycalendar ) {
+*/Box & Ycalendar(const json11::Json &ycalendar ) {
     _box.insert({"ycalendar", ycalendar});
     return *this;
 }

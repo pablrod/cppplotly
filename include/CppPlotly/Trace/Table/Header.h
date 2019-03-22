@@ -42,7 +42,7 @@ namespace CppPlotly {
 
     /**
 Sets the horizontal alignment of the `text` within the box. Has an effect only if `text` spans more two or more lines (i.e. `text` contains one or more <br> HTML tags) or if an explicit width is set to override the text width.
-*/Header & Align(const json11::Json::object &align ) {
+*/Header & Align(const json11::Json &align ) {
     _header.insert({"align", align});
     return *this;
 }
@@ -86,7 +86,7 @@ Sets the cell value formatting rule using d3 formatting mini-language which is s
 
 /**
 Sets the cell value formatting rule using d3 formatting mini-language which is similar to those of Python. See https://github.com/d3/d3-format/blob/master/README.md#locale_format
-*/Header & Format(const json11::Json::object &format ) {
+*/Header & Format(const json11::Json &format ) {
     _header.insert({"format", format});
     return *this;
 }
@@ -116,7 +116,7 @@ Header & Line(const CppPlotly::Trace::table::header::Line &line ) {
 
 /**
 Prefix for cell values.
-*/Header & Prefix(const json11::Json::object &prefix ) {
+*/Header & Prefix(const json11::Json &prefix ) {
     _header.insert({"prefix", prefix});
     return *this;
 }
@@ -132,7 +132,7 @@ Sets the source reference on plot.ly for  prefix .
 
 /**
 Suffix for cell values.
-*/Header & Suffix(const json11::Json::object &suffix ) {
+*/Header & Suffix(const json11::Json &suffix ) {
     _header.insert({"suffix", suffix});
     return *this;
 }
@@ -164,7 +164,7 @@ Header cell values. `values[m][n]` represents the value of the `n`th point in co
 
 /**
 Header cell values. `values[m][n]` represents the value of the `n`th point in column `m`, therefore the `values[m]` vector length for all columns must be the same (longer vectors will be truncated). Each value must be a finite number or a string.
-*/Header & Values(const json11::Json::object &values ) {
+*/Header & Values(const json11::Json &values ) {
     _header.insert({"values", values});
     return *this;
 }

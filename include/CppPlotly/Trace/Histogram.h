@@ -48,7 +48,15 @@ namespace CppPlotly {
                         {}
 
            /**
-Determines whether or not the x axis bin attributes are picked by an algorithm. Note that this should be set to false if you want to manually set the number of bins using the attributes in xbins.
+Set several traces linked to the same position axis or matching axes to the same alignmentgroup. This controls whether bars compute their positional range dependently or independently.
+*/Histogram & Alignmentgroup(const std::string &alignmentgroup ) {
+    _histogram.insert({"alignmentgroup", alignmentgroup});
+    return *this;
+}
+
+
+/**
+Obsolete: since v1.42 each bin attribute is auto-determined separately and `autobinx` is not needed. However, we accept `autobinx: true` or `false` and will update `xbins` accordingly before deleting `autobinx` from the trace.
 */Histogram & Autobinx(const bool &autobinx ) {
     _histogram.insert({"autobinx", autobinx});
     return *this;
@@ -56,7 +64,7 @@ Determines whether or not the x axis bin attributes are picked by an algorithm. 
 
 
 /**
-Determines whether or not the y axis bin attributes are picked by an algorithm. Note that this should be set to false if you want to manually set the number of bins using the attributes in ybins.
+Obsolete: since v1.42 each bin attribute is auto-determined separately and `autobiny` is not needed. However, we accept `autobiny: true` or `false` and will update `ybins` accordingly before deleting `autobiny` from the trace.
 */Histogram & Autobiny(const bool &autobiny ) {
     _histogram.insert({"autobiny", autobiny});
     return *this;
@@ -87,7 +95,7 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 /**
 Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
-*/Histogram & Customdata(const json11::Json::object &customdata ) {
+*/Histogram & Customdata(const json11::Json &customdata ) {
     _histogram.insert({"customdata", customdata});
     return *this;
 }
@@ -115,7 +123,7 @@ Histogram & Error_y(const CppPlotly::Trace::histogram::Error_y &error_y ) {
 
 /**
 Specifies the binning function used for this histogram trace. If *count*, the histogram values are computed by counting the number of values lying inside each bin. If *sum*, *avg*, *min*, *max*, the histogram values are computed using the sum, the average, the minimum or the maximum of the values lying inside each bin respectively.
-*/Histogram & Histfunc(const json11::Json::object &histfunc ) {
+*/Histogram & Histfunc(const json11::Json &histfunc ) {
     _histogram.insert({"histfunc", histfunc});
     return *this;
 }
@@ -123,7 +131,7 @@ Specifies the binning function used for this histogram trace. If *count*, the hi
 
 /**
 Specifies the type of normalization used for this histogram trace. If **, the span of each bar corresponds to the number of occurrences (i.e. the number of data points lying inside the bins). If *percent* / *probability*, the span of each bar corresponds to the percentage / fraction of occurrences with respect to the total number of sample points (here, the sum of all bin HEIGHTS equals 100% / 1). If *density*, the span of each bar corresponds to the number of occurrences in a bin divided by the size of the bin interval (here, the sum of all bin AREAS equals the total number of sample points). If *probability density*, the area of each bar corresponds to the probability that an event will fall into the corresponding bin (here, the sum of all bin AREAS equals 1).
-*/Histogram & Histnorm(const json11::Json::object &histnorm ) {
+*/Histogram & Histnorm(const json11::Json &histnorm ) {
     _histogram.insert({"histnorm", histnorm});
     return *this;
 }
@@ -131,7 +139,7 @@ Specifies the type of normalization used for this histogram trace. If **, the sp
 
 /**
 Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon hovering. But, if `none` is set, click and hover events are still fired.
-*/Histogram & Hoverinfo(const json11::Json::object &hoverinfo ) {
+*/Histogram & Hoverinfo(const json11::Json &hoverinfo ) {
     _histogram.insert({"hoverinfo", hoverinfo});
     return *this;
 }
@@ -147,6 +155,38 @@ Sets the source reference on plot.ly for  hoverinfo .
 
 Histogram & Hoverlabel(const CppPlotly::Trace::histogram::Hoverlabel &hoverlabel ) {
     _histogram.insert({"hoverlabel", hoverlabel});
+    return *this;
+}
+
+
+/**
+Template string used for rendering the information that appear on hover box. Note that this will override `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}". Numbers are formatted using d3-format's syntax %{variable:d3-format}, for example "Price: %{y:$.2f}". See https://github.com/d3/d3-format/blob/master/README.md#locale_format for details on the formatting syntax. The variables available in `hovertemplate` are the ones emitted as event data described at this link https://plot.ly/javascript/plotlyjs-events/#event-data. Additionally, every attributes that can be specified per-point (the ones that are `arrayOk: true`) are available. variable `binNumber` Anything contained in tag `<extra>` is displayed in the secondary box, for example "<extra>{fullData.name}</extra>". To hide the secondary box completely, use an empty tag `<extra></extra>`.
+*/Histogram & Hovertemplate(const json11::Json &hovertemplate ) {
+    _histogram.insert({"hovertemplate", hovertemplate});
+    return *this;
+}
+
+
+/**
+Sets the source reference on plot.ly for  hovertemplate .
+*/Histogram & Hovertemplatesrc(const std::string &hovertemplatesrc ) {
+    _histogram.insert({"hovertemplatesrc", hovertemplatesrc});
+    return *this;
+}
+
+
+/**
+Same as `text`.
+*/Histogram & Hovertext(const json11::Json &hovertext ) {
+    _histogram.insert({"hovertext", hovertext});
+    return *this;
+}
+
+
+/**
+Sets the source reference on plot.ly for  hovertext .
+*/Histogram & Hovertextsrc(const std::string &hovertextsrc ) {
+    _histogram.insert({"hovertextsrc", hovertextsrc});
     return *this;
 }
 
@@ -169,7 +209,7 @@ Assigns id labels to each datum. These ids for object constancy of data points d
 
 /**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
-*/Histogram & Ids(const json11::Json::object &ids ) {
+*/Histogram & Ids(const json11::Json &ids ) {
     _histogram.insert({"ids", ids});
     return *this;
 }
@@ -206,7 +246,7 @@ Sets the trace name. The trace name appear as the legend item and on hover.
 
 
 /**
-Specifies the maximum number of desired bins. This value will be used in an algorithm that will decide the optimal bin size such that the histogram best visualizes the distribution of the data.
+Specifies the maximum number of desired bins. This value will be used in an algorithm that will decide the optimal bin size such that the histogram best visualizes the distribution of the data. Ignored if `xbins.size` is provided.
 */Histogram & Nbinsx(const int &nbinsx ) {
     _histogram.insert({"nbinsx", nbinsx});
     return *this;
@@ -214,9 +254,17 @@ Specifies the maximum number of desired bins. This value will be used in an algo
 
 
 /**
-Specifies the maximum number of desired bins. This value will be used in an algorithm that will decide the optimal bin size such that the histogram best visualizes the distribution of the data.
+Specifies the maximum number of desired bins. This value will be used in an algorithm that will decide the optimal bin size such that the histogram best visualizes the distribution of the data. Ignored if `ybins.size` is provided.
 */Histogram & Nbinsy(const int &nbinsy ) {
     _histogram.insert({"nbinsy", nbinsy});
+    return *this;
+}
+
+
+/**
+Set several traces linked to the same position axis or matching axes to the same offsetgroup where bars of the same position coordinate will line up.
+*/Histogram & Offsetgroup(const std::string &offsetgroup ) {
+    _histogram.insert({"offsetgroup", offsetgroup});
     return *this;
 }
 
@@ -231,7 +279,7 @@ Sets the opacity of the trace.
 
 /**
 Sets the orientation of the bars. With *v* (*h*), the value of the each bar spans along the vertical (horizontal).
-*/Histogram & Orientation(const json11::Json::object &orientation ) {
+*/Histogram & Orientation(const json11::Json &orientation ) {
     _histogram.insert({"orientation", orientation});
     return *this;
 }
@@ -245,7 +293,7 @@ Histogram & Selected(const CppPlotly::Trace::histogram::Selected &selected ) {
 
 /**
 Array containing integer indices of selected points. Has an effect only for traces that support selections. Note that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any other non-array values means no selection all where the `selected` and `unselected` styles have no effect.
-*/Histogram & Selectedpoints(const json11::Json::object &selectedpoints ) {
+*/Histogram & Selectedpoints(const json11::Json &selectedpoints ) {
     _histogram.insert({"selectedpoints", selectedpoints});
     return *this;
 }
@@ -266,8 +314,8 @@ Histogram & Stream(const CppPlotly::Trace::histogram::Stream &stream ) {
 
 
 /**
-Sets text elements associated with each (x,y) pair. If a single string, the same string appears over all the data points. If an array of string, the items are mapped in order to the this trace's (x,y) coordinates. If trace `hoverinfo` contains a *text* flag and *hovertext* is not set, these elements will be seen in the hover labels.
-*/Histogram & Text(const json11::Json::object &text ) {
+Sets hover text elements associated with each bar. If a single string, the same string appears over all bars. If an array of string, the items are mapped in order to the this trace's coordinates.
+*/Histogram & Text(const json11::Json &text ) {
     _histogram.insert({"text", text});
     return *this;
 }
@@ -287,8 +335,18 @@ Histogram & Transforms(const std::vector<CppPlotly::Trace::histogram::Transform>
 }
 
 
-Histogram & Uid(const std::string &uid ) {
+/**
+Assign an id to this trace, Use this to provide object constancy between traces during animations and transitions.
+*/Histogram & Uid(const std::string &uid ) {
     _histogram.insert({"uid", uid});
+    return *this;
+}
+
+
+/**
+Controls persistence of some user-driven changes to the trace: `constraintrange` in `parcoords` traces, as well as some `editable: true` modifications such as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note that other user-driven trace attribute changes are controlled by `layout` attributes: `trace.visible` is controlled by `layout.legend.uirevision`, `selectedpoints` is controlled by `layout.selectionrevision`, and `colorbar.(x|y)` (accessible with `config: {editable: true}`) is controlled by `layout.editrevision`. Trace changes are tracked by `uid`, which only falls back on trace index if no `uid` is provided. So if your app can add/remove traces before the end of the `data` array, such that the same trace has a different index, you can still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
+*/Histogram & Uirevision(const json11::Json &uirevision ) {
+    _histogram.insert({"uirevision", uirevision});
     return *this;
 }
 
@@ -301,7 +359,7 @@ Histogram & Unselected(const CppPlotly::Trace::histogram::Unselected &unselected
 
 /**
 Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a legend item (provided that the legend itself is visible).
-*/Histogram & Visible(const json11::Json::object &visible ) {
+*/Histogram & Visible(const json11::Json &visible ) {
     _histogram.insert({"visible", visible});
     return *this;
 }
@@ -325,7 +383,7 @@ Sets the sample data to be binned on the x axis.
 
 /**
 Sets the sample data to be binned on the x axis.
-*/Histogram & X(const json11::Json::object &x ) {
+*/Histogram & X(const json11::Json &x ) {
     _histogram.insert({"x", x});
     return *this;
 }
@@ -333,7 +391,7 @@ Sets the sample data to be binned on the x axis.
 
 /**
 Sets a reference between this trace's x coordinates and a 2D cartesian x axis. If *x* (the default value), the x coordinates refer to `layout.xaxis`. If *x2*, the x coordinates refer to `layout.xaxis2`, and so on.
-*/Histogram & Xaxis(const json11::Json::object &xaxis ) {
+*/Histogram & Xaxis(const json11::Json &xaxis ) {
     _histogram.insert({"xaxis", xaxis});
     return *this;
 }
@@ -347,7 +405,7 @@ Histogram & Xbins(const CppPlotly::Trace::histogram::Xbins &xbins ) {
 
 /**
 Sets the calendar system to use with `x` date data.
-*/Histogram & Xcalendar(const json11::Json::object &xcalendar ) {
+*/Histogram & Xcalendar(const json11::Json &xcalendar ) {
     _histogram.insert({"xcalendar", xcalendar});
     return *this;
 }
@@ -379,7 +437,7 @@ Sets the sample data to be binned on the y axis.
 
 /**
 Sets the sample data to be binned on the y axis.
-*/Histogram & Y(const json11::Json::object &y ) {
+*/Histogram & Y(const json11::Json &y ) {
     _histogram.insert({"y", y});
     return *this;
 }
@@ -387,7 +445,7 @@ Sets the sample data to be binned on the y axis.
 
 /**
 Sets a reference between this trace's y coordinates and a 2D cartesian y axis. If *y* (the default value), the y coordinates refer to `layout.yaxis`. If *y2*, the y coordinates refer to `layout.yaxis2`, and so on.
-*/Histogram & Yaxis(const json11::Json::object &yaxis ) {
+*/Histogram & Yaxis(const json11::Json &yaxis ) {
     _histogram.insert({"yaxis", yaxis});
     return *this;
 }
@@ -401,7 +459,7 @@ Histogram & Ybins(const CppPlotly::Trace::histogram::Ybins &ybins ) {
 
 /**
 Sets the calendar system to use with `y` date data.
-*/Histogram & Ycalendar(const json11::Json::object &ycalendar ) {
+*/Histogram & Ycalendar(const json11::Json &ycalendar ) {
     _histogram.insert({"ycalendar", ycalendar});
     return *this;
 }

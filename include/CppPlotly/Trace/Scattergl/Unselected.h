@@ -23,6 +23,7 @@ But I think plotly.js is a great library and I want to use it with C++.
 #include <json11.hpp>
 
 #include "CppPlotly/Trace/Scattergl/Unselected/Marker.h"
+#include "CppPlotly/Trace/Scattergl/Unselected/Textfont.h"
 
 
 
@@ -40,6 +41,12 @@ namespace CppPlotly {
 
     Unselected & Marker(const CppPlotly::Trace::scattergl::unselected::Marker &marker ) {
     _unselected.insert({"marker", marker});
+    return *this;
+}
+
+
+Unselected & Textfont(const CppPlotly::Trace::scattergl::unselected::Textfont &textfont ) {
+    _unselected.insert({"textfont", textfont});
     return *this;
 }
 

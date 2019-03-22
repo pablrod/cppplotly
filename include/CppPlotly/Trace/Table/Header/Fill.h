@@ -39,8 +39,8 @@ namespace header {
     public:
 
     /**
-Sets the cell fill color. It accepts either a specific color or an array of colors.
-*/Fill & Color(const json11::Json::object &color ) {
+Sets the cell fill color. It accepts either a specific color or an array of colors or a 2D array of colors.
+*/Fill & Color(const json11::Json &color ) {
     _fill.insert({"color", color});
     return *this;
 }

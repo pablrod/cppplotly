@@ -37,13 +37,13 @@ namespace CppPlotly {
     class Labelfont {
     public:
 
-    Labelfont & Color(const json11::Json::object &color ) {
+    Labelfont & Color(const json11::Json &color ) {
     _labelfont.insert({"color", color});
     return *this;
 }
 
 
-Labelfont & Description(const json11::Json::object &description ) {
+Labelfont & Description(const json11::Json &description ) {
     _labelfont.insert({"description", description});
     return *this;
 }

@@ -40,7 +40,7 @@ namespace CppPlotly {
 
     /**
 Sets the background color of the hover labels for this trace
-*/Hoverlabel & Bgcolor(const json11::Json::object &bgcolor ) {
+*/Hoverlabel & Bgcolor(const json11::Json &bgcolor ) {
     _hoverlabel.insert({"bgcolor", bgcolor});
     return *this;
 }
@@ -56,7 +56,7 @@ Sets the source reference on plot.ly for  bgcolor .
 
 /**
 Sets the border color of the hover labels for this trace.
-*/Hoverlabel & Bordercolor(const json11::Json::object &bordercolor ) {
+*/Hoverlabel & Bordercolor(const json11::Json &bordercolor ) {
     _hoverlabel.insert({"bordercolor", bordercolor});
     return *this;
 }
@@ -78,7 +78,7 @@ Hoverlabel & Font(const CppPlotly::Trace::scattercarpet::hoverlabel::Font &font 
 
 /**
 Sets the length (in number of characters) of the trace name in the hover labels for this trace. -1 shows the whole name regardless of length. 0-3 shows the first 0-3 characters, and an integer >3 will show the whole name if it is less than that many characters, but if it is longer, will truncate to `namelength - 3` characters and add an ellipsis.
-*/Hoverlabel & Namelength(const json11::Json::object &namelength ) {
+*/Hoverlabel & Namelength(const json11::Json &namelength ) {
     _hoverlabel.insert({"namelength", namelength});
     return *this;
 }

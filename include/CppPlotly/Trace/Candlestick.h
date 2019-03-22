@@ -60,7 +60,7 @@ Sets the close values.
 
 /**
 Sets the close values.
-*/Candlestick & Close(const json11::Json::object &close ) {
+*/Candlestick & Close(const json11::Json &close ) {
     _candlestick.insert({"close", close});
     return *this;
 }
@@ -92,7 +92,7 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 /**
 Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
-*/Candlestick & Customdata(const json11::Json::object &customdata ) {
+*/Candlestick & Customdata(const json11::Json &customdata ) {
     _candlestick.insert({"customdata", customdata});
     return *this;
 }
@@ -130,7 +130,7 @@ Sets the high values.
 
 /**
 Sets the high values.
-*/Candlestick & High(const json11::Json::object &high ) {
+*/Candlestick & High(const json11::Json &high ) {
     _candlestick.insert({"high", high});
     return *this;
 }
@@ -146,7 +146,7 @@ Sets the source reference on plot.ly for  high .
 
 /**
 Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon hovering. But, if `none` is set, click and hover events are still fired.
-*/Candlestick & Hoverinfo(const json11::Json::object &hoverinfo ) {
+*/Candlestick & Hoverinfo(const json11::Json &hoverinfo ) {
     _candlestick.insert({"hoverinfo", hoverinfo});
     return *this;
 }
@@ -162,6 +162,22 @@ Sets the source reference on plot.ly for  hoverinfo .
 
 Candlestick & Hoverlabel(const CppPlotly::Trace::candlestick::Hoverlabel &hoverlabel ) {
     _candlestick.insert({"hoverlabel", hoverlabel});
+    return *this;
+}
+
+
+/**
+Same as `text`.
+*/Candlestick & Hovertext(const json11::Json &hovertext ) {
+    _candlestick.insert({"hovertext", hovertext});
+    return *this;
+}
+
+
+/**
+Sets the source reference on plot.ly for  hovertext .
+*/Candlestick & Hovertextsrc(const std::string &hovertextsrc ) {
+    _candlestick.insert({"hovertextsrc", hovertextsrc});
     return *this;
 }
 
@@ -184,7 +200,7 @@ Assigns id labels to each datum. These ids for object constancy of data points d
 
 /**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
-*/Candlestick & Ids(const json11::Json::object &ids ) {
+*/Candlestick & Ids(const json11::Json &ids ) {
     _candlestick.insert({"ids", ids});
     return *this;
 }
@@ -236,7 +252,7 @@ Sets the low values.
 
 /**
 Sets the low values.
-*/Candlestick & Low(const json11::Json::object &low ) {
+*/Candlestick & Low(const json11::Json &low ) {
     _candlestick.insert({"low", low});
     return *this;
 }
@@ -284,7 +300,7 @@ Sets the open values.
 
 /**
 Sets the open values.
-*/Candlestick & Open(const json11::Json::object &open ) {
+*/Candlestick & Open(const json11::Json &open ) {
     _candlestick.insert({"open", open});
     return *this;
 }
@@ -300,7 +316,7 @@ Sets the source reference on plot.ly for  open .
 
 /**
 Array containing integer indices of selected points. Has an effect only for traces that support selections. Note that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any other non-array values means no selection all where the `selected` and `unselected` styles have no effect.
-*/Candlestick & Selectedpoints(const json11::Json::object &selectedpoints ) {
+*/Candlestick & Selectedpoints(const json11::Json &selectedpoints ) {
     _candlestick.insert({"selectedpoints", selectedpoints});
     return *this;
 }
@@ -322,7 +338,7 @@ Candlestick & Stream(const CppPlotly::Trace::candlestick::Stream &stream ) {
 
 /**
 Sets hover text elements associated with each sample point. If a single string, the same string appears over all the data points. If an array of string, the items are mapped in order to this trace's sample points.
-*/Candlestick & Text(const json11::Json::object &text ) {
+*/Candlestick & Text(const json11::Json &text ) {
     _candlestick.insert({"text", text});
     return *this;
 }
@@ -342,15 +358,25 @@ Candlestick & Transforms(const std::vector<CppPlotly::Trace::candlestick::Transf
 }
 
 
-Candlestick & Uid(const std::string &uid ) {
+/**
+Assign an id to this trace, Use this to provide object constancy between traces during animations and transitions.
+*/Candlestick & Uid(const std::string &uid ) {
     _candlestick.insert({"uid", uid});
     return *this;
 }
 
 
 /**
+Controls persistence of some user-driven changes to the trace: `constraintrange` in `parcoords` traces, as well as some `editable: true` modifications such as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note that other user-driven trace attribute changes are controlled by `layout` attributes: `trace.visible` is controlled by `layout.legend.uirevision`, `selectedpoints` is controlled by `layout.selectionrevision`, and `colorbar.(x|y)` (accessible with `config: {editable: true}`) is controlled by `layout.editrevision`. Trace changes are tracked by `uid`, which only falls back on trace index if no `uid` is provided. So if your app can add/remove traces before the end of the `data` array, such that the same trace has a different index, you can still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
+*/Candlestick & Uirevision(const json11::Json &uirevision ) {
+    _candlestick.insert({"uirevision", uirevision});
+    return *this;
+}
+
+
+/**
 Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a legend item (provided that the legend itself is visible).
-*/Candlestick & Visible(const json11::Json::object &visible ) {
+*/Candlestick & Visible(const json11::Json &visible ) {
     _candlestick.insert({"visible", visible});
     return *this;
 }
@@ -382,7 +408,7 @@ Sets the x coordinates. If absent, linear coordinate will be generated.
 
 /**
 Sets the x coordinates. If absent, linear coordinate will be generated.
-*/Candlestick & X(const json11::Json::object &x ) {
+*/Candlestick & X(const json11::Json &x ) {
     _candlestick.insert({"x", x});
     return *this;
 }
@@ -390,7 +416,7 @@ Sets the x coordinates. If absent, linear coordinate will be generated.
 
 /**
 Sets a reference between this trace's x coordinates and a 2D cartesian x axis. If *x* (the default value), the x coordinates refer to `layout.xaxis`. If *x2*, the x coordinates refer to `layout.xaxis2`, and so on.
-*/Candlestick & Xaxis(const json11::Json::object &xaxis ) {
+*/Candlestick & Xaxis(const json11::Json &xaxis ) {
     _candlestick.insert({"xaxis", xaxis});
     return *this;
 }
@@ -398,7 +424,7 @@ Sets a reference between this trace's x coordinates and a 2D cartesian x axis. I
 
 /**
 Sets the calendar system to use with `x` date data.
-*/Candlestick & Xcalendar(const json11::Json::object &xcalendar ) {
+*/Candlestick & Xcalendar(const json11::Json &xcalendar ) {
     _candlestick.insert({"xcalendar", xcalendar});
     return *this;
 }
@@ -414,7 +440,7 @@ Sets the source reference on plot.ly for  x .
 
 /**
 Sets a reference between this trace's y coordinates and a 2D cartesian y axis. If *y* (the default value), the y coordinates refer to `layout.yaxis`. If *y2*, the y coordinates refer to `layout.yaxis2`, and so on.
-*/Candlestick & Yaxis(const json11::Json::object &yaxis ) {
+*/Candlestick & Yaxis(const json11::Json &yaxis ) {
     _candlestick.insert({"yaxis", yaxis});
     return *this;
 }

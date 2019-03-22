@@ -39,8 +39,8 @@ namespace marker {
     public:
 
     /**
-Sets the marker.line color. It accepts either a specific color or an array of numbers that are mapped to the colorscale relative to the max and min values of the array or relative to `cmin` and `cmax` if set.
-*/Line & Color(const json11::Json::object &color ) {
+Sets themarker.linecolor. It accepts either a specific color or an array of numbers that are mapped to the colorscale relative to the max and min values of the array or relative to `marker.line.cmin` and `marker.line.cmax` if set.
+*/Line & Color(const json11::Json &color ) {
     _line.insert({"color", color});
     return *this;
 }
@@ -56,7 +56,7 @@ Sets the source reference on plot.ly for  color .
 
 /**
 Sets the width (in px) of the lines bounding the marker points.
-*/Line & Width(const json11::Json::object &width ) {
+*/Line & Width(const json11::Json &width ) {
     _line.insert({"width", width});
     return *this;
 }

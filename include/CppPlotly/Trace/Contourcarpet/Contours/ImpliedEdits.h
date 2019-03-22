@@ -38,7 +38,7 @@ namespace contours {
     class ImpliedEdits {
     public:
 
-    ImpliedEdits & Autocontour(const json11::Json::object &autocontour ) {
+    ImpliedEdits & Autocontour(const json11::Json &autocontour ) {
     _impliedEdits.insert({"autocontour", autocontour});
     return *this;
 }

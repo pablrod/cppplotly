@@ -38,8 +38,8 @@ namespace CppPlotly {
     public:
 
     /**
-Sets the marker color. It accepts either a specific color or an array of numbers that are mapped to the colorscale relative to the max and min values of the array or relative to `cmin` and `cmax` if set.
-*/Marker & Color(const json11::Json::object &color ) {
+Area traces are deprecated! Please switch to the *barpolar* trace type. Sets themarkercolor. It accepts either a specific color or an array of numbers that are mapped to the colorscale relative to the max and min values of the array or relative to `marker.cmin` and `marker.cmax` if set.
+*/Marker & Color(const json11::Json &color ) {
     _marker.insert({"color", color});
     return *this;
 }
@@ -54,8 +54,8 @@ Sets the source reference on plot.ly for  color .
 
 
 /**
-Sets the marker opacity.
-*/Marker & Opacity(const json11::Json::object &opacity ) {
+Area traces are deprecated! Please switch to the *barpolar* trace type. Sets the marker opacity.
+*/Marker & Opacity(const json11::Json &opacity ) {
     _marker.insert({"opacity", opacity});
     return *this;
 }
@@ -70,8 +70,8 @@ Sets the source reference on plot.ly for  opacity .
 
 
 /**
-Sets the marker size (in px).
-*/Marker & Size(const json11::Json::object &size ) {
+Area traces are deprecated! Please switch to the *barpolar* trace type. Sets the marker size (in px).
+*/Marker & Size(const json11::Json &size ) {
     _marker.insert({"size", size});
     return *this;
 }
@@ -86,8 +86,8 @@ Sets the source reference on plot.ly for  size .
 
 
 /**
-Sets the marker symbol type. Adding 100 is equivalent to appending *-open* to a symbol name. Adding 200 is equivalent to appending *-dot* to a symbol name. Adding 300 is equivalent to appending *-open-dot* or *dot-open* to a symbol name.
-*/Marker & Symbol(const json11::Json::object &symbol ) {
+Area traces are deprecated! Please switch to the *barpolar* trace type. Sets the marker symbol type. Adding 100 is equivalent to appending *-open* to a symbol name. Adding 200 is equivalent to appending *-dot* to a symbol name. Adding 300 is equivalent to appending *-open-dot* or *dot-open* to a symbol name.
+*/Marker & Symbol(const json11::Json &symbol ) {
     _marker.insert({"symbol", symbol});
     return *this;
 }

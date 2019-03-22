@@ -54,7 +54,7 @@ Marker & Border(const CppPlotly::Trace::pointcloud::marker::Border &border ) {
 
 /**
 Sets the marker fill color. It accepts a specific color.If the color is not fully opaque and there are hundreds of thousandsof points, it may cause slower zooming and panning.
-*/Marker & Color(const json11::Json::object &color ) {
+*/Marker & Color(const json11::Json &color ) {
     _marker.insert({"color", color});
     return *this;
 }

@@ -48,7 +48,7 @@ Specifies what fraction of the marker area is covered with the border.
 
 /**
 Sets the stroke color. It accepts a specific color. If the color is not fully opaque and there are hundreds of thousands of points, it may cause slower zooming and panning.
-*/Border & Color(const json11::Json::object &color ) {
+*/Border & Color(const json11::Json &color ) {
     _border.insert({"color", color});
     return *this;
 }

@@ -45,7 +45,7 @@ The domain range to which the filter on the dimension is constrained. Must be an
 }
 
 
-Dimension & Description(const json11::Json::object &description ) {
+Dimension & Description(const json11::Json &description ) {
     _dimension.insert({"description", description});
     return *this;
 }
@@ -68,9 +68,25 @@ Do we allow multiple selection ranges or just a single range?
 
 
 /**
+When used in a template, named items are created in the output figure in addition to any items the figure already has in this array. You can modify these items in the output figure by making your own item with `templateitemname` matching this `name` alongside your modifications (including `visible: false` or `enabled: false` to hide it). Has no effect outside of a template.
+*/Dimension & Name(const std::string &name ) {
+    _dimension.insert({"name", name});
+    return *this;
+}
+
+
+/**
 The domain range that represents the full, shown axis extent. Defaults to the `values` extent. Must be an array of `[fromValue, toValue]` with finite numbers as elements.
 */Dimension & Range(const std::vector<std::string> &range ) {
     _dimension.insert({"range", range});
+    return *this;
+}
+
+
+/**
+Used to refer to a named item in this array in the template. Named items from the template will be created even without a matching item in the input figure, but you can modify one by making an item with `templateitemname` matching its `name`, alongside your modifications (including `visible: false` or `enabled: false` to hide it). If there is no template or no matching item, this item will be hidden unless you explicitly show it with `visible: true`.
+*/Dimension & Templateitemname(const std::string &templateitemname ) {
+    _dimension.insert({"templateitemname", templateitemname});
     return *this;
 }
 
@@ -101,7 +117,7 @@ Sets the text displayed at the ticks position via `tickvals`. Only has an effect
 
 /**
 Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*. Used with `tickvals`.
-*/Dimension & Ticktext(const json11::Json::object &ticktext ) {
+*/Dimension & Ticktext(const json11::Json &ticktext ) {
     _dimension.insert({"ticktext", ticktext});
     return *this;
 }
@@ -133,7 +149,7 @@ Sets the values at which ticks on this axis appear. Only has an effect if `tickm
 
 /**
 Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with `ticktext`.
-*/Dimension & Tickvals(const json11::Json::object &tickvals ) {
+*/Dimension & Tickvals(const json11::Json &tickvals ) {
     _dimension.insert({"tickvals", tickvals});
     return *this;
 }
@@ -165,7 +181,7 @@ Dimension values. `values[n]` represents the value of the `n`th point in the dat
 
 /**
 Dimension values. `values[n]` represents the value of the `n`th point in the dataset, therefore the `values` vector for all dimensions must be the same (longer vectors will be truncated). Each value must be a finite number.
-*/Dimension & Values(const json11::Json::object &values ) {
+*/Dimension & Values(const json11::Json &values ) {
     _dimension.insert({"values", values});
     return *this;
 }

@@ -24,7 +24,6 @@ But I think plotly.js is a great library and I want to use it with C++.
 #include "CppPlotly/Trace/Table/Header.h"
 #include "CppPlotly/Trace/Table/Hoverlabel.h"
 #include "CppPlotly/Trace/Table/Stream.h"
-#include "CppPlotly/Trace/Table/Transform.h"
 
 
 namespace CppPlotly {
@@ -66,7 +65,7 @@ Specifies the rendered order of the data columns; for example, a value `2` at po
 
 /**
 Specifies the rendered order of the data columns; for example, a value `2` at position `0` means that column index `0` in the data will be rendered as the third column, as columns have an index base of zero.
-*/Table & Columnorder(const json11::Json::object &columnorder ) {
+*/Table & Columnorder(const json11::Json &columnorder ) {
     _table.insert({"columnorder", columnorder});
     return *this;
 }
@@ -82,7 +81,7 @@ Sets the source reference on plot.ly for  columnorder .
 
 /**
 The width of columns expressed as a ratio. Columns fill the available width in proportion of their specified column widths.
-*/Table & Columnwidth(const json11::Json::object &columnwidth ) {
+*/Table & Columnwidth(const json11::Json &columnwidth ) {
     _table.insert({"columnwidth", columnwidth});
     return *this;
 }
@@ -114,7 +113,7 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 /**
 Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
-*/Table & Customdata(const json11::Json::object &customdata ) {
+*/Table & Customdata(const json11::Json &customdata ) {
     _table.insert({"customdata", customdata});
     return *this;
 }
@@ -142,7 +141,7 @@ Table & Header(const CppPlotly::Trace::table::Header &header ) {
 
 /**
 Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon hovering. But, if `none` is set, click and hover events are still fired.
-*/Table & Hoverinfo(const json11::Json::object &hoverinfo ) {
+*/Table & Hoverinfo(const json11::Json &hoverinfo ) {
     _table.insert({"hoverinfo", hoverinfo});
     return *this;
 }
@@ -180,7 +179,7 @@ Assigns id labels to each datum. These ids for object constancy of data points d
 
 /**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
-*/Table & Ids(const json11::Json::object &ids ) {
+*/Table & Ids(const json11::Json &ids ) {
     _table.insert({"ids", ids});
     return *this;
 }
@@ -220,7 +219,7 @@ Sets the opacity of the trace.
 
 /**
 Array containing integer indices of selected points. Has an effect only for traces that support selections. Note that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any other non-array values means no selection all where the `selected` and `unselected` styles have no effect.
-*/Table & Selectedpoints(const json11::Json::object &selectedpoints ) {
+*/Table & Selectedpoints(const json11::Json &selectedpoints ) {
     _table.insert({"selectedpoints", selectedpoints});
     return *this;
 }
@@ -240,21 +239,25 @@ Table & Stream(const CppPlotly::Trace::table::Stream &stream ) {
 }
 
 
-Table & Transforms(const std::vector<CppPlotly::Trace::table::Transform> &transforms ) {
-    _table.insert({"transforms", transforms});
-    return *this;
-}
-
-
-Table & Uid(const std::string &uid ) {
+/**
+Assign an id to this trace, Use this to provide object constancy between traces during animations and transitions.
+*/Table & Uid(const std::string &uid ) {
     _table.insert({"uid", uid});
     return *this;
 }
 
 
 /**
+Controls persistence of some user-driven changes to the trace: `constraintrange` in `parcoords` traces, as well as some `editable: true` modifications such as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note that other user-driven trace attribute changes are controlled by `layout` attributes: `trace.visible` is controlled by `layout.legend.uirevision`, `selectedpoints` is controlled by `layout.selectionrevision`, and `colorbar.(x|y)` (accessible with `config: {editable: true}`) is controlled by `layout.editrevision`. Trace changes are tracked by `uid`, which only falls back on trace index if no `uid` is provided. So if your app can add/remove traces before the end of the `data` array, such that the same trace has a different index, you can still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
+*/Table & Uirevision(const json11::Json &uirevision ) {
+    _table.insert({"uirevision", uirevision});
+    return *this;
+}
+
+
+/**
 Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a legend item (provided that the legend itself is visible).
-*/Table & Visible(const json11::Json::object &visible ) {
+*/Table & Visible(const json11::Json &visible ) {
     _table.insert({"visible", visible});
     return *this;
 }

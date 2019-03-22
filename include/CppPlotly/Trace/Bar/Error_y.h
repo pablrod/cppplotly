@@ -55,7 +55,7 @@ Sets the data corresponding the length of each error bar. Values are plotted rel
 
 /**
 Sets the data corresponding the length of each error bar. Values are plotted relative to the underlying data.
-*/Error_y & Array(const json11::Json::object &array ) {
+*/Error_y & Array(const json11::Json &array ) {
     _error_y.insert({"array", array});
     return *this;
 }
@@ -79,7 +79,7 @@ Sets the data corresponding the length of each error bar in the bottom (left) di
 
 /**
 Sets the data corresponding the length of each error bar in the bottom (left) direction for vertical (horizontal) bars Values are plotted relative to the underlying data.
-*/Error_y & Arrayminus(const json11::Json::object &arrayminus ) {
+*/Error_y & Arrayminus(const json11::Json &arrayminus ) {
     _error_y.insert({"arrayminus", arrayminus});
     return *this;
 }
@@ -103,7 +103,7 @@ Sets the source reference on plot.ly for  array .
 
 /**
 Sets the stoke color of the error bars.
-*/Error_y & Color(const json11::Json::object &color ) {
+*/Error_y & Color(const json11::Json &color ) {
     _error_y.insert({"color", color});
     return *this;
 }

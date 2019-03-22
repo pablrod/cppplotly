@@ -42,7 +42,7 @@ namespace CppPlotly {
 
     /**
 Sets the horizontal alignment of the `text` within the box. Has an effect only if `text` spans more two or more lines (i.e. `text` contains one or more <br> HTML tags) or if an explicit width is set to override the text width.
-*/Cells & Align(const json11::Json::object &align ) {
+*/Cells & Align(const json11::Json &align ) {
     _cells.insert({"align", align});
     return *this;
 }
@@ -86,7 +86,7 @@ Sets the cell value formatting rule using d3 formatting mini-language which is s
 
 /**
 Sets the cell value formatting rule using d3 formatting mini-language which is similar to those of Python. See https://github.com/d3/d3-format/blob/master/README.md#locale_format
-*/Cells & Format(const json11::Json::object &format ) {
+*/Cells & Format(const json11::Json &format ) {
     _cells.insert({"format", format});
     return *this;
 }
@@ -116,7 +116,7 @@ Cells & Line(const CppPlotly::Trace::table::cells::Line &line ) {
 
 /**
 Prefix for cell values.
-*/Cells & Prefix(const json11::Json::object &prefix ) {
+*/Cells & Prefix(const json11::Json &prefix ) {
     _cells.insert({"prefix", prefix});
     return *this;
 }
@@ -132,7 +132,7 @@ Sets the source reference on plot.ly for  prefix .
 
 /**
 Suffix for cell values.
-*/Cells & Suffix(const json11::Json::object &suffix ) {
+*/Cells & Suffix(const json11::Json &suffix ) {
     _cells.insert({"suffix", suffix});
     return *this;
 }
@@ -164,7 +164,7 @@ Cell values. `values[m][n]` represents the value of the `n`th point in column `m
 
 /**
 Cell values. `values[m][n]` represents the value of the `n`th point in column `m`, therefore the `values[m]` vector length for all columns must be the same (longer vectors will be truncated). Each value must be a finite number or a string.
-*/Cells & Values(const json11::Json::object &values ) {
+*/Cells & Values(const json11::Json &values ) {
     _cells.insert({"values", values});
     return *this;
 }

@@ -44,7 +44,7 @@ namespace CppPlotly {
                         {}
 
            /**
-Determines whether or not the x axis bin attributes are picked by an algorithm. Note that this should be set to false if you want to manually set the number of bins using the attributes in xbins.
+Obsolete: since v1.42 each bin attribute is auto-determined separately and `autobinx` is not needed. However, we accept `autobinx: true` or `false` and will update `xbins` accordingly before deleting `autobinx` from the trace.
 */Histogram2d & Autobinx(const bool &autobinx ) {
     _histogram2d.insert({"autobinx", autobinx});
     return *this;
@@ -52,7 +52,7 @@ Determines whether or not the x axis bin attributes are picked by an algorithm. 
 
 
 /**
-Determines whether or not the y axis bin attributes are picked by an algorithm. Note that this should be set to false if you want to manually set the number of bins using the attributes in ybins.
+Obsolete: since v1.42 each bin attribute is auto-determined separately and `autobiny` is not needed. However, we accept `autobiny: true` or `false` and will update `ybins` accordingly before deleting `autobiny` from the trace.
 */Histogram2d & Autobiny(const bool &autobiny ) {
     _histogram2d.insert({"autobiny", autobiny});
     return *this;
@@ -60,7 +60,7 @@ Determines whether or not the y axis bin attributes are picked by an algorithm. 
 
 
 /**
-Determines whether or not the colorscale is picked using the sign of the input z values.
+Determines whether the colorscale is a default palette (`autocolorscale: true`) or the palette determined by `colorscale`. In case `colorscale` is unspecified or `autocolorscale` is true, the default  palette will be chosen according to whether numbers in the `color` array are all positive, all negative or mixed.
 */Histogram2d & Autocolorscale(const bool &autocolorscale ) {
     _histogram2d.insert({"autocolorscale", autocolorscale});
     return *this;
@@ -74,8 +74,8 @@ Histogram2d & Colorbar(const CppPlotly::Trace::histogram2d::Colorbar &colorbar )
 
 
 /**
-Sets the colorscale. The colorscale must be an array containing arrays mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string. At minimum, a mapping for the lowest (0) and highest (1) values are required. For example, `[[0, 'rgb(0,0,255)', [1, 'rgb(255,0,0)']]`. To control the bounds of the colorscale in z space, use zmin and zmax
-*/Histogram2d & Colorscale(const json11::Json::object &colorscale ) {
+Sets the colorscale. The colorscale must be an array containing arrays mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string. At minimum, a mapping for the lowest (0) and highest (1) values are required. For example, `[[0, 'rgb(0,0,255)', [1, 'rgb(255,0,0)']]`. To control the bounds of the colorscale in color space, use`zmin` and `zmax`. Alternatively, `colorscale` may be a palette name string of the following list: Greys,YlGnBu,Greens,YlOrRd,Bluered,RdBu,Reds,Blues,Picnic,Rainbow,Portland,Jet,Hot,Blackbody,Earth,Electric,Viridis,Cividis.
+*/Histogram2d & Colorscale(const json11::Json &colorscale ) {
     _histogram2d.insert({"colorscale", colorscale});
     return *this;
 }
@@ -99,7 +99,7 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 /**
 Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
-*/Histogram2d & Customdata(const json11::Json::object &customdata ) {
+*/Histogram2d & Customdata(const json11::Json &customdata ) {
     _histogram2d.insert({"customdata", customdata});
     return *this;
 }
@@ -115,7 +115,7 @@ Sets the source reference on plot.ly for  customdata .
 
 /**
 Specifies the binning function used for this histogram trace. If *count*, the histogram values are computed by counting the number of values lying inside each bin. If *sum*, *avg*, *min*, *max*, the histogram values are computed using the sum, the average, the minimum or the maximum of the values lying inside each bin respectively.
-*/Histogram2d & Histfunc(const json11::Json::object &histfunc ) {
+*/Histogram2d & Histfunc(const json11::Json &histfunc ) {
     _histogram2d.insert({"histfunc", histfunc});
     return *this;
 }
@@ -123,7 +123,7 @@ Specifies the binning function used for this histogram trace. If *count*, the hi
 
 /**
 Specifies the type of normalization used for this histogram trace. If **, the span of each bar corresponds to the number of occurrences (i.e. the number of data points lying inside the bins). If *percent* / *probability*, the span of each bar corresponds to the percentage / fraction of occurrences with respect to the total number of sample points (here, the sum of all bin HEIGHTS equals 100% / 1). If *density*, the span of each bar corresponds to the number of occurrences in a bin divided by the size of the bin interval (here, the sum of all bin AREAS equals the total number of sample points). If *probability density*, the area of each bar corresponds to the probability that an event will fall into the corresponding bin (here, the sum of all bin AREAS equals 1).
-*/Histogram2d & Histnorm(const json11::Json::object &histnorm ) {
+*/Histogram2d & Histnorm(const json11::Json &histnorm ) {
     _histogram2d.insert({"histnorm", histnorm});
     return *this;
 }
@@ -131,7 +131,7 @@ Specifies the type of normalization used for this histogram trace. If **, the sp
 
 /**
 Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon hovering. But, if `none` is set, click and hover events are still fired.
-*/Histogram2d & Hoverinfo(const json11::Json::object &hoverinfo ) {
+*/Histogram2d & Hoverinfo(const json11::Json &hoverinfo ) {
     _histogram2d.insert({"hoverinfo", hoverinfo});
     return *this;
 }
@@ -147,6 +147,22 @@ Sets the source reference on plot.ly for  hoverinfo .
 
 Histogram2d & Hoverlabel(const CppPlotly::Trace::histogram2d::Hoverlabel &hoverlabel ) {
     _histogram2d.insert({"hoverlabel", hoverlabel});
+    return *this;
+}
+
+
+/**
+Template string used for rendering the information that appear on hover box. Note that this will override `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}". Numbers are formatted using d3-format's syntax %{variable:d3-format}, for example "Price: %{y:$.2f}". See https://github.com/d3/d3-format/blob/master/README.md#locale_format for details on the formatting syntax. The variables available in `hovertemplate` are the ones emitted as event data described at this link https://plot.ly/javascript/plotlyjs-events/#event-data. Additionally, every attributes that can be specified per-point (the ones that are `arrayOk: true`) are available. variable `z` Anything contained in tag `<extra>` is displayed in the secondary box, for example "<extra>{fullData.name}</extra>". To hide the secondary box completely, use an empty tag `<extra></extra>`.
+*/Histogram2d & Hovertemplate(const json11::Json &hovertemplate ) {
+    _histogram2d.insert({"hovertemplate", hovertemplate});
+    return *this;
+}
+
+
+/**
+Sets the source reference on plot.ly for  hovertemplate .
+*/Histogram2d & Hovertemplatesrc(const std::string &hovertemplatesrc ) {
+    _histogram2d.insert({"hovertemplatesrc", hovertemplatesrc});
     return *this;
 }
 
@@ -169,7 +185,7 @@ Assigns id labels to each datum. These ids for object constancy of data points d
 
 /**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
-*/Histogram2d & Ids(const json11::Json::object &ids ) {
+*/Histogram2d & Ids(const json11::Json &ids ) {
     _histogram2d.insert({"ids", ids});
     return *this;
 }
@@ -206,7 +222,7 @@ Sets the trace name. The trace name appear as the legend item and on hover.
 
 
 /**
-Specifies the maximum number of desired bins. This value will be used in an algorithm that will decide the optimal bin size such that the histogram best visualizes the distribution of the data.
+Specifies the maximum number of desired bins. This value will be used in an algorithm that will decide the optimal bin size such that the histogram best visualizes the distribution of the data. Ignored if `xbins.size` is provided.
 */Histogram2d & Nbinsx(const int &nbinsx ) {
     _histogram2d.insert({"nbinsx", nbinsx});
     return *this;
@@ -214,7 +230,7 @@ Specifies the maximum number of desired bins. This value will be used in an algo
 
 
 /**
-Specifies the maximum number of desired bins. This value will be used in an algorithm that will decide the optimal bin size such that the histogram best visualizes the distribution of the data.
+Specifies the maximum number of desired bins. This value will be used in an algorithm that will decide the optimal bin size such that the histogram best visualizes the distribution of the data. Ignored if `ybins.size` is provided.
 */Histogram2d & Nbinsy(const int &nbinsy ) {
     _histogram2d.insert({"nbinsy", nbinsy});
     return *this;
@@ -230,7 +246,7 @@ Sets the opacity of the trace.
 
 
 /**
-Reverses the colorscale.
+Reverses the color mapping if true. If true, `zmin` will correspond to the last color in the array and `zmax` will correspond to the first color.
 */Histogram2d & Reversescale(const bool &reversescale ) {
     _histogram2d.insert({"reversescale", reversescale});
     return *this;
@@ -239,7 +255,7 @@ Reverses the colorscale.
 
 /**
 Array containing integer indices of selected points. Has an effect only for traces that support selections. Note that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any other non-array values means no selection all where the `selected` and `unselected` styles have no effect.
-*/Histogram2d & Selectedpoints(const json11::Json::object &selectedpoints ) {
+*/Histogram2d & Selectedpoints(const json11::Json &selectedpoints ) {
     _histogram2d.insert({"selectedpoints", selectedpoints});
     return *this;
 }
@@ -273,15 +289,25 @@ Histogram2d & Transforms(const std::vector<CppPlotly::Trace::histogram2d::Transf
 }
 
 
-Histogram2d & Uid(const std::string &uid ) {
+/**
+Assign an id to this trace, Use this to provide object constancy between traces during animations and transitions.
+*/Histogram2d & Uid(const std::string &uid ) {
     _histogram2d.insert({"uid", uid});
     return *this;
 }
 
 
 /**
+Controls persistence of some user-driven changes to the trace: `constraintrange` in `parcoords` traces, as well as some `editable: true` modifications such as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note that other user-driven trace attribute changes are controlled by `layout` attributes: `trace.visible` is controlled by `layout.legend.uirevision`, `selectedpoints` is controlled by `layout.selectionrevision`, and `colorbar.(x|y)` (accessible with `config: {editable: true}`) is controlled by `layout.editrevision`. Trace changes are tracked by `uid`, which only falls back on trace index if no `uid` is provided. So if your app can add/remove traces before the end of the `data` array, such that the same trace has a different index, you can still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
+*/Histogram2d & Uirevision(const json11::Json &uirevision ) {
+    _histogram2d.insert({"uirevision", uirevision});
+    return *this;
+}
+
+
+/**
 Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a legend item (provided that the legend itself is visible).
-*/Histogram2d & Visible(const json11::Json::object &visible ) {
+*/Histogram2d & Visible(const json11::Json &visible ) {
     _histogram2d.insert({"visible", visible});
     return *this;
 }
@@ -305,7 +331,7 @@ Sets the sample data to be binned on the x axis.
 
 /**
 Sets the sample data to be binned on the x axis.
-*/Histogram2d & X(const json11::Json::object &x ) {
+*/Histogram2d & X(const json11::Json &x ) {
     _histogram2d.insert({"x", x});
     return *this;
 }
@@ -313,7 +339,7 @@ Sets the sample data to be binned on the x axis.
 
 /**
 Sets a reference between this trace's x coordinates and a 2D cartesian x axis. If *x* (the default value), the x coordinates refer to `layout.xaxis`. If *x2*, the x coordinates refer to `layout.xaxis2`, and so on.
-*/Histogram2d & Xaxis(const json11::Json::object &xaxis ) {
+*/Histogram2d & Xaxis(const json11::Json &xaxis ) {
     _histogram2d.insert({"xaxis", xaxis});
     return *this;
 }
@@ -327,7 +353,7 @@ Histogram2d & Xbins(const CppPlotly::Trace::histogram2d::Xbins &xbins ) {
 
 /**
 Sets the calendar system to use with `x` date data.
-*/Histogram2d & Xcalendar(const json11::Json::object &xcalendar ) {
+*/Histogram2d & Xcalendar(const json11::Json &xcalendar ) {
     _histogram2d.insert({"xcalendar", xcalendar});
     return *this;
 }
@@ -367,7 +393,7 @@ Sets the sample data to be binned on the y axis.
 
 /**
 Sets the sample data to be binned on the y axis.
-*/Histogram2d & Y(const json11::Json::object &y ) {
+*/Histogram2d & Y(const json11::Json &y ) {
     _histogram2d.insert({"y", y});
     return *this;
 }
@@ -375,7 +401,7 @@ Sets the sample data to be binned on the y axis.
 
 /**
 Sets a reference between this trace's y coordinates and a 2D cartesian y axis. If *y* (the default value), the y coordinates refer to `layout.yaxis`. If *y2*, the y coordinates refer to `layout.yaxis2`, and so on.
-*/Histogram2d & Yaxis(const json11::Json::object &yaxis ) {
+*/Histogram2d & Yaxis(const json11::Json &yaxis ) {
     _histogram2d.insert({"yaxis", yaxis});
     return *this;
 }
@@ -389,7 +415,7 @@ Histogram2d & Ybins(const CppPlotly::Trace::histogram2d::Ybins &ybins ) {
 
 /**
 Sets the calendar system to use with `y` date data.
-*/Histogram2d & Ycalendar(const json11::Json::object &ycalendar ) {
+*/Histogram2d & Ycalendar(const json11::Json &ycalendar ) {
     _histogram2d.insert({"ycalendar", ycalendar});
     return *this;
 }
@@ -429,14 +455,14 @@ Sets the aggregation data.
 
 /**
 Sets the aggregation data.
-*/Histogram2d & Z(const json11::Json::object &z ) {
+*/Histogram2d & Z(const json11::Json &z ) {
     _histogram2d.insert({"z", z});
     return *this;
 }
 
 
 /**
-Determines the whether or not the color domain is computed with respect to the input data.
+Determines whether or not the color domain is computed with respect to the input data (here in `z`) or the bounds set in `zmin` and `zmax`  Defaults to `false` when `zmin` and `zmax` are set by the user.
 */Histogram2d & Zauto(const bool &zauto ) {
     _histogram2d.insert({"zauto", zauto});
     return *this;
@@ -452,7 +478,7 @@ Sets the hover text formatting rule using d3 formatting mini-languages which are
 
 
 /**
-Sets the upper bound of color domain.
+Sets the upper bound of the color domain. Value should have the same units as in `z` and if set, `zmin` must be set as well.
 */Histogram2d & Zmax(const double &zmax ) {
     _histogram2d.insert({"zmax", zmax});
     return *this;
@@ -460,7 +486,15 @@ Sets the upper bound of color domain.
 
 
 /**
-Sets the lower bound of color domain.
+Sets the mid-point of the color domain by scaling `zmin` and/or `zmax` to be equidistant to this point. Value should have the same units as in `z`. Has no effect when `zauto` is `false`.
+*/Histogram2d & Zmid(const double &zmid ) {
+    _histogram2d.insert({"zmid", zmid});
+    return *this;
+}
+
+
+/**
+Sets the lower bound of the color domain. Value should have the same units as in `z` and if set, `zmax` must be set as well.
 */Histogram2d & Zmin(const double &zmin ) {
     _histogram2d.insert({"zmin", zmin});
     return *this;
@@ -469,7 +503,7 @@ Sets the lower bound of color domain.
 
 /**
 Picks a smoothing algorithm use to smooth `z` data.
-*/Histogram2d & Zsmooth(const json11::Json::object &zsmooth ) {
+*/Histogram2d & Zsmooth(const json11::Json &zsmooth ) {
     _histogram2d.insert({"zsmooth", zsmooth});
     return *this;
 }

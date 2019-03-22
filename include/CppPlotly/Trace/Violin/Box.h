@@ -40,7 +40,7 @@ namespace CppPlotly {
 
     /**
 Sets the inner box plot fill color.
-*/Box & Fillcolor(const json11::Json::object &fillcolor ) {
+*/Box & Fillcolor(const json11::Json &fillcolor ) {
     _box.insert({"fillcolor", fillcolor});
     return *this;
 }

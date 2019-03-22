@@ -40,7 +40,7 @@ namespace marker {
 
     /**
 Sets the final color of the gradient fill: the center color for radial, the right for horizontal, or the bottom for vertical.
-*/Gradient & Color(const json11::Json::object &color ) {
+*/Gradient & Color(const json11::Json &color ) {
     _gradient.insert({"color", color});
     return *this;
 }

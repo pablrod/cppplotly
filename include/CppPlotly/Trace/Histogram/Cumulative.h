@@ -39,7 +39,7 @@ namespace CppPlotly {
 
     /**
 Only applies if cumulative is enabled. Sets whether the current bin is included, excluded, or has half of its value included in the current cumulative value. *include* is the default for compatibility with various other tools, however it introduces a half-bin bias to the results. *exclude* makes the opposite half-bin bias, and *half* removes it.
-*/Cumulative & Currentbin(const json11::Json::object &currentbin ) {
+*/Cumulative & Currentbin(const json11::Json &currentbin ) {
     _cumulative.insert({"currentbin", currentbin});
     return *this;
 }
@@ -47,7 +47,7 @@ Only applies if cumulative is enabled. Sets whether the current bin is included,
 
 /**
 Only applies if cumulative is enabled. If *increasing* (default) we sum all prior bins, so the result increases from left to right. If *decreasing* we sum later bins so the result decreases from left to right.
-*/Cumulative & Direction(const json11::Json::object &direction ) {
+*/Cumulative & Direction(const json11::Json &direction ) {
     _cumulative.insert({"direction", direction});
     return *this;
 }

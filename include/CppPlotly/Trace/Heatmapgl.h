@@ -41,7 +41,7 @@ namespace CppPlotly {
                         {}
 
            /**
-Determines whether or not the colorscale is picked using the sign of the input z values.
+Determines whether the colorscale is a default palette (`autocolorscale: true`) or the palette determined by `colorscale`. In case `colorscale` is unspecified or `autocolorscale` is true, the default  palette will be chosen according to whether numbers in the `color` array are all positive, all negative or mixed.
 */Heatmapgl & Autocolorscale(const bool &autocolorscale ) {
     _heatmapgl.insert({"autocolorscale", autocolorscale});
     return *this;
@@ -55,8 +55,8 @@ Heatmapgl & Colorbar(const CppPlotly::Trace::heatmapgl::Colorbar &colorbar ) {
 
 
 /**
-Sets the colorscale. The colorscale must be an array containing arrays mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string. At minimum, a mapping for the lowest (0) and highest (1) values are required. For example, `[[0, 'rgb(0,0,255)', [1, 'rgb(255,0,0)']]`. To control the bounds of the colorscale in z space, use zmin and zmax
-*/Heatmapgl & Colorscale(const json11::Json::object &colorscale ) {
+Sets the colorscale. The colorscale must be an array containing arrays mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string. At minimum, a mapping for the lowest (0) and highest (1) values are required. For example, `[[0, 'rgb(0,0,255)', [1, 'rgb(255,0,0)']]`. To control the bounds of the colorscale in color space, use`zmin` and `zmax`. Alternatively, `colorscale` may be a palette name string of the following list: Greys,YlGnBu,Greens,YlOrRd,Bluered,RdBu,Reds,Blues,Picnic,Rainbow,Portland,Jet,Hot,Blackbody,Earth,Electric,Viridis,Cividis.
+*/Heatmapgl & Colorscale(const json11::Json &colorscale ) {
     _heatmapgl.insert({"colorscale", colorscale});
     return *this;
 }
@@ -80,7 +80,7 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 /**
 Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
-*/Heatmapgl & Customdata(const json11::Json::object &customdata ) {
+*/Heatmapgl & Customdata(const json11::Json &customdata ) {
     _heatmapgl.insert({"customdata", customdata});
     return *this;
 }
@@ -112,7 +112,7 @@ Sets the y coordinate step. See `y0` for more info.
 
 /**
 Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon hovering. But, if `none` is set, click and hover events are still fired.
-*/Heatmapgl & Hoverinfo(const json11::Json::object &hoverinfo ) {
+*/Heatmapgl & Hoverinfo(const json11::Json &hoverinfo ) {
     _heatmapgl.insert({"hoverinfo", hoverinfo});
     return *this;
 }
@@ -150,7 +150,7 @@ Assigns id labels to each datum. These ids for object constancy of data points d
 
 /**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
-*/Heatmapgl & Ids(const json11::Json::object &ids ) {
+*/Heatmapgl & Ids(const json11::Json &ids ) {
     _heatmapgl.insert({"ids", ids});
     return *this;
 }
@@ -189,7 +189,7 @@ Sets the opacity of the trace.
 
 
 /**
-Reverses the colorscale.
+Reverses the color mapping if true. If true, `zmin` will correspond to the last color in the array and `zmax` will correspond to the first color.
 */Heatmapgl & Reversescale(const bool &reversescale ) {
     _heatmapgl.insert({"reversescale", reversescale});
     return *this;
@@ -198,7 +198,7 @@ Reverses the colorscale.
 
 /**
 Array containing integer indices of selected points. Has an effect only for traces that support selections. Note that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any other non-array values means no selection all where the `selected` and `unselected` styles have no effect.
-*/Heatmapgl & Selectedpoints(const json11::Json::object &selectedpoints ) {
+*/Heatmapgl & Selectedpoints(const json11::Json &selectedpoints ) {
     _heatmapgl.insert({"selectedpoints", selectedpoints});
     return *this;
 }
@@ -244,7 +244,7 @@ Sets the text elements associated with each z value.
 
 /**
 Sets the text elements associated with each z value.
-*/Heatmapgl & Text(const json11::Json::object &text ) {
+*/Heatmapgl & Text(const json11::Json &text ) {
     _heatmapgl.insert({"text", text});
     return *this;
 }
@@ -272,15 +272,25 @@ Transposes the z data.
 }
 
 
-Heatmapgl & Uid(const std::string &uid ) {
+/**
+Assign an id to this trace, Use this to provide object constancy between traces during animations and transitions.
+*/Heatmapgl & Uid(const std::string &uid ) {
     _heatmapgl.insert({"uid", uid});
     return *this;
 }
 
 
 /**
+Controls persistence of some user-driven changes to the trace: `constraintrange` in `parcoords` traces, as well as some `editable: true` modifications such as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note that other user-driven trace attribute changes are controlled by `layout` attributes: `trace.visible` is controlled by `layout.legend.uirevision`, `selectedpoints` is controlled by `layout.selectionrevision`, and `colorbar.(x|y)` (accessible with `config: {editable: true}`) is controlled by `layout.editrevision`. Trace changes are tracked by `uid`, which only falls back on trace index if no `uid` is provided. So if your app can add/remove traces before the end of the `data` array, such that the same trace has a different index, you can still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
+*/Heatmapgl & Uirevision(const json11::Json &uirevision ) {
+    _heatmapgl.insert({"uirevision", uirevision});
+    return *this;
+}
+
+
+/**
 Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a legend item (provided that the legend itself is visible).
-*/Heatmapgl & Visible(const json11::Json::object &visible ) {
+*/Heatmapgl & Visible(const json11::Json &visible ) {
     _heatmapgl.insert({"visible", visible});
     return *this;
 }
@@ -304,7 +314,7 @@ Sets the x coordinates.
 
 /**
 Sets the x coordinates.
-*/Heatmapgl & X(const json11::Json::object &x ) {
+*/Heatmapgl & X(const json11::Json &x ) {
     _heatmapgl.insert({"x", x});
     return *this;
 }
@@ -312,7 +322,7 @@ Sets the x coordinates.
 
 /**
 Alternate to `x`. Builds a linear space of x coordinates. Use with `dx` where `x0` is the starting coordinate and `dx` the step.
-*/Heatmapgl & X0(const json11::Json::object &x0 ) {
+*/Heatmapgl & X0(const json11::Json &x0 ) {
     _heatmapgl.insert({"x0", x0});
     return *this;
 }
@@ -320,7 +330,7 @@ Alternate to `x`. Builds a linear space of x coordinates. Use with `dx` where `x
 
 /**
 Sets a reference between this trace's x coordinates and a 2D cartesian x axis. If *x* (the default value), the x coordinates refer to `layout.xaxis`. If *x2*, the x coordinates refer to `layout.xaxis2`, and so on.
-*/Heatmapgl & Xaxis(const json11::Json::object &xaxis ) {
+*/Heatmapgl & Xaxis(const json11::Json &xaxis ) {
     _heatmapgl.insert({"xaxis", xaxis});
     return *this;
 }
@@ -336,7 +346,7 @@ Sets the source reference on plot.ly for  x .
 
 /**
 If *array*, the heatmap's x coordinates are given by *x* (the default behavior when `x` is provided). If *scaled*, the heatmap's x coordinates are given by *x0* and *dx* (the default behavior when `x` is not provided).
-*/Heatmapgl & Xtype(const json11::Json::object &xtype ) {
+*/Heatmapgl & Xtype(const json11::Json &xtype ) {
     _heatmapgl.insert({"xtype", xtype});
     return *this;
 }
@@ -360,7 +370,7 @@ Sets the y coordinates.
 
 /**
 Sets the y coordinates.
-*/Heatmapgl & Y(const json11::Json::object &y ) {
+*/Heatmapgl & Y(const json11::Json &y ) {
     _heatmapgl.insert({"y", y});
     return *this;
 }
@@ -368,7 +378,7 @@ Sets the y coordinates.
 
 /**
 Alternate to `y`. Builds a linear space of y coordinates. Use with `dy` where `y0` is the starting coordinate and `dy` the step.
-*/Heatmapgl & Y0(const json11::Json::object &y0 ) {
+*/Heatmapgl & Y0(const json11::Json &y0 ) {
     _heatmapgl.insert({"y0", y0});
     return *this;
 }
@@ -376,7 +386,7 @@ Alternate to `y`. Builds a linear space of y coordinates. Use with `dy` where `y
 
 /**
 Sets a reference between this trace's y coordinates and a 2D cartesian y axis. If *y* (the default value), the y coordinates refer to `layout.yaxis`. If *y2*, the y coordinates refer to `layout.yaxis2`, and so on.
-*/Heatmapgl & Yaxis(const json11::Json::object &yaxis ) {
+*/Heatmapgl & Yaxis(const json11::Json &yaxis ) {
     _heatmapgl.insert({"yaxis", yaxis});
     return *this;
 }
@@ -392,7 +402,7 @@ Sets the source reference on plot.ly for  y .
 
 /**
 If *array*, the heatmap's y coordinates are given by *y* (the default behavior when `y` is provided) If *scaled*, the heatmap's y coordinates are given by *y0* and *dy* (the default behavior when `y` is not provided)
-*/Heatmapgl & Ytype(const json11::Json::object &ytype ) {
+*/Heatmapgl & Ytype(const json11::Json &ytype ) {
     _heatmapgl.insert({"ytype", ytype});
     return *this;
 }
@@ -416,14 +426,14 @@ Sets the z data.
 
 /**
 Sets the z data.
-*/Heatmapgl & Z(const json11::Json::object &z ) {
+*/Heatmapgl & Z(const json11::Json &z ) {
     _heatmapgl.insert({"z", z});
     return *this;
 }
 
 
 /**
-Determines the whether or not the color domain is computed with respect to the input data.
+Determines whether or not the color domain is computed with respect to the input data (here in `z`) or the bounds set in `zmin` and `zmax`  Defaults to `false` when `zmin` and `zmax` are set by the user.
 */Heatmapgl & Zauto(const bool &zauto ) {
     _heatmapgl.insert({"zauto", zauto});
     return *this;
@@ -431,7 +441,7 @@ Determines the whether or not the color domain is computed with respect to the i
 
 
 /**
-Sets the upper bound of color domain.
+Sets the upper bound of the color domain. Value should have the same units as in `z` and if set, `zmin` must be set as well.
 */Heatmapgl & Zmax(const double &zmax ) {
     _heatmapgl.insert({"zmax", zmax});
     return *this;
@@ -439,7 +449,15 @@ Sets the upper bound of color domain.
 
 
 /**
-Sets the lower bound of color domain.
+Sets the mid-point of the color domain by scaling `zmin` and/or `zmax` to be equidistant to this point. Value should have the same units as in `z`. Has no effect when `zauto` is `false`.
+*/Heatmapgl & Zmid(const double &zmid ) {
+    _heatmapgl.insert({"zmid", zmid});
+    return *this;
+}
+
+
+/**
+Sets the lower bound of the color domain. Value should have the same units as in `z` and if set, `zmax` must be set as well.
 */Heatmapgl & Zmin(const double &zmin ) {
     _heatmapgl.insert({"zmin", zmin});
     return *this;

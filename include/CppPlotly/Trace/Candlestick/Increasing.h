@@ -40,7 +40,7 @@ namespace CppPlotly {
 
     /**
 Sets the fill color. Defaults to a half-transparent variant of the line color, marker color, or marker line color, whichever is available.
-*/Increasing & Fillcolor(const json11::Json::object &fillcolor ) {
+*/Increasing & Fillcolor(const json11::Json &fillcolor ) {
     _increasing.insert({"fillcolor", fillcolor});
     return *this;
 }

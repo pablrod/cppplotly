@@ -40,7 +40,7 @@ namespace selected {
 
     /**
 Sets the marker color of selected points.
-*/Marker & Color(const json11::Json::object &color ) {
+*/Marker & Color(const json11::Json &color ) {
     _marker.insert({"color", color});
     return *this;
 }

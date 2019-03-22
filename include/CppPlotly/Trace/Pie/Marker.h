@@ -56,7 +56,7 @@ Sets the color of each sector of this pie chart. If not specified, the default t
 
 /**
 Sets the color of each sector of this pie chart. If not specified, the default trace color set is used to pick the sector colors.
-*/Marker & Colors(const json11::Json::object &colors ) {
+*/Marker & Colors(const json11::Json &colors ) {
     _marker.insert({"colors", colors});
     return *this;
 }

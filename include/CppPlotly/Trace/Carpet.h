@@ -24,7 +24,6 @@ But I think plotly.js is a great library and I want to use it with C++.
 #include "CppPlotly/Trace/Carpet/Font.h"
 #include "CppPlotly/Trace/Carpet/Hoverlabel.h"
 #include "CppPlotly/Trace/Carpet/Stream.h"
-#include "CppPlotly/Trace/Carpet/Transform.h"
 
 
 namespace CppPlotly {
@@ -60,7 +59,7 @@ An array containing values of the first parameter value
 
 /**
 An array containing values of the first parameter value
-*/Carpet & A(const json11::Json::object &a ) {
+*/Carpet & A(const json11::Json &a ) {
     _carpet.insert({"a", a});
     return *this;
 }
@@ -106,7 +105,7 @@ A two dimensional array of y coordinates at each carpet point.
 
 /**
 A two dimensional array of y coordinates at each carpet point.
-*/Carpet & B(const json11::Json::object &b ) {
+*/Carpet & B(const json11::Json &b ) {
     _carpet.insert({"b", b});
     return *this;
 }
@@ -152,7 +151,7 @@ The shift applied to each successive row of data in creating a cheater plot. Onl
 
 /**
 Sets default for all colors associated with this axis all at once: line, font, tick, and grid colors. Grid color is lightened by blending this with the plot background Individual pieces can override this.
-*/Carpet & Color(const json11::Json::object &color ) {
+*/Carpet & Color(const json11::Json &color ) {
     _carpet.insert({"color", color});
     return *this;
 }
@@ -176,7 +175,7 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 /**
 Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
-*/Carpet & Customdata(const json11::Json::object &customdata ) {
+*/Carpet & Customdata(const json11::Json &customdata ) {
     _carpet.insert({"customdata", customdata});
     return *this;
 }
@@ -214,7 +213,7 @@ Carpet & Font(const CppPlotly::Trace::carpet::Font &font ) {
 
 /**
 Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon hovering. But, if `none` is set, click and hover events are still fired.
-*/Carpet & Hoverinfo(const json11::Json::object &hoverinfo ) {
+*/Carpet & Hoverinfo(const json11::Json &hoverinfo ) {
     _carpet.insert({"hoverinfo", hoverinfo});
     return *this;
 }
@@ -252,7 +251,7 @@ Assigns id labels to each datum. These ids for object constancy of data points d
 
 /**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
-*/Carpet & Ids(const json11::Json::object &ids ) {
+*/Carpet & Ids(const json11::Json &ids ) {
     _carpet.insert({"ids", ids});
     return *this;
 }
@@ -292,7 +291,7 @@ Sets the opacity of the trace.
 
 /**
 Array containing integer indices of selected points. Has an effect only for traces that support selections. Note that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any other non-array values means no selection all where the `selected` and `unselected` styles have no effect.
-*/Carpet & Selectedpoints(const json11::Json::object &selectedpoints ) {
+*/Carpet & Selectedpoints(const json11::Json &selectedpoints ) {
     _carpet.insert({"selectedpoints", selectedpoints});
     return *this;
 }
@@ -312,21 +311,25 @@ Carpet & Stream(const CppPlotly::Trace::carpet::Stream &stream ) {
 }
 
 
-Carpet & Transforms(const std::vector<CppPlotly::Trace::carpet::Transform> &transforms ) {
-    _carpet.insert({"transforms", transforms});
-    return *this;
-}
-
-
-Carpet & Uid(const std::string &uid ) {
+/**
+Assign an id to this trace, Use this to provide object constancy between traces during animations and transitions.
+*/Carpet & Uid(const std::string &uid ) {
     _carpet.insert({"uid", uid});
     return *this;
 }
 
 
 /**
+Controls persistence of some user-driven changes to the trace: `constraintrange` in `parcoords` traces, as well as some `editable: true` modifications such as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note that other user-driven trace attribute changes are controlled by `layout` attributes: `trace.visible` is controlled by `layout.legend.uirevision`, `selectedpoints` is controlled by `layout.selectionrevision`, and `colorbar.(x|y)` (accessible with `config: {editable: true}`) is controlled by `layout.editrevision`. Trace changes are tracked by `uid`, which only falls back on trace index if no `uid` is provided. So if your app can add/remove traces before the end of the `data` array, such that the same trace has a different index, you can still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
+*/Carpet & Uirevision(const json11::Json &uirevision ) {
+    _carpet.insert({"uirevision", uirevision});
+    return *this;
+}
+
+
+/**
 Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a legend item (provided that the legend itself is visible).
-*/Carpet & Visible(const json11::Json::object &visible ) {
+*/Carpet & Visible(const json11::Json &visible ) {
     _carpet.insert({"visible", visible});
     return *this;
 }
@@ -350,7 +353,7 @@ A two dimensional array of x coordinates at each carpet point. If ommitted, the 
 
 /**
 A two dimensional array of x coordinates at each carpet point. If ommitted, the plot is a cheater plot and the xaxis is hidden by default.
-*/Carpet & X(const json11::Json::object &x ) {
+*/Carpet & X(const json11::Json &x ) {
     _carpet.insert({"x", x});
     return *this;
 }
@@ -358,7 +361,7 @@ A two dimensional array of x coordinates at each carpet point. If ommitted, the 
 
 /**
 Sets a reference between this trace's x coordinates and a 2D cartesian x axis. If *x* (the default value), the x coordinates refer to `layout.xaxis`. If *x2*, the x coordinates refer to `layout.xaxis2`, and so on.
-*/Carpet & Xaxis(const json11::Json::object &xaxis ) {
+*/Carpet & Xaxis(const json11::Json &xaxis ) {
     _carpet.insert({"xaxis", xaxis});
     return *this;
 }
@@ -390,7 +393,7 @@ A two dimensional array of y coordinates at each carpet point.
 
 /**
 A two dimensional array of y coordinates at each carpet point.
-*/Carpet & Y(const json11::Json::object &y ) {
+*/Carpet & Y(const json11::Json &y ) {
     _carpet.insert({"y", y});
     return *this;
 }
@@ -398,7 +401,7 @@ A two dimensional array of y coordinates at each carpet point.
 
 /**
 Sets a reference between this trace's y coordinates and a 2D cartesian y axis. If *y* (the default value), the y coordinates refer to `layout.yaxis`. If *y2*, the y coordinates refer to `layout.yaxis2`, and so on.
-*/Carpet & Yaxis(const json11::Json::object &yaxis ) {
+*/Carpet & Yaxis(const json11::Json &yaxis ) {
     _carpet.insert({"yaxis", yaxis});
     return *this;
 }

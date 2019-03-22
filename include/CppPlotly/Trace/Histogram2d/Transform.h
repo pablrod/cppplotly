@@ -37,7 +37,7 @@ namespace CppPlotly {
     class Transform {
     public:
 
-    Transform & Description(const json11::Json::object &description ) {
+    Transform & Description(const json11::Json &description ) {
     _transform.insert({"description", description});
     return *this;
 }

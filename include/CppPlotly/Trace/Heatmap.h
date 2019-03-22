@@ -41,7 +41,7 @@ namespace CppPlotly {
                         {}
 
            /**
-Determines whether or not the colorscale is picked using the sign of the input z values.
+Determines whether the colorscale is a default palette (`autocolorscale: true`) or the palette determined by `colorscale`. In case `colorscale` is unspecified or `autocolorscale` is true, the default  palette will be chosen according to whether numbers in the `color` array are all positive, all negative or mixed.
 */Heatmap & Autocolorscale(const bool &autocolorscale ) {
     _heatmap.insert({"autocolorscale", autocolorscale});
     return *this;
@@ -55,8 +55,8 @@ Heatmap & Colorbar(const CppPlotly::Trace::heatmap::Colorbar &colorbar ) {
 
 
 /**
-Sets the colorscale. The colorscale must be an array containing arrays mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string. At minimum, a mapping for the lowest (0) and highest (1) values are required. For example, `[[0, 'rgb(0,0,255)', [1, 'rgb(255,0,0)']]`. To control the bounds of the colorscale in z space, use zmin and zmax
-*/Heatmap & Colorscale(const json11::Json::object &colorscale ) {
+Sets the colorscale. The colorscale must be an array containing arrays mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string. At minimum, a mapping for the lowest (0) and highest (1) values are required. For example, `[[0, 'rgb(0,0,255)', [1, 'rgb(255,0,0)']]`. To control the bounds of the colorscale in color space, use`zmin` and `zmax`. Alternatively, `colorscale` may be a palette name string of the following list: Greys,YlGnBu,Greens,YlOrRd,Bluered,RdBu,Reds,Blues,Picnic,Rainbow,Portland,Jet,Hot,Blackbody,Earth,Electric,Viridis,Cividis.
+*/Heatmap & Colorscale(const json11::Json &colorscale ) {
     _heatmap.insert({"colorscale", colorscale});
     return *this;
 }
@@ -88,7 +88,7 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 /**
 Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
-*/Heatmap & Customdata(const json11::Json::object &customdata ) {
+*/Heatmap & Customdata(const json11::Json &customdata ) {
     _heatmap.insert({"customdata", customdata});
     return *this;
 }
@@ -120,7 +120,7 @@ Sets the y coordinate step. See `y0` for more info.
 
 /**
 Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon hovering. But, if `none` is set, click and hover events are still fired.
-*/Heatmap & Hoverinfo(const json11::Json::object &hoverinfo ) {
+*/Heatmap & Hoverinfo(const json11::Json &hoverinfo ) {
     _heatmap.insert({"hoverinfo", hoverinfo});
     return *this;
 }
@@ -136,6 +136,54 @@ Sets the source reference on plot.ly for  hoverinfo .
 
 Heatmap & Hoverlabel(const CppPlotly::Trace::heatmap::Hoverlabel &hoverlabel ) {
     _heatmap.insert({"hoverlabel", hoverlabel});
+    return *this;
+}
+
+
+/**
+Template string used for rendering the information that appear on hover box. Note that this will override `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}". Numbers are formatted using d3-format's syntax %{variable:d3-format}, for example "Price: %{y:$.2f}". See https://github.com/d3/d3-format/blob/master/README.md#locale_format for details on the formatting syntax. The variables available in `hovertemplate` are the ones emitted as event data described at this link https://plot.ly/javascript/plotlyjs-events/#event-data. Additionally, every attributes that can be specified per-point (the ones that are `arrayOk: true`) are available.  Anything contained in tag `<extra>` is displayed in the secondary box, for example "<extra>{fullData.name}</extra>". To hide the secondary box completely, use an empty tag `<extra></extra>`.
+*/Heatmap & Hovertemplate(const json11::Json &hovertemplate ) {
+    _heatmap.insert({"hovertemplate", hovertemplate});
+    return *this;
+}
+
+
+/**
+Sets the source reference on plot.ly for  hovertemplate .
+*/Heatmap & Hovertemplatesrc(const std::string &hovertemplatesrc ) {
+    _heatmap.insert({"hovertemplatesrc", hovertemplatesrc});
+    return *this;
+}
+
+
+/**
+Same as `text`.
+*/Heatmap & Hovertext(const std::vector<double> &hovertext ) {
+    _heatmap.insert({"hovertext", hovertext});
+    return *this;
+}
+
+
+/**
+Same as `text`.
+*/Heatmap & Hovertext(const std::vector<std::string> &hovertext ) {
+    _heatmap.insert({"hovertext", hovertext});
+    return *this;
+}
+
+
+/**
+Same as `text`.
+*/Heatmap & Hovertext(const json11::Json &hovertext ) {
+    _heatmap.insert({"hovertext", hovertext});
+    return *this;
+}
+
+
+/**
+Sets the source reference on plot.ly for  hovertext .
+*/Heatmap & Hovertextsrc(const std::string &hovertextsrc ) {
+    _heatmap.insert({"hovertextsrc", hovertextsrc});
     return *this;
 }
 
@@ -158,7 +206,7 @@ Assigns id labels to each datum. These ids for object constancy of data points d
 
 /**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
-*/Heatmap & Ids(const json11::Json::object &ids ) {
+*/Heatmap & Ids(const json11::Json &ids ) {
     _heatmap.insert({"ids", ids});
     return *this;
 }
@@ -197,7 +245,7 @@ Sets the opacity of the trace.
 
 
 /**
-Reverses the colorscale.
+Reverses the color mapping if true. If true, `zmin` will correspond to the last color in the array and `zmax` will correspond to the first color.
 */Heatmap & Reversescale(const bool &reversescale ) {
     _heatmap.insert({"reversescale", reversescale});
     return *this;
@@ -206,7 +254,7 @@ Reverses the colorscale.
 
 /**
 Array containing integer indices of selected points. Has an effect only for traces that support selections. Note that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any other non-array values means no selection all where the `selected` and `unselected` styles have no effect.
-*/Heatmap & Selectedpoints(const json11::Json::object &selectedpoints ) {
+*/Heatmap & Selectedpoints(const json11::Json &selectedpoints ) {
     _heatmap.insert({"selectedpoints", selectedpoints});
     return *this;
 }
@@ -252,7 +300,7 @@ Sets the text elements associated with each z value.
 
 /**
 Sets the text elements associated with each z value.
-*/Heatmap & Text(const json11::Json::object &text ) {
+*/Heatmap & Text(const json11::Json &text ) {
     _heatmap.insert({"text", text});
     return *this;
 }
@@ -280,15 +328,25 @@ Transposes the z data.
 }
 
 
-Heatmap & Uid(const std::string &uid ) {
+/**
+Assign an id to this trace, Use this to provide object constancy between traces during animations and transitions.
+*/Heatmap & Uid(const std::string &uid ) {
     _heatmap.insert({"uid", uid});
     return *this;
 }
 
 
 /**
+Controls persistence of some user-driven changes to the trace: `constraintrange` in `parcoords` traces, as well as some `editable: true` modifications such as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note that other user-driven trace attribute changes are controlled by `layout` attributes: `trace.visible` is controlled by `layout.legend.uirevision`, `selectedpoints` is controlled by `layout.selectionrevision`, and `colorbar.(x|y)` (accessible with `config: {editable: true}`) is controlled by `layout.editrevision`. Trace changes are tracked by `uid`, which only falls back on trace index if no `uid` is provided. So if your app can add/remove traces before the end of the `data` array, such that the same trace has a different index, you can still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
+*/Heatmap & Uirevision(const json11::Json &uirevision ) {
+    _heatmap.insert({"uirevision", uirevision});
+    return *this;
+}
+
+
+/**
 Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a legend item (provided that the legend itself is visible).
-*/Heatmap & Visible(const json11::Json::object &visible ) {
+*/Heatmap & Visible(const json11::Json &visible ) {
     _heatmap.insert({"visible", visible});
     return *this;
 }
@@ -312,7 +370,7 @@ Sets the x coordinates.
 
 /**
 Sets the x coordinates.
-*/Heatmap & X(const json11::Json::object &x ) {
+*/Heatmap & X(const json11::Json &x ) {
     _heatmap.insert({"x", x});
     return *this;
 }
@@ -320,7 +378,7 @@ Sets the x coordinates.
 
 /**
 Alternate to `x`. Builds a linear space of x coordinates. Use with `dx` where `x0` is the starting coordinate and `dx` the step.
-*/Heatmap & X0(const json11::Json::object &x0 ) {
+*/Heatmap & X0(const json11::Json &x0 ) {
     _heatmap.insert({"x0", x0});
     return *this;
 }
@@ -328,7 +386,7 @@ Alternate to `x`. Builds a linear space of x coordinates. Use with `dx` where `x
 
 /**
 Sets a reference between this trace's x coordinates and a 2D cartesian x axis. If *x* (the default value), the x coordinates refer to `layout.xaxis`. If *x2*, the x coordinates refer to `layout.xaxis2`, and so on.
-*/Heatmap & Xaxis(const json11::Json::object &xaxis ) {
+*/Heatmap & Xaxis(const json11::Json &xaxis ) {
     _heatmap.insert({"xaxis", xaxis});
     return *this;
 }
@@ -336,7 +394,7 @@ Sets a reference between this trace's x coordinates and a 2D cartesian x axis. I
 
 /**
 Sets the calendar system to use with `x` date data.
-*/Heatmap & Xcalendar(const json11::Json::object &xcalendar ) {
+*/Heatmap & Xcalendar(const json11::Json &xcalendar ) {
     _heatmap.insert({"xcalendar", xcalendar});
     return *this;
 }
@@ -360,7 +418,7 @@ Sets the source reference on plot.ly for  x .
 
 /**
 If *array*, the heatmap's x coordinates are given by *x* (the default behavior when `x` is provided). If *scaled*, the heatmap's x coordinates are given by *x0* and *dx* (the default behavior when `x` is not provided).
-*/Heatmap & Xtype(const json11::Json::object &xtype ) {
+*/Heatmap & Xtype(const json11::Json &xtype ) {
     _heatmap.insert({"xtype", xtype});
     return *this;
 }
@@ -384,7 +442,7 @@ Sets the y coordinates.
 
 /**
 Sets the y coordinates.
-*/Heatmap & Y(const json11::Json::object &y ) {
+*/Heatmap & Y(const json11::Json &y ) {
     _heatmap.insert({"y", y});
     return *this;
 }
@@ -392,7 +450,7 @@ Sets the y coordinates.
 
 /**
 Alternate to `y`. Builds a linear space of y coordinates. Use with `dy` where `y0` is the starting coordinate and `dy` the step.
-*/Heatmap & Y0(const json11::Json::object &y0 ) {
+*/Heatmap & Y0(const json11::Json &y0 ) {
     _heatmap.insert({"y0", y0});
     return *this;
 }
@@ -400,7 +458,7 @@ Alternate to `y`. Builds a linear space of y coordinates. Use with `dy` where `y
 
 /**
 Sets a reference between this trace's y coordinates and a 2D cartesian y axis. If *y* (the default value), the y coordinates refer to `layout.yaxis`. If *y2*, the y coordinates refer to `layout.yaxis2`, and so on.
-*/Heatmap & Yaxis(const json11::Json::object &yaxis ) {
+*/Heatmap & Yaxis(const json11::Json &yaxis ) {
     _heatmap.insert({"yaxis", yaxis});
     return *this;
 }
@@ -408,7 +466,7 @@ Sets a reference between this trace's y coordinates and a 2D cartesian y axis. I
 
 /**
 Sets the calendar system to use with `y` date data.
-*/Heatmap & Ycalendar(const json11::Json::object &ycalendar ) {
+*/Heatmap & Ycalendar(const json11::Json &ycalendar ) {
     _heatmap.insert({"ycalendar", ycalendar});
     return *this;
 }
@@ -432,7 +490,7 @@ Sets the source reference on plot.ly for  y .
 
 /**
 If *array*, the heatmap's y coordinates are given by *y* (the default behavior when `y` is provided) If *scaled*, the heatmap's y coordinates are given by *y0* and *dy* (the default behavior when `y` is not provided)
-*/Heatmap & Ytype(const json11::Json::object &ytype ) {
+*/Heatmap & Ytype(const json11::Json &ytype ) {
     _heatmap.insert({"ytype", ytype});
     return *this;
 }
@@ -456,14 +514,14 @@ Sets the z data.
 
 /**
 Sets the z data.
-*/Heatmap & Z(const json11::Json::object &z ) {
+*/Heatmap & Z(const json11::Json &z ) {
     _heatmap.insert({"z", z});
     return *this;
 }
 
 
 /**
-Determines the whether or not the color domain is computed with respect to the input data.
+Determines whether or not the color domain is computed with respect to the input data (here in `z`) or the bounds set in `zmin` and `zmax`  Defaults to `false` when `zmin` and `zmax` are set by the user.
 */Heatmap & Zauto(const bool &zauto ) {
     _heatmap.insert({"zauto", zauto});
     return *this;
@@ -479,7 +537,7 @@ Sets the hover text formatting rule using d3 formatting mini-languages which are
 
 
 /**
-Sets the upper bound of color domain.
+Sets the upper bound of the color domain. Value should have the same units as in `z` and if set, `zmin` must be set as well.
 */Heatmap & Zmax(const double &zmax ) {
     _heatmap.insert({"zmax", zmax});
     return *this;
@@ -487,7 +545,15 @@ Sets the upper bound of color domain.
 
 
 /**
-Sets the lower bound of color domain.
+Sets the mid-point of the color domain by scaling `zmin` and/or `zmax` to be equidistant to this point. Value should have the same units as in `z`. Has no effect when `zauto` is `false`.
+*/Heatmap & Zmid(const double &zmid ) {
+    _heatmap.insert({"zmid", zmid});
+    return *this;
+}
+
+
+/**
+Sets the lower bound of the color domain. Value should have the same units as in `z` and if set, `zmax` must be set as well.
 */Heatmap & Zmin(const double &zmin ) {
     _heatmap.insert({"zmin", zmin});
     return *this;
@@ -496,7 +562,7 @@ Sets the lower bound of color domain.
 
 /**
 Picks a smoothing algorithm use to smooth `z` data.
-*/Heatmap & Zsmooth(const json11::Json::object &zsmooth ) {
+*/Heatmap & Zsmooth(const json11::Json &zsmooth ) {
     _heatmap.insert({"zsmooth", zsmooth});
     return *this;
 }

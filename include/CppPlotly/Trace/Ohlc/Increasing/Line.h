@@ -40,7 +40,7 @@ namespace increasing {
 
     /**
 Sets the line color.
-*/Line & Color(const json11::Json::object &color ) {
+*/Line & Color(const json11::Json &color ) {
     _line.insert({"color", color});
     return *this;
 }

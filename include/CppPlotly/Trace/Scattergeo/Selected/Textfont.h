@@ -40,7 +40,7 @@ namespace selected {
 
     /**
 Sets the text font color of selected points.
-*/Textfont & Color(const json11::Json::object &color ) {
+*/Textfont & Color(const json11::Json &color ) {
     _textfont.insert({"color", color});
     return *this;
 }

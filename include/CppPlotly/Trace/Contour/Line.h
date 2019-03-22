@@ -39,7 +39,7 @@ namespace CppPlotly {
 
     /**
 Sets the color of the contour level. Has no effect if `contours.coloring` is set to *lines*.
-*/Line & Color(const json11::Json::object &color ) {
+*/Line & Color(const json11::Json &color ) {
     _line.insert({"color", color});
     return *this;
 }

@@ -24,7 +24,6 @@ But I think plotly.js is a great library and I want to use it with C++.
 #include "CppPlotly/Trace/Cone/Lighting.h"
 #include "CppPlotly/Trace/Cone/Lightposition.h"
 #include "CppPlotly/Trace/Cone/Stream.h"
-#include "CppPlotly/Trace/Cone/Transform.h"
 
 
 namespace CppPlotly {
@@ -44,14 +43,14 @@ namespace CppPlotly {
 
            /**
 Sets the cones' anchor with respect to their x/y/z positions. Note that *cm* denote the cone's center of mass which corresponds to 1/4 from the tail to tip.
-*/Cone & Anchor(const json11::Json::object &anchor ) {
+*/Cone & Anchor(const json11::Json &anchor ) {
     _cone.insert({"anchor", anchor});
     return *this;
 }
 
 
 /**
-Has an effect only if `color` is set to a numerical array. Determines whether the colorscale is a default palette (`autocolorscale: true`) or the palette determined by `colorscale`. In case `colorscale` is unspecified or `autocolorscale` is true, the default  palette will be chosen according to whether numbers in the `color` array are all positive, all negative or mixed.
+Determines whether the colorscale is a default palette (`autocolorscale: true`) or the palette determined by `colorscale`. In case `colorscale` is unspecified or `autocolorscale` is true, the default  palette will be chosen according to whether numbers in the `color` array are all positive, all negative or mixed.
 */Cone & Autocolorscale(const bool &autocolorscale ) {
     _cone.insert({"autocolorscale", autocolorscale});
     return *this;
@@ -59,7 +58,7 @@ Has an effect only if `color` is set to a numerical array. Determines whether th
 
 
 /**
-Has an effect only if `color` is set to a numerical array and `cmin`, `cmax` are set by the user. In this case, it controls whether the range of colors in `colorscale` is mapped to the range of values in the `color` array (`cauto: true`), or the `cmin`/`cmax` values (`cauto: false`). Defaults to `false` when `cmin`, `cmax` are set by the user.
+Determines whether or not the color domain is computed with respect to the input data (here u/v/w norm) or the bounds set in `cmin` and `cmax`  Defaults to `false` when `cmin` and `cmax` are set by the user.
 */Cone & Cauto(const bool &cauto ) {
     _cone.insert({"cauto", cauto});
     return *this;
@@ -67,7 +66,7 @@ Has an effect only if `color` is set to a numerical array and `cmin`, `cmax` are
 
 
 /**
-Has an effect only if `color` is set to a numerical array. Sets the upper bound of the color domain. Value should be associated to the `color` array index, and if set, `cmin` must be set as well.
+Sets the upper bound of the color domain. Value should have the same units as u/v/w norm and if set, `cmin` must be set as well.
 */Cone & Cmax(const double &cmax ) {
     _cone.insert({"cmax", cmax});
     return *this;
@@ -75,7 +74,15 @@ Has an effect only if `color` is set to a numerical array. Sets the upper bound 
 
 
 /**
-Has an effect only if `color` is set to a numerical array. Sets the lower bound of the color domain. Value should be associated to the `color` array index, and if set, `cmax` must be set as well.
+Sets the mid-point of the color domain by scaling `cmin` and/or `cmax` to be equidistant to this point. Value should have the same units as u/v/w norm. Has no effect when `cauto` is `false`.
+*/Cone & Cmid(const double &cmid ) {
+    _cone.insert({"cmid", cmid});
+    return *this;
+}
+
+
+/**
+Sets the lower bound of the color domain. Value should have the same units as u/v/w norm and if set, `cmax` must be set as well.
 */Cone & Cmin(const double &cmin ) {
     _cone.insert({"cmin", cmin});
     return *this;
@@ -89,8 +96,8 @@ Cone & Colorbar(const CppPlotly::Trace::cone::Colorbar &colorbar ) {
 
 
 /**
-Sets the colorscale and only has an effect if `color` is set to a numerical array. The colorscale must be an array containing arrays mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string. At minimum, a mapping for the lowest (0) and highest (1) values are required. For example, `[[0, 'rgb(0,0,255)', [1, 'rgb(255,0,0)']]`. To control the bounds of the colorscale in color space, use `cmin` and `cmax`. Alternatively, `colorscale` may be a palette name string of the following list: Greys, YlGnBu, Greens, YlOrRd, Bluered, RdBu, Reds, Blues, Picnic, Rainbow, Portland, Jet, Hot, Blackbody, Earth, Electric, Viridis, Cividis
-*/Cone & Colorscale(const json11::Json::object &colorscale ) {
+Sets the colorscale. The colorscale must be an array containing arrays mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string. At minimum, a mapping for the lowest (0) and highest (1) values are required. For example, `[[0, 'rgb(0,0,255)', [1, 'rgb(255,0,0)']]`. To control the bounds of the colorscale in color space, use`cmin` and `cmax`. Alternatively, `colorscale` may be a palette name string of the following list: Greys,YlGnBu,Greens,YlOrRd,Bluered,RdBu,Reds,Blues,Picnic,Rainbow,Portland,Jet,Hot,Blackbody,Earth,Electric,Viridis,Cividis.
+*/Cone & Colorscale(const json11::Json &colorscale ) {
     _cone.insert({"colorscale", colorscale});
     return *this;
 }
@@ -114,7 +121,7 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 /**
 Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
-*/Cone & Customdata(const json11::Json::object &customdata ) {
+*/Cone & Customdata(const json11::Json &customdata ) {
     _cone.insert({"customdata", customdata});
     return *this;
 }
@@ -130,7 +137,7 @@ Sets the source reference on plot.ly for  customdata .
 
 /**
 Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon hovering. But, if `none` is set, click and hover events are still fired.
-*/Cone & Hoverinfo(const json11::Json::object &hoverinfo ) {
+*/Cone & Hoverinfo(const json11::Json &hoverinfo ) {
     _cone.insert({"hoverinfo", hoverinfo});
     return *this;
 }
@@ -146,6 +153,38 @@ Sets the source reference on plot.ly for  hoverinfo .
 
 Cone & Hoverlabel(const CppPlotly::Trace::cone::Hoverlabel &hoverlabel ) {
     _cone.insert({"hoverlabel", hoverlabel});
+    return *this;
+}
+
+
+/**
+Template string used for rendering the information that appear on hover box. Note that this will override `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}". Numbers are formatted using d3-format's syntax %{variable:d3-format}, for example "Price: %{y:$.2f}". See https://github.com/d3/d3-format/blob/master/README.md#locale_format for details on the formatting syntax. The variables available in `hovertemplate` are the ones emitted as event data described at this link https://plot.ly/javascript/plotlyjs-events/#event-data. Additionally, every attributes that can be specified per-point (the ones that are `arrayOk: true`) are available. variable `norm` Anything contained in tag `<extra>` is displayed in the secondary box, for example "<extra>{fullData.name}</extra>". To hide the secondary box completely, use an empty tag `<extra></extra>`.
+*/Cone & Hovertemplate(const json11::Json &hovertemplate ) {
+    _cone.insert({"hovertemplate", hovertemplate});
+    return *this;
+}
+
+
+/**
+Sets the source reference on plot.ly for  hovertemplate .
+*/Cone & Hovertemplatesrc(const std::string &hovertemplatesrc ) {
+    _cone.insert({"hovertemplatesrc", hovertemplatesrc});
+    return *this;
+}
+
+
+/**
+Same as `text`.
+*/Cone & Hovertext(const json11::Json &hovertext ) {
+    _cone.insert({"hovertext", hovertext});
+    return *this;
+}
+
+
+/**
+Sets the source reference on plot.ly for  hovertext .
+*/Cone & Hovertextsrc(const std::string &hovertextsrc ) {
+    _cone.insert({"hovertextsrc", hovertextsrc});
     return *this;
 }
 
@@ -168,7 +207,7 @@ Assigns id labels to each datum. These ids for object constancy of data points d
 
 /**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
-*/Cone & Ids(const json11::Json::object &ids ) {
+*/Cone & Ids(const json11::Json &ids ) {
     _cone.insert({"ids", ids});
     return *this;
 }
@@ -211,7 +250,7 @@ Sets the trace name. The trace name appear as the legend item and on hover.
 
 
 /**
-Sets the opacity of the surface.
+Sets the opacity of the surface. Please note that in the case of using high `opacity` values for example a value greater than or equal to 0.5 on two surfaces (and 0.25 with four surfaces), an overlay of multiple transparent surfaces may not perfectly be sorted in depth by the webgl API. This behavior may be improved in the near future and is subject to change.
 */Cone & Opacity(const double &opacity ) {
     _cone.insert({"opacity", opacity});
     return *this;
@@ -219,7 +258,7 @@ Sets the opacity of the surface.
 
 
 /**
-Has an effect only if `color` is set to a numerical array. Reverses the color mapping if true (`cmin` will correspond to the last color in the array and `cmax` will correspond to the first color).
+Reverses the color mapping if true. If true, `cmin` will correspond to the last color in the array and `cmax` will correspond to the first color.
 */Cone & Reversescale(const bool &reversescale ) {
     _cone.insert({"reversescale", reversescale});
     return *this;
@@ -228,7 +267,7 @@ Has an effect only if `color` is set to a numerical array. Reverses the color ma
 
 /**
 Sets a reference between this trace's 3D coordinate system and a 3D scene. If *scene* (the default value), the (x,y,z) coordinates refer to `layout.scene`. If *scene2*, the (x,y,z) coordinates refer to `layout.scene2`, and so on.
-*/Cone & Scene(const json11::Json::object &scene ) {
+*/Cone & Scene(const json11::Json &scene ) {
     _cone.insert({"scene", scene});
     return *this;
 }
@@ -236,7 +275,7 @@ Sets a reference between this trace's 3D coordinate system and a 3D scene. If *s
 
 /**
 Array containing integer indices of selected points. Has an effect only for traces that support selections. Note that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any other non-array values means no selection all where the `selected` and `unselected` styles have no effect.
-*/Cone & Selectedpoints(const json11::Json::object &selectedpoints ) {
+*/Cone & Selectedpoints(const json11::Json &selectedpoints ) {
     _cone.insert({"selectedpoints", selectedpoints});
     return *this;
 }
@@ -259,15 +298,15 @@ Determines whether or not a colorbar is displayed for this trace.
 
 
 /**
-Sets the mode by which the cones are sized. If *scaled*, `sizeref` scales such that the reference cone size for the maximum vector magnitude is 1. If *absolute*, `sizeref` scales such that the reference cone size for vector magnitude 1 is one grid unit.
-*/Cone & Sizemode(const json11::Json::object &sizemode ) {
+Determines whether `sizeref` is set as a *scaled* (i.e unitless) scalar (normalized by the max u/v/w norm in the vector field) or as *absolute* value (in the same units as the vector field).
+*/Cone & Sizemode(const json11::Json &sizemode ) {
     _cone.insert({"sizemode", sizemode});
     return *this;
 }
 
 
 /**
-Sets the cone size reference value.
+Adjusts the cone size scaling. The size of the cones is determined by their u/v/w norm multiplied a factor and `sizeref`. This factor (computed internally) corresponds to the minimum "time" to travel across two successive x/y/z positions at the average velocity of those two successive positions. All cones in a given trace use the same factor. With `sizemode` set to *scaled*, `sizeref` is unitless, its default value is *0.5* With `sizemode` set to *absolute*, `sizeref` has the same units as the u/v/w vector field, its the default value is half the sample's maximum vector norm.
 */Cone & Sizeref(const double &sizeref ) {
     _cone.insert({"sizeref", sizeref});
     return *this;
@@ -282,7 +321,7 @@ Cone & Stream(const CppPlotly::Trace::cone::Stream &stream ) {
 
 /**
 Sets the text elements associated with the cones. If trace `hoverinfo` contains a *text* flag and *hovertext* is not set, these elements will be seen in the hover labels.
-*/Cone & Text(const json11::Json::object &text ) {
+*/Cone & Text(const json11::Json &text ) {
     _cone.insert({"text", text});
     return *this;
 }
@@ -292,12 +331,6 @@ Sets the text elements associated with the cones. If trace `hoverinfo` contains 
 Sets the source reference on plot.ly for  text .
 */Cone & Textsrc(const std::string &textsrc ) {
     _cone.insert({"textsrc", textsrc});
-    return *this;
-}
-
-
-Cone & Transforms(const std::vector<CppPlotly::Trace::cone::Transform> &transforms ) {
-    _cone.insert({"transforms", transforms});
     return *this;
 }
 
@@ -320,14 +353,24 @@ Sets the x components of the vector field.
 
 /**
 Sets the x components of the vector field.
-*/Cone & U(const json11::Json::object &u ) {
+*/Cone & U(const json11::Json &u ) {
     _cone.insert({"u", u});
     return *this;
 }
 
 
-Cone & Uid(const std::string &uid ) {
+/**
+Assign an id to this trace, Use this to provide object constancy between traces during animations and transitions.
+*/Cone & Uid(const std::string &uid ) {
     _cone.insert({"uid", uid});
+    return *this;
+}
+
+
+/**
+Controls persistence of some user-driven changes to the trace: `constraintrange` in `parcoords` traces, as well as some `editable: true` modifications such as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note that other user-driven trace attribute changes are controlled by `layout` attributes: `trace.visible` is controlled by `layout.legend.uirevision`, `selectedpoints` is controlled by `layout.selectionrevision`, and `colorbar.(x|y)` (accessible with `config: {editable: true}`) is controlled by `layout.editrevision`. Trace changes are tracked by `uid`, which only falls back on trace index if no `uid` is provided. So if your app can add/remove traces before the end of the `data` array, such that the same trace has a different index, you can still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
+*/Cone & Uirevision(const json11::Json &uirevision ) {
+    _cone.insert({"uirevision", uirevision});
     return *this;
 }
 
@@ -358,7 +401,7 @@ Sets the y components of the vector field.
 
 /**
 Sets the y components of the vector field.
-*/Cone & V(const json11::Json::object &v ) {
+*/Cone & V(const json11::Json &v ) {
     _cone.insert({"v", v});
     return *this;
 }
@@ -366,7 +409,7 @@ Sets the y components of the vector field.
 
 /**
 Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a legend item (provided that the legend itself is visible).
-*/Cone & Visible(const json11::Json::object &visible ) {
+*/Cone & Visible(const json11::Json &visible ) {
     _cone.insert({"visible", visible});
     return *this;
 }
@@ -398,7 +441,7 @@ Sets the z components of the vector field.
 
 /**
 Sets the z components of the vector field.
-*/Cone & W(const json11::Json::object &w ) {
+*/Cone & W(const json11::Json &w ) {
     _cone.insert({"w", w});
     return *this;
 }
@@ -430,7 +473,7 @@ Sets the x coordinates of the vector field and of the displayed cones.
 
 /**
 Sets the x coordinates of the vector field and of the displayed cones.
-*/Cone & X(const json11::Json::object &x ) {
+*/Cone & X(const json11::Json &x ) {
     _cone.insert({"x", x});
     return *this;
 }
@@ -462,7 +505,7 @@ Sets the y coordinates of the vector field and of the displayed cones.
 
 /**
 Sets the y coordinates of the vector field and of the displayed cones.
-*/Cone & Y(const json11::Json::object &y ) {
+*/Cone & Y(const json11::Json &y ) {
     _cone.insert({"y", y});
     return *this;
 }
@@ -494,7 +537,7 @@ Sets the z coordinates of the vector field and of the displayed cones.
 
 /**
 Sets the z coordinates of the vector field and of the displayed cones.
-*/Cone & Z(const json11::Json::object &z ) {
+*/Cone & Z(const json11::Json &z ) {
     _cone.insert({"z", z});
     return *this;
 }

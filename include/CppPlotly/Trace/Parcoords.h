@@ -21,7 +21,6 @@ But I think plotly.js is a great library and I want to use it with C++.
 
 #include "CppPlotly/Trace/Parcoords/Dimension.h"
 #include "CppPlotly/Trace/Parcoords/Domain.h"
-#include "CppPlotly/Trace/Parcoords/Hoverlabel.h"
 #include "CppPlotly/Trace/Parcoords/Labelfont.h"
 #include "CppPlotly/Trace/Parcoords/Line.h"
 #include "CppPlotly/Trace/Parcoords/Rangefont.h"
@@ -63,7 +62,7 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 /**
 Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
-*/Parcoords & Customdata(const json11::Json::object &customdata ) {
+*/Parcoords & Customdata(const json11::Json &customdata ) {
     _parcoords.insert({"customdata", customdata});
     return *this;
 }
@@ -91,7 +90,7 @@ Parcoords & Domain(const CppPlotly::Trace::parcoords::Domain &domain ) {
 
 /**
 Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon hovering. But, if `none` is set, click and hover events are still fired.
-*/Parcoords & Hoverinfo(const json11::Json::object &hoverinfo ) {
+*/Parcoords & Hoverinfo(const json11::Json &hoverinfo ) {
     _parcoords.insert({"hoverinfo", hoverinfo});
     return *this;
 }
@@ -101,12 +100,6 @@ Determines which trace information appear on hover. If `none` or `skip` are set,
 Sets the source reference on plot.ly for  hoverinfo .
 */Parcoords & Hoverinfosrc(const std::string &hoverinfosrc ) {
     _parcoords.insert({"hoverinfosrc", hoverinfosrc});
-    return *this;
-}
-
-
-Parcoords & Hoverlabel(const CppPlotly::Trace::parcoords::Hoverlabel &hoverlabel ) {
-    _parcoords.insert({"hoverlabel", hoverlabel});
     return *this;
 }
 
@@ -129,7 +122,7 @@ Assigns id labels to each datum. These ids for object constancy of data points d
 
 /**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
-*/Parcoords & Ids(const json11::Json::object &ids ) {
+*/Parcoords & Ids(const json11::Json &ids ) {
     _parcoords.insert({"ids", ids});
     return *this;
 }
@@ -187,7 +180,7 @@ Parcoords & Rangefont(const CppPlotly::Trace::parcoords::Rangefont &rangefont ) 
 
 /**
 Array containing integer indices of selected points. Has an effect only for traces that support selections. Note that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any other non-array values means no selection all where the `selected` and `unselected` styles have no effect.
-*/Parcoords & Selectedpoints(const json11::Json::object &selectedpoints ) {
+*/Parcoords & Selectedpoints(const json11::Json &selectedpoints ) {
     _parcoords.insert({"selectedpoints", selectedpoints});
     return *this;
 }
@@ -219,15 +212,25 @@ Parcoords & Transforms(const std::vector<CppPlotly::Trace::parcoords::Transform>
 }
 
 
-Parcoords & Uid(const std::string &uid ) {
+/**
+Assign an id to this trace, Use this to provide object constancy between traces during animations and transitions.
+*/Parcoords & Uid(const std::string &uid ) {
     _parcoords.insert({"uid", uid});
     return *this;
 }
 
 
 /**
+Controls persistence of some user-driven changes to the trace: `constraintrange` in `parcoords` traces, as well as some `editable: true` modifications such as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note that other user-driven trace attribute changes are controlled by `layout` attributes: `trace.visible` is controlled by `layout.legend.uirevision`, `selectedpoints` is controlled by `layout.selectionrevision`, and `colorbar.(x|y)` (accessible with `config: {editable: true}`) is controlled by `layout.editrevision`. Trace changes are tracked by `uid`, which only falls back on trace index if no `uid` is provided. So if your app can add/remove traces before the end of the `data` array, such that the same trace has a different index, you can still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
+*/Parcoords & Uirevision(const json11::Json &uirevision ) {
+    _parcoords.insert({"uirevision", uirevision});
+    return *this;
+}
+
+
+/**
 Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a legend item (provided that the legend itself is visible).
-*/Parcoords & Visible(const json11::Json::object &visible ) {
+*/Parcoords & Visible(const json11::Json &visible ) {
     _parcoords.insert({"visible", visible});
     return *this;
 }

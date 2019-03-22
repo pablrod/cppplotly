@@ -72,7 +72,7 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 /**
 Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
-*/Scatter3d & Customdata(const json11::Json::object &customdata ) {
+*/Scatter3d & Customdata(const json11::Json &customdata ) {
     _scatter3d.insert({"customdata", customdata});
     return *this;
 }
@@ -106,7 +106,7 @@ Scatter3d & Error_z(const CppPlotly::Trace::scatter3d::Error_z &error_z ) {
 
 /**
 Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon hovering. But, if `none` is set, click and hover events are still fired.
-*/Scatter3d & Hoverinfo(const json11::Json::object &hoverinfo ) {
+*/Scatter3d & Hoverinfo(const json11::Json &hoverinfo ) {
     _scatter3d.insert({"hoverinfo", hoverinfo});
     return *this;
 }
@@ -127,8 +127,24 @@ Scatter3d & Hoverlabel(const CppPlotly::Trace::scatter3d::Hoverlabel &hoverlabel
 
 
 /**
+Template string used for rendering the information that appear on hover box. Note that this will override `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}". Numbers are formatted using d3-format's syntax %{variable:d3-format}, for example "Price: %{y:$.2f}". See https://github.com/d3/d3-format/blob/master/README.md#locale_format for details on the formatting syntax. The variables available in `hovertemplate` are the ones emitted as event data described at this link https://plot.ly/javascript/plotlyjs-events/#event-data. Additionally, every attributes that can be specified per-point (the ones that are `arrayOk: true`) are available.  Anything contained in tag `<extra>` is displayed in the secondary box, for example "<extra>{fullData.name}</extra>". To hide the secondary box completely, use an empty tag `<extra></extra>`.
+*/Scatter3d & Hovertemplate(const json11::Json &hovertemplate ) {
+    _scatter3d.insert({"hovertemplate", hovertemplate});
+    return *this;
+}
+
+
+/**
+Sets the source reference on plot.ly for  hovertemplate .
+*/Scatter3d & Hovertemplatesrc(const std::string &hovertemplatesrc ) {
+    _scatter3d.insert({"hovertemplatesrc", hovertemplatesrc});
+    return *this;
+}
+
+
+/**
 Sets text elements associated with each (x,y,z) triplet. If a single string, the same string appears over all the data points. If an array of string, the items are mapped in order to the this trace's (x,y,z) coordinates. To be seen, trace `hoverinfo` must contain a *text* flag.
-*/Scatter3d & Hovertext(const json11::Json::object &hovertext ) {
+*/Scatter3d & Hovertext(const json11::Json &hovertext ) {
     _scatter3d.insert({"hovertext", hovertext});
     return *this;
 }
@@ -160,7 +176,7 @@ Assigns id labels to each datum. These ids for object constancy of data points d
 
 /**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
-*/Scatter3d & Ids(const json11::Json::object &ids ) {
+*/Scatter3d & Ids(const json11::Json &ids ) {
     _scatter3d.insert({"ids", ids});
     return *this;
 }
@@ -195,8 +211,8 @@ Scatter3d & Marker(const CppPlotly::Trace::scatter3d::Marker &marker ) {
 
 
 /**
-Determines the drawing mode for this scatter trace. If the provided `mode` includes *text* then the `text` elements appear at the coordinates. Otherwise, the `text` elements appear on hover. If there are less than 20 points, then the default is *lines+markers*. Otherwise, *lines*.
-*/Scatter3d & Mode(const json11::Json::object &mode ) {
+Determines the drawing mode for this scatter trace. If the provided `mode` includes *text* then the `text` elements appear at the coordinates. Otherwise, the `text` elements appear on hover. If there are less than 20 points and the trace is not stacked then the default is *lines+markers*. Otherwise, *lines*.
+*/Scatter3d & Mode(const json11::Json &mode ) {
     _scatter3d.insert({"mode", mode});
     return *this;
 }
@@ -226,7 +242,7 @@ Scatter3d & Projection(const CppPlotly::Trace::scatter3d::Projection &projection
 
 /**
 Sets a reference between this trace's 3D coordinate system and a 3D scene. If *scene* (the default value), the (x,y,z) coordinates refer to `layout.scene`. If *scene2*, the (x,y,z) coordinates refer to `layout.scene2`, and so on.
-*/Scatter3d & Scene(const json11::Json::object &scene ) {
+*/Scatter3d & Scene(const json11::Json &scene ) {
     _scatter3d.insert({"scene", scene});
     return *this;
 }
@@ -234,7 +250,7 @@ Sets a reference between this trace's 3D coordinate system and a 3D scene. If *s
 
 /**
 Array containing integer indices of selected points. Has an effect only for traces that support selections. Note that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any other non-array values means no selection all where the `selected` and `unselected` styles have no effect.
-*/Scatter3d & Selectedpoints(const json11::Json::object &selectedpoints ) {
+*/Scatter3d & Selectedpoints(const json11::Json &selectedpoints ) {
     _scatter3d.insert({"selectedpoints", selectedpoints});
     return *this;
 }
@@ -256,7 +272,7 @@ Scatter3d & Stream(const CppPlotly::Trace::scatter3d::Stream &stream ) {
 
 /**
 If *-1*, the scatter points are not fill with a surface If *0*, *1*, *2*, the scatter points are filled with a Delaunay surface about the x, y, z respectively.
-*/Scatter3d & Surfaceaxis(const json11::Json::object &surfaceaxis ) {
+*/Scatter3d & Surfaceaxis(const json11::Json &surfaceaxis ) {
     _scatter3d.insert({"surfaceaxis", surfaceaxis});
     return *this;
 }
@@ -264,7 +280,7 @@ If *-1*, the scatter points are not fill with a surface If *0*, *1*, *2*, the sc
 
 /**
 Sets the surface fill color.
-*/Scatter3d & Surfacecolor(const json11::Json::object &surfacecolor ) {
+*/Scatter3d & Surfacecolor(const json11::Json &surfacecolor ) {
     _scatter3d.insert({"surfacecolor", surfacecolor});
     return *this;
 }
@@ -272,7 +288,7 @@ Sets the surface fill color.
 
 /**
 Sets text elements associated with each (x,y,z) triplet. If a single string, the same string appears over all the data points. If an array of string, the items are mapped in order to the this trace's (x,y,z) coordinates. If trace `hoverinfo` contains a *text* flag and *hovertext* is not set, these elements will be seen in the hover labels.
-*/Scatter3d & Text(const json11::Json::object &text ) {
+*/Scatter3d & Text(const json11::Json &text ) {
     _scatter3d.insert({"text", text});
     return *this;
 }
@@ -286,7 +302,7 @@ Scatter3d & Textfont(const CppPlotly::Trace::scatter3d::Textfont &textfont ) {
 
 /**
 Sets the positions of the `text` elements with respects to the (x,y) coordinates.
-*/Scatter3d & Textposition(const json11::Json::object &textposition ) {
+*/Scatter3d & Textposition(const json11::Json &textposition ) {
     _scatter3d.insert({"textposition", textposition});
     return *this;
 }
@@ -314,15 +330,25 @@ Scatter3d & Transforms(const std::vector<CppPlotly::Trace::scatter3d::Transform>
 }
 
 
-Scatter3d & Uid(const std::string &uid ) {
+/**
+Assign an id to this trace, Use this to provide object constancy between traces during animations and transitions.
+*/Scatter3d & Uid(const std::string &uid ) {
     _scatter3d.insert({"uid", uid});
     return *this;
 }
 
 
 /**
+Controls persistence of some user-driven changes to the trace: `constraintrange` in `parcoords` traces, as well as some `editable: true` modifications such as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note that other user-driven trace attribute changes are controlled by `layout` attributes: `trace.visible` is controlled by `layout.legend.uirevision`, `selectedpoints` is controlled by `layout.selectionrevision`, and `colorbar.(x|y)` (accessible with `config: {editable: true}`) is controlled by `layout.editrevision`. Trace changes are tracked by `uid`, which only falls back on trace index if no `uid` is provided. So if your app can add/remove traces before the end of the `data` array, such that the same trace has a different index, you can still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
+*/Scatter3d & Uirevision(const json11::Json &uirevision ) {
+    _scatter3d.insert({"uirevision", uirevision});
+    return *this;
+}
+
+
+/**
 Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a legend item (provided that the legend itself is visible).
-*/Scatter3d & Visible(const json11::Json::object &visible ) {
+*/Scatter3d & Visible(const json11::Json &visible ) {
     _scatter3d.insert({"visible", visible});
     return *this;
 }
@@ -346,7 +372,7 @@ Sets the x coordinates.
 
 /**
 Sets the x coordinates.
-*/Scatter3d & X(const json11::Json::object &x ) {
+*/Scatter3d & X(const json11::Json &x ) {
     _scatter3d.insert({"x", x});
     return *this;
 }
@@ -354,7 +380,7 @@ Sets the x coordinates.
 
 /**
 Sets the calendar system to use with `x` date data.
-*/Scatter3d & Xcalendar(const json11::Json::object &xcalendar ) {
+*/Scatter3d & Xcalendar(const json11::Json &xcalendar ) {
     _scatter3d.insert({"xcalendar", xcalendar});
     return *this;
 }
@@ -386,7 +412,7 @@ Sets the y coordinates.
 
 /**
 Sets the y coordinates.
-*/Scatter3d & Y(const json11::Json::object &y ) {
+*/Scatter3d & Y(const json11::Json &y ) {
     _scatter3d.insert({"y", y});
     return *this;
 }
@@ -394,7 +420,7 @@ Sets the y coordinates.
 
 /**
 Sets the calendar system to use with `y` date data.
-*/Scatter3d & Ycalendar(const json11::Json::object &ycalendar ) {
+*/Scatter3d & Ycalendar(const json11::Json &ycalendar ) {
     _scatter3d.insert({"ycalendar", ycalendar});
     return *this;
 }
@@ -426,7 +452,7 @@ Sets the z coordinates.
 
 /**
 Sets the z coordinates.
-*/Scatter3d & Z(const json11::Json::object &z ) {
+*/Scatter3d & Z(const json11::Json &z ) {
     _scatter3d.insert({"z", z});
     return *this;
 }
@@ -434,7 +460,7 @@ Sets the z coordinates.
 
 /**
 Sets the calendar system to use with `z` date data.
-*/Scatter3d & Zcalendar(const json11::Json::object &zcalendar ) {
+*/Scatter3d & Zcalendar(const json11::Json &zcalendar ) {
     _scatter3d.insert({"zcalendar", zcalendar});
     return *this;
 }

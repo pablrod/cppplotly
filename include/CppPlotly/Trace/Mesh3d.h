@@ -25,7 +25,6 @@ But I think plotly.js is a great library and I want to use it with C++.
 #include "CppPlotly/Trace/Mesh3d/Lighting.h"
 #include "CppPlotly/Trace/Mesh3d/Lightposition.h"
 #include "CppPlotly/Trace/Mesh3d/Stream.h"
-#include "CppPlotly/Trace/Mesh3d/Transform.h"
 
 
 namespace CppPlotly {
@@ -52,7 +51,7 @@ Determines how the mesh surface triangles are derived from the set of vertices (
 
 
 /**
-Has an effect only if `color` is set to a numerical array. Determines whether the colorscale is a default palette (`autocolorscale: true`) or the palette determined by `colorscale`. In case `colorscale` is unspecified or `autocolorscale` is true, the default  palette will be chosen according to whether numbers in the `color` array are all positive, all negative or mixed.
+Determines whether the colorscale is a default palette (`autocolorscale: true`) or the palette determined by `colorscale`. In case `colorscale` is unspecified or `autocolorscale` is true, the default  palette will be chosen according to whether numbers in the `color` array are all positive, all negative or mixed.
 */Mesh3d & Autocolorscale(const bool &autocolorscale ) {
     _mesh3d.insert({"autocolorscale", autocolorscale});
     return *this;
@@ -60,7 +59,7 @@ Has an effect only if `color` is set to a numerical array. Determines whether th
 
 
 /**
-Has an effect only if `color` is set to a numerical array and `cmin`, `cmax` are set by the user. In this case, it controls whether the range of colors in `colorscale` is mapped to the range of values in the `color` array (`cauto: true`), or the `cmin`/`cmax` values (`cauto: false`). Defaults to `false` when `cmin`, `cmax` are set by the user.
+Determines whether or not the color domain is computed with respect to the input data (here `intensity`) or the bounds set in `cmin` and `cmax`  Defaults to `false` when `cmin` and `cmax` are set by the user.
 */Mesh3d & Cauto(const bool &cauto ) {
     _mesh3d.insert({"cauto", cauto});
     return *this;
@@ -68,7 +67,7 @@ Has an effect only if `color` is set to a numerical array and `cmin`, `cmax` are
 
 
 /**
-Has an effect only if `color` is set to a numerical array. Sets the upper bound of the color domain. Value should be associated to the `color` array index, and if set, `cmin` must be set as well.
+Sets the upper bound of the color domain. Value should have the same units as `intensity` and if set, `cmin` must be set as well.
 */Mesh3d & Cmax(const double &cmax ) {
     _mesh3d.insert({"cmax", cmax});
     return *this;
@@ -76,7 +75,15 @@ Has an effect only if `color` is set to a numerical array. Sets the upper bound 
 
 
 /**
-Has an effect only if `color` is set to a numerical array. Sets the lower bound of the color domain. Value should be associated to the `color` array index, and if set, `cmax` must be set as well.
+Sets the mid-point of the color domain by scaling `cmin` and/or `cmax` to be equidistant to this point. Value should have the same units as `intensity`. Has no effect when `cauto` is `false`.
+*/Mesh3d & Cmid(const double &cmid ) {
+    _mesh3d.insert({"cmid", cmid});
+    return *this;
+}
+
+
+/**
+Sets the lower bound of the color domain. Value should have the same units as `intensity` and if set, `cmax` must be set as well.
 */Mesh3d & Cmin(const double &cmin ) {
     _mesh3d.insert({"cmin", cmin});
     return *this;
@@ -85,7 +92,7 @@ Has an effect only if `color` is set to a numerical array. Sets the lower bound 
 
 /**
 Sets the color of the whole mesh
-*/Mesh3d & Color(const json11::Json::object &color ) {
+*/Mesh3d & Color(const json11::Json &color ) {
     _mesh3d.insert({"color", color});
     return *this;
 }
@@ -98,8 +105,8 @@ Mesh3d & Colorbar(const CppPlotly::Trace::mesh3d::Colorbar &colorbar ) {
 
 
 /**
-Sets the colorscale and only has an effect if `color` is set to a numerical array. The colorscale must be an array containing arrays mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string. At minimum, a mapping for the lowest (0) and highest (1) values are required. For example, `[[0, 'rgb(0,0,255)', [1, 'rgb(255,0,0)']]`. To control the bounds of the colorscale in color space, use `cmin` and `cmax`. Alternatively, `colorscale` may be a palette name string of the following list: Greys, YlGnBu, Greens, YlOrRd, Bluered, RdBu, Reds, Blues, Picnic, Rainbow, Portland, Jet, Hot, Blackbody, Earth, Electric, Viridis, Cividis
-*/Mesh3d & Colorscale(const json11::Json::object &colorscale ) {
+Sets the colorscale. The colorscale must be an array containing arrays mapping a normalized value to an rgb, rgba, hex, hsl, hsv, or named color string. At minimum, a mapping for the lowest (0) and highest (1) values are required. For example, `[[0, 'rgb(0,0,255)', [1, 'rgb(255,0,0)']]`. To control the bounds of the colorscale in color space, use`cmin` and `cmax`. Alternatively, `colorscale` may be a palette name string of the following list: Greys,YlGnBu,Greens,YlOrRd,Bluered,RdBu,Reds,Blues,Picnic,Rainbow,Portland,Jet,Hot,Blackbody,Earth,Electric,Viridis,Cividis.
+*/Mesh3d & Colorscale(const json11::Json &colorscale ) {
     _mesh3d.insert({"colorscale", colorscale});
     return *this;
 }
@@ -129,7 +136,7 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 /**
 Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
-*/Mesh3d & Customdata(const json11::Json::object &customdata ) {
+*/Mesh3d & Customdata(const json11::Json &customdata ) {
     _mesh3d.insert({"customdata", customdata});
     return *this;
 }
@@ -145,7 +152,7 @@ Sets the source reference on plot.ly for  customdata .
 
 /**
 Sets the Delaunay axis, which is the axis that is perpendicular to the surface of the Delaunay triangulation. It has an effect if `i`, `j`, `k` are not provided and `alphahull` is set to indicate Delaunay triangulation.
-*/Mesh3d & Delaunayaxis(const json11::Json::object &delaunayaxis ) {
+*/Mesh3d & Delaunayaxis(const json11::Json &delaunayaxis ) {
     _mesh3d.insert({"delaunayaxis", delaunayaxis});
     return *this;
 }
@@ -169,7 +176,7 @@ Sets the color of each face Overrides *color* and *vertexcolor*.
 
 /**
 Sets the color of each face Overrides *color* and *vertexcolor*.
-*/Mesh3d & Facecolor(const json11::Json::object &facecolor ) {
+*/Mesh3d & Facecolor(const json11::Json &facecolor ) {
     _mesh3d.insert({"facecolor", facecolor});
     return *this;
 }
@@ -193,7 +200,7 @@ Determines whether or not normal smoothing is applied to the meshes, creating me
 
 /**
 Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon hovering. But, if `none` is set, click and hover events are still fired.
-*/Mesh3d & Hoverinfo(const json11::Json::object &hoverinfo ) {
+*/Mesh3d & Hoverinfo(const json11::Json &hoverinfo ) {
     _mesh3d.insert({"hoverinfo", hoverinfo});
     return *this;
 }
@@ -209,6 +216,38 @@ Sets the source reference on plot.ly for  hoverinfo .
 
 Mesh3d & Hoverlabel(const CppPlotly::Trace::mesh3d::Hoverlabel &hoverlabel ) {
     _mesh3d.insert({"hoverlabel", hoverlabel});
+    return *this;
+}
+
+
+/**
+Template string used for rendering the information that appear on hover box. Note that this will override `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}". Numbers are formatted using d3-format's syntax %{variable:d3-format}, for example "Price: %{y:$.2f}". See https://github.com/d3/d3-format/blob/master/README.md#locale_format for details on the formatting syntax. The variables available in `hovertemplate` are the ones emitted as event data described at this link https://plot.ly/javascript/plotlyjs-events/#event-data. Additionally, every attributes that can be specified per-point (the ones that are `arrayOk: true`) are available.  Anything contained in tag `<extra>` is displayed in the secondary box, for example "<extra>{fullData.name}</extra>". To hide the secondary box completely, use an empty tag `<extra></extra>`.
+*/Mesh3d & Hovertemplate(const json11::Json &hovertemplate ) {
+    _mesh3d.insert({"hovertemplate", hovertemplate});
+    return *this;
+}
+
+
+/**
+Sets the source reference on plot.ly for  hovertemplate .
+*/Mesh3d & Hovertemplatesrc(const std::string &hovertemplatesrc ) {
+    _mesh3d.insert({"hovertemplatesrc", hovertemplatesrc});
+    return *this;
+}
+
+
+/**
+Same as `text`.
+*/Mesh3d & Hovertext(const json11::Json &hovertext ) {
+    _mesh3d.insert({"hovertext", hovertext});
+    return *this;
+}
+
+
+/**
+Sets the source reference on plot.ly for  hovertext .
+*/Mesh3d & Hovertextsrc(const std::string &hovertextsrc ) {
+    _mesh3d.insert({"hovertextsrc", hovertextsrc});
     return *this;
 }
 
@@ -231,7 +270,7 @@ A vector of vertex indices, i.e. integer values between 0 and the length of the 
 
 /**
 A vector of vertex indices, i.e. integer values between 0 and the length of the vertex vectors, representing the *first* vertex of a triangle. For example, `{i[m], j[m], k[m]}` together represent face m (triangle m) in the mesh, where `i[m] = n` points to the triplet `{x[n], y[n], z[n]}` in the vertex arrays. Therefore, each element in `i` represents a point in space, which is the first vertex of a triangle.
-*/Mesh3d & I(const json11::Json::object &i ) {
+*/Mesh3d & I(const json11::Json &i ) {
     _mesh3d.insert({"i", i});
     return *this;
 }
@@ -255,7 +294,7 @@ Assigns id labels to each datum. These ids for object constancy of data points d
 
 /**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
-*/Mesh3d & Ids(const json11::Json::object &ids ) {
+*/Mesh3d & Ids(const json11::Json &ids ) {
     _mesh3d.insert({"ids", ids});
     return *this;
 }
@@ -287,7 +326,7 @@ Sets the vertex intensity values, used for plotting fields on meshes
 
 /**
 Sets the vertex intensity values, used for plotting fields on meshes
-*/Mesh3d & Intensity(const json11::Json::object &intensity ) {
+*/Mesh3d & Intensity(const json11::Json &intensity ) {
     _mesh3d.insert({"intensity", intensity});
     return *this;
 }
@@ -327,7 +366,7 @@ A vector of vertex indices, i.e. integer values between 0 and the length of the 
 
 /**
 A vector of vertex indices, i.e. integer values between 0 and the length of the vertex vectors, representing the *second* vertex of a triangle. For example, `{i[m], j[m], k[m]}`  together represent face m (triangle m) in the mesh, where `j[m] = n` points to the triplet `{x[n], y[n], z[n]}` in the vertex arrays. Therefore, each element in `j` represents a point in space, which is the second vertex of a triangle.
-*/Mesh3d & J(const json11::Json::object &j ) {
+*/Mesh3d & J(const json11::Json &j ) {
     _mesh3d.insert({"j", j});
     return *this;
 }
@@ -359,7 +398,7 @@ A vector of vertex indices, i.e. integer values between 0 and the length of the 
 
 /**
 A vector of vertex indices, i.e. integer values between 0 and the length of the vertex vectors, representing the *third* vertex of a triangle. For example, `{i[m], j[m], k[m]}` together represent face m (triangle m) in the mesh, where `k[m] = n` points to the triplet  `{x[n], y[n], z[n]}` in the vertex arrays. Therefore, each element in `k` represents a point in space, which is the third vertex of a triangle.
-*/Mesh3d & K(const json11::Json::object &k ) {
+*/Mesh3d & K(const json11::Json &k ) {
     _mesh3d.insert({"k", k});
     return *this;
 }
@@ -402,7 +441,7 @@ Sets the trace name. The trace name appear as the legend item and on hover.
 
 
 /**
-Sets the opacity of the surface.
+Sets the opacity of the surface. Please note that in the case of using high `opacity` values for example a value greater than or equal to 0.5 on two surfaces (and 0.25 with four surfaces), an overlay of multiple transparent surfaces may not perfectly be sorted in depth by the webgl API. This behavior may be improved in the near future and is subject to change.
 */Mesh3d & Opacity(const double &opacity ) {
     _mesh3d.insert({"opacity", opacity});
     return *this;
@@ -410,7 +449,7 @@ Sets the opacity of the surface.
 
 
 /**
-Has an effect only if `color` is set to a numerical array. Reverses the color mapping if true (`cmin` will correspond to the last color in the array and `cmax` will correspond to the first color).
+Reverses the color mapping if true. If true, `cmin` will correspond to the last color in the array and `cmax` will correspond to the first color.
 */Mesh3d & Reversescale(const bool &reversescale ) {
     _mesh3d.insert({"reversescale", reversescale});
     return *this;
@@ -419,7 +458,7 @@ Has an effect only if `color` is set to a numerical array. Reverses the color ma
 
 /**
 Sets a reference between this trace's 3D coordinate system and a 3D scene. If *scene* (the default value), the (x,y,z) coordinates refer to `layout.scene`. If *scene2*, the (x,y,z) coordinates refer to `layout.scene2`, and so on.
-*/Mesh3d & Scene(const json11::Json::object &scene ) {
+*/Mesh3d & Scene(const json11::Json &scene ) {
     _mesh3d.insert({"scene", scene});
     return *this;
 }
@@ -427,7 +466,7 @@ Sets a reference between this trace's 3D coordinate system and a 3D scene. If *s
 
 /**
 Array containing integer indices of selected points. Has an effect only for traces that support selections. Note that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any other non-array values means no selection all where the `selected` and `unselected` styles have no effect.
-*/Mesh3d & Selectedpoints(const json11::Json::object &selectedpoints ) {
+*/Mesh3d & Selectedpoints(const json11::Json &selectedpoints ) {
     _mesh3d.insert({"selectedpoints", selectedpoints});
     return *this;
 }
@@ -457,7 +496,7 @@ Mesh3d & Stream(const CppPlotly::Trace::mesh3d::Stream &stream ) {
 
 /**
 Sets the text elements associated with the vertices. If trace `hoverinfo` contains a *text* flag and *hovertext* is not set, these elements will be seen in the hover labels.
-*/Mesh3d & Text(const json11::Json::object &text ) {
+*/Mesh3d & Text(const json11::Json &text ) {
     _mesh3d.insert({"text", text});
     return *this;
 }
@@ -471,14 +510,18 @@ Sets the source reference on plot.ly for  text .
 }
 
 
-Mesh3d & Transforms(const std::vector<CppPlotly::Trace::mesh3d::Transform> &transforms ) {
-    _mesh3d.insert({"transforms", transforms});
+/**
+Assign an id to this trace, Use this to provide object constancy between traces during animations and transitions.
+*/Mesh3d & Uid(const std::string &uid ) {
+    _mesh3d.insert({"uid", uid});
     return *this;
 }
 
 
-Mesh3d & Uid(const std::string &uid ) {
-    _mesh3d.insert({"uid", uid});
+/**
+Controls persistence of some user-driven changes to the trace: `constraintrange` in `parcoords` traces, as well as some `editable: true` modifications such as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note that other user-driven trace attribute changes are controlled by `layout` attributes: `trace.visible` is controlled by `layout.legend.uirevision`, `selectedpoints` is controlled by `layout.selectionrevision`, and `colorbar.(x|y)` (accessible with `config: {editable: true}`) is controlled by `layout.editrevision`. Trace changes are tracked by `uid`, which only falls back on trace index if no `uid` is provided. So if your app can add/remove traces before the end of the `data` array, such that the same trace has a different index, you can still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
+*/Mesh3d & Uirevision(const json11::Json &uirevision ) {
+    _mesh3d.insert({"uirevision", uirevision});
     return *this;
 }
 
@@ -501,7 +544,7 @@ Sets the color of each vertex Overrides *color*.
 
 /**
 Sets the color of each vertex Overrides *color*.
-*/Mesh3d & Vertexcolor(const json11::Json::object &vertexcolor ) {
+*/Mesh3d & Vertexcolor(const json11::Json &vertexcolor ) {
     _mesh3d.insert({"vertexcolor", vertexcolor});
     return *this;
 }
@@ -517,7 +560,7 @@ Sets the source reference on plot.ly for  vertexcolor .
 
 /**
 Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a legend item (provided that the legend itself is visible).
-*/Mesh3d & Visible(const json11::Json::object &visible ) {
+*/Mesh3d & Visible(const json11::Json &visible ) {
     _mesh3d.insert({"visible", visible});
     return *this;
 }
@@ -541,7 +584,7 @@ Sets the X coordinates of the vertices. The nth element of vectors `x`, `y` and 
 
 /**
 Sets the X coordinates of the vertices. The nth element of vectors `x`, `y` and `z` jointly represent the X, Y and Z coordinates of the nth vertex.
-*/Mesh3d & X(const json11::Json::object &x ) {
+*/Mesh3d & X(const json11::Json &x ) {
     _mesh3d.insert({"x", x});
     return *this;
 }
@@ -549,7 +592,7 @@ Sets the X coordinates of the vertices. The nth element of vectors `x`, `y` and 
 
 /**
 Sets the calendar system to use with `x` date data.
-*/Mesh3d & Xcalendar(const json11::Json::object &xcalendar ) {
+*/Mesh3d & Xcalendar(const json11::Json &xcalendar ) {
     _mesh3d.insert({"xcalendar", xcalendar});
     return *this;
 }
@@ -581,7 +624,7 @@ Sets the Y coordinates of the vertices. The nth element of vectors `x`, `y` and 
 
 /**
 Sets the Y coordinates of the vertices. The nth element of vectors `x`, `y` and `z` jointly represent the X, Y and Z coordinates of the nth vertex.
-*/Mesh3d & Y(const json11::Json::object &y ) {
+*/Mesh3d & Y(const json11::Json &y ) {
     _mesh3d.insert({"y", y});
     return *this;
 }
@@ -589,7 +632,7 @@ Sets the Y coordinates of the vertices. The nth element of vectors `x`, `y` and 
 
 /**
 Sets the calendar system to use with `y` date data.
-*/Mesh3d & Ycalendar(const json11::Json::object &ycalendar ) {
+*/Mesh3d & Ycalendar(const json11::Json &ycalendar ) {
     _mesh3d.insert({"ycalendar", ycalendar});
     return *this;
 }
@@ -621,7 +664,7 @@ Sets the Z coordinates of the vertices. The nth element of vectors `x`, `y` and 
 
 /**
 Sets the Z coordinates of the vertices. The nth element of vectors `x`, `y` and `z` jointly represent the X, Y and Z coordinates of the nth vertex.
-*/Mesh3d & Z(const json11::Json::object &z ) {
+*/Mesh3d & Z(const json11::Json &z ) {
     _mesh3d.insert({"z", z});
     return *this;
 }
@@ -629,7 +672,7 @@ Sets the Z coordinates of the vertices. The nth element of vectors `x`, `y` and 
 
 /**
 Sets the calendar system to use with `z` date data.
-*/Mesh3d & Zcalendar(const json11::Json::object &zcalendar ) {
+*/Mesh3d & Zcalendar(const json11::Json &zcalendar ) {
     _mesh3d.insert({"zcalendar", zcalendar});
     return *this;
 }

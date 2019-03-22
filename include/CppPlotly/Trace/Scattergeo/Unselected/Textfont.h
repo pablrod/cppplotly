@@ -40,7 +40,7 @@ namespace unselected {
 
     /**
 Sets the text font color of unselected points, applied only when a selection exists.
-*/Textfont & Color(const json11::Json::object &color ) {
+*/Textfont & Color(const json11::Json &color ) {
     _textfont.insert({"color", color});
     return *this;
 }

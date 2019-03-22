@@ -26,6 +26,7 @@ But I think plotly.js is a great library and I want to use it with C++.
 #include "CppPlotly/Trace/Pie/Outsidetextfont.h"
 #include "CppPlotly/Trace/Pie/Stream.h"
 #include "CppPlotly/Trace/Pie/Textfont.h"
+#include "CppPlotly/Trace/Pie/Title.h"
 #include "CppPlotly/Trace/Pie/Transform.h"
 
 
@@ -62,7 +63,7 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 /**
 Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
-*/Pie & Customdata(const json11::Json::object &customdata ) {
+*/Pie & Customdata(const json11::Json &customdata ) {
     _pie.insert({"customdata", customdata});
     return *this;
 }
@@ -78,7 +79,7 @@ Sets the source reference on plot.ly for  customdata .
 
 /**
 Specifies the direction at which succeeding sectors follow one another.
-*/Pie & Direction(const json11::Json::object &direction ) {
+*/Pie & Direction(const json11::Json &direction ) {
     _pie.insert({"direction", direction});
     return *this;
 }
@@ -108,7 +109,7 @@ Sets the fraction of the radius to cut out of the pie. Use this to make a donut 
 
 /**
 Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon hovering. But, if `none` is set, click and hover events are still fired.
-*/Pie & Hoverinfo(const json11::Json::object &hoverinfo ) {
+*/Pie & Hoverinfo(const json11::Json &hoverinfo ) {
     _pie.insert({"hoverinfo", hoverinfo});
     return *this;
 }
@@ -129,8 +130,24 @@ Pie & Hoverlabel(const CppPlotly::Trace::pie::Hoverlabel &hoverlabel ) {
 
 
 /**
+Template string used for rendering the information that appear on hover box. Note that this will override `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}". Numbers are formatted using d3-format's syntax %{variable:d3-format}, for example "Price: %{y:$.2f}". See https://github.com/d3/d3-format/blob/master/README.md#locale_format for details on the formatting syntax. The variables available in `hovertemplate` are the ones emitted as event data described at this link https://plot.ly/javascript/plotlyjs-events/#event-data. Additionally, every attributes that can be specified per-point (the ones that are `arrayOk: true`) are available. variables `label`, `color`, `value`, `percent` and `text`. Anything contained in tag `<extra>` is displayed in the secondary box, for example "<extra>{fullData.name}</extra>". To hide the secondary box completely, use an empty tag `<extra></extra>`.
+*/Pie & Hovertemplate(const json11::Json &hovertemplate ) {
+    _pie.insert({"hovertemplate", hovertemplate});
+    return *this;
+}
+
+
+/**
+Sets the source reference on plot.ly for  hovertemplate .
+*/Pie & Hovertemplatesrc(const std::string &hovertemplatesrc ) {
+    _pie.insert({"hovertemplatesrc", hovertemplatesrc});
+    return *this;
+}
+
+
+/**
 Sets hover text elements associated with each sector. If a single string, the same string appears for all data points. If an array of string, the items are mapped in order of this trace's sectors. To be seen, trace `hoverinfo` must contain a *text* flag.
-*/Pie & Hovertext(const json11::Json::object &hovertext ) {
+*/Pie & Hovertext(const json11::Json &hovertext ) {
     _pie.insert({"hovertext", hovertext});
     return *this;
 }
@@ -162,7 +179,7 @@ Assigns id labels to each datum. These ids for object constancy of data points d
 
 /**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
-*/Pie & Ids(const json11::Json::object &ids ) {
+*/Pie & Ids(const json11::Json &ids ) {
     _pie.insert({"ids", ids});
     return *this;
 }
@@ -208,7 +225,7 @@ Sets the sector labels. If `labels` entries are duplicated, we sum associated `v
 
 /**
 Sets the sector labels. If `labels` entries are duplicated, we sum associated `values` or simply count occurrences if `values` is not provided. For other array attributes (including color) we use the first non-empty entry among all occurrences of the label.
-*/Pie & Labels(const json11::Json::object &labels ) {
+*/Pie & Labels(const json11::Json &labels ) {
     _pie.insert({"labels", labels});
     return *this;
 }
@@ -260,7 +277,7 @@ Pie & Outsidetextfont(const CppPlotly::Trace::pie::Outsidetextfont &outsidetextf
 
 /**
 Sets the fraction of larger radius to pull the sectors out from the center. This can be a constant to pull all slices apart from each other equally or an array to highlight one or more slices.
-*/Pie & Pull(const json11::Json::object &pull ) {
+*/Pie & Pull(const json11::Json &pull ) {
     _pie.insert({"pull", pull});
     return *this;
 }
@@ -292,7 +309,7 @@ If there are multiple pies that should be sized according to their totals, link 
 
 /**
 Array containing integer indices of selected points. Has an effect only for traces that support selections. Note that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any other non-array values means no selection all where the `selected` and `unselected` styles have no effect.
-*/Pie & Selectedpoints(const json11::Json::object &selectedpoints ) {
+*/Pie & Selectedpoints(const json11::Json &selectedpoints ) {
     _pie.insert({"selectedpoints", selectedpoints});
     return *this;
 }
@@ -321,7 +338,7 @@ Pie & Stream(const CppPlotly::Trace::pie::Stream &stream ) {
 
 
 /**
-Sets text elements associated with each sector. If trace `textinfo` contains a *text* flag, these elements will seen on the chart. If trace `hoverinfo` contains a *text* flag and *hovertext* is not set, these elements will be seen in the hover labels.
+Sets text elements associated with each sector. If trace `textinfo` contains a *text* flag, these elements will be seen on the chart. If trace `hoverinfo` contains a *text* flag and *hovertext* is not set, these elements will be seen in the hover labels.
 */Pie & Text(const std::vector<double> &text ) {
     _pie.insert({"text", text});
     return *this;
@@ -329,7 +346,7 @@ Sets text elements associated with each sector. If trace `textinfo` contains a *
 
 
 /**
-Sets text elements associated with each sector. If trace `textinfo` contains a *text* flag, these elements will seen on the chart. If trace `hoverinfo` contains a *text* flag and *hovertext* is not set, these elements will be seen in the hover labels.
+Sets text elements associated with each sector. If trace `textinfo` contains a *text* flag, these elements will be seen on the chart. If trace `hoverinfo` contains a *text* flag and *hovertext* is not set, these elements will be seen in the hover labels.
 */Pie & Text(const std::vector<std::string> &text ) {
     _pie.insert({"text", text});
     return *this;
@@ -337,8 +354,8 @@ Sets text elements associated with each sector. If trace `textinfo` contains a *
 
 
 /**
-Sets text elements associated with each sector. If trace `textinfo` contains a *text* flag, these elements will seen on the chart. If trace `hoverinfo` contains a *text* flag and *hovertext* is not set, these elements will be seen in the hover labels.
-*/Pie & Text(const json11::Json::object &text ) {
+Sets text elements associated with each sector. If trace `textinfo` contains a *text* flag, these elements will be seen on the chart. If trace `hoverinfo` contains a *text* flag and *hovertext* is not set, these elements will be seen in the hover labels.
+*/Pie & Text(const json11::Json &text ) {
     _pie.insert({"text", text});
     return *this;
 }
@@ -352,7 +369,7 @@ Pie & Textfont(const CppPlotly::Trace::pie::Textfont &textfont ) {
 
 /**
 Determines which trace information appear on the graph.
-*/Pie & Textinfo(const json11::Json::object &textinfo ) {
+*/Pie & Textinfo(const json11::Json &textinfo ) {
     _pie.insert({"textinfo", textinfo});
     return *this;
 }
@@ -360,7 +377,7 @@ Determines which trace information appear on the graph.
 
 /**
 Specifies the location of the `textinfo`.
-*/Pie & Textposition(const json11::Json::object &textposition ) {
+*/Pie & Textposition(const json11::Json &textposition ) {
     _pie.insert({"textposition", textposition});
     return *this;
 }
@@ -382,14 +399,30 @@ Sets the source reference on plot.ly for  text .
 }
 
 
+Pie & Title(const CppPlotly::Trace::pie::Title &title ) {
+    _pie.insert({"title", title});
+    return *this;
+}
+
+
 Pie & Transforms(const std::vector<CppPlotly::Trace::pie::Transform> &transforms ) {
     _pie.insert({"transforms", transforms});
     return *this;
 }
 
 
-Pie & Uid(const std::string &uid ) {
+/**
+Assign an id to this trace, Use this to provide object constancy between traces during animations and transitions.
+*/Pie & Uid(const std::string &uid ) {
     _pie.insert({"uid", uid});
+    return *this;
+}
+
+
+/**
+Controls persistence of some user-driven changes to the trace: `constraintrange` in `parcoords` traces, as well as some `editable: true` modifications such as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note that other user-driven trace attribute changes are controlled by `layout` attributes: `trace.visible` is controlled by `layout.legend.uirevision`, `selectedpoints` is controlled by `layout.selectionrevision`, and `colorbar.(x|y)` (accessible with `config: {editable: true}`) is controlled by `layout.editrevision`. Trace changes are tracked by `uid`, which only falls back on trace index if no `uid` is provided. So if your app can add/remove traces before the end of the `data` array, such that the same trace has a different index, you can still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
+*/Pie & Uirevision(const json11::Json &uirevision ) {
+    _pie.insert({"uirevision", uirevision});
     return *this;
 }
 
@@ -412,7 +445,7 @@ Sets the values of the sectors of this pie chart. If omitted, we count occurrenc
 
 /**
 Sets the values of the sectors of this pie chart. If omitted, we count occurrences of each label.
-*/Pie & Values(const json11::Json::object &values ) {
+*/Pie & Values(const json11::Json &values ) {
     _pie.insert({"values", values});
     return *this;
 }
@@ -428,7 +461,7 @@ Sets the source reference on plot.ly for  values .
 
 /**
 Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a legend item (provided that the legend itself is visible).
-*/Pie & Visible(const json11::Json::object &visible ) {
+*/Pie & Visible(const json11::Json &visible ) {
     _pie.insert({"visible", visible});
     return *this;
 }

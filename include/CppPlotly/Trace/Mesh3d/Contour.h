@@ -39,7 +39,7 @@ namespace CppPlotly {
 
     /**
 Sets the color of the contour lines.
-*/Contour & Color(const json11::Json::object &color ) {
+*/Contour & Color(const json11::Json &color ) {
     _contour.insert({"color", color});
     return *this;
 }

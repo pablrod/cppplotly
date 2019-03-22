@@ -25,7 +25,6 @@ But I think plotly.js is a great library and I want to use it with C++.
 #include "CppPlotly/Trace/Sankey/Node.h"
 #include "CppPlotly/Trace/Sankey/Stream.h"
 #include "CppPlotly/Trace/Sankey/Textfont.h"
-#include "CppPlotly/Trace/Sankey/Transform.h"
 
 
 namespace CppPlotly {
@@ -45,7 +44,7 @@ namespace CppPlotly {
 
            /**
 If value is `snap` (the default), the node arrangement is assisted by automatic snapping of elements to preserve space between nodes specified via `nodepad`. If value is `perpendicular`, the nodes can only move along a line perpendicular to the flow. If value is `freeform`, the nodes can freely move on the plane. If value is `fixed`, the nodes are stationary.
-*/Sankey & Arrangement(const json11::Json::object &arrangement ) {
+*/Sankey & Arrangement(const json11::Json &arrangement ) {
     _sankey.insert({"arrangement", arrangement});
     return *this;
 }
@@ -69,7 +68,7 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 /**
 Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
-*/Sankey & Customdata(const json11::Json::object &customdata ) {
+*/Sankey & Customdata(const json11::Json &customdata ) {
     _sankey.insert({"customdata", customdata});
     return *this;
 }
@@ -90,17 +89,9 @@ Sankey & Domain(const CppPlotly::Trace::sankey::Domain &domain ) {
 
 
 /**
-Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon hovering. But, if `none` is set, click and hover events are still fired.
-*/Sankey & Hoverinfo(const json11::Json::object &hoverinfo ) {
+Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon hovering. But, if `none` is set, click and hover events are still fired. Note that this attribute is superseded by `node.hoverinfo` and `node.hoverinfo` for nodes and links respectively.
+*/Sankey & Hoverinfo(const json11::Json &hoverinfo ) {
     _sankey.insert({"hoverinfo", hoverinfo});
-    return *this;
-}
-
-
-/**
-Sets the source reference on plot.ly for  hoverinfo .
-*/Sankey & Hoverinfosrc(const std::string &hoverinfosrc ) {
-    _sankey.insert({"hoverinfosrc", hoverinfosrc});
     return *this;
 }
 
@@ -129,7 +120,7 @@ Assigns id labels to each datum. These ids for object constancy of data points d
 
 /**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
-*/Sankey & Ids(const json11::Json::object &ids ) {
+*/Sankey & Ids(const json11::Json &ids ) {
     _sankey.insert({"ids", ids});
     return *this;
 }
@@ -181,7 +172,7 @@ Sets the opacity of the trace.
 
 /**
 Sets the orientation of the Sankey diagram.
-*/Sankey & Orientation(const json11::Json::object &orientation ) {
+*/Sankey & Orientation(const json11::Json &orientation ) {
     _sankey.insert({"orientation", orientation});
     return *this;
 }
@@ -189,7 +180,7 @@ Sets the orientation of the Sankey diagram.
 
 /**
 Array containing integer indices of selected points. Has an effect only for traces that support selections. Note that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any other non-array values means no selection all where the `selected` and `unselected` styles have no effect.
-*/Sankey & Selectedpoints(const json11::Json::object &selectedpoints ) {
+*/Sankey & Selectedpoints(const json11::Json &selectedpoints ) {
     _sankey.insert({"selectedpoints", selectedpoints});
     return *this;
 }
@@ -215,14 +206,18 @@ Sankey & Textfont(const CppPlotly::Trace::sankey::Textfont &textfont ) {
 }
 
 
-Sankey & Transforms(const std::vector<CppPlotly::Trace::sankey::Transform> &transforms ) {
-    _sankey.insert({"transforms", transforms});
+/**
+Assign an id to this trace, Use this to provide object constancy between traces during animations and transitions.
+*/Sankey & Uid(const std::string &uid ) {
+    _sankey.insert({"uid", uid});
     return *this;
 }
 
 
-Sankey & Uid(const std::string &uid ) {
-    _sankey.insert({"uid", uid});
+/**
+Controls persistence of some user-driven changes to the trace: `constraintrange` in `parcoords` traces, as well as some `editable: true` modifications such as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note that other user-driven trace attribute changes are controlled by `layout` attributes: `trace.visible` is controlled by `layout.legend.uirevision`, `selectedpoints` is controlled by `layout.selectionrevision`, and `colorbar.(x|y)` (accessible with `config: {editable: true}`) is controlled by `layout.editrevision`. Trace changes are tracked by `uid`, which only falls back on trace index if no `uid` is provided. So if your app can add/remove traces before the end of the `data` array, such that the same trace has a different index, you can still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
+*/Sankey & Uirevision(const json11::Json &uirevision ) {
+    _sankey.insert({"uirevision", uirevision});
     return *this;
 }
 
@@ -245,7 +240,7 @@ Adds a unit to follow the value in the hover tooltip. Add a space if a separatio
 
 /**
 Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a legend item (provided that the legend itself is visible).
-*/Sankey & Visible(const json11::Json::object &visible ) {
+*/Sankey & Visible(const json11::Json &visible ) {
     _sankey.insert({"visible", visible});
     return *this;
 }

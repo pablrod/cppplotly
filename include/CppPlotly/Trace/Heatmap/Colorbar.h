@@ -24,7 +24,7 @@ But I think plotly.js is a great library and I want to use it with C++.
 
 #include "CppPlotly/Trace/Heatmap/Colorbar/Tickfont.h"
 #include "CppPlotly/Trace/Heatmap/Colorbar/Tickformatstop.h"
-#include "CppPlotly/Trace/Heatmap/Colorbar/Titlefont.h"
+#include "CppPlotly/Trace/Heatmap/Colorbar/Title.h"
 
 
 
@@ -42,7 +42,7 @@ namespace CppPlotly {
 
     /**
 Sets the color of padded area.
-*/Colorbar & Bgcolor(const json11::Json::object &bgcolor ) {
+*/Colorbar & Bgcolor(const json11::Json &bgcolor ) {
     _colorbar.insert({"bgcolor", bgcolor});
     return *this;
 }
@@ -50,7 +50,7 @@ Sets the color of padded area.
 
 /**
 Sets the axis line color.
-*/Colorbar & Bordercolor(const json11::Json::object &bordercolor ) {
+*/Colorbar & Bordercolor(const json11::Json &bordercolor ) {
     _colorbar.insert({"bordercolor", bordercolor});
     return *this;
 }
@@ -66,7 +66,7 @@ Sets the width (in px) or the border enclosing this color bar.
 
 /**
 Sets the step in-between ticks on this axis. Use with `tick0`. Must be a positive number, or special strings available to *log* and *date* axes. If the axis `type` is *log*, then ticks are set every 10^(n*dtick) where n is the tick number. For example, to set a tick mark at 1, 10, 100, 1000, ... set dtick to 1. To set tick marks at 1, 100, 10000, ... set dtick to 2. To set tick marks at 1, 5, 25, 125, 625, 3125, ... set dtick to log_10(5), or 0.69897000433. *log* has several special values; *L<f>*, where `f` is a positive number, gives ticks linearly spaced in value (but not position). For example `tick0` = 0.1, `dtick` = *L0.5* will put ticks at 0.1, 0.6, 1.1, 1.6 etc. To show powers of 10 plus small digits between, use *D1* (all digits) or *D2* (only 2 and 5). `tick0` is ignored for *D1* and *D2*. If the axis `type` is *date*, then you must convert the time to milliseconds. For example, to set the interval between ticks to one day, set `dtick` to 86400000.0. *date* also has special values *M<n>* gives ticks spaced by a number of months. `n` must be a positive integer. To set ticks on the 15th of every third month, set `tick0` to *2000-01-15* and `dtick` to *M3*. To set ticks every 4 years, set `dtick` to *M48*
-*/Colorbar & Dtick(const json11::Json::object &dtick ) {
+*/Colorbar & Dtick(const json11::Json &dtick ) {
     _colorbar.insert({"dtick", dtick});
     return *this;
 }
@@ -74,7 +74,7 @@ Sets the step in-between ticks on this axis. Use with `tick0`. Must be a positiv
 
 /**
 Determines a formatting rule for the tick exponents. For example, consider the number 1,000,000,000. If *none*, it appears as 1,000,000,000. If *e*, 1e+9. If *E*, 1E+9. If *power*, 1x10^9 (with 9 in a super script). If *SI*, 1G. If *B*, 1B.
-*/Colorbar & Exponentformat(const json11::Json::object &exponentformat ) {
+*/Colorbar & Exponentformat(const json11::Json &exponentformat ) {
     _colorbar.insert({"exponentformat", exponentformat});
     return *this;
 }
@@ -90,7 +90,7 @@ Sets the length of the color bar This measure excludes the padding of both ends.
 
 /**
 Determines whether this color bar's length (i.e. the measure in the color variation direction) is set in units of plot *fraction* or in *pixels. Use `len` to set the value.
-*/Colorbar & Lenmode(const json11::Json::object &lenmode ) {
+*/Colorbar & Lenmode(const json11::Json &lenmode ) {
     _colorbar.insert({"lenmode", lenmode});
     return *this;
 }
@@ -106,7 +106,7 @@ Specifies the maximum number of ticks for the particular axis. The actual number
 
 /**
 Sets the axis line color.
-*/Colorbar & Outlinecolor(const json11::Json::object &outlinecolor ) {
+*/Colorbar & Outlinecolor(const json11::Json &outlinecolor ) {
     _colorbar.insert({"outlinecolor", outlinecolor});
     return *this;
 }
@@ -130,7 +130,7 @@ If "true", even 4-digit integers are separated
 
 /**
 If *all*, all exponents are shown besides their significands. If *first*, only the exponent of the first tick is shown. If *last*, only the exponent of the last tick is shown. If *none*, no exponents appear.
-*/Colorbar & Showexponent(const json11::Json::object &showexponent ) {
+*/Colorbar & Showexponent(const json11::Json &showexponent ) {
     _colorbar.insert({"showexponent", showexponent});
     return *this;
 }
@@ -146,7 +146,7 @@ Determines whether or not the tick labels are drawn.
 
 /**
 If *all*, all tick labels are displayed with a prefix. If *first*, only the first tick is displayed with a prefix. If *last*, only the last tick is displayed with a suffix. If *none*, tick prefixes are hidden.
-*/Colorbar & Showtickprefix(const json11::Json::object &showtickprefix ) {
+*/Colorbar & Showtickprefix(const json11::Json &showtickprefix ) {
     _colorbar.insert({"showtickprefix", showtickprefix});
     return *this;
 }
@@ -154,7 +154,7 @@ If *all*, all tick labels are displayed with a prefix. If *first*, only the firs
 
 /**
 Same as `showtickprefix` but for tick suffixes.
-*/Colorbar & Showticksuffix(const json11::Json::object &showticksuffix ) {
+*/Colorbar & Showticksuffix(const json11::Json &showticksuffix ) {
     _colorbar.insert({"showticksuffix", showticksuffix});
     return *this;
 }
@@ -170,7 +170,7 @@ Sets the thickness of the color bar This measure excludes the size of the paddin
 
 /**
 Determines whether this color bar's thickness (i.e. the measure in the constant color direction) is set in units of plot *fraction* or in *pixels*. Use `thickness` to set the value.
-*/Colorbar & Thicknessmode(const json11::Json::object &thicknessmode ) {
+*/Colorbar & Thicknessmode(const json11::Json &thicknessmode ) {
     _colorbar.insert({"thicknessmode", thicknessmode});
     return *this;
 }
@@ -178,7 +178,7 @@ Determines whether this color bar's thickness (i.e. the measure in the constant 
 
 /**
 Sets the placement of the first tick on this axis. Use with `dtick`. If the axis `type` is *log*, then you must take the log of your starting tick (e.g. to set the starting tick to 100, set the `tick0` to 2) except when `dtick`=*L<f>* (see `dtick` for more info). If the axis `type` is *date*, it should be a date string, like date data. If the axis `type` is *category*, it should be a number, using the scale where each category is assigned a serial number from zero in the order it appears.
-*/Colorbar & Tick0(const json11::Json::object &tick0 ) {
+*/Colorbar & Tick0(const json11::Json &tick0 ) {
     _colorbar.insert({"tick0", tick0});
     return *this;
 }
@@ -186,7 +186,7 @@ Sets the placement of the first tick on this axis. Use with `dtick`. If the axis
 
 /**
 Sets the angle of the tick labels with respect to the horizontal. For example, a `tickangle` of -90 draws the tick labels vertically.
-*/Colorbar & Tickangle(const json11::Json::object &tickangle ) {
+*/Colorbar & Tickangle(const json11::Json &tickangle ) {
     _colorbar.insert({"tickangle", tickangle});
     return *this;
 }
@@ -194,7 +194,7 @@ Sets the angle of the tick labels with respect to the horizontal. For example, a
 
 /**
 Sets the tick color.
-*/Colorbar & Tickcolor(const json11::Json::object &tickcolor ) {
+*/Colorbar & Tickcolor(const json11::Json &tickcolor ) {
     _colorbar.insert({"tickcolor", tickcolor});
     return *this;
 }
@@ -230,7 +230,7 @@ Sets the tick length (in px).
 
 /**
 Sets the tick mode for this axis. If *auto*, the number of ticks is set via `nticks`. If *linear*, the placement of the ticks is determined by a starting position `tick0` and a tick step `dtick` (*linear* is the default value if `tick0` and `dtick` are provided). If *array*, the placement of the ticks is set via `tickvals` and the tick text is `ticktext`. (*array* is the default value if `tickvals` is provided).
-*/Colorbar & Tickmode(const json11::Json::object &tickmode ) {
+*/Colorbar & Tickmode(const json11::Json &tickmode ) {
     _colorbar.insert({"tickmode", tickmode});
     return *this;
 }
@@ -246,7 +246,7 @@ Sets a tick label prefix.
 
 /**
 Determines whether ticks are drawn or not. If **, this axis' ticks are not drawn. If *outside* (*inside*), this axis' are drawn outside (inside) the axis lines.
-*/Colorbar & Ticks(const json11::Json::object &ticks ) {
+*/Colorbar & Ticks(const json11::Json &ticks ) {
     _colorbar.insert({"ticks", ticks});
     return *this;
 }
@@ -278,7 +278,7 @@ Sets the text displayed at the ticks position via `tickvals`. Only has an effect
 
 /**
 Sets the text displayed at the ticks position via `tickvals`. Only has an effect if `tickmode` is set to *array*. Used with `tickvals`.
-*/Colorbar & Ticktext(const json11::Json::object &ticktext ) {
+*/Colorbar & Ticktext(const json11::Json &ticktext ) {
     _colorbar.insert({"ticktext", ticktext});
     return *this;
 }
@@ -310,7 +310,7 @@ Sets the values at which ticks on this axis appear. Only has an effect if `tickm
 
 /**
 Sets the values at which ticks on this axis appear. Only has an effect if `tickmode` is set to *array*. Used with `ticktext`.
-*/Colorbar & Tickvals(const json11::Json::object &tickvals ) {
+*/Colorbar & Tickvals(const json11::Json &tickvals ) {
     _colorbar.insert({"tickvals", tickvals});
     return *this;
 }
@@ -332,24 +332,8 @@ Sets the tick width (in px).
 }
 
 
-/**
-Sets the title of the color bar.
-*/Colorbar & Title(const std::string &title ) {
+Colorbar & Title(const CppPlotly::Trace::heatmap::colorbar::Title &title ) {
     _colorbar.insert({"title", title});
-    return *this;
-}
-
-
-Colorbar & Titlefont(const CppPlotly::Trace::heatmap::colorbar::Titlefont &titlefont ) {
-    _colorbar.insert({"titlefont", titlefont});
-    return *this;
-}
-
-
-/**
-Determines the location of the colorbar title with respect to the color bar.
-*/Colorbar & Titleside(const json11::Json::object &titleside ) {
-    _colorbar.insert({"titleside", titleside});
     return *this;
 }
 
@@ -364,7 +348,7 @@ Sets the x position of the color bar (in plot fraction).
 
 /**
 Sets this color bar's horizontal position anchor. This anchor binds the `x` position to the *left*, *center* or *right* of the color bar.
-*/Colorbar & Xanchor(const json11::Json::object &xanchor ) {
+*/Colorbar & Xanchor(const json11::Json &xanchor ) {
     _colorbar.insert({"xanchor", xanchor});
     return *this;
 }
@@ -388,7 +372,7 @@ Sets the y position of the color bar (in plot fraction).
 
 /**
 Sets this color bar's vertical position anchor This anchor binds the `y` position to the *top*, *middle* or *bottom* of the color bar.
-*/Colorbar & Yanchor(const json11::Json::object &yanchor ) {
+*/Colorbar & Yanchor(const json11::Json &yanchor ) {
     _colorbar.insert({"yanchor", yanchor});
     return *this;
 }

@@ -70,7 +70,7 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 /**
 Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
-*/Scattermapbox & Customdata(const json11::Json::object &customdata ) {
+*/Scattermapbox & Customdata(const json11::Json &customdata ) {
     _scattermapbox.insert({"customdata", customdata});
     return *this;
 }
@@ -86,7 +86,7 @@ Sets the source reference on plot.ly for  customdata .
 
 /**
 Sets the area to fill with a solid color. Use with `fillcolor` if not *none*. *toself* connects the endpoints of the trace (or each segment of the trace if it has gaps) into a closed shape.
-*/Scattermapbox & Fill(const json11::Json::object &fill ) {
+*/Scattermapbox & Fill(const json11::Json &fill ) {
     _scattermapbox.insert({"fill", fill});
     return *this;
 }
@@ -94,7 +94,7 @@ Sets the area to fill with a solid color. Use with `fillcolor` if not *none*. *t
 
 /**
 Sets the fill color. Defaults to a half-transparent variant of the line color, marker color, or marker line color, whichever is available.
-*/Scattermapbox & Fillcolor(const json11::Json::object &fillcolor ) {
+*/Scattermapbox & Fillcolor(const json11::Json &fillcolor ) {
     _scattermapbox.insert({"fillcolor", fillcolor});
     return *this;
 }
@@ -102,7 +102,7 @@ Sets the fill color. Defaults to a half-transparent variant of the line color, m
 
 /**
 Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon hovering. But, if `none` is set, click and hover events are still fired.
-*/Scattermapbox & Hoverinfo(const json11::Json::object &hoverinfo ) {
+*/Scattermapbox & Hoverinfo(const json11::Json &hoverinfo ) {
     _scattermapbox.insert({"hoverinfo", hoverinfo});
     return *this;
 }
@@ -123,8 +123,24 @@ Scattermapbox & Hoverlabel(const CppPlotly::Trace::scattermapbox::Hoverlabel &ho
 
 
 /**
+Template string used for rendering the information that appear on hover box. Note that this will override `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}". Numbers are formatted using d3-format's syntax %{variable:d3-format}, for example "Price: %{y:$.2f}". See https://github.com/d3/d3-format/blob/master/README.md#locale_format for details on the formatting syntax. The variables available in `hovertemplate` are the ones emitted as event data described at this link https://plot.ly/javascript/plotlyjs-events/#event-data. Additionally, every attributes that can be specified per-point (the ones that are `arrayOk: true`) are available.  Anything contained in tag `<extra>` is displayed in the secondary box, for example "<extra>{fullData.name}</extra>". To hide the secondary box completely, use an empty tag `<extra></extra>`.
+*/Scattermapbox & Hovertemplate(const json11::Json &hovertemplate ) {
+    _scattermapbox.insert({"hovertemplate", hovertemplate});
+    return *this;
+}
+
+
+/**
+Sets the source reference on plot.ly for  hovertemplate .
+*/Scattermapbox & Hovertemplatesrc(const std::string &hovertemplatesrc ) {
+    _scattermapbox.insert({"hovertemplatesrc", hovertemplatesrc});
+    return *this;
+}
+
+
+/**
 Sets hover text elements associated with each (lon,lat) pair If a single string, the same string appears over all the data points. If an array of string, the items are mapped in order to the this trace's (lon,lat) coordinates. To be seen, trace `hoverinfo` must contain a *text* flag.
-*/Scattermapbox & Hovertext(const json11::Json::object &hovertext ) {
+*/Scattermapbox & Hovertext(const json11::Json &hovertext ) {
     _scattermapbox.insert({"hovertext", hovertext});
     return *this;
 }
@@ -156,7 +172,7 @@ Assigns id labels to each datum. These ids for object constancy of data points d
 
 /**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
-*/Scattermapbox & Ids(const json11::Json::object &ids ) {
+*/Scattermapbox & Ids(const json11::Json &ids ) {
     _scattermapbox.insert({"ids", ids});
     return *this;
 }
@@ -188,7 +204,7 @@ Sets the latitude coordinates (in degrees North).
 
 /**
 Sets the latitude coordinates (in degrees North).
-*/Scattermapbox & Lat(const json11::Json::object &lat ) {
+*/Scattermapbox & Lat(const json11::Json &lat ) {
     _scattermapbox.insert({"lat", lat});
     return *this;
 }
@@ -234,7 +250,7 @@ Sets the longitude coordinates (in degrees East).
 
 /**
 Sets the longitude coordinates (in degrees East).
-*/Scattermapbox & Lon(const json11::Json::object &lon ) {
+*/Scattermapbox & Lon(const json11::Json &lon ) {
     _scattermapbox.insert({"lon", lon});
     return *this;
 }
@@ -256,7 +272,7 @@ Scattermapbox & Marker(const CppPlotly::Trace::scattermapbox::Marker &marker ) {
 
 /**
 Determines the drawing mode for this scatter trace. If the provided `mode` includes *text* then the `text` elements appear at the coordinates. Otherwise, the `text` elements appear on hover.
-*/Scattermapbox & Mode(const json11::Json::object &mode ) {
+*/Scattermapbox & Mode(const json11::Json &mode ) {
     _scattermapbox.insert({"mode", mode});
     return *this;
 }
@@ -286,7 +302,7 @@ Scattermapbox & Selected(const CppPlotly::Trace::scattermapbox::Selected &select
 
 /**
 Array containing integer indices of selected points. Has an effect only for traces that support selections. Note that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any other non-array values means no selection all where the `selected` and `unselected` styles have no effect.
-*/Scattermapbox & Selectedpoints(const json11::Json::object &selectedpoints ) {
+*/Scattermapbox & Selectedpoints(const json11::Json &selectedpoints ) {
     _scattermapbox.insert({"selectedpoints", selectedpoints});
     return *this;
 }
@@ -308,7 +324,7 @@ Scattermapbox & Stream(const CppPlotly::Trace::scattermapbox::Stream &stream ) {
 
 /**
 Sets a reference between this trace's data coordinates and a mapbox subplot. If *mapbox* (the default value), the data refer to `layout.mapbox`. If *mapbox2*, the data refer to `layout.mapbox2`, and so on.
-*/Scattermapbox & Subplot(const json11::Json::object &subplot ) {
+*/Scattermapbox & Subplot(const json11::Json &subplot ) {
     _scattermapbox.insert({"subplot", subplot});
     return *this;
 }
@@ -316,7 +332,7 @@ Sets a reference between this trace's data coordinates and a mapbox subplot. If 
 
 /**
 Sets text elements associated with each (lon,lat) pair If a single string, the same string appears over all the data points. If an array of string, the items are mapped in order to the this trace's (lon,lat) coordinates. If trace `hoverinfo` contains a *text* flag and *hovertext* is not set, these elements will be seen in the hover labels.
-*/Scattermapbox & Text(const json11::Json::object &text ) {
+*/Scattermapbox & Text(const json11::Json &text ) {
     _scattermapbox.insert({"text", text});
     return *this;
 }
@@ -330,7 +346,7 @@ Scattermapbox & Textfont(const CppPlotly::Trace::scattermapbox::Textfont &textfo
 
 /**
 Sets the positions of the `text` elements with respects to the (x,y) coordinates.
-*/Scattermapbox & Textposition(const json11::Json::object &textposition ) {
+*/Scattermapbox & Textposition(const json11::Json &textposition ) {
     _scattermapbox.insert({"textposition", textposition});
     return *this;
 }
@@ -350,8 +366,18 @@ Scattermapbox & Transforms(const std::vector<CppPlotly::Trace::scattermapbox::Tr
 }
 
 
-Scattermapbox & Uid(const std::string &uid ) {
+/**
+Assign an id to this trace, Use this to provide object constancy between traces during animations and transitions.
+*/Scattermapbox & Uid(const std::string &uid ) {
     _scattermapbox.insert({"uid", uid});
+    return *this;
+}
+
+
+/**
+Controls persistence of some user-driven changes to the trace: `constraintrange` in `parcoords` traces, as well as some `editable: true` modifications such as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note that other user-driven trace attribute changes are controlled by `layout` attributes: `trace.visible` is controlled by `layout.legend.uirevision`, `selectedpoints` is controlled by `layout.selectionrevision`, and `colorbar.(x|y)` (accessible with `config: {editable: true}`) is controlled by `layout.editrevision`. Trace changes are tracked by `uid`, which only falls back on trace index if no `uid` is provided. So if your app can add/remove traces before the end of the `data` array, such that the same trace has a different index, you can still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
+*/Scattermapbox & Uirevision(const json11::Json &uirevision ) {
+    _scattermapbox.insert({"uirevision", uirevision});
     return *this;
 }
 
@@ -364,7 +390,7 @@ Scattermapbox & Unselected(const CppPlotly::Trace::scattermapbox::Unselected &un
 
 /**
 Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a legend item (provided that the legend itself is visible).
-*/Scattermapbox & Visible(const json11::Json::object &visible ) {
+*/Scattermapbox & Visible(const json11::Json &visible ) {
     _scattermapbox.insert({"visible", visible});
     return *this;
 }

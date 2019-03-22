@@ -62,7 +62,7 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 /**
 Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
-*/Splom & Customdata(const json11::Json::object &customdata ) {
+*/Splom & Customdata(const json11::Json &customdata ) {
     _splom.insert({"customdata", customdata});
     return *this;
 }
@@ -90,7 +90,7 @@ Splom & Dimensions(const std::vector<CppPlotly::Trace::splom::Dimension> &dimens
 
 /**
 Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon hovering. But, if `none` is set, click and hover events are still fired.
-*/Splom & Hoverinfo(const json11::Json::object &hoverinfo ) {
+*/Splom & Hoverinfo(const json11::Json &hoverinfo ) {
     _splom.insert({"hoverinfo", hoverinfo});
     return *this;
 }
@@ -106,6 +106,38 @@ Sets the source reference on plot.ly for  hoverinfo .
 
 Splom & Hoverlabel(const CppPlotly::Trace::splom::Hoverlabel &hoverlabel ) {
     _splom.insert({"hoverlabel", hoverlabel});
+    return *this;
+}
+
+
+/**
+Template string used for rendering the information that appear on hover box. Note that this will override `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}". Numbers are formatted using d3-format's syntax %{variable:d3-format}, for example "Price: %{y:$.2f}". See https://github.com/d3/d3-format/blob/master/README.md#locale_format for details on the formatting syntax. The variables available in `hovertemplate` are the ones emitted as event data described at this link https://plot.ly/javascript/plotlyjs-events/#event-data. Additionally, every attributes that can be specified per-point (the ones that are `arrayOk: true`) are available.  Anything contained in tag `<extra>` is displayed in the secondary box, for example "<extra>{fullData.name}</extra>". To hide the secondary box completely, use an empty tag `<extra></extra>`.
+*/Splom & Hovertemplate(const json11::Json &hovertemplate ) {
+    _splom.insert({"hovertemplate", hovertemplate});
+    return *this;
+}
+
+
+/**
+Sets the source reference on plot.ly for  hovertemplate .
+*/Splom & Hovertemplatesrc(const std::string &hovertemplatesrc ) {
+    _splom.insert({"hovertemplatesrc", hovertemplatesrc});
+    return *this;
+}
+
+
+/**
+Same as `text`.
+*/Splom & Hovertext(const json11::Json &hovertext ) {
+    _splom.insert({"hovertext", hovertext});
+    return *this;
+}
+
+
+/**
+Sets the source reference on plot.ly for  hovertext .
+*/Splom & Hovertextsrc(const std::string &hovertextsrc ) {
+    _splom.insert({"hovertextsrc", hovertextsrc});
     return *this;
 }
 
@@ -128,7 +160,7 @@ Assigns id labels to each datum. These ids for object constancy of data points d
 
 /**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
-*/Splom & Ids(const json11::Json::object &ids ) {
+*/Splom & Ids(const json11::Json &ids ) {
     _splom.insert({"ids", ids});
     return *this;
 }
@@ -180,7 +212,7 @@ Splom & Selected(const CppPlotly::Trace::splom::Selected &selected ) {
 
 /**
 Array containing integer indices of selected points. Has an effect only for traces that support selections. Note that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any other non-array values means no selection all where the `selected` and `unselected` styles have no effect.
-*/Splom & Selectedpoints(const json11::Json::object &selectedpoints ) {
+*/Splom & Selectedpoints(const json11::Json &selectedpoints ) {
     _splom.insert({"selectedpoints", selectedpoints});
     return *this;
 }
@@ -218,7 +250,7 @@ Splom & Stream(const CppPlotly::Trace::splom::Stream &stream ) {
 
 /**
 Sets text elements associated with each (x,y) pair to appear on hover. If a single string, the same string appears over all the data points. If an array of string, the items are mapped in order to the this trace's (x,y) coordinates.
-*/Splom & Text(const json11::Json::object &text ) {
+*/Splom & Text(const json11::Json &text ) {
     _splom.insert({"text", text});
     return *this;
 }
@@ -238,8 +270,18 @@ Splom & Transforms(const std::vector<CppPlotly::Trace::splom::Transform> &transf
 }
 
 
-Splom & Uid(const std::string &uid ) {
+/**
+Assign an id to this trace, Use this to provide object constancy between traces during animations and transitions.
+*/Splom & Uid(const std::string &uid ) {
     _splom.insert({"uid", uid});
+    return *this;
+}
+
+
+/**
+Controls persistence of some user-driven changes to the trace: `constraintrange` in `parcoords` traces, as well as some `editable: true` modifications such as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note that other user-driven trace attribute changes are controlled by `layout` attributes: `trace.visible` is controlled by `layout.legend.uirevision`, `selectedpoints` is controlled by `layout.selectionrevision`, and `colorbar.(x|y)` (accessible with `config: {editable: true}`) is controlled by `layout.editrevision`. Trace changes are tracked by `uid`, which only falls back on trace index if no `uid` is provided. So if your app can add/remove traces before the end of the `data` array, such that the same trace has a different index, you can still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
+*/Splom & Uirevision(const json11::Json &uirevision ) {
+    _splom.insert({"uirevision", uirevision});
     return *this;
 }
 
@@ -252,14 +294,14 @@ Splom & Unselected(const CppPlotly::Trace::splom::Unselected &unselected ) {
 
 /**
 Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a legend item (provided that the legend itself is visible).
-*/Splom & Visible(const json11::Json::object &visible ) {
+*/Splom & Visible(const json11::Json &visible ) {
     _splom.insert({"visible", visible});
     return *this;
 }
 
 
 /**
-Sets the list of x axes corresponding to this splom trace. By default, a splom will match the first N xaxes where N is the number of input dimensions.
+Sets the list of x axes corresponding to dimensions of this splom trace. By default, a splom will match the first N xaxes where N is the number of input dimensions. Note that, in case where `diagonal.visible` is false and `showupperhalf` or `showlowerhalf` is false, this splom trace will generate one less x-axis and one less y-axis.
 */Splom & Xaxes(const std::vector<std::string> &xaxes ) {
     _splom.insert({"xaxes", xaxes});
     return *this;
@@ -267,7 +309,7 @@ Sets the list of x axes corresponding to this splom trace. By default, a splom w
 
 
 /**
-Sets the list of y axes corresponding to this splom trace. By default, a splom will match the first N yaxes where N is the number of input dimensions.
+Sets the list of y axes corresponding to dimensions of this splom trace. By default, a splom will match the first N yaxes where N is the number of input dimensions. Note that, in case where `diagonal.visible` is false and `showupperhalf` or `showlowerhalf` is false, this splom trace will generate one less x-axis and one less y-axis.
 */Splom & Yaxes(const std::vector<std::string> &yaxes ) {
     _splom.insert({"yaxes", yaxes});
     return *this;

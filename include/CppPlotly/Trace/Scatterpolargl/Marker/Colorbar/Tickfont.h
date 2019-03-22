@@ -39,13 +39,13 @@ namespace colorbar {
     class Tickfont {
     public:
 
-    Tickfont & Color(const json11::Json::object &color ) {
+    Tickfont & Color(const json11::Json &color ) {
     _tickfont.insert({"color", color});
     return *this;
 }
 
 
-Tickfont & Description(const json11::Json::object &description ) {
+Tickfont & Description(const json11::Json &description ) {
     _tickfont.insert({"description", description});
     return *this;
 }

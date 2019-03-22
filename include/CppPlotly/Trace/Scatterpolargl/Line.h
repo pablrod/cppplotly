@@ -39,7 +39,7 @@ namespace CppPlotly {
 
     /**
 Sets the line color.
-*/Line & Color(const json11::Json::object &color ) {
+*/Line & Color(const json11::Json &color ) {
     _line.insert({"color", color});
     return *this;
 }
@@ -47,8 +47,16 @@ Sets the line color.
 
 /**
 Sets the style of the lines.
-*/Line & Dash(const json11::Json::object &dash ) {
+*/Line & Dash(const json11::Json &dash ) {
     _line.insert({"dash", dash});
+    return *this;
+}
+
+
+/**
+Determines the line shape. The values correspond to step-wise line shapes.
+*/Line & Shape(const json11::Json &shape ) {
+    _line.insert({"shape", shape});
     return *this;
 }
 

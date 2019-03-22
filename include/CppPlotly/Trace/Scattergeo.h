@@ -70,7 +70,7 @@ Assigns extra data each datum. This may be useful when listening to hover, click
 
 /**
 Assigns extra data each datum. This may be useful when listening to hover, click and selection events. Note that, *scatter* traces also appends customdata items in the markers DOM elements
-*/Scattergeo & Customdata(const json11::Json::object &customdata ) {
+*/Scattergeo & Customdata(const json11::Json &customdata ) {
     _scattergeo.insert({"customdata", customdata});
     return *this;
 }
@@ -86,7 +86,7 @@ Sets the source reference on plot.ly for  customdata .
 
 /**
 Sets the area to fill with a solid color. Use with `fillcolor` if not *none*. *toself* connects the endpoints of the trace (or each segment of the trace if it has gaps) into a closed shape.
-*/Scattergeo & Fill(const json11::Json::object &fill ) {
+*/Scattergeo & Fill(const json11::Json &fill ) {
     _scattergeo.insert({"fill", fill});
     return *this;
 }
@@ -94,7 +94,7 @@ Sets the area to fill with a solid color. Use with `fillcolor` if not *none*. *t
 
 /**
 Sets the fill color. Defaults to a half-transparent variant of the line color, marker color, or marker line color, whichever is available.
-*/Scattergeo & Fillcolor(const json11::Json::object &fillcolor ) {
+*/Scattergeo & Fillcolor(const json11::Json &fillcolor ) {
     _scattergeo.insert({"fillcolor", fillcolor});
     return *this;
 }
@@ -102,7 +102,7 @@ Sets the fill color. Defaults to a half-transparent variant of the line color, m
 
 /**
 Sets a reference between this trace's geospatial coordinates and a geographic map. If *geo* (the default value), the geospatial coordinates refer to `layout.geo`. If *geo2*, the geospatial coordinates refer to `layout.geo2`, and so on.
-*/Scattergeo & Geo(const json11::Json::object &geo ) {
+*/Scattergeo & Geo(const json11::Json &geo ) {
     _scattergeo.insert({"geo", geo});
     return *this;
 }
@@ -110,7 +110,7 @@ Sets a reference between this trace's geospatial coordinates and a geographic ma
 
 /**
 Determines which trace information appear on hover. If `none` or `skip` are set, no information is displayed upon hovering. But, if `none` is set, click and hover events are still fired.
-*/Scattergeo & Hoverinfo(const json11::Json::object &hoverinfo ) {
+*/Scattergeo & Hoverinfo(const json11::Json &hoverinfo ) {
     _scattergeo.insert({"hoverinfo", hoverinfo});
     return *this;
 }
@@ -131,8 +131,24 @@ Scattergeo & Hoverlabel(const CppPlotly::Trace::scattergeo::Hoverlabel &hoverlab
 
 
 /**
+Template string used for rendering the information that appear on hover box. Note that this will override `hoverinfo`. Variables are inserted using %{variable}, for example "y: %{y}". Numbers are formatted using d3-format's syntax %{variable:d3-format}, for example "Price: %{y:$.2f}". See https://github.com/d3/d3-format/blob/master/README.md#locale_format for details on the formatting syntax. The variables available in `hovertemplate` are the ones emitted as event data described at this link https://plot.ly/javascript/plotlyjs-events/#event-data. Additionally, every attributes that can be specified per-point (the ones that are `arrayOk: true`) are available.  Anything contained in tag `<extra>` is displayed in the secondary box, for example "<extra>{fullData.name}</extra>". To hide the secondary box completely, use an empty tag `<extra></extra>`.
+*/Scattergeo & Hovertemplate(const json11::Json &hovertemplate ) {
+    _scattergeo.insert({"hovertemplate", hovertemplate});
+    return *this;
+}
+
+
+/**
+Sets the source reference on plot.ly for  hovertemplate .
+*/Scattergeo & Hovertemplatesrc(const std::string &hovertemplatesrc ) {
+    _scattergeo.insert({"hovertemplatesrc", hovertemplatesrc});
+    return *this;
+}
+
+
+/**
 Sets hover text elements associated with each (lon,lat) pair or item in `locations`. If a single string, the same string appears over all the data points. If an array of string, the items are mapped in order to the this trace's (lon,lat) or `locations` coordinates. To be seen, trace `hoverinfo` must contain a *text* flag.
-*/Scattergeo & Hovertext(const json11::Json::object &hovertext ) {
+*/Scattergeo & Hovertext(const json11::Json &hovertext ) {
     _scattergeo.insert({"hovertext", hovertext});
     return *this;
 }
@@ -164,7 +180,7 @@ Assigns id labels to each datum. These ids for object constancy of data points d
 
 /**
 Assigns id labels to each datum. These ids for object constancy of data points during animation. Should be an array of strings, not numbers or any other type.
-*/Scattergeo & Ids(const json11::Json::object &ids ) {
+*/Scattergeo & Ids(const json11::Json &ids ) {
     _scattergeo.insert({"ids", ids});
     return *this;
 }
@@ -196,7 +212,7 @@ Sets the latitude coordinates (in degrees North).
 
 /**
 Sets the latitude coordinates (in degrees North).
-*/Scattergeo & Lat(const json11::Json::object &lat ) {
+*/Scattergeo & Lat(const json11::Json &lat ) {
     _scattergeo.insert({"lat", lat});
     return *this;
 }
@@ -226,7 +242,7 @@ Scattergeo & Line(const CppPlotly::Trace::scattergeo::Line &line ) {
 
 /**
 Determines the set of locations used to match entries in `locations` to regions on the map.
-*/Scattergeo & Locationmode(const json11::Json::object &locationmode ) {
+*/Scattergeo & Locationmode(const json11::Json &locationmode ) {
     _scattergeo.insert({"locationmode", locationmode});
     return *this;
 }
@@ -250,7 +266,7 @@ Sets the coordinates via location IDs or names. Coordinates correspond to the ce
 
 /**
 Sets the coordinates via location IDs or names. Coordinates correspond to the centroid of each location given. See `locationmode` for more info.
-*/Scattergeo & Locations(const json11::Json::object &locations ) {
+*/Scattergeo & Locations(const json11::Json &locations ) {
     _scattergeo.insert({"locations", locations});
     return *this;
 }
@@ -282,7 +298,7 @@ Sets the longitude coordinates (in degrees East).
 
 /**
 Sets the longitude coordinates (in degrees East).
-*/Scattergeo & Lon(const json11::Json::object &lon ) {
+*/Scattergeo & Lon(const json11::Json &lon ) {
     _scattergeo.insert({"lon", lon});
     return *this;
 }
@@ -303,8 +319,8 @@ Scattergeo & Marker(const CppPlotly::Trace::scattergeo::Marker &marker ) {
 
 
 /**
-Determines the drawing mode for this scatter trace. If the provided `mode` includes *text* then the `text` elements appear at the coordinates. Otherwise, the `text` elements appear on hover. If there are less than 20 points, then the default is *lines+markers*. Otherwise, *lines*.
-*/Scattergeo & Mode(const json11::Json::object &mode ) {
+Determines the drawing mode for this scatter trace. If the provided `mode` includes *text* then the `text` elements appear at the coordinates. Otherwise, the `text` elements appear on hover. If there are less than 20 points and the trace is not stacked then the default is *lines+markers*. Otherwise, *lines*.
+*/Scattergeo & Mode(const json11::Json &mode ) {
     _scattergeo.insert({"mode", mode});
     return *this;
 }
@@ -334,7 +350,7 @@ Scattergeo & Selected(const CppPlotly::Trace::scattergeo::Selected &selected ) {
 
 /**
 Array containing integer indices of selected points. Has an effect only for traces that support selections. Note that an empty array means an empty selection where the `unselected` are turned on for all points, whereas, any other non-array values means no selection all where the `selected` and `unselected` styles have no effect.
-*/Scattergeo & Selectedpoints(const json11::Json::object &selectedpoints ) {
+*/Scattergeo & Selectedpoints(const json11::Json &selectedpoints ) {
     _scattergeo.insert({"selectedpoints", selectedpoints});
     return *this;
 }
@@ -356,7 +372,7 @@ Scattergeo & Stream(const CppPlotly::Trace::scattergeo::Stream &stream ) {
 
 /**
 Sets text elements associated with each (lon,lat) pair or item in `locations`. If a single string, the same string appears over all the data points. If an array of string, the items are mapped in order to the this trace's (lon,lat) or `locations` coordinates. If trace `hoverinfo` contains a *text* flag and *hovertext* is not set, these elements will be seen in the hover labels.
-*/Scattergeo & Text(const json11::Json::object &text ) {
+*/Scattergeo & Text(const json11::Json &text ) {
     _scattergeo.insert({"text", text});
     return *this;
 }
@@ -370,7 +386,7 @@ Scattergeo & Textfont(const CppPlotly::Trace::scattergeo::Textfont &textfont ) {
 
 /**
 Sets the positions of the `text` elements with respects to the (x,y) coordinates.
-*/Scattergeo & Textposition(const json11::Json::object &textposition ) {
+*/Scattergeo & Textposition(const json11::Json &textposition ) {
     _scattergeo.insert({"textposition", textposition});
     return *this;
 }
@@ -398,8 +414,18 @@ Scattergeo & Transforms(const std::vector<CppPlotly::Trace::scattergeo::Transfor
 }
 
 
-Scattergeo & Uid(const std::string &uid ) {
+/**
+Assign an id to this trace, Use this to provide object constancy between traces during animations and transitions.
+*/Scattergeo & Uid(const std::string &uid ) {
     _scattergeo.insert({"uid", uid});
+    return *this;
+}
+
+
+/**
+Controls persistence of some user-driven changes to the trace: `constraintrange` in `parcoords` traces, as well as some `editable: true` modifications such as `name` and `colorbar.title`. Defaults to `layout.uirevision`. Note that other user-driven trace attribute changes are controlled by `layout` attributes: `trace.visible` is controlled by `layout.legend.uirevision`, `selectedpoints` is controlled by `layout.selectionrevision`, and `colorbar.(x|y)` (accessible with `config: {editable: true}`) is controlled by `layout.editrevision`. Trace changes are tracked by `uid`, which only falls back on trace index if no `uid` is provided. So if your app can add/remove traces before the end of the `data` array, such that the same trace has a different index, you can still preserve user-driven changes if you give each trace a `uid` that stays with it as it moves.
+*/Scattergeo & Uirevision(const json11::Json &uirevision ) {
+    _scattergeo.insert({"uirevision", uirevision});
     return *this;
 }
 
@@ -412,7 +438,7 @@ Scattergeo & Unselected(const CppPlotly::Trace::scattergeo::Unselected &unselect
 
 /**
 Determines whether or not this trace is visible. If *legendonly*, the trace is not drawn, but can appear as a legend item (provided that the legend itself is visible).
-*/Scattergeo & Visible(const json11::Json::object &visible ) {
+*/Scattergeo & Visible(const json11::Json &visible ) {
     _scattergeo.insert({"visible", visible});
     return *this;
 }

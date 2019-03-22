@@ -37,13 +37,21 @@ namespace CppPlotly {
     class Outsidetextfont {
     public:
 
-    Outsidetextfont & Color(const json11::Json::object &color ) {
+    Outsidetextfont & Color(const json11::Json &color ) {
     _outsidetextfont.insert({"color", color});
     return *this;
 }
 
 
-Outsidetextfont & Description(const json11::Json::object &description ) {
+/**
+Sets the source reference on plot.ly for  color .
+*/Outsidetextfont & Colorsrc(const std::string &colorsrc ) {
+    _outsidetextfont.insert({"colorsrc", colorsrc});
+    return *this;
+}
+
+
+Outsidetextfont & Description(const json11::Json &description ) {
     _outsidetextfont.insert({"description", description});
     return *this;
 }
@@ -51,14 +59,30 @@ Outsidetextfont & Description(const json11::Json::object &description ) {
 
 /**
 HTML font family - the typeface that will be applied by the web browser. The web browser will only be able to apply a font if it is available on the system which it operates. Provide multiple font families, separated by commas, to indicate the preference in which to apply fonts if they aren't available on the system. The plotly service (at https://plot.ly or on-premise) generates images on a server, where only a select number of fonts are installed and supported. These include *Arial*, *Balto*, *Courier New*, *Droid Sans*,, *Droid Serif*, *Droid Sans Mono*, *Gravitas One*, *Old Standard TT*, *Open Sans*, *Overpass*, *PT Sans Narrow*, *Raleway*, *Times New Roman*.
-*/Outsidetextfont & Family(const std::string &family ) {
+*/Outsidetextfont & Family(const json11::Json &family ) {
     _outsidetextfont.insert({"family", family});
     return *this;
 }
 
 
-Outsidetextfont & Size(const double &size ) {
+/**
+Sets the source reference on plot.ly for  family .
+*/Outsidetextfont & Familysrc(const std::string &familysrc ) {
+    _outsidetextfont.insert({"familysrc", familysrc});
+    return *this;
+}
+
+
+Outsidetextfont & Size(const json11::Json &size ) {
     _outsidetextfont.insert({"size", size});
+    return *this;
+}
+
+
+/**
+Sets the source reference on plot.ly for  size .
+*/Outsidetextfont & Sizesrc(const std::string &sizesrc ) {
+    _outsidetextfont.insert({"sizesrc", sizesrc});
     return *this;
 }
 
