@@ -19,7 +19,7 @@ use Scalar::Util;
 # TODO Add defaults?
 # TODO Add support for items
 
-my $generic_type = 'json11::Json::object';
+my $generic_type = 'json11::Json';
 my $moose_type_for = {
     any        => $generic_type,
     number     => 'double',
@@ -218,7 +218,7 @@ sub RenderField {
     my $trace_name = shift();
 
     my $file_contents = "";
-    my $type = $ast->{isa} || "json11::Json::object";
+    my $type = $ast->{isa} || "json11::Json";
     if (ref $type eq 'ARRAY') {
         for my $subtype (@$type) {
             $file_contents .= _RenderField($field_name, $trace_name, $subtype, $ast->{'documentation'});
